@@ -4,8 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "whatwg-fetch": "^2.0.3"
+    "react-dom": "^15.4.2"
   },
   "devDependencies": {
     "node-sass": "^4.5.0",
