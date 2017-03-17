@@ -3,23 +3,27 @@ keadatabase-front
 
 Setup
 -----
-You will need to have Node >= 4 installed (and npm).
-Then run `npm install`.
+You will need to have Node >= 4 installed (and npm). Then run:  
+`npm install`
 
 Running
 -------
-To run on your local machine at <http://localhost:3000/> run:
+To run on your local machine at <http://localhost:3000/> run:  
 `npm start`
+
+You will need to ensure that the SCSS has been compiled beforehand by running:  
+`npm run watch-css`
 
 Building
 --------
-To build the app for production run:
-`npm run build`
+To build the app for production run:  
+`npm build-css` then `npm run build`
 
 Licence
 -------
-Kea Database 
-Copyright (C) 2016 Greenstone Limited hello@greenstone.org.nz
+Kea Database  
+Copyright (C) 2016 Greenstone Limited  
+hello@greenstone.org.nz
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
