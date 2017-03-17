@@ -16,8 +16,15 @@ You will need to ensure that the SCSS has been compiled beforehand by running:
 
 Building
 --------
-To build the app for production run:  
+To build the app for production use, run:  
 `npm build-css` then `npm run build`
+
+Deploying
+---------
+To deploy to GitHub pages (and hence make available at http://beta.keadatabase.nz/):  
+`npm run deploy`
+
+**This will automatically build the SCSS and source code**
 
 Licence
 -------
