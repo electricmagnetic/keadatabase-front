@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
+import { Nav, Footer } from './Common';
+import HomePage from './HomePage';
 import './App.css';
 
 class App extends Component {
+  getChildContext() {
+    return {
+      wordpress_base: 'https://public-api.wordpress.com/wp/v2/sites/',
+      wordpress_site: 'blog.keadatabase.nz'
+    };
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Nav />
+        <HomePage />
+        <Footer />
       </div>
     );
   }
 }
+
+App.childContextTypes = {
+  wordpress_base: React.PropTypes.string,
+  wordpress_site: React.PropTypes.string
+};
 
 export default App;

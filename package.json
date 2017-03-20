@@ -2,13 +2,14 @@
   "name": "keadatabase",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://greenstone.github.io/keadatabase-front",
+  "homepage": "http://beta.keadatabase.nz",
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router": "^4.0.0"
   },
   "devDependencies": {
+    "gh-pages": "^0.12.0",
     "node-sass": "^4.5.0",
     "react-scripts": "0.9.5"
   },
