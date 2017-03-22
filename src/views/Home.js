@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import Blog from './WordPress/Blog';
-import Page from './WordPress/Page';
-import FeaturedBird from './Birds/FeaturedBird';
-import LatestSightings from './Sightings/LatestSightings';
+import Blog from '../components/WordPress/Blog';
+import Page from '../components/WordPress/Page';
+import FeaturedBird from '../components/Birds/FeaturedBird';
+import LatestSightings from '../components/Sightings/LatestSightings';
 
 class Banner extends Component {
   render() {
@@ -30,7 +30,7 @@ class Sponsors extends Component {
   }
 }
 
-class HomePage extends Component {
+class Home extends Component {
   render() {
     return (
       <div className="HomePage">
@@ -62,4 +62,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default Home;
