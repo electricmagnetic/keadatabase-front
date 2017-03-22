@@ -1,5 +1,3 @@
-// make global const with wordpress api link
-
 import React, { Component } from 'react';
 
 class Page extends Component {
@@ -37,7 +35,7 @@ class Page extends Component {
               this.props.hideTitle === false &&
               <h2 dangerouslySetInnerHTML={{__html: page.title.rendered }}></h2>
             }
-            <p dangerouslySetInnerHTML={{__html: page.content.rendered }}></p> 
+            <p dangerouslySetInnerHTML={{__html: page.content.rendered }}></p>
           </div>
         )}
       </div>
