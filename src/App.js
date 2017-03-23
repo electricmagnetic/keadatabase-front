@@ -20,7 +20,8 @@ class App extends Component {
   getChildContext() {
     return {
       wordpress_base: 'https://public-api.wordpress.com/wp/v2/sites/',
-      wordpress_site: 'blog.keadatabase.nz'
+      wordpress_site: 'blog.keadatabase.nz',
+      keadatabase_api: 'http://api.keadatabase.nz/'
     };
   }
 
@@ -41,7 +42,7 @@ class App extends Component {
 
               <Route exact path="/sightings" component={SightingsPage}/>
               <Route exact path="/sightings/:id" component={SightingDetailPage}/>
-              
+
               <Route exact path="/report" component={ReportPage}/>
 
               <Route component={NoMatchPage}/>
@@ -57,7 +58,8 @@ class App extends Component {
 
 App.childContextTypes = {
   wordpress_base: React.PropTypes.string,
-  wordpress_site: React.PropTypes.string
+  wordpress_site: React.PropTypes.string,
+  keadatabase_api: React.PropTypes.string
 };
 
 export default App;
