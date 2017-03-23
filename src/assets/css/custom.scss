@@ -1,3 +1,52 @@
+@import "variables";
+
 .navbar .navbar-nav {
   text-transform: uppercase;
+}
+
+footer {
+  padding-top: $line-height-computed;
+  background: #E6DFCC;
+}
+
+.FeaturedBird {
+  background-color: $brand-orange;
+  color: #fff;
+  h2 {
+    text-transform: uppercase;
+    font-family: $font-family-base;
+  }
+  padding-top: $line-height-computed*2;
+  padding-bottom: $line-height-computed*2;
+}
+
+.FeaturedBird, .Page, .Blog, .Sponsors, .LatestSightings, .BannerButtons {
+  margin-bottom: $line-height-computed;
+}
+
+.Banner {
+  margin-bottom: 0;
+}
+
+.BannerButtons {
+  background-color: $brand-green;
+  font-size: $font-size-h3;
+  padding-top: $line-height-computed;
+  padding-bottom: $line-height-computed;
+  text-transform: uppercase;
+  a {
+    color: $brand-dull;
+  }
+  .button-report {
+    text-align: center;
+    @media (min-width: $screen-sm-min) {
+      text-align: right;
+    }
+  }
+  .button-birds {
+    text-align: center;
+    @media (min-width: $screen-sm-min) {
+      text-align: left;
+    }
+  }
 }
