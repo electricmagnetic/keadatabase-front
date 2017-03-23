@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 class Footer extends Component {
   render() {
@@ -8,11 +9,11 @@ class Footer extends Component {
           <div className="row">
             <div className="col-md-9">
               <ul className="nav nav-pills">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About/Privacy</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Kea Conservation Trust</a></li>
+                <li><NavLink to="/">Home</NavLink></li>
+                <li><NavLink to="/about">About/Privacy</NavLink></li>
+                <li><NavLink to="/contact">Contact</NavLink></li>
+                <li><a href="https://blog.keadatabase.nz">Blog</a></li>
+                <li><a href="https://keaconservation.co.nz">Kea Conservation Trust</a></li>
               </ul>
             </div>
             <div className="col-md-3">

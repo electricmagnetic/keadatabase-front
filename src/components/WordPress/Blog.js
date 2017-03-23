@@ -42,9 +42,8 @@ class Blog extends Component {
               <a href={ post.link }>
                 <h3 dangerouslySetInnerHTML={{__html: post.title.rendered }}></h3>
               </a>
-              <h4 dangerouslySetInnerHTML={{__html: post.date }}></h4>  
+              <h4 dangerouslySetInnerHTML={{__html: post.date }}></h4>
               <div dangerouslySetInnerHTML={{__html: post.excerpt.rendered }}></div>
-              <a className="btn btn-default" href={ post.link }>Read more</a>
             </li>
           )}
         </ul>

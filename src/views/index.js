@@ -30,7 +30,7 @@ class Sponsors extends Component {
   }
 }
 
-class Home extends Component {
+class HomePage extends Component {
   render() {
     return (
       <div className="HomePage">
@@ -62,4 +62,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default HomePage;
