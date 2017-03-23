@@ -14,7 +14,8 @@ import SightingDetailPage from './views/sightings/detail';
 import ReportPage from './views/report';
 import NoMatchPage from './views/nomatch';
 
-import './App.css';
+import './assets/css/bootstrap.css';
+import './assets/css/custom.css';
 
 class App extends Component {
   getChildContext() {
