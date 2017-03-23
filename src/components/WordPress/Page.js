@@ -10,7 +10,7 @@ class Page extends Component {
   }
 
   getPage() {
-    fetch(`${this.context.wordpress_base}${this.context.wordpress_site}/pages/${this.props.id}`)
+    fetch(`${this.context.wordpress_base}/${this.context.wordpress_site}/pages/${this.props.id}`)
     .then(response => {
       response.json()
       .then(data => {

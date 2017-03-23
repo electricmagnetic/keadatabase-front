@@ -10,7 +10,7 @@ class Birds extends Component {
   }
 
   getBirds() {
-    fetch(`${this.context.keadatabase_api}birds`)
+    fetch(`${this.context.keadatabase_api}/birds`)
     .then(response => {
       response.json()
       .then(data => {

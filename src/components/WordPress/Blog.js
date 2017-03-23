@@ -15,7 +15,7 @@ class Blog extends Component {
   }
 
   getPosts() {
-    fetch(`${this.context.wordpress_base}${this.context.wordpress_site}/posts?per_page=${this.props.number}`)
+    fetch(`${this.context.wordpress_base}/${this.context.wordpress_site}/posts?per_page=${this.props.number}`)
     .then(response => {
       response.json()
       .then(data => {

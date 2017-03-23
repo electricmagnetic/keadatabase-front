@@ -19,9 +19,9 @@ import './App.css';
 class App extends Component {
   getChildContext() {
     return {
-      wordpress_base: 'https://public-api.wordpress.com/wp/v2/sites/',
-      wordpress_site: 'blog.keadatabase.nz',
-      keadatabase_api: 'http://api.keadatabase.nz/'
+      keadatabase_api: 'http://api.keadatabase.nz',
+      wordpress_base: 'https://public-api.wordpress.com/wp/v2/sites',
+      wordpress_site: 'blog.keadatabase.nz'
     };
   }
 
