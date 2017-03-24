@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
+import logo from '../../assets/img/logo.svg';
+
 class Nav extends Component {
   render() {
     return(
@@ -13,7 +15,7 @@ class Nav extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <Link to="/" className="navbar-brand">Kea Database</Link>
+            <Link to="/" className="navbar-brand"><img src={logo} alt="Kea Database" /></Link>
           </div>
           <div id="navbar" className="collapse navbar-collapse">
             <ul className="nav navbar-nav navbar-right">

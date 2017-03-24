@@ -1,8 +1,21 @@
 @import "variables";
 
-.navbar .navbar-nav {
-  text-transform: uppercase;
+.navbar {
+  border-bottom: 0;
+  .navbar-nav {
+    text-transform: uppercase;
+  }
+  .navbar-brand {
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    img {
+      height: 32px;
+    }
+  }
 }
+
+
 
 footer {
   padding-top: $line-height-computed;
