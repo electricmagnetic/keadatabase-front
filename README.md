@@ -21,7 +21,9 @@ To build the app for production use, run:
 
 Deploying
 ---------
-To deploy to GitHub pages (and hence make available at http://beta.keadatabase.nz/):  
+Ensure you have the `awscli` Python package installed and configured with id and secret key.
+
+To deploy to Amazon S3 (and hence make available at http://beta.keadatabase.nz/):  
 `npm run deploy`
 
 **This will automatically build the SCSS and source code**

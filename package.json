@@ -11,9 +11,9 @@
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
-    "gh-pages": "^0.12.0",
     "node-sass": "^4.5.0",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "s3-deploy": "^0.7.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,6 +23,6 @@
     "build-css": "node-sass src/ -o src/",
     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
     "predeploy": "npm run build-css && npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "s3-deploy './build/**' --cwd './build/' --region ap-southeast-2 --bucket beta.keadatabase.nz"
   }
 }
