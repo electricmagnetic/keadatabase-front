@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import logo from '../../assets/img/logo.svg';
+import './Nav.css';
 
 class Nav extends Component {
   render() {

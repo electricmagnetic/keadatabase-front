@@ -34,19 +34,19 @@ class App extends Component {
             <Nav />
 
             <Switch>
-              <Route exact path="/" component={HomePage}/>
-              <Route exact path="/about" component={AboutPage}/>
-              <Route exact path="/contact" component={ContactPage}/>
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/about" component={AboutPage} />
+              <Route exact path="/contact" component={ContactPage} />
 
-              <Route exact path="/birds" component={BirdsPage}/>
-              <Route exact path="/birds/:id" component={BirdDetailPage}/>
+              <Route exact path="/birds" component={BirdsPage} />
+              <Route exact path="/birds/:id" component={BirdDetailPage} />
 
-              <Route exact path="/sightings" component={SightingsPage}/>
-              <Route exact path="/sightings/:id" component={SightingDetailPage}/>
+              <Route exact path="/sightings" component={SightingsPage} />
+              <Route exact path="/sightings/:id" component={SightingDetailPage} />
 
-              <Route exact path="/report" component={ReportPage}/>
+              <Route exact path="/report" component={ReportPage} />
 
-              <Route component={NoMatchPage}/>
+              <Route component={NoMatchPage} />
             </Switch>
 
             <Footer />

@@ -1,38 +1,5 @@
 @import "variables";
 
-.navbar {
-  border-bottom: 0;
-  .navbar-nav {
-    text-transform: uppercase;
-  }
-  .navbar-brand {
-    padding-top: 24px;
-    padding-bottom: 24px;
-
-    img {
-      height: 32px;
-    }
-  }
-}
-
-
-
-footer {
-  padding-top: $line-height-computed;
-  background: #E6DFCC;
-}
-
-.FeaturedBird {
-  background-color: $brand-orange;
-  color: #fff;
-  h2 {
-    text-transform: uppercase;
-    font-family: $font-family-base;
-  }
-  padding-top: $line-height-computed*2;
-  padding-bottom: $line-height-computed*2;
-}
-
 .FeaturedBird, .Page, .Blog, .Sponsors, .LatestSightings, .BannerButtons {
   margin-bottom: $line-height-computed;
 }

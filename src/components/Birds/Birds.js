@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './Birds.css';
+
 class Birds extends Component {
   constructor(props) {
     super(props);
