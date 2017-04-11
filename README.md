@@ -1,6 +1,8 @@
 keadatabase-front
 =================
 
+[![Build Status](https://travis-ci.org/greenstone/keadatabase-front.svg?branch=master)](https://travis-ci.org/greenstone/keadatabase-front)
+
 Setup
 -----
 You will need to have Node >= 4 installed (and npm). Then run:  
