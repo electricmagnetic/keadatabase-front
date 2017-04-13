@@ -48,7 +48,7 @@ $link-hover-decoration: underline !default;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "News Cycle", Helvetica, Arial, sans-serif;
+$font-family-sans-serif:  "Open Sans", Helvetica, Arial, sans-serif;
 $font-family-serif:       "Playfair Display", Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
@@ -357,7 +357,7 @@ $container-desktop:            (940px + $grid-gutter-width) !default;
 $container-md:                 $container-desktop !default;
 
 // Large screen / wide desktop
-$container-large-desktop:      (1140px + $grid-gutter-width) !default;
+$container-large-desktop:      $container-desktop;
 //** For `$screen-lg-min` and up.
 $container-lg:                 $container-large-desktop !default;
 
