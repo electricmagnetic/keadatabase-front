@@ -1,11 +1,11 @@
 @import "../../assets/css/variables";
 
 footer {
-  background-color: #E6DFCC;
+  background-color: $brand-faded;
 
   .constrainer {
     padding-top: $line-height-computed;
-    background-color: lighten(#E6DFCC, 5%);
-    border-color: darken(#E6DFCC, 5%);
+    background-color: lighten($brand-faded, 5%);
+    border-color: darken($brand-faded, 5%);
   }
 }
