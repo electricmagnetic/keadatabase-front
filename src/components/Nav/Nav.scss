@@ -1,10 +1,16 @@
 @import "../../assets/css/variables";
 
 .navbar {
-  border-bottom: 0;
+  border: 0;
+
+  .container {
+    background-color: $gray-base;
+  }
+
   .navbar-nav {
     text-transform: uppercase;
   }
+
   .navbar-brand {
     padding-top: 24px;
     padding-bottom: 24px;

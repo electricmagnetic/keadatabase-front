@@ -10,14 +10,12 @@ class BannerButtons extends Component {
   render() {
     return(
       <div className="BannerButtons">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-6 button-report">
-              <Link to="/report">Report Sightings &raquo;</Link>
-            </div>
-            <div className="col-sm-6 button-birds">
-              <Link to="/birds">Search Birds &raquo;</Link>
-            </div>
+        <div className="row">
+          <div className="col-sm-6 button-report">
+            <Link to="/report">Report Sightings &raquo;</Link>
+          </div>
+          <div className="col-sm-6 button-birds">
+            <Link to="/birds">Search Birds &raquo;</Link>
           </div>
         </div>
       </div>
@@ -28,9 +26,11 @@ class BannerButtons extends Component {
 class Banner extends Component {
   render() {
     return(
-      <div className="Banner jumbotron">
-        <div className="container">
-          <Page id={34} hideTitle />
+      <div className="Banner">
+        <div className="row">
+          <div className="col-md-12">
+            <Page id={34} hideTitle />
+          </div>
         </div>
       </div>
     );
@@ -41,10 +41,8 @@ class Sponsors extends Component {
   render() {
     return(
       <div className="Sponsors">
-        <div className="container">
           <h2>Sponsors</h2>
           <p>sponsors</p>
-        </div>
       </div>
     );
   }
@@ -56,25 +54,21 @@ class HomePage extends Component {
       <div className="HomePage">
         <Banner />
         <BannerButtons />
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <Page id={24} />
-            </div>
-            <div className="col-md-6">
-              <Page id={27} />
-            </div>
+        <div className="row">
+          <div className="col-md-6">
+            <Page id={24} />
+          </div>
+          <div className="col-md-6">
+            <Page id={27} />
           </div>
         </div>
         <FeaturedBird />
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <Blog number={3} />
-            </div>
-            <div className="col-md-6">
-              <LatestSightings />
-            </div>
+        <div className="row">
+          <div className="col-md-6">
+            <Blog number={3} />
+          </div>
+          <div className="col-md-6">
+            <LatestSightings />
           </div>
         </div>
         <Sponsors />
