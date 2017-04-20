@@ -41,6 +41,7 @@
   }
 }
 
+// Provide constraint to 'background colour bars' of large container + 50px (either side)
 $constrainer-width: $container-lg+100px;
 
 .constrainer {
