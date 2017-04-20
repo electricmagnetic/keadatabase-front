@@ -5,28 +5,54 @@
 }
 
 .Banner {
-  margin-bottom: 0;
+  background: $gray-lighter;
+  padding-top: $line-height-computed*3;
+  padding-bottom: $line-height-computed*3;
+
+  h1 {
+    font-size: $jumbotron-heading-font-size;
+  }
 }
 
 .BannerButtons {
-  background-color: $brand-green;
   font-size: $font-size-h3;
+  text-transform: uppercase;
+
+  background-color: $brand-green;
   padding-top: $line-height-computed;
   padding-bottom: $line-height-computed;
-  text-transform: uppercase;
+
   a {
     color: $brand-dull;
   }
+
   .button-report {
     text-align: center;
     @media (min-width: $screen-sm-min) {
       text-align: right;
     }
   }
+
   .button-birds {
     text-align: center;
     @media (min-width: $screen-sm-min) {
       text-align: left;
     }
+  }
+}
+
+// Provide constraint to 'background colour bars' of large container + 50px (either side)
+$constrainer-width: $container-lg+100px;
+
+.constrainer {
+  background-color: #fff;
+
+  @media (min-width: $constrainer-width+1px) {
+    border: 1px solid $gray-lightish;
+    border-top: 0;
+    border-bottom: 0;
+    margin: auto;
+    overflow: hidden;
+    width: $constrainer-width;
   }
 }

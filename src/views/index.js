@@ -28,7 +28,7 @@ class BannerButtons extends Component {
 class Banner extends Component {
   render() {
     return(
-      <div className="Banner jumbotron">
+      <div className="Banner">
         <div className="container">
           <Page id={34} hideTitle />
         </div>

@@ -1,11 +1,20 @@
 @import "../../assets/css/variables";
 
-.navbar {
-  border-bottom: 0;
+.navbar.navbar-inverse {
+  border: 0;
+
+  .constrainer {
+    background-color: darken($navbar-inverse-bg, 5%);
+    border-color: lighten($navbar-inverse-bg, 5%);
+  }
+
   .navbar-nav {
     text-transform: uppercase;
   }
+
   .navbar-brand {
+    // Fix as addition of .constrainer means > selectors in core BS code no longer add left margin.
+    margin-left: -15px;
     padding-top: 24px;
     padding-bottom: 24px;
 

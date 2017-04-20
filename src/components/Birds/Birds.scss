@@ -1,12 +1,13 @@
 @import "../../assets/css/variables";
 
 .FeaturedBird {
-  background-color: $brand-orange;
   color: #fff;
+  background-color: $brand-orange;
+  padding-top: $line-height-computed*2;
+  padding-bottom: $line-height-computed*2;
+
   h2 {
     text-transform: uppercase;
     font-family: $font-family-base;
   }
-  padding-top: $line-height-computed*2;
-  padding-bottom: $line-height-computed*2;
 }
