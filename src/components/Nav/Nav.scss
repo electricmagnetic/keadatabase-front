@@ -13,6 +13,8 @@
   }
 
   .navbar-brand {
+    // Fix as addition of .constrainer means > selectors in core BS code no longer add left margin.
+    margin-left: -15px;
     padding-top: 24px;
     padding-bottom: 24px;
 

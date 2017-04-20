@@ -30,11 +30,7 @@ class Banner extends Component {
     return(
       <div className="Banner">
         <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <Page id={34} hideTitle />
-            </div>
-          </div>
+          <Page id={34} hideTitle />
         </div>
       </div>
     );
@@ -61,25 +57,25 @@ class HomePage extends Component {
         <Banner />
         <BannerButtons />
         <div className="container">
-        <div className="row">
-          <div className="col-md-6">
-            <Page id={24} />
+          <div className="row">
+            <div className="col-md-6">
+              <Page id={24} />
+            </div>
+            <div className="col-md-6">
+              <Page id={27} />
+            </div>
           </div>
-          <div className="col-md-6">
-            <Page id={27} />
-          </div>
-        </div>
         </div>
         <FeaturedBird />
         <div className="container">
-        <div className="row">
-          <div className="col-md-6">
-            <Blog number={3} />
+          <div className="row">
+            <div className="col-md-6">
+              <Blog number={3} />
+            </div>
+            <div className="col-md-6">
+              <LatestSightings />
+            </div>
           </div>
-          <div className="col-md-6">
-            <LatestSightings />
-          </div>
-        </div>
         </div>
         <Sponsors />
       </div>
