@@ -34,7 +34,7 @@ class App extends Component {
           <div className="MainRouter">
             <Nav />
 
-            <main className="container">
+            <main className="constrainer">
               <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/about" component={AboutPage} />

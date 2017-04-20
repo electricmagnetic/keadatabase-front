@@ -2,12 +2,9 @@
 
 .FeaturedBird {
   color: #fff;
-
-  .row {
-    background-color: $brand-orange;
-    padding-top: $line-height-computed*2;
-    padding-bottom: $line-height-computed*2;
-  }
+  background-color: $brand-orange;
+  padding-top: $line-height-computed*2;
+  padding-bottom: $line-height-computed*2;
 
   h2 {
     text-transform: uppercase;

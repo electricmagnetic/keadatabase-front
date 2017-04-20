@@ -5,11 +5,9 @@
 }
 
 .Banner {
-  .row {
-    background: $gray-lighter;
-    padding-top: $line-height-computed*3;
-    padding-bottom: $line-height-computed*3;
-  }
+  background: $gray-lighter;
+  padding-top: $line-height-computed*3;
+  padding-bottom: $line-height-computed*3;
 
   h1 {
     font-size: $jumbotron-heading-font-size;
@@ -20,11 +18,9 @@
   font-size: $font-size-h3;
   text-transform: uppercase;
 
-  .row {
-    background-color: $brand-green;
-    padding-top: $line-height-computed;
-    padding-bottom: $line-height-computed;
-  }
+  background-color: $brand-green;
+  padding-top: $line-height-computed;
+  padding-bottom: $line-height-computed;
 
   a {
     color: $brand-dull;
@@ -45,9 +41,17 @@
   }
 }
 
-main.container {
-  border: 1px solid $gray-lightish;
-  border-top: 0;
-  border-bottom: 0;
+$constrainer-width: $container-lg+100px;
+
+.constrainer {
   background-color: #fff;
+
+  @media (min-width: $constrainer-width+1px) {
+    border: 1px solid $gray-lightish;
+    border-top: 0;
+    border-bottom: 0;
+    margin: auto;
+    overflow: hidden;
+    width: $constrainer-width;
+  }
 }

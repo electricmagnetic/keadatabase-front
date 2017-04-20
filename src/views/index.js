@@ -10,12 +10,14 @@ class BannerButtons extends Component {
   render() {
     return(
       <div className="BannerButtons">
-        <div className="row">
-          <div className="col-sm-6 button-report">
-            <Link to="/report">Report Sightings &raquo;</Link>
-          </div>
-          <div className="col-sm-6 button-birds">
-            <Link to="/birds">Search Birds &raquo;</Link>
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-6 button-report">
+              <Link to="/report">Report Sightings &raquo;</Link>
+            </div>
+            <div className="col-sm-6 button-birds">
+              <Link to="/birds">Search Birds &raquo;</Link>
+            </div>
           </div>
         </div>
       </div>
@@ -27,9 +29,11 @@ class Banner extends Component {
   render() {
     return(
       <div className="Banner">
-        <div className="row">
-          <div className="col-md-12">
-            <Page id={34} hideTitle />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <Page id={34} hideTitle />
+            </div>
           </div>
         </div>
       </div>
@@ -41,8 +45,10 @@ class Sponsors extends Component {
   render() {
     return(
       <div className="Sponsors">
+        <div className="container">
           <h2>Sponsors</h2>
           <p>sponsors</p>
+        </div>
       </div>
     );
   }
@@ -54,6 +60,7 @@ class HomePage extends Component {
       <div className="HomePage">
         <Banner />
         <BannerButtons />
+        <div className="container">
         <div className="row">
           <div className="col-md-6">
             <Page id={24} />
@@ -62,7 +69,9 @@ class HomePage extends Component {
             <Page id={27} />
           </div>
         </div>
+        </div>
         <FeaturedBird />
+        <div className="container">
         <div className="row">
           <div className="col-md-6">
             <Blog number={3} />
@@ -70,6 +79,7 @@ class HomePage extends Component {
           <div className="col-md-6">
             <LatestSightings />
           </div>
+        </div>
         </div>
         <Sponsors />
       </div>

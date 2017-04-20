@@ -3,8 +3,9 @@
 .navbar {
   border: 0;
 
-  .container {
+  .constrainer {
     background-color: $gray-base;
+    border-color: $gray-dark;
   }
 
   .navbar-nav {
