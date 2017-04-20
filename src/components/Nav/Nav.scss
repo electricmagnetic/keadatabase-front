@@ -13,13 +13,16 @@
   }
 
   .navbar-brand {
-    // Fix as addition of .constrainer means > selectors in core BS code no longer add left margin.
-    margin-left: -15px;
     padding-top: 24px;
     padding-bottom: 24px;
 
     img {
       height: 32px;
+    }
+
+    @media (min-width: $grid-float-breakpoint) {
+      // Fix as addition of .constrainer means > selectors in core BS code no longer add left margin
+      margin-left: -$navbar-padding-horizontal;
     }
   }
 }
