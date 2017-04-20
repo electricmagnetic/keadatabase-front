@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
@@ -58,9 +59,9 @@ class App extends Component {
 }
 
 App.childContextTypes = {
-  wordpress_base: React.PropTypes.string,
-  wordpress_site: React.PropTypes.string,
-  keadatabase_api: React.PropTypes.string
+  wordpress_base: PropTypes.string,
+  wordpress_site: PropTypes.string,
+  keadatabase_api: PropTypes.string
 };
 
 export default App;

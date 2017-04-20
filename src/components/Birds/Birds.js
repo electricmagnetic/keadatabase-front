@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './Birds.css';
 
@@ -42,7 +43,7 @@ class Birds extends Component {
 }
 
 Birds.contextTypes = {
-  keadatabase_api: React.PropTypes.string.isRequired
+  keadatabase_api: PropTypes.string.isRequired
 };
 
 export default Birds;

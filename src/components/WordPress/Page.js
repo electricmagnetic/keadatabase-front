@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Page extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class Page extends Component {
     return(
       <div className="Page">
         {this.state.page.map(page =>
-          <div className="Page-content">
+          <div className="Page-content" key={ page.id }>
             {
               this.props.hideTitle === false &&
               <h2 dangerouslySetInnerHTML={{__html: page.title.rendered }}></h2>
@@ -48,13 +49,13 @@ Page.defaultProps = {
 };
 
 Page.propTypes = {
-  id: React.PropTypes.number.isRequired,
-  hideTitle: React.PropTypes.bool.isRequired
+  id: PropTypes.number.isRequired,
+  hideTitle: PropTypes.bool.isRequired
 };
 
 Page.contextTypes = {
-  wordpress_base: React.PropTypes.string.isRequired,
-  wordpress_site: React.PropTypes.string.isRequired
+  wordpress_base: PropTypes.string.isRequired,
+  wordpress_site: PropTypes.string.isRequired
 };
 
 export default Page;

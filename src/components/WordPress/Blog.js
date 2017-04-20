@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Blog extends Component {
   constructor(props) {
@@ -54,7 +55,7 @@ class Blog extends Component {
 }
 
 Blog.propTypes = {
-  number: React.PropTypes.number
+  number: PropTypes.number
 };
 
 Blog.defaultProps = {
@@ -62,8 +63,8 @@ Blog.defaultProps = {
 };
 
 Blog.contextTypes = {
-  wordpress_base: React.PropTypes.string.isRequired,
-  wordpress_site: React.PropTypes.string.isRequired
+  wordpress_base: PropTypes.string.isRequired,
+  wordpress_site: PropTypes.string.isRequired
 };
 
 export default Blog;
