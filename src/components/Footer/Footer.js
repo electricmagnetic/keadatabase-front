@@ -21,9 +21,8 @@ class Footer extends Component {
                 </ul>
               </div>
               <div className="col-sm-4">
-                <p>
-                  <img src={ apkt } alt="Arthur's Pass Kea Database"
-                       className="img-responsive footer-logo" />
+                <p className="footer-logo">
+                  <img src={ apkt } alt="Arthur's Pass Kea Database" className="img-responsive" />
                 </p>
               </div>
             </div>
