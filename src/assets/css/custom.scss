@@ -40,6 +40,7 @@ $constrainer-width: $container-lg+100px;
 
 .constrainer {
   background-color: #fff;
+  overflow: hidden;
 
   @media (min-width: $constrainer-width+1px) {
     border: 1px solid $gray-lightish;

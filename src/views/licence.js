@@ -3,13 +3,13 @@ import Helmet from 'react-helmet';
 
 import Page from '../components/WordPress/Page';
 
-class ContactPage extends Component {
+class LicencePage extends Component {
   render() {
     return (
-      <div className="ContactPage">
-        <Helmet title="Contact" />
+      <div className="LicencePage">
+        <Helmet title="Licence" />
         <div className="container">
-          <h1>Contact</h1>
+          <h1>Licence</h1>
           <Page id={53} hideTitle />
         </div>
       </div>
@@ -17,4 +17,4 @@ class ContactPage extends Component {
   }
 }
 
-export default ContactPage;
+export default LicencePage;

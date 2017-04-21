@@ -14,6 +14,7 @@ import SightingsPage from './views/sightings/index';
 import SightingDetailPage from './views/sightings/detail';
 import ReportPage from './views/report';
 import NoMatchPage from './views/nomatch';
+import LicencePage from './views/licence';
 
 import './assets/css/bootstrap.css';
 import './assets/css/custom.css';
@@ -39,6 +40,7 @@ class App extends Component {
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/about" component={AboutPage} />
                 <Route exact path="/contact" component={ContactPage} />
+                <Route exact path="/licence" component={LicencePage} />
 
                 <Route exact path="/birds" component={BirdsPage} />
                 <Route exact path="/birds/:id" component={BirdDetailPage} />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import apkt from '../../assets/img/apkt.svg';
 import './Footer.css';
 
 class Footer extends Component {
@@ -10,18 +11,20 @@ class Footer extends Component {
         <div className="constrainer">
           <div className="container">
             <div className="row">
-              <div className="col-md-9">
-                <ul className="nav nav-pills">
+              <div className="col-sm-8">
+                <ul className="footer-links">
                   <li><NavLink to="/">Home</NavLink></li>
                   <li><NavLink to="/about">About/Privacy</NavLink></li>
-                  <li><NavLink to="/contact">Contact</NavLink></li>
                   <li><a href="https://blog.keadatabase.nz">Blog</a></li>
-                  <li><a href="https://keaconservation.co.nz">Kea Conservation Trust</a></li>
+                  <li><NavLink to="/licence">Licence/Copyright</NavLink></li>
+                  <li><NavLink to="/contact">Contact</NavLink></li>
                 </ul>
               </div>
-              <div className="col-md-3">
-                <p>Logo</p>
-                <p>copyright, cc licence</p>
+              <div className="col-sm-4">
+                <p>
+                  <img src={ apkt } alt="Arthur's Pass Kea Database"
+                       className="img-responsive footer-logo" />
+                </p>
               </div>
             </div>
           </div>
