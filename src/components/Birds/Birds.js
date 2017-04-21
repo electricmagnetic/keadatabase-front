@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import BirdCard from './Card';
+import BirdCard from './Bird';
 
 import './Birds.css';
 

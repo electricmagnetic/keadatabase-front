@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import Blog from '../components/WordPress/Blog';
 import Page from '../components/WordPress/Page';
 import Banner from '../components/Banner/Banner';
-import FeaturedBird from '../components/Birds/FeaturedBird';
+import { BirdFeatured } from '../components/Birds/Bird';
 import Sightings from '../components/Sightings/Sightings';
 
 class BannerButtons extends Component {
@@ -59,7 +59,7 @@ class HomePage extends Component {
             </div>
           </div>
         </div>
-        <FeaturedBird />
+        <BirdFeatured />
         <div className="container">
           <div className="row">
             <div className="col-md-6">
