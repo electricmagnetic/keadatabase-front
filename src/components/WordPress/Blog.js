@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import './Blog.css';
+
 class Blog extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +41,7 @@ class Blog extends Component {
         <h2>Blog</h2>
         <ul className="list-unstyled">
           {this.state.posts.map(post =>
-            <li key={ post.id }>
+            <li className="BlogPost" key={ post.id }>
               <a href={ post.link }>
                 <h3 dangerouslySetInnerHTML={{__html: post.title.rendered }}></h3>
               </a>
