@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import BirdCard from './Card';
+
 import './Birds.css';
 
 class Birds extends Component {
@@ -31,13 +33,15 @@ class Birds extends Component {
 
   render() {
     return(
-      <ul className="Birds">
-        {this.state.birds.map(bird =>
-          <li key={ bird.id }>
-            <p>{ bird.name } ({ bird.sex }, { bird.status })</p>
-          </li>
-        )}
-      </ul>
+      <div className="Birds">
+        <div className="row">
+          {this.state.birds.map(bird =>
+            <div key={ bird.id } className="col-xs-6 col-sm-4">
+              <BirdCard  bird={ bird } />
+            </div>
+          )}
+        </div>
+      </div>
     );
   }
 }

@@ -4,8 +4,9 @@ import Helmet from 'react-helmet';
 
 import Blog from '../components/WordPress/Blog';
 import Page from '../components/WordPress/Page';
+import Banner from '../components/Banner/Banner';
 import FeaturedBird from '../components/Birds/FeaturedBird';
-import LatestSightings from '../components/Sightings/LatestSightings';
+import Sightings from '../components/Sightings/Sightings';
 
 class BannerButtons extends Component {
   render() {
@@ -20,18 +21,6 @@ class BannerButtons extends Component {
               <Link to="/birds">Search Birds &raquo;</Link>
             </div>
           </div>
-        </div>
-      </div>
-    );
-  }
-}
-
-class Banner extends Component {
-  render() {
-    return(
-      <div className="Banner">
-        <div className="container">
-          <Page id={34} hideTitle />
         </div>
       </div>
     );
@@ -56,7 +45,9 @@ class HomePage extends Component {
     return (
       <div className="HomePage">
         <Helmet title="Kea Database" />
-        <Banner />
+        <Banner noMargin>
+          <Page id={34} hideTitle />
+        </Banner>
         <BannerButtons />
         <div className="container">
           <div className="row">
@@ -75,7 +66,7 @@ class HomePage extends Component {
               <Blog number={3} />
             </div>
             <div className="col-md-6">
-              <LatestSightings />
+              <Sightings />
             </div>
           </div>
         </div>

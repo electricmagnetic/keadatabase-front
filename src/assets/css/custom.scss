@@ -1,17 +1,7 @@
 @import "variables";
 
-.FeaturedBird, .Page, .Blog, .Sponsors, .LatestSightings, .BannerButtons {
+.FeaturedBird, .Page, .Blog, .Sponsors, .Sightings, .BannerButtons {
   margin-bottom: $line-height-computed;
-}
-
-.Banner {
-  background: $gray-lighter;
-  padding-top: $line-height-computed*3;
-  padding-bottom: $line-height-computed*3;
-
-  h1 {
-    font-size: $jumbotron-heading-font-size;
-  }
 }
 
 .BannerButtons {

@@ -1,0 +1,26 @@
+@import "../../assets/css/variables";
+
+.Banner {
+  background: $gray-lighter;
+  margin-bottom: $line-height-computed;
+
+  h1 {
+    font-size: $jumbotron-heading-font-size;
+  }
+
+  &.large {
+    padding-top: $line-height-computed*3;
+    padding-bottom: $line-height-computed*3;
+  }
+  &.medium {
+    padding-top: $line-height-computed*2;
+    padding-bottom: $line-height-computed*2;
+  }
+  &.small {
+    padding-top: $line-height-computed*1;
+    padding-bottom: $line-height-computed*1;
+  }
+  &.no-margin {
+    margin: 0;
+  }
+}

@@ -17,7 +17,7 @@ class Nav extends Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <Link to="/" className="navbar-brand"><img src={logo} alt="Kea Database" /></Link>
+              <Link to="/" className="navbar-brand"><img src={ logo } alt="Kea Database" /></Link>
             </div>
             <div id="navbar" className="collapse navbar-collapse">
               <ul className="nav navbar-nav navbar-right">
