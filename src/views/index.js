@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Helmet from 'react-helmet';
 
 import Blog from '../components/WordPress/Blog';
 import Page from '../components/WordPress/Page';
@@ -54,6 +55,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className="HomePage">
+        <Helmet title="Kea Database" />
         <Banner />
         <BannerButtons />
         <div className="container">
