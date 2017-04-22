@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 import HomePage from './views/index';
 import AboutPage from './views/about';
@@ -32,30 +33,32 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <div className="MainRouter">
-            <Nav />
+          <ScrollToTop>
+            <div className="MainRouter">
+              <Nav />
 
-            <main className="constrainer">
-              <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route exact path="/about" component={AboutPage} />
-                <Route exact path="/contact" component={ContactPage} />
-                <Route exact path="/licence" component={LicencePage} />
+              <main className="constrainer">
+                <Switch>
+                  <Route exact path="/" component={HomePage} />
+                  <Route exact path="/about" component={AboutPage} />
+                  <Route exact path="/contact" component={ContactPage} />
+                  <Route exact path="/licence" component={LicencePage} />
 
-                <Route exact path="/birds" component={BirdsPage} />
-                <Route exact path="/birds/:id" component={BirdDetailPage} />
+                  <Route exact path="/birds" component={BirdsPage} />
+                  <Route exact path="/birds/:id" component={BirdDetailPage} />
 
-                <Route exact path="/sightings" component={SightingsPage} />
-                <Route exact path="/sightings/:id" component={SightingDetailPage} />
+                  <Route exact path="/sightings" component={SightingsPage} />
+                  <Route exact path="/sightings/:id" component={SightingDetailPage} />
 
-                <Route exact path="/report" component={ReportPage} />
+                  <Route exact path="/report" component={ReportPage} />
 
-                <Route component={NoMatchPage} />
-              </Switch>
-            </main>
+                  <Route component={NoMatchPage} />
+                </Switch>
+              </main>
 
-            <Footer />
-          </div>
+              <Footer />
+            </div>
+          </ScrollToTop>
         </Router>
       </div>
     );
