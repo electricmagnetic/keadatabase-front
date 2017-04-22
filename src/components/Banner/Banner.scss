@@ -2,12 +2,22 @@
 
 .Banner {
   background: $gray-lighter;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
   margin-bottom: $line-height-computed;
 
-  h1 {
-    font-size: $jumbotron-heading-font-size;
+  @media screen and (min-width: $screen-sm-min) {
+    h1 {
+      font-size: $jumbotron-heading-font-size;
+      margin: 0;
+    }
   }
 
+  &.huge {
+    padding-top: $line-height-computed*5;
+    padding-bottom: $line-height-computed*5;
+  }
   &.large {
     padding-top: $line-height-computed*3;
     padding-bottom: $line-height-computed*3;

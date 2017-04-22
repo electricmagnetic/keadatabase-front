@@ -6,7 +6,10 @@ import './Banner.css';
 class Banner extends Component {
   render() {
     return(
-      <div className={ 'Banner ' + (this.props.noMargin ? 'no-margin ' : '') + (this.props.size) }>
+      <div className={ 'Banner ' + (this.props.noMargin ? 'no-margin ' : '') + (this.props.size) }
+           style={ this.props.backgroundImage && {
+             backgroundImage: 'url(' + this.props.backgroundImage + ')'
+           }}>
         <div className="container">
           { this.props.children }
         </div>
@@ -22,7 +25,8 @@ Banner.defaultProps = {
 
 Banner.propTypes = {
   size: PropTypes.string.isRequired,
-  noMargin: PropTypes.bool.isRequired
+  noMargin: PropTypes.bool.isRequired,
+  backgroundImage: PropTypes.string
 };
 
 export default Banner;

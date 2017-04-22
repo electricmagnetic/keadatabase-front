@@ -8,6 +8,8 @@ import Banner from '../components/Banner/Banner';
 import { BirdFeatured } from '../components/Birds/Bird';
 import Sightings from '../components/Sightings/Sightings';
 
+import banner from '../assets/img/banners/home.jpg';
+
 class BannerButtons extends Component {
   render() {
     return(
@@ -45,7 +47,7 @@ class HomePage extends Component {
     return (
       <div className="HomePage">
         <Helmet title="Kea Database" />
-        <Banner noMargin>
+        <Banner noMargin size="huge" backgroundImage={ banner }>
           <Page id={34} hideTitle />
         </Banner>
         <BannerButtons />
