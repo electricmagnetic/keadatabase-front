@@ -14,10 +14,10 @@ class Footer extends Component {
               <div className="col-sm-8">
                 <ul className="footer-links">
                   <li><NavLink to="/">Home</NavLink></li>
-                  <li><NavLink to="/about">About/Privacy</NavLink></li>
+                  <li><NavLink to="/about">About/Contact</NavLink></li>
                   <li><a href="https://blog.keadatabase.nz">Blog</a></li>
                   <li><NavLink to="/licence">Licence/Copyright</NavLink></li>
-                  <li><NavLink to="/contact">Contact</NavLink></li>
+                  <li><NavLink to="/terms">Terms/Privacy</NavLink></li>
                 </ul>
               </div>
               <div className="col-sm-4">

@@ -7,9 +7,9 @@ class LicencePage extends Component {
   render() {
     return (
       <div className="LicencePage">
-        <Helmet title="Licence" />
+        <Helmet title="Licence/Copyright" />
         <div className="container">
-          <h1>Licence</h1>
+          <h1>Licence &amp; Copyright</h1>
           <Page id={53} hideTitle />
         </div>
       </div>
