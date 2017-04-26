@@ -13,20 +13,18 @@ class BirdsPage extends Component {
           <h1>Birds</h1>
         </Banner>
         <div className="container">
-          <p>
-            <form className="form">
-              <div className="form-group">
-                <label for="search" className="sr-only">Search</label>
-                <div className="input-group">
-                  <div className="input-group-addon">
-                    <span className="glyphicon glyphicon-search"></span>
-                  </div>
-                  <input className="form-control" type="text" name="search" id="search"
-                         placeholder="Auto-complete (human-style band or bird name) here." />
+          <form className="form-search">
+            <div className="form-group">
+              <label htmlFor="search" className="sr-only">Search</label>
+              <div className="input-group">
+                <div className="input-group-addon">
+                  <span className="glyphicon glyphicon-search"></span>
                 </div>
+                <input className="form-control" type="text" name="search" id="search"
+                       placeholder="Auto-complete (human-style band or bird name) here." />
               </div>
-            </form>
-          </p>
+            </div>
+          </form>
           <div className="row">
             <div className="col-md-3">
               <p>Filters go here</p>
