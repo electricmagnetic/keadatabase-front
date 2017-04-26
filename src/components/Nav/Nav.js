@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import NavLinkContainer from './NavLinkContainer';
 
 import logo from '../../assets/img/logo.svg';
 import './Nav.css';
@@ -21,10 +22,10 @@ class Nav extends Component {
             </div>
             <div id="navbar" className="collapse navbar-collapse">
               <ul className="nav navbar-nav navbar-right">
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/birds">Birds</NavLink></li>
-                <li><NavLink to="/sightings">Sightings</NavLink></li>
-                <li><NavLink to="/report">Report</NavLink></li>
+                <NavLinkContainer to="/" exact>Home</NavLinkContainer>
+                <NavLinkContainer to="/birds">Birds</NavLinkContainer>
+                <NavLinkContainer to="/sightings">Sightings</NavLinkContainer>
+                <NavLinkContainer to="/report">Report</NavLinkContainer>
               </ul>
             </div>
           </div>
