@@ -23,7 +23,7 @@ import './assets/css/custom.css';
 class App extends Component {
   getChildContext() {
     return {
-      keadatabase_api: 'http://api.keadatabase.nz',
+      keadatabase_api: 'https://api.keadatabase.nz',
       wordpress_base: 'https://public-api.wordpress.com/wp/v2/sites',
       wordpress_site: 'blog.keadatabase.nz'
     };
