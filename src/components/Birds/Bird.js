@@ -22,7 +22,7 @@ class BirdProfile extends Component {
     return(
       <div className="BirdProfile">
         <div className="container">
-          <h2>bird name</h2>
+          <h2>{ this.props.id }</h2>
         </div>
       </div>
     );

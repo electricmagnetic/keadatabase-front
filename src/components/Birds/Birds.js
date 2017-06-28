@@ -2,28 +2,27 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fetchBirdsIfNeeded } from '../../actions/birds.js';
+import { fetchBandCombosIfNeeded } from '../../actions/bandcombos.js';
 import BirdCard from './Bird';
 
 import './Birds.css';
 
 class Birds extends Component {
-
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(fetchBirdsIfNeeded());
+    dispatch(fetchBandCombosIfNeeded());
   }
 
   render() {
     return(
       <div className="Birds">
-        {!this.props.birds.length &&
-          <p><div className="loader"></div></p>
+        {!this.props.bandcombos.length &&
+          <div className="loader"></div>
         }
         <div className="row">
-          {this.props.birds.map(bird =>
-            <div key={ bird.slug } className="col-xs-6 col-sm-4">
-              <BirdCard bird={ bird } />
+          {this.props.bandcombos.map(bandcombo =>
+            <div key={ bandcombo.bird.slug } className="col-xs-6 col-sm-4">
+              <BirdCard bird={ bandcombo.bird } />
             </div>
           )}
         </div>
@@ -33,20 +32,20 @@ class Birds extends Component {
 }
 
 Birds.propTypes = {
-  birds: PropTypes.array.isRequired,
+  bandcombos: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   lastUpdated: PropTypes.number,
   dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
-  const { birdsStore } = state;
+  const { bandcombosStore } = state;
 
   const {
       isFetching,
       lastUpdated,
-      items: birds
-  } = birdsStore || {
+      items: bandcombos
+  } = bandcombosStore || {
     isFetching: true,
     items: []
   }
@@ -54,7 +53,7 @@ const mapStateToProps = (state) => {
   return {
     isFetching,
     lastUpdated,
-    birds,
+    bandcombos,
   }
 }
 

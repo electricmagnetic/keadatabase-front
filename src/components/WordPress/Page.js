@@ -15,7 +15,7 @@ class Page extends Component {
     return(
       <div className="Page">
         {!this.props.pages.length &&
-          <p><div className="loader"></div></p>
+          <div className="loader"></div>
         }
         {page.map(page =>
           <div className="Page-content" key={ page.id }>

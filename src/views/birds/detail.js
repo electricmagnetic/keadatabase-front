@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
+import { BirdProfile } from '../../components/Birds/Bird';
+
 class BirdDetailPage extends Component {
   render() {
     return (
       <div className="BirdDetailPage">
         <Helmet title="Bird" />
         <div className="container">
-          <h1>Bird Detail Page</h1>
-          <p>{this.props.match.params.id}</p>
+          <BirdProfile id={this.props.match.params.id} />
         </div>
       </div>
     );

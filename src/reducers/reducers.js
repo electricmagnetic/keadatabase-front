@@ -1,24 +1,24 @@
 import { combineReducers } from 'redux';
 
-import { REQUEST_BIRDS, RECEIVE_BIRDS } from '../actions/birds.js';
+import { REQUEST_BANDCOMBOS, RECEIVE_BANDCOMBOS } from '../actions/bandcombos.js';
 import { REQUEST_PAGES, RECEIVE_PAGES } from '../actions/pages.js';
 import { REQUEST_POSTS, RECEIVE_POSTS } from '../actions/posts.js';
 
-const initialBirdsState = {
+const initialBandCombosState = {
   isFetching: false,
   items: []
 };
 
-const birdsStore = (state = initialBirdsState, action) => {
+const bandcombosStore = (state = initialBandCombosState, action) => {
   switch (action.type) {
-    case REQUEST_BIRDS:
+    case REQUEST_BANDCOMBOS:
       return Object.assign({}, state, {
         isFetching: true
       });
-    case RECEIVE_BIRDS:
+    case RECEIVE_BANDCOMBOS:
       return Object.assign({}, state, {
         isFetching: false,
-        items: action.birds,
+        items: action.bandcombos,
         lastUpdated: action.receivedAt
       });
   default:
@@ -71,7 +71,7 @@ const postsStore = (state = initialPostsState, action) => {
 };
 
 export default combineReducers({
-  birdsStore,
+  bandcombosStore,
   pagesStore,
   postsStore
 });
