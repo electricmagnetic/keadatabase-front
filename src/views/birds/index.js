@@ -35,7 +35,7 @@ class BirdsPage extends Component {
                 <li>Life Stage</li>
                 <li>Sex</li>
               </ul>
-              <p>Default filters -- sort by featured birds first (then alphbetical), alive</p>
+              <p>Default filters -- sort by featured birds first (then alphabetical), alive</p>
             </div>
             <div className="col-md-9">
               <Birds />

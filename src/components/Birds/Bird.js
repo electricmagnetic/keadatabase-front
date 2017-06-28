@@ -44,6 +44,12 @@ class BirdCard extends Component {
             { this.props.bird.sex }
             &nbsp;&middot;&nbsp;
             { this.props.bird.status }
+            { this.props.bird.get_age != null &&
+              ' (' + this.props.bird.get_age + ')'
+            }
+          </p>
+          <p>
+            { this.props.bird.study_area }
           </p>
           <p>
             <Link to={ '/birds/' + this.props.bird.slug }>View</Link>

@@ -2,7 +2,7 @@
   "name": "keadatabase",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://beta.keadatabase.nz",
+  "homepage": "https://beta.keadatabase.nz",
   "dependencies": {
     "prop-types": "^15.5.8",
     "react": "^15.5.4",

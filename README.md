@@ -21,6 +21,10 @@ Building
 To build the app for production use, run:  
 `npm build-css` then `npm run build`
 
+Testing
+-------
+TODO: Setup tests for Travis CI
+
 Deploying
 ---------
 Ensure you have the `awscli` Python package installed and configured with id and secret key.
