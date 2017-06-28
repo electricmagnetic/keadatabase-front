@@ -1,6 +1,7 @@
 @import "variables";
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
 
-.BirdFeatured, .Page, .Blog, .Sponsors, .Sightings, .BannerButtons {
+section {
   margin-bottom: $line-height-computed;
 }
 
@@ -9,28 +10,27 @@
 }
 
 .BannerButtons {
-  font-size: $font-size-h3;
-  text-transform: uppercase;
-
   background-color: $brand-green;
-  padding-top: $line-height-computed;
-  padding-bottom: $line-height-computed;
 
-  a {
-    color: $brand-dull;
-  }
+  .container {
+    padding-top: $line-height-computed;
+    padding-bottom: $line-height-computed;
 
-  .button-report {
-    text-align: center;
-    @media (min-width: $screen-sm-min) {
-      text-align: right;
-    }
-  }
+    .banner-button {
+      text-transform: uppercase;
+      text-align: center;
 
-  .button-birds {
-    text-align: center;
-    @media (min-width: $screen-sm-min) {
-      text-align: left;
+      a {
+        color: $brand-dull;
+        font-size: ceil(($font-size-base * 1.4));
+      }
+
+      @media (min-width: $screen-sm-min) {
+        border-right: 1px solid $brand-dull;
+        &:last-child {
+          border-right: 0;
+        }
+      }
     }
   }
 }
