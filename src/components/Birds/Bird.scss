@@ -1,16 +1,29 @@
 @import "../../assets/css/variables";
 
 .BirdCard {
+  position: relative;
   border: 1px solid  $gray-lightish;
   margin-bottom: $line-height-computed;
 
+  span.extended {
+    position: absolute;
+    top: $grid-gutter-width/4;
+    right: $grid-gutter-width/4;
+    font-size: $font-size-h3;
+    color: #fff;
+  }
+
   .card-details {
     margin: $line-height-computed/2;
+
     h2 {
       margin: 0;
       font-size: $font-size-h4;
       font-family: $font-family-base;
       color: $brand-green;
+    }
+    p.band_combo {
+      font-size: $font-size-small;
     }
   }
 }

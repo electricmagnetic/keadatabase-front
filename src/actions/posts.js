@@ -24,8 +24,20 @@ function fetchPosts() {
   }
 }
 
+function shouldFetchPosts(state) {
+  const posts = state.posts;
+  if (!posts) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 export function fetchPostsIfNeeded() {
   return (dispatch, getState) => {
-    return dispatch(fetchPosts());
+    if (shouldFetchPosts(getState())) {
+      return dispatch(fetchPosts());
+    }
   }
 }

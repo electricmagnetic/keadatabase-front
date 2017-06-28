@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { fetchPostsIfNeeded } from '../../actions/posts.js';
+
 import './Blog.css';
 
 class Blog extends Component {
