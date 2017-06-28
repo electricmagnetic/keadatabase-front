@@ -16,11 +16,14 @@ class BannerButtons extends Component {
       <div className="BannerButtons">
         <div className="container">
           <div className="row">
-            <div className="col-sm-6 button-report">
+            <div className="col-sm-4 banner-button button-birds">
+              <Link to="/birds">Search Birds &raquo;</Link>
+            </div>
+            <div className="col-sm-4 banner-button button-sightings">
               <Link to="/report">Report Sightings &raquo;</Link>
             </div>
-            <div className="col-sm-6 button-birds">
-              <Link to="/birds">Search Birds &raquo;</Link>
+            <div className="col-sm-4 banner-button button-non-sightings">
+              <Link to="/report">Report Non-Sightings &raquo;</Link>
             </div>
           </div>
         </div>
@@ -47,32 +50,42 @@ class HomePage extends Component {
     return (
       <div className="HomePage">
         <Helmet title="Kea Database" />
-        <Banner noMargin size="huge" backgroundImage={ banner }>
-          <Page id={34} hideTitle />
-        </Banner>
-        <BannerButtons />
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <Page id={24} />
-            </div>
-            <div className="col-md-6">
-              <Page id={27} />
-            </div>
-          </div>
-        </div>
-        <BirdFeatured />
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <Blog number={3} />
-            </div>
-            <div className="col-md-6">
-              <Sightings />
+        <section>
+          <Banner noMargin size="huge" backgroundImage={ banner }>
+            <Page id={34} hideTitle />
+          </Banner>
+          <BannerButtons />
+        </section>
+        <section>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6">
+                <Page id={24} />
+              </div>
+              <div className="col-md-6">
+                <Page id={27} />
+              </div>
             </div>
           </div>
-        </div>
-        <Sponsors />
+        </section>
+        <section>
+          <BirdFeatured />
+        </section>
+        <section>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6">
+                <Blog number={3} />
+              </div>
+              <div className="col-md-6">
+                <Sightings />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <Sponsors />
+        </section>
       </div>
     );
   }
