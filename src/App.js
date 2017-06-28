@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import configureStore from './store/store';
 
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
@@ -20,6 +22,8 @@ import LicencePage from './views/licence';
 import './assets/css/bootstrap.css';
 import './assets/css/custom.css';
 
+const store = configureStore();
+
 class App extends Component {
   getChildContext() {
     return {
@@ -31,7 +35,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <Provider store={store}>
         <Router>
           <ScrollToTop>
             <div className="MainRouter">
@@ -60,7 +64,7 @@ class App extends Component {
             </div>
           </ScrollToTop>
         </Router>
-      </div>
+      </Provider>
     );
   }
 }
