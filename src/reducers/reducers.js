@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 //import { REQUEST_BIRDS, RECEIVE_BIRDS } from '../actions/birds.js';
-//import { REQUEST_PAGES, RECEIVE_PAGES } from '../actions/pages.js';
+import { REQUEST_PAGES, RECEIVE_PAGES } from '../actions/pages.js';
 import { REQUEST_POSTS, RECEIVE_POSTS } from '../actions/posts.js';
 
 /*const birds = (state = {}, action) => {
@@ -9,14 +9,29 @@ import { REQUEST_POSTS, RECEIVE_POSTS } from '../actions/posts.js';
   default:
     return state;
   }
+};*/
+
+const initialPagesState = {
+  isFetching: false,
+  items: []
 };
 
-const pages = (state = {}, action) => {
+const pagesStore = (state = initialPagesState, action) => {
   switch (action.type) {
+    case REQUEST_PAGES:
+      return Object.assign({}, state, {
+        isFetching: true
+      });
+    case RECEIVE_PAGES:
+      return Object.assign({}, state, {
+        isFetching: false,
+        items: action.pages,
+        lastUpdated: action.receivedAt
+      });
   default:
     return state;
   }
-};*/
+};
 
 const initialPostsState = {
   isFetching: false,
@@ -42,6 +57,6 @@ const postsStore = (state = initialPostsState, action) => {
 
 export default combineReducers({
   //birds,
-  //pages,
+  pagesStore,
   postsStore
 });
