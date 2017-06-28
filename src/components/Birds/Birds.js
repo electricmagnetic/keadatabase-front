@@ -18,9 +18,7 @@ class Birds extends Component {
     return(
       <div className="Birds">
         {!this.props.birds.length &&
-          <p>
-            <em>Loading...</em>
-          </p>
+          <p><div className="loader"></div></p>
         }
         <div className="row">
           {this.props.birds.map(bird =>

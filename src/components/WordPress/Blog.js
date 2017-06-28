@@ -17,9 +17,7 @@ class Blog extends Component {
       <div className="Blog">
         <h2>Blog</h2>
         {!this.props.posts.length &&
-          <p>
-            <em>Loading...</em>
-          </p>
+          <p><div className="loader"></div></p>
         }
         <ul className="list-unstyled">
           {this.props.posts.map(post =>
