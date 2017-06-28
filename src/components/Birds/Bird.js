@@ -62,5 +62,5 @@ class BirdCard extends Component {
   }
 }
 
-export { BirdFeatured, BirdProfile};
+export { BirdFeatured, BirdProfile };
 export default BirdCard;

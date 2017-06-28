@@ -1,0 +1,2 @@
+export const REQUEST_PAGES = 'REQUEST_PAGES';
+export const RECEIVE_PAGES = 'RECEIVE_PAGES';

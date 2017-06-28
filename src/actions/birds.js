@@ -1,0 +1,2 @@
+export const REQUEST_BIRDS = 'REQUEST_BIRDS';
+export const RECEIVE_BIRDS = 'RECEIVE_BIRDS';

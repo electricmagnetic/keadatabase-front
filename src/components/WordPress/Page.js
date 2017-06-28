@@ -11,16 +11,8 @@ class Page extends Component {
   }
 
   getPage() {
-    fetch(`${this.context.wordpress_base}/${this.context.wordpress_site}/pages/${this.props.id}`)
-    .then(response => {
-      response.json()
-      .then(data => {
-        this.setState({ page: [data] });
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    });
+    //fetch(`${this.context.wordpress_base}/${this.context.wordpress_site}/pages/${this.props.id}`)
+    this.setState({ page: [] });
   }
 
   componentDidMount() {
@@ -51,11 +43,6 @@ Page.defaultProps = {
 Page.propTypes = {
   id: PropTypes.number.isRequired,
   hideTitle: PropTypes.bool.isRequired
-};
-
-Page.contextTypes = {
-  wordpress_base: PropTypes.string.isRequired,
-  wordpress_site: PropTypes.string.isRequired
 };
 
 export default Page;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import BirdCard from './Bird';
 
@@ -15,16 +14,8 @@ class Birds extends Component {
   }
 
   getBirds() {
-    fetch(`${this.context.keadatabase_api}/birds`)
-    .then(response => {
-      response.json()
-      .then(data => {
-        this.setState({ birds: data.results });
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    });
+    //fetch(`${this.context.keadatabase_api}/birds`)
+    this.setState({ birds: [] });
   }
 
   componentDidMount() {
@@ -45,9 +36,5 @@ class Birds extends Component {
     );
   }
 }
-
-Birds.contextTypes = {
-  keadatabase_api: PropTypes.string.isRequired
-};
 
 export default Birds;

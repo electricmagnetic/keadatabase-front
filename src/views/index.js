@@ -75,7 +75,7 @@ class HomePage extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-6">
-                <Blog number={3} />
+                <Blog />
               </div>
               <div className="col-md-6">
                 <Sightings />
