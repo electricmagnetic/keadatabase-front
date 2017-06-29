@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { fetchBandCombosIfNeeded } from '../../actions/bandcombos.js';
-import BirdCard from './Bird';
+import BirdCard from './BirdCard';
 
 import './Birds.css';
 

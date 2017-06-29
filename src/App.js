@@ -44,10 +44,10 @@ class App extends Component {
                   <Route exact path="/licence" component={LicencePage} />
 
                   <Route exact path="/birds" component={BirdsPage} />
-                  <Route exact path="/birds/:id" component={BirdDetailPage} />
+                  <Route exact path="/birds/:slug" component={BirdDetailPage} />
 
                   <Route exact path="/sightings" component={SightingsPage} />
-                  <Route exact path="/sightings/:id" component={SightingDetailPage} />
+                  <Route exact path="/sightings/:slug" component={SightingDetailPage} />
 
                   <Route exact path="/report" component={ReportPage} />
 
