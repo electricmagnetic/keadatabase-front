@@ -4,31 +4,6 @@ import { Link } from 'react-router-dom';
 import placeholder from '../../assets/img/placeholder.png';
 import './Bird.css';
 
-class BirdFeatured extends Component {
-  render() {
-    return(
-      <div className="BirdFeatured">
-        <div className="container">
-          <p>Featured Bird!</p>
-          <h2>bird name</h2>
-        </div>
-      </div>
-    );
-  }
-}
-
-class BirdProfile extends Component {
-  render() {
-    return(
-      <div className="BirdProfile">
-        <div className="container">
-          <h2>{ this.props.id }</h2>
-        </div>
-      </div>
-    );
-  }
-}
-
 class BirdCard extends Component {
   render() {
     const bird = this.props.bird;
@@ -62,5 +37,4 @@ class BirdCard extends Component {
   }
 }
 
-export { BirdFeatured, BirdProfile };
 export default BirdCard;

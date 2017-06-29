@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-import { BirdProfile } from '../../components/Birds/Bird';
+import BirdProfile from '../../components/Birds/BirdProfile';
 
 class BirdDetailPage extends Component {
   render() {
@@ -9,7 +9,7 @@ class BirdDetailPage extends Component {
       <div className="BirdDetailPage">
         <Helmet title="Bird" />
         <div className="container">
-          <BirdProfile id={this.props.match.params.id} />
+          <BirdProfile slug={this.props.match.params.slug} />
         </div>
       </div>
     );
