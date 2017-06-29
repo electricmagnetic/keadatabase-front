@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import configureStore from './store/store';
 
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
@@ -20,18 +21,16 @@ import LicencePage from './views/licence';
 import './assets/css/bootstrap.css';
 import './assets/css/custom.css';
 
+const store = configureStore();
+
 class App extends Component {
-  getChildContext() {
-    return {
-      keadatabase_api: 'https://api.keadatabase.nz',
-      wordpress_base: 'https://public-api.wordpress.com/wp/v2/sites',
-      wordpress_site: 'blog.keadatabase.nz'
-    };
-  }
+  //keadatabase_api: 'https://api.keadatabase.nz',
+  //wordpress_base: 'https://public-api.wordpress.com/wp/v2/sites',
+  //wordpress_site: 'blog.keadatabase.nz'
 
   render() {
     return (
-      <div className="App">
+      <Provider store={store}>
         <Router>
           <ScrollToTop>
             <div className="MainRouter">
@@ -60,15 +59,9 @@ class App extends Component {
             </div>
           </ScrollToTop>
         </Router>
-      </div>
+      </Provider>
     );
   }
 }
-
-App.childContextTypes = {
-  wordpress_base: PropTypes.string,
-  wordpress_site: PropTypes.string,
-  keadatabase_api: PropTypes.string
-};
 
 export default App;

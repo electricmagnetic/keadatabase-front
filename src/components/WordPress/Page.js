@@ -1,36 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { fetchPagesIfNeeded } from '../../actions/pages.js';
 
 class Page extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      page: []
-    };
-  }
-
-  getPage() {
-    fetch(`${this.context.wordpress_base}/${this.context.wordpress_site}/pages/${this.props.id}`)
-    .then(response => {
-      response.json()
-      .then(data => {
-        this.setState({ page: [data] });
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    });
-  }
-
   componentDidMount() {
-    this.getPage();
+    const { dispatch } = this.props;
+    dispatch(fetchPagesIfNeeded());
   }
 
   render() {
+    const page = this.props.pages.filter(page => { return page.id  === this.props.id });
     return(
       <div className="Page">
-        {this.state.page.map(page =>
+        {!this.props.pages.length &&
+          <div className="loader"></div>
+        }
+        {page.map(page =>
           <div className="Page-content" key={ page.id }>
             {
               this.props.hideTitle === false &&
@@ -50,12 +37,30 @@ Page.defaultProps = {
 
 Page.propTypes = {
   id: PropTypes.number.isRequired,
-  hideTitle: PropTypes.bool.isRequired
+  hideTitle: PropTypes.bool.isRequired,
+  pages: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  lastUpdated: PropTypes.number,
+  dispatch: PropTypes.func.isRequired
 };
 
-Page.contextTypes = {
-  wordpress_base: PropTypes.string.isRequired,
-  wordpress_site: PropTypes.string.isRequired
-};
+const mapStateToProps = (state) => {
+  const { pagesStore } = state;
 
-export default Page;
+  const {
+      isFetching,
+      lastUpdated,
+      items: pages
+  } = pagesStore || {
+    isFetching: true,
+    items: []
+  }
+
+  return {
+    isFetching,
+    lastUpdated,
+    pages,
+  }
+}
+
+export default connect(mapStateToProps)(Page);

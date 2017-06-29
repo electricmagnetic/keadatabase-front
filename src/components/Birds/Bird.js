@@ -22,7 +22,7 @@ class BirdProfile extends Component {
     return(
       <div className="BirdProfile">
         <div className="container">
-          <h2>bird name</h2>
+          <h2>{ this.props.id }</h2>
         </div>
       </div>
     );
@@ -31,28 +31,28 @@ class BirdProfile extends Component {
 
 class BirdCard extends Component {
   render() {
+    const bird = this.props.bird;
     return(
       <div className="BirdCard">
-        <Link to={ '/birds/' + this.props.bird.slug }>
-          <img src={ placeholder } alt="placeholder" className="card-image img-responsive" />
+        { bird.bird_extended && bird.bird_extended.is_featured && <span className="extended glyphicon glyphicon-star"></span>}
+        <Link to={ '/birds/' + bird.slug }>
+          {bird.bird_extended && bird.bird_extended.profile_picture
+            ? <img src={ bird.bird_extended.profile_picture.thumbnail } alt={ bird.name } className="card-image img-responsive" />
+            : <img src={ placeholder } alt="placeholder" className="card-image img-responsive" />
+          }
         </Link>
         <div className="card-details">
-          <Link to={ '/birds/' + this.props.bird.slug }>
-            <h2>{ this.props.bird.name }</h2>
+          <Link to={ '/birds/' + bird.slug }>
+            <h2>{ bird.name }</h2>
           </Link>
-          <p>
-            { this.props.bird.sex }
-            &nbsp;&middot;&nbsp;
-            { this.props.bird.status }
-            { this.props.bird.get_age != null &&
-              ' (' + this.props.bird.get_age + ')'
-            }
+          <p className="details">
+            { bird.get_life_stage } { bird.sex }
           </p>
-          <p>
-            { this.props.bird.study_area }
+          <p className="bandcombo">
+            { bird.band_combo }
           </p>
-          <p>
-            <Link to={ '/birds/' + this.props.bird.slug }>View</Link>
+          <p className="links">
+            <Link to={ '/birds/' + bird.slug }>View</Link>
             &nbsp;&middot;&nbsp;
             <Link to="/report">Report</Link>
           </p>
@@ -62,5 +62,5 @@ class BirdCard extends Component {
   }
 }
 
-export { BirdFeatured, BirdProfile};
+export { BirdFeatured, BirdProfile };
 export default BirdCard;

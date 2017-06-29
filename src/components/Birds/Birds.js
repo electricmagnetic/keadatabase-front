@@ -1,43 +1,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
+import { fetchBandCombosIfNeeded } from '../../actions/bandcombos.js';
 import BirdCard from './Bird';
 
 import './Birds.css';
 
 class Birds extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      birds: []
-    };
-  }
-
-  getBirds() {
-    fetch(`${this.context.keadatabase_api}/birds`)
-    .then(response => {
-      response.json()
-      .then(data => {
-        this.setState({ birds: data.results });
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    });
-  }
-
   componentDidMount() {
-    this.getBirds();
+    const { dispatch } = this.props;
+    dispatch(fetchBandCombosIfNeeded());
   }
 
   render() {
     return(
       <div className="Birds">
+        {!this.props.bandcombos.length &&
+          <div className="loader"></div>
+        }
         <div className="row">
-          {this.state.birds.map(bird =>
-            <div key={ bird.id } className="col-xs-6 col-sm-4">
-              <BirdCard  bird={ bird } />
+          {this.props.bandcombos.map(bandcombo =>
+            <div key={ bandcombo.bird.slug } className="col-xs-6 col-sm-4">
+              <BirdCard bird={ bandcombo.bird } />
             </div>
           )}
         </div>
@@ -46,8 +31,30 @@ class Birds extends Component {
   }
 }
 
-Birds.contextTypes = {
-  keadatabase_api: PropTypes.string.isRequired
+Birds.propTypes = {
+  bandcombos: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  lastUpdated: PropTypes.number,
+  dispatch: PropTypes.func.isRequired
 };
 
-export default Birds;
+const mapStateToProps = (state) => {
+  const { bandcombosStore } = state;
+
+  const {
+      isFetching,
+      lastUpdated,
+      items: bandcombos
+  } = bandcombosStore || {
+    isFetching: true,
+    items: []
+  }
+
+  return {
+    isFetching,
+    lastUpdated,
+    bandcombos,
+  }
+}
+
+export default connect(mapStateToProps)(Birds);

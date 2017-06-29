@@ -1,72 +1,65 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { fetchPostsIfNeeded } from '../../actions/posts.js';
 
 import './Blog.css';
 
 class Blog extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      posts: [],
-      link: ''
-    };
-  }
-
-  getLink() {
-    this.setState({ link: 'https://' + this.context.wordpress_site });
-  }
-
-  getPosts() {
-    fetch(`${this.context.wordpress_base}/${this.context.wordpress_site}/posts?per_page=${this.props.number}`)
-    .then(response => {
-      response.json()
-      .then(data => {
-        this.setState({ posts: data });
-      })
-      .catch(error => {
-          console.error(error);
-      });
-    });
-  }
-
   componentDidMount() {
-    this.getLink();
-    this.getPosts();
+    const { dispatch } = this.props;
+    dispatch(fetchPostsIfNeeded());
   }
 
   render() {
     return(
       <div className="Blog">
         <h2>Blog</h2>
+        {!this.props.posts.length &&
+          <div className="loader"></div>
+        }
         <ul className="list-unstyled">
-          {this.state.posts.map(post =>
+          {this.props.posts.map(post =>
             <li className="BlogPost" key={ post.id }>
               <a href={ post.link }>
                 <h3 dangerouslySetInnerHTML={{__html: post.title.rendered }}></h3>
               </a>
-              <h4 dangerouslySetInnerHTML={{__html: post.date }}></h4>
+              <h4 dangerouslySetInnerHTML={{__html: new Date(post.date).toLocaleString()}}></h4>
               <div dangerouslySetInnerHTML={{__html: post.excerpt.rendered }}></div>
             </li>
           )}
         </ul>
-        { this.state.link && <a href={ this.state.link }>More posts</a>}
+        <a href="https://blog.keadatabase.nz/">More posts</a>
       </div>
     );
   }
 }
 
 Blog.propTypes = {
-  number: PropTypes.number
+  posts: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  lastUpdated: PropTypes.number,
+  dispatch: PropTypes.func.isRequired
 };
 
-Blog.defaultProps = {
-  number: 3
-};
+const mapStateToProps = (state) => {
+  const { postsStore } = state;
 
-Blog.contextTypes = {
-  wordpress_base: PropTypes.string.isRequired,
-  wordpress_site: PropTypes.string.isRequired
-};
+  const {
+      isFetching,
+      lastUpdated,
+      items: posts
+  } = postsStore || {
+    isFetching: true,
+    items: []
+  }
 
-export default Blog;
+  return {
+    isFetching,
+    lastUpdated,
+    posts,
+  }
+}
+
+export default connect(mapStateToProps)(Blog);
