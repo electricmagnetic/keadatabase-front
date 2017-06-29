@@ -51,7 +51,7 @@ class HomePage extends Component {
       <div className="HomePage">
         <Helmet title="Kea Database" />
         <section>
-          <Banner noMargin size="huge" background={'url(' + banner + ')'}>
+          <Banner noMargin size="huge" backgroundImage={'url(' + banner + ')'}>
             <Page id={34} hideTitle />
           </Banner>
           <BannerButtons />
