@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './Bird.css';
+import './BirdFeatured.css';
 
 class BirdFeatured extends Component {
   render() {

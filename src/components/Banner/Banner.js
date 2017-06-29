@@ -7,8 +7,8 @@ class Banner extends Component {
   render() {
     return(
       <div className={ 'Banner ' + (this.props.noMargin ? 'no-margin ' : '') + (this.props.size) }
-           style={ this.props.backgroundImage && {
-             backgroundImage: 'url(' + this.props.backgroundImage + ')'
+           style={ this.props.background && {
+             background: this.props.background
            }}>
         <div className="container">
           { this.props.children }
@@ -26,7 +26,7 @@ Banner.defaultProps = {
 Banner.propTypes = {
   size: PropTypes.string.isRequired,
   noMargin: PropTypes.bool.isRequired,
-  backgroundImage: PropTypes.string
+  background: PropTypes.string
 };
 
 export default Banner;
