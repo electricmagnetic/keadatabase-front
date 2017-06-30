@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 import { fetchBandCombosIfNeeded } from '../../actions/bandcombos.js';
 import BirdCard from '../Bird/BirdCard';
 
-import './Birds.css';
-
 class Birds extends Component {
   componentDidMount() {
     const { dispatch } = this.props;

@@ -1,5 +1,45 @@
 @import "../../assets/css/variables";
 
 .BirdFeatured {
+  color: #fff;
+  background-color: lighten($brand-orange, 10%);
+  padding-top: $line-height-computed*2;
+  padding-bottom: $line-height-computed*2;
 
+  a {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  h1 {
+    margin-top: 0;
+    font-size: $font-size-h2;
+  }
+  h2 {
+    margin-top: 0;
+    color: $brand-dull;
+    text-transform: uppercase;
+    font-size: $font-size-h4;
+    letter-spacing: 0.5px;
+    font-family: $font-family-base;
+  }
+
+  img {
+    max-height: 192px;
+    display: inline-block;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    text-align: center;
+  }
 }
