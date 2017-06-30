@@ -69,7 +69,7 @@ class HomePage extends Component {
           </div>
         </section>
         <section>
-          <BirdFeatured />
+          <BirdFeatured slug="schist" />
         </section>
         <section>
           <div className="container">
