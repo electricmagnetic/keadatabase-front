@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from './store/store';
 
-import Nav from './components/Nav/Nav';
+import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
@@ -34,7 +34,7 @@ class App extends Component {
         <Router>
           <ScrollToTop>
             <div className="MainRouter">
-              <Nav />
+              <Navigation />
 
               <main className="constrainer">
                 <Switch>
