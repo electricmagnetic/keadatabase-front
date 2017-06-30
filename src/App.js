@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import configureStore from './store/store';
+import ReactGA from 'react-ga';
 
+import configureStore from './store/store';
 import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
@@ -23,11 +24,11 @@ import './assets/css/custom.css';
 
 const store = configureStore();
 
-class App extends Component {
-  //keadatabase_api: 'https://api.keadatabase.nz',
-  //wordpress_base: 'https://public-api.wordpress.com/wp/v2/sites',
-  //wordpress_site: 'blog.keadatabase.nz'
+if (process.env.NODE_ENV === 'production') {
+  ReactGA.initialize('UA-67905653-2');
+}
 
+class App extends Component {
   render() {
     return (
       <Provider store={store}>
