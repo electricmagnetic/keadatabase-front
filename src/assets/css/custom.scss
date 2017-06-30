@@ -51,3 +51,13 @@ $constrainer-width: $container-lg+100px;
     width: $constrainer-width;
   }
 }
+
+
+.row.is-flex {
+  display: flex;
+  flex-wrap: wrap;
+  &> [class*='col-'] {
+      display: flex;
+      flex-direction: column;
+  }
+}

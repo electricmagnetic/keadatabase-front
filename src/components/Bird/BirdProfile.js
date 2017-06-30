@@ -40,7 +40,9 @@ class BirdProfile extends Component {
               <p className="introducing">Kia Ora, my name is:</p>
               <h1>{ bird.name }</h1>
               <p className="bandcombo">
-                <PrettyBandCombo band={bird.band_combo} />
+                { bird.band_combo &&
+                  <PrettyBandCombo band={ bird.band_combo } />
+                }
               </p>
             </div>
           </div>

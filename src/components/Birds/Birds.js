@@ -19,7 +19,7 @@ class Birds extends Component {
         {!this.props.bandcombos.length &&
           <div className="loader"></div>
         }
-        <div className="row">
+        <div className="row is-flex">
           {this.props.bandcombos.map(bandcombo =>
             <div key={ bandcombo.bird.slug } className="col-xs-6 col-sm-4">
               <BirdCard bird={ bandcombo.bird } />

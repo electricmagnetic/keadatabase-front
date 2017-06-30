@@ -21,7 +21,7 @@ class TooltipText extends Component {
 
 TooltipText.defaultProps = {
   placement: "right",
-  icon: "asterisk"
+  icon: "option-horizontal"
 }
 
 TooltipText.propTypes = {
