@@ -5,9 +5,12 @@ class Sightings extends Component {
   render() {
     return(
       <div className="Sightings">
-        <h2>Sightings</h2>
-        <p>order: { this.props.order } </p>
-        <p>filter: { this.props.filter }</p>
+        <section>
+          <h2>Sightings</h2>
+          <p><em>Coming soon!</em></p>
+          {/*<p>order: { this.props.order } </p>
+          <p>filter: { this.props.filter }</p>*/}
+        </section>
       </div>
     );
   }

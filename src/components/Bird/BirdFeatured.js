@@ -41,7 +41,7 @@ class BirdFeatured extends Component {
                     { bird.bird_extended.description }
                   </Truncate>
                 </p>
-                <p>
+                <p className="read-more">
                   <Link to={ '/birds/' + bird.slug }>Read about { bird.name } &raquo;</Link>
                 </p>
               </div>

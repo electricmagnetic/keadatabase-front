@@ -29,7 +29,7 @@ Deploying
 ---------
 Ensure you have the `awscli` Python package installed and configured with id and secret key.
 
-To deploy to Amazon S3 (and hence make available at https://beta.keadatabase.nz/):  
+To deploy to Amazon S3 (and hence make available at https://keadatabase.nz/):  
 `npm run deploy`
 
 **This will automatically build the SCSS and source code**

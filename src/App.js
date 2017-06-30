@@ -25,7 +25,10 @@ import './assets/css/custom.css';
 const store = configureStore();
 
 if (process.env.NODE_ENV === 'production') {
+  // Only runs once, but better than nothing!
   ReactGA.initialize('UA-67905653-2');
+  ReactGA.set({ page: window.location.pathname + window.location.search });
+  ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
 class App extends Component {

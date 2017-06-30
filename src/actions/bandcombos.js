@@ -27,7 +27,20 @@ function fetchBandCombos(query) {
 }
 
 function shouldFetchBandCombos(state, query) {
-  return true;
+  const store = state.bandcombosStore;
+  if (!store) {
+    return true;
+  }
+
+  if (query !== store.query) {
+    return true;
+  }
+
+  if (store.items.length === 0) {
+    return true;
+  }
+
+  return false;
 }
 
 export function fetchBandCombosIfNeeded(query='') {

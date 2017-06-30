@@ -1,6 +1,7 @@
 @import "variables";
 
 .loader {
+    margin-bottom: $line-height-computed;
     border: 8px solid $gray-lighter;
     border-top: 8px solid $brand-primary;
     border-radius: 50%;
