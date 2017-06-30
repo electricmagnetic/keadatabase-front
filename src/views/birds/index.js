@@ -3,8 +3,16 @@ import Helmet from 'react-helmet';
 
 import Banner from '../../components/Banner/Banner';
 import Birds from '../../components/Birds/Birds';
+// import BirdsFilterForm from '../../components/Birds/BirdsFilterForm';
+import BirdsSearchForm from '../../components/Birds/BirdsSearchForm';
+import { fetchBandCombosIfNeeded } from '../../actions/bandcombos.js';
 
 class BirdsPage extends Component {
+  submit = (data, dispatch) => {
+    const query = data.search || '';
+    dispatch(fetchBandCombosIfNeeded(query));
+  }
+
   render() {
     return (
       <div className="BirdsPage">
@@ -13,34 +21,30 @@ class BirdsPage extends Component {
           <h1>Birds</h1>
         </Banner>
         <div className="container">
-          <form className="form-search">
-            <div className="form-group">
-              <label htmlFor="search" className="sr-only">Search</label>
-              <div className="input-group">
-                <div className="input-group-addon">
-                  <span className="glyphicon glyphicon-search"></span>
+          <BirdsSearchForm onSubmit={this.submit} />
+          {/* <div className="row">
+            <div className="col-sm-4 col-md-3">
+              <div className="panel panel-default">
+                <div className="panel-heading" role="tab" id="heading">
+                  <h4 className="panel-title">
+                    <a role="button" data-toggle="collapse" href="#filters" aria-expanded="true" aria-controls="filters">
+                      Filters
+                    </a>
+                    &nbsp;
+                    <span className="caret"></span>
+                  </h4>
                 </div>
-                <input className="form-control" type="text" name="search" id="search"
-                       placeholder="Auto-complete (human-style band or bird name) here." />
+                <div id="filters" className="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
+                  <div className="panel-body">
+                    <BirdsFilterForm onSubmit={this.submit} />
+                  </div>
+                </div>
               </div>
             </div>
-          </form>
-          <div className="row">
-            <div className="col-md-3">
-              <p>Filters go here</p>
-              <ul>
-                <li>Featured</li>
-                <li>Status</li>
-                <li>Area</li>
-                <li>Life Stage</li>
-                <li>Sex</li>
-              </ul>
-              <p>Default filters -- sort by featured birds first (then alphabetical), alive</p>
-            </div>
-            <div className="col-md-9">
+            <div className="col-sm-8 col-md-9">*/}
               <Birds />
-            </div>
-          </div>
+            {/* </div>
+          </div> */}
         </div>
       </div>
     );

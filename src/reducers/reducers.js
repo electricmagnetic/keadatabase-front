@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form'
 
 import { REQUEST_BANDCOMBOS, RECEIVE_BANDCOMBOS } from '../actions/bandcombos.js';
 import { REQUEST_BIRD, RECEIVE_BIRD } from '../actions/birds.js'
@@ -7,14 +8,16 @@ import { REQUEST_POSTS, RECEIVE_POSTS } from '../actions/posts.js';
 
 const initialBandCombosState = {
   isFetching: false,
-  items: []
+  items: [],
+  query: ''
 };
 
 const bandcombosStore = (state = initialBandCombosState, action) => {
   switch (action.type) {
     case REQUEST_BANDCOMBOS:
       return Object.assign({}, state, {
-        isFetching: true
+        isFetching: true,
+        query: action.query
       });
     case RECEIVE_BANDCOMBOS:
       return Object.assign({}, state, {
@@ -109,5 +112,6 @@ export default combineReducers({
   bandcombosStore,
   birdsStore,
   pagesStore,
-  postsStore
+  postsStore,
+  form: formReducer
 });

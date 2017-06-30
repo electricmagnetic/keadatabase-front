@@ -25,4 +25,9 @@
       margin-left: -$navbar-padding-horizontal;
     }
   }
+
+  .container-fluid {
+    // Bit hacky, but overrides fact that react-bootstrap adds a container before constrainer
+    padding: 0;
+  }
 }

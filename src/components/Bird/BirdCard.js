@@ -26,7 +26,9 @@ class BirdCard extends Component {
             { bird.get_life_stage } { bird.sex }
           </p>
           <p className="bandcombo">
-            <PrettyBandCombo band={bird.band_combo} />
+            { bird.band_combo &&
+              <PrettyBandCombo band={ bird.band_combo } />
+            }
           </p>
           <p className="links">
             <Link to={ '/birds/' + bird.slug }>View</Link>

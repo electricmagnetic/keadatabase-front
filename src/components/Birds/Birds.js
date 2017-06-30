@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { fetchBandCombosIfNeeded } from '../../actions/bandcombos.js';
-import BirdCard from './BirdCard';
-
-import './Birds.css';
+import BirdCard from '../Bird/BirdCard';
 
 class Birds extends Component {
   componentDidMount() {
@@ -14,13 +12,15 @@ class Birds extends Component {
   }
 
   render() {
+    const { bandcombos, isFetching } = this.props;
     return(
       <div className="Birds">
-        {!this.props.bandcombos.length &&
-          <div className="loader"></div>
+        {isFetching
+            ? <div className="loader"></div>
+            : !bandcombos.length && <p>No Results</p>
         }
-        <div className="row">
-          {this.props.bandcombos.map(bandcombo =>
+        <div className="row is-flex">
+          {bandcombos.map(bandcombo =>
             <div key={ bandcombo.bird.slug } className="col-xs-6 col-sm-4">
               <BirdCard bird={ bandcombo.bird } />
             </div>
@@ -38,10 +38,11 @@ Birds.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   const { bandcombosStore } = state;
 
   const {
+      query,
       isFetching,
       lastUpdated,
       items: bandcombos
@@ -51,6 +52,7 @@ const mapStateToProps = (state) => {
   }
 
   return {
+    query,
     isFetching,
     lastUpdated,
     bandcombos,
