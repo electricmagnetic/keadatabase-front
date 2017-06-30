@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 let BirdsSearchForm = props => {
-  const { pristine, submitting, handleSubmit } = props
+  const { submitting, handleSubmit } = props
   return (
     <form onSubmit={ handleSubmit } className="BirdsSearchForm">
       <div className="form-group">
@@ -13,7 +13,7 @@ let BirdsSearchForm = props => {
           </div>
           <Field name="search" component="input" className="form-control" type="text" placeholder="Search" />
           <span className="input-group-btn">
-            <button type="submit" className="btn btn-primary" disabled={pristine || submitting}>Search</button>
+            <button type="submit" className="btn btn-primary" disabled={submitting}>Search</button>
           </span>
         </div>
       </div>

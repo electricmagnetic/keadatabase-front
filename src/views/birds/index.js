@@ -3,13 +3,14 @@ import Helmet from 'react-helmet';
 
 import Banner from '../../components/Banner/Banner';
 import Birds from '../../components/Birds/Birds';
-import BirdsFilterForm from '../../components/Birds/BirdsFilterForm';
+// import BirdsFilterForm from '../../components/Birds/BirdsFilterForm';
 import BirdsSearchForm from '../../components/Birds/BirdsSearchForm';
+import { fetchBandCombosIfNeeded } from '../../actions/bandcombos.js';
 
 class BirdsPage extends Component {
-  submit = (values) => {
-    // print the form values to the console
-    console.log(values);
+  submit = (data, dispatch) => {
+    const query = data.search || '';
+    dispatch(fetchBandCombosIfNeeded(query));
   }
 
   render() {
@@ -21,7 +22,7 @@ class BirdsPage extends Component {
         </Banner>
         <div className="container">
           <BirdsSearchForm onSubmit={this.submit} />
-          <div className="row">
+          {/* <div className="row">
             <div className="col-sm-4 col-md-3">
               <div className="panel panel-default">
                 <div className="panel-heading" role="tab" id="heading">
@@ -40,10 +41,10 @@ class BirdsPage extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-sm-8 col-md-9">
+            <div className="col-sm-8 col-md-9">*/}
               <Birds />
-            </div>
-          </div>
+            {/* </div>
+          </div> */}
         </div>
       </div>
     );

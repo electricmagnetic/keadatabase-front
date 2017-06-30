@@ -145,6 +145,7 @@ BirdProfile.propTypes = {
 function mapStateToProps(state, ownProps) {
   const { slug } = ownProps;
   const { birdsStore } = state;
+  
   const {
     isFetching,
     lastUpdated,

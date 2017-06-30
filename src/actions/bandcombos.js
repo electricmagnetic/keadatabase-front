@@ -1,31 +1,39 @@
 export const REQUEST_BANDCOMBOS = 'REQUEST_BANDCOMBOS';
 export const RECEIVE_BANDCOMBOS = 'RECEIVE_BANDCOMBOS';
 
-function requestBandCombos() {
+function requestBandCombos(query) {
   return {
-    type: REQUEST_BANDCOMBOS
+    type: REQUEST_BANDCOMBOS,
+    query
   }
 }
 
-function receiveBandCombos(json) {
+function receiveBandCombos(query, json) {
   return {
     type: RECEIVE_BANDCOMBOS,
+    query,
     bandcombos: json.results,
     receivedAt: Date.now()
   }
 }
 
-function fetchBandCombos() {
+function fetchBandCombos(query) {
   return dispatch => {
-    dispatch(requestBandCombos());
-    return fetch('https://api.keadatabase.nz/band_combos/?ordering=bird__bird_extended,style,bird__name')
+    dispatch(requestBandCombos(query));
+    return fetch(`https://api.keadatabase.nz/band_combos/?ordering=bird__bird_extended,style,bird__name&search=${query}`)
       .then(response => response.json())
-      .then(json => dispatch(receiveBandCombos(json)));
+      .then(json => dispatch(receiveBandCombos(query, json)));
   }
 }
 
-export function fetchBandCombosIfNeeded() {
+function shouldFetchBandCombos(state, query) {
+  return true;
+}
+
+export function fetchBandCombosIfNeeded(query='') {
   return (dispatch, getState) => {
-    return dispatch(fetchBandCombos());
+    if (shouldFetchBandCombos(getState(), query)) {
+      return dispatch(fetchBandCombos(query));
+    }
   }
 }
