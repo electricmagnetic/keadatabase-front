@@ -18,7 +18,7 @@ function receiveBandCombos(json) {
 function fetchBandCombos() {
   return dispatch => {
     dispatch(requestBandCombos());
-    return fetch('https://api.keadatabase.nz/band_combos/?ordering=bird__bird_extended,bird__name')
+    return fetch('https://api.keadatabase.nz/band_combos/?ordering=bird__bird_extended,style,bird__name')
       .then(response => response.json())
       .then(json => dispatch(receiveBandCombos(json)));
   }

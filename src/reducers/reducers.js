@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form'
 
 import { REQUEST_BANDCOMBOS, RECEIVE_BANDCOMBOS } from '../actions/bandcombos.js';
 import { REQUEST_BIRD, RECEIVE_BIRD } from '../actions/birds.js'
@@ -109,5 +110,6 @@ export default combineReducers({
   bandcombosStore,
   birdsStore,
   pagesStore,
-  postsStore
+  postsStore,
+  form: formReducer
 });
