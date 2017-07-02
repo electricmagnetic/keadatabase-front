@@ -27,10 +27,12 @@ class BirdFeatured extends Component {
             <div className="row">
               <div className="col-sm-3 col-md-2 col-md-offset-2 featured-img">
                 <p>
-                  { bird.bird_extended.profile_picture
-                    ? <img src={ bird.bird_extended.profile_picture.large } alt={ bird.name } className="img-circle img-responsive" />
-                    : <img src={ placeholder } alt="placeholder" className="img-thumbnail img-responsive" />
-                  }
+                  <Link to={ '/birds/' + bird.slug }>
+                    { bird.bird_extended.profile_picture
+                      ? <img src={ bird.bird_extended.profile_picture.large } alt={ bird.name } className="img-circle img-responsive" />
+                      : <img src={ placeholder } alt="placeholder" className="img-thumbnail img-responsive" />
+                    }
+                  </Link>
                 </p>
               </div>
               <div className="col-sm-9 col-md-6 featured-details">
