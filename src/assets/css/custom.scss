@@ -9,6 +9,13 @@ section {
   border-top: 1px solid $gray-lightish;
 }
 
+.messages {
+  border: 1px solid $brand-primary;
+  background-color: lighten($brand-primary, 50%);
+  padding: $line-height-computed/2;
+  padding-bottom: 0;
+}
+
 .BannerButtons {
   background-color: $brand-green;
 
@@ -52,12 +59,14 @@ $constrainer-width: $container-lg+100px;
   }
 }
 
-
 .row.is-flex {
   display: flex;
   flex-wrap: wrap;
   &> [class*='col-'] {
       display: flex;
       flex-direction: column;
+  }
+  &:before, &:after {
+    display: none;
   }
 }

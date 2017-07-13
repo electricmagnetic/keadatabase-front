@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import ReactGA from 'react-ga';
+import createHistory from 'history/createBrowserHistory'
 
 import configureStore from './store/store';
 import Navigation from './components/Navigation/Navigation';
@@ -23,16 +24,26 @@ import './assets/css/bootstrap.css';
 import './assets/css/custom.css';
 
 const store = configureStore();
+const history = createHistory();
 
 if (process.env.NODE_ENV === 'production') {
   ReactGA.initialize('UA-67905653-2');
+
+  // Initial pageview
+  ReactGA.set({ page: location.pathname });
+  ReactGA.pageview(location.pathname);
+
+  history.listen((location, action) => {
+    ReactGA.set({ page: location.pathname });
+    ReactGA.pageview(location.pathname);
+  });
 }
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router>
+        <Router history={history}>
           <ScrollToTop>
             <div className="MainRouter">
               <Navigation />

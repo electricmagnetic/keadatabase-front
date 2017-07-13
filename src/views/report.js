@@ -9,10 +9,10 @@ class ReportPage extends Component {
       <div className="ReportPage">
         <Helmet title="Report" />
         <Banner size="small">
-          <h1>Report</h1>
+          <h1>Report Sighting</h1>
         </Banner>
         <div className="container">
-          <h1>Report Sighting</h1>
+          <p><em>Coming soon...</em></p>
         </div>
       </div>
     );

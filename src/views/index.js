@@ -38,7 +38,34 @@ class Sponsors extends Component {
       <div className="Sponsors">
         <div className="container">
           <h2>Sponsors</h2>
-          <p>sponsors</p>
+          <p>Thank you very much for the generous support of our sponsors. This project simply wouldn't be possible without them!</p>
+          <div className="row">
+            <div className="col-sm-4">
+              <ul>
+                <li>Active Adventures</li>
+                <li>The Bealey</li>
+                <li>TimeZoneOne</li>
+                <li>Jamie Ward Building</li>
+                <li>Orillion</li>
+              </ul>
+            </div>
+            <div className="col-sm-4">
+              <ul>
+                <li>PlaceMakers Riccarton</li>
+                <li>Hirepool</li>
+                <li>ENGCO</li>
+                <li>Kathmandu</li>
+              </ul>
+            </div>
+            <div className="col-sm-4">
+              <strong>Supporters</strong>
+              <ul>
+                <li>Arthur's Pass Wildlife Trust</li>
+                <li>Kea Conservation Trust</li>
+                <li>Department of Conservation</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -57,6 +84,11 @@ class HomePage extends Component {
           <BannerButtons />
         </section>
         <section>
+          <div className="container">
+            <div className="messages">
+              <Page id={131} hideTitle />
+            </div>
+          </div>
           <div className="container">
             <div className="row">
               <div className="col-md-6">

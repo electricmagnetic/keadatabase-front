@@ -2,7 +2,7 @@
   "name": "keadatabase",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://beta.keadatabase.nz",
+  "homepage": "https://keadatabase.nz",
   "dependencies": {
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
@@ -33,6 +33,6 @@
     "build-css": "node-sass src/ -o src/",
     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
     "predeploy": "npm run build-css && npm run build",
-    "deploy": "s3-deploy './build/**' --cwd './build/' --region ap-southeast-2 --bucket beta.keadatabase.nz"
+    "deploy": "s3-deploy './build/**' --cwd './build/' --region ap-southeast-2 --bucket keadatabase.nz"
   }
 }
