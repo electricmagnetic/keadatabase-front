@@ -1,37 +1,22 @@
-export const REQUEST_POSTS = 'REQUEST_POSTS';
-export const RECEIVE_POSTS = 'RECEIVE_POSTS';
+import { CALL_API } from 'redux-api-middleware';
 
-function requestPosts() {
-  return {
-    type: REQUEST_POSTS
-  }
-}
-
-function receivePosts(json) {
-  return {
-    type: RECEIVE_POSTS,
-    posts: json,
-    receivedAt: Date.now()
-  }
-}
+export const POSTS_REQUEST = '/posts/REQUEST';
+export const POSTS_RECEIVE = '/posts/RECEIVE';
+export const POSTS_ERROR = '/posts/ERROR';
 
 function fetchPosts() {
-  return dispatch => {
-    dispatch(requestPosts());
-    return fetch('https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/posts?per_page=2')
-      .then(response => response.json())
-      .then(json => dispatch(receivePosts(json)));
+  return {
+    [CALL_API]: {
+      endpoint: `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/posts?per_page=2`,
+      method: 'GET',
+      types: [POSTS_REQUEST, POSTS_RECEIVE, POSTS_ERROR]
+    }
   }
 }
 
 function shouldFetchPosts(state) {
-  const posts = state.posts;
-  if (!posts) {
-    return true;
-  }
-  else {
-    return false;
-  }
+  // TODO: optimise
+  return true;
 }
 
 export function fetchPostsIfNeeded() {

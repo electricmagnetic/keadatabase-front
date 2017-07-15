@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form'
+import { reducer as formReducer } from 'redux-form';
 
 import { REQUEST_BANDCOMBOS, RECEIVE_BANDCOMBOS } from '../actions/bandcombos.js';
-import { REQUEST_BIRD, RECEIVE_BIRD } from '../actions/birds.js'
+import { REQUEST_BIRD, RECEIVE_BIRD } from '../actions/birds.js';
 import { REQUEST_PAGES, RECEIVE_PAGES } from '../actions/pages.js';
-import { REQUEST_POSTS, RECEIVE_POSTS } from '../actions/posts.js';
+import { POSTS_REQUEST, POSTS_RECEIVE, POSTS_ERROR } from '../actions/posts.js';
 
 const initialBandCombosState = {
   isFetching: false,
@@ -86,22 +86,30 @@ const pagesStore = (state = initialPagesState, action) => {
   }
 };
 
-const initialPostsState = {
+const intialPostsState = {
   isFetching: false,
-  items: []
+  items: [],
+  isError: false
 };
 
-const postsStore = (state = initialPostsState, action) => {
+const postsReducer = (state = intialPostsState, action) => {
   switch (action.type) {
-    case REQUEST_POSTS:
+    case POSTS_REQUEST:
       return Object.assign({}, state, {
         isFetching: true
       });
-    case RECEIVE_POSTS:
+    case POSTS_RECEIVE:
+      console.log(action.payload);
       return Object.assign({}, state, {
         isFetching: false,
-        items: action.posts,
-        lastUpdated: action.receivedAt
+        items: action.payload,
+        isError: false
+      });
+    case POSTS_ERROR:
+      return Object.assign({}, state, {
+        isFetching: false,
+        items: null,
+        isError: true
       });
   default:
     return state;
@@ -112,6 +120,6 @@ export default combineReducers({
   bandcombosStore,
   birdsStore,
   pagesStore,
-  postsStore,
+  postsReducer,
   form: formReducer
 });

@@ -70,3 +70,10 @@ $constrainer-width: $container-lg+100px;
     display: none;
   }
 }
+
+.error {
+  font-style: italic;
+  .glyphicon {
+    margin-right: $grid-gutter-width/4;
+  }
+}

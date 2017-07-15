@@ -16,49 +16,57 @@ class Blog extends Component {
     return(
       <div className="Blog">
         <h2>Blog</h2>
-        {!this.props.posts.length &&
+        {this.props.isFetching &&
           <div className="loader"></div>
         }
-        <ul className="list-unstyled">
-          {this.props.posts.map(post =>
-            <li className="BlogPost" key={ post.id }>
-              <a href={ post.link }>
-                <h3 dangerouslySetInnerHTML={{__html: post.title.rendered }}></h3>
-              </a>
-              <h4 dangerouslySetInnerHTML={{__html: new Date(post.date).toLocaleString()}}></h4>
-              <div dangerouslySetInnerHTML={{__html: post.excerpt.rendered }}></div>
-            </li>
-          )}
-        </ul>
-        <a href="https://blog.keadatabase.nz/">More posts</a>
+        {this.props.isError &&
+          <div className="error"><p><span className="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+Hmm, something went wrong here. Try refreshing?</p></div>
+        }
+        {this.props.items &&
+          <div className="items">
+            <ul className="list-unstyled">
+              {this.props.items.map(post =>
+                <li className="BlogPost" key={ post.id }>
+                  <a href={ post.link }>
+                    <h3 dangerouslySetInnerHTML={{__html: post.title.rendered }}></h3>
+                  </a>
+                  <h4 dangerouslySetInnerHTML={{__html: new Date(post.date).toLocaleString()}}></h4>
+                  <div dangerouslySetInnerHTML={{__html: post.excerpt.rendered }}></div>
+                </li>
+              )}
+            </ul>
+            <a href="https://blog.keadatabase.nz/">More posts</a>
+          </div>
+        }
       </div>
     );
   }
 }
 
 Blog.propTypes = {
-  posts: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  lastUpdated: PropTypes.number,
   dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
-  const { postsStore } = state;
+  const { postsReducer } = state;
 
   const {
       isFetching,
-      lastUpdated,
-      items: posts
-  } = postsStore || {
+      items,
+      isError
+  } = postsReducer || {
     isFetching: true,
-    items: []
+    items: [],
+    isError: false
   }
 
   return {
     isFetching,
-    lastUpdated,
-    posts,
+    items,
+    isError
   }
 }
 
