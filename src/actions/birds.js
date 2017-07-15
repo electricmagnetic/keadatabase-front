@@ -36,9 +36,8 @@ function shouldFetchBird(state, slug) {
   if (!bird) {
     return true;
   }
-  else {
-    return false;
-  }
+  
+  return false;
 }
 
 export function fetchBirdIfNeeded(slug) {

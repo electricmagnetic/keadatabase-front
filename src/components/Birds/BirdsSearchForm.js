@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 let BirdsSearchForm = props => {
-  const { submitting, handleSubmit } = props
+  const { submitting, handleSubmit } = props;
   return (
     <form onSubmit={ handleSubmit } className="BirdsSearchForm">
       <div className="form-group">
