@@ -1,43 +1,35 @@
-export const REQUEST_BIRD = 'REQUEST_BIRD';
-export const RECEIVE_BIRD = 'RECEIVE_BIRD';
+import { CALL_API } from 'redux-api-middleware';
 
-function requestBird(slug) {
-  return {
-    type: REQUEST_BIRD,
-    slug
-  }
-}
-
-function receiveBird(slug, json) {
-  return {
-    type: RECEIVE_BIRD,
-    slug,
-    item: json,
-    receivedAt: Date.now()
-  }
-}
+export const BIRD_REQUEST = '/bird/REQUEST';
+export const BIRD_RECEIVE = '/bird/RECEIVE';
+export const BIRD_ERROR = '/bird/ERROR';
 
 function fetchBird(slug) {
-  return dispatch => {
-    dispatch(requestBird(slug));
-    return fetch(`https://api.keadatabase.nz/birds/${slug}/`)
-      .then(response => response.json())
-      .then(json => dispatch(receiveBird(slug, json)));
+  return {
+    [CALL_API]: {
+      endpoint: `https://api.keadatabase.nz/birds/${slug}/`,
+      method: 'GET',
+      types: [
+        {
+          type: BIRD_REQUEST,
+          meta: { slug: slug }
+        },
+        {
+          type: BIRD_RECEIVE,
+          meta: { slug: slug }
+        },
+        {
+          type: BIRD_ERROR,
+          meta: { slug: slug }
+        }
+      ]
+    }
   }
 }
 
 function shouldFetchBird(state, slug) {
-  if (!state.birdStore) {
-    return true;
-  }
-
-  const bird = state.birdStore[slug];
-
-  if (!bird) {
-    return true;
-  }
-  
-  return false;
+  // TODO: optimise
+  return true;
 }
 
 export function fetchBirdIfNeeded(slug) {

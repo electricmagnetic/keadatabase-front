@@ -8,7 +8,10 @@ class Error extends Component {
       <div className="Error">
         <p>
           <span className="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-          Hmm, something went wrong here. Try refreshing?
+          { this.props.children
+            ? <span>{ this.props.children }</span>
+            : <span>Hmm, something went wrong here. Try refreshing?</span>
+          }
         </p>
       </div>
     );

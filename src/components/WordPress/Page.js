@@ -14,6 +14,7 @@ class Page extends Component {
 
   render() {
     const page = this.props.items.filter(page => { return page.id  === this.props.id });
+
     if (this.props.isFetching) {
       return (<Loader />);
     }
@@ -45,7 +46,7 @@ Page.defaultProps = {
 Page.propTypes = {
   id: PropTypes.number.isRequired,
   hideTitle: PropTypes.bool.isRequired,
-  items: PropTypes.array.isRequired,
+  items: PropTypes.array,
   isFetching: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired

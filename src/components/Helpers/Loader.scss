@@ -1,13 +1,13 @@
 @import "../../assets/css/variables";
 
 .Loader {
-    margin-bottom: $line-height-computed;
-    border: 8px solid $gray-lighter;
-    border-top: 8px solid $brand-primary;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 2s linear infinite;
+  margin: $line-height-computed 0;
+  border: 8px solid $gray-lighter;
+  border-top: 8px solid $brand-primary;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
