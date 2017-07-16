@@ -14,15 +14,17 @@ function fetchPages() {
   }
 }
 
-
 function shouldFetchPages(state) {
-  //TODO: optimise
-  return true;
+  // TODO: optimise number of calls
+  const pagesReducer = state.pagesReducer;
+  if (pagesReducer.items.length === 0) {
+    return true;
+  }
+  return false;
 }
 
 export function fetchPagesIfNeeded() {
   return (dispatch, getState) => {
-    console.log(getState());
     if (shouldFetchPages(getState())) {
       return dispatch(fetchPages());
     }

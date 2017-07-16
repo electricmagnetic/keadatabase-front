@@ -1,5 +1,4 @@
 @import "variables";
-@import "loading";
 
 section {
   margin-bottom: $line-height-computed;
@@ -68,12 +67,5 @@ $constrainer-width: $container-lg+100px;
   }
   &:before, &:after {
     display: none;
-  }
-}
-
-.error {
-  font-style: italic;
-  .glyphicon {
-    margin-right: $grid-gutter-width/4;
   }
 }

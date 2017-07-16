@@ -1,0 +1,8 @@
+@import "../../assets/css/variables";
+
+.Error {
+  font-style: italic;
+  .glyphicon {
+    margin-right: $grid-gutter-width/4;
+  }
+}

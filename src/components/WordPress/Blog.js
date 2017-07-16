@@ -2,9 +2,27 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import Error from '../Helpers/Error';
+import Loader from '../Helpers/Loader';
 import { fetchPostsIfNeeded } from '../../actions/posts.js';
 
 import './Blog.css';
+
+class BlogPost extends Component {
+  render () {
+    const { post } = this.props;
+
+    return(
+      <li className="BlogPost">
+        <a href={ post.link }>
+          <h3 dangerouslySetInnerHTML={{__html: post.title.rendered }}></h3>
+        </a>
+        <h4 dangerouslySetInnerHTML={{__html: new Date(post.date).toLocaleString()}}></h4>
+        <div dangerouslySetInnerHTML={{__html: post.excerpt.rendered }}></div>
+      </li>
+    );
+  }
+}
 
 class Blog extends Component {
   componentDidMount() {
@@ -13,34 +31,25 @@ class Blog extends Component {
   }
 
   render() {
-    return(
-      <div className="Blog">
-        <h2>Blog</h2>
-        {this.props.isFetching &&
-          <div className="loader"></div>
-        }
-        {this.props.isError &&
-          <div className="error"><p><span className="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-Hmm, something went wrong here. Try refreshing?</p></div>
-        }
-        {this.props.items &&
-          <div className="items">
-            <ul className="list-unstyled">
-              {this.props.items.map(post =>
-                <li className="BlogPost" key={ post.id }>
-                  <a href={ post.link }>
-                    <h3 dangerouslySetInnerHTML={{__html: post.title.rendered }}></h3>
-                  </a>
-                  <h4 dangerouslySetInnerHTML={{__html: new Date(post.date).toLocaleString()}}></h4>
-                  <div dangerouslySetInnerHTML={{__html: post.excerpt.rendered }}></div>
-                </li>
-              )}
-            </ul>
-            <a href="https://blog.keadatabase.nz/">More posts</a>
-          </div>
-        }
-      </div>
-    );
+    if (this.props.isFetching) {
+      return (<Loader />);
+    }
+    else if (this.props.isError) {
+      return (<Error />);
+    }
+    else {
+      return(
+        <div className="Blog">
+          <h2>Blog</h2>
+          <ul className="list-unstyled">
+            {this.props.items.map(post =>
+              <BlogPost post={ post } key={ post.id }/>
+            )}
+          </ul>
+          <a href="https://blog.keadatabase.nz/">More posts</a>
+        </div>
+      );
+    }
   }
 }
 

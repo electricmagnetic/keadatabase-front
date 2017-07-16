@@ -16,7 +16,11 @@ function fetchPosts() {
 
 function shouldFetchPosts(state) {
   // TODO: optimise
-  return true;
+  const postsReducer = state.postsReducer;
+  if (postsReducer.items.length === 0) {
+    return true;
+  }
+  return false;
 }
 
 export function fetchPostsIfNeeded() {

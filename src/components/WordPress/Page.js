@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import Error from '../Helpers/Error';
+import Loader from '../Helpers/Loader';
 import { fetchPagesIfNeeded } from '../../actions/pages.js';
 
 class Page extends Component {
@@ -12,27 +14,27 @@ class Page extends Component {
 
   render() {
     const page = this.props.items.filter(page => { return page.id  === this.props.id });
-    return(
-      <div className="Page">
-        {this.props.isFetching &&
-          <div className="loader"></div>
-        }
-        {this.props.isError &&
-          <div className="error"><p><span className="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-Hmm, something went wrong here. Try refreshing?</p></div>
-        }
-        {/* TODO */}
-        {page.map(page =>
-          <div className="Page-content" key={ page.id }>
-            {
-              this.props.hideTitle === false &&
-              <h2 dangerouslySetInnerHTML={{__html: page.title.rendered }}></h2>
-            }
-            <p dangerouslySetInnerHTML={{__html: page.content.rendered }}></p>
-          </div>
-        )}
-      </div>
-    );
+    if (this.props.isFetching) {
+      return (<Loader />);
+    }
+    else if (this.props.isError) {
+      return (<Error />);
+    }
+    else {
+      return(
+        <div className="Page">
+          {page.map(page =>
+            <div className="Page-content" key={ page.id }>
+              {
+                this.props.hideTitle === false &&
+                <h2 dangerouslySetInnerHTML={{__html: page.title.rendered }}></h2>
+              }
+              <p dangerouslySetInnerHTML={{__html: page.content.rendered }}></p>
+            </div>
+          )}
+        </div>
+      );
+    }
   }
 }
 
