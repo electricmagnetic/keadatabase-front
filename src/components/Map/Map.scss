@@ -1,0 +1,10 @@
+@import "../../assets/css/variables";
+
+.map-container {
+  height: 480px;
+  margin-bottom: $line-height-computed;
+
+  .map-element {
+    height: 100%;
+  }
+}

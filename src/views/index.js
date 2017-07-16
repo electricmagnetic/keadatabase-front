@@ -6,7 +6,7 @@ import Blog from '../components/WordPress/Blog';
 import Page from '../components/WordPress/Page';
 import Banner from '../components/Banner/Banner';
 import BirdFeatured from '../components/Bird/BirdFeatured';
-import Sightings from '../components/Sightings/Sightings';
+//import Sightings from '../components/Sightings/Sightings';
 
 import banner from '../assets/img/banners/home.jpg';
 
@@ -116,7 +116,7 @@ class HomePage extends Component {
                 <Blog />
               </div>
               <div className="col-md-6">
-                <Sightings />
+                {/* <Sightings /> */}
               </div>
             </div>
           </div>
