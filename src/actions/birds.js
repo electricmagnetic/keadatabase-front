@@ -1,8 +1,8 @@
 import { CALL_API } from 'redux-api-middleware';
 
-export const BIRD_REQUEST = '/bird/REQUEST';
-export const BIRD_RECEIVE = '/bird/RECEIVE';
-export const BIRD_ERROR = '/bird/ERROR';
+export const BIRD_REQUEST = 'api:/bird/REQUEST';
+export const BIRD_RECEIVE = 'api:/bird/RECEIVE';
+export const BIRD_ERROR = 'api:/bird/ERROR';
 
 function fetchBird(slug) {
   return {

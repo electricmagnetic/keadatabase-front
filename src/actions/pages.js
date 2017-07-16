@@ -1,8 +1,8 @@
 import { CALL_API } from 'redux-api-middleware';
 
-export const PAGES_REQUEST = '/pages/REQUEST';
-export const PAGES_RECEIVE = '/pages/RECEIVE';
-export const PAGES_ERROR = '/pages/ERROR';
+export const PAGES_REQUEST = 'wordpress:/pages/REQUEST';
+export const PAGES_RECEIVE = 'wordpress:/pages/RECEIVE';
+export const PAGES_ERROR = 'wordpress:/pages/ERROR';
 
 function fetchPages() {
   return {
@@ -17,7 +17,7 @@ function fetchPages() {
 function shouldFetchPages(state) {
   // TODO: optimise number of calls
   const pagesReducer = state.pagesReducer;
-  
+
   if (pagesReducer.items.length === 0) {
     return true;
   }

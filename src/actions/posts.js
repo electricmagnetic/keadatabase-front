@@ -1,8 +1,8 @@
 import { CALL_API } from 'redux-api-middleware';
 
-export const POSTS_REQUEST = '/posts/REQUEST';
-export const POSTS_RECEIVE = '/posts/RECEIVE';
-export const POSTS_ERROR = '/posts/ERROR';
+export const POSTS_REQUEST = 'wordpress:/posts/REQUEST';
+export const POSTS_RECEIVE = 'wordpress:/posts/RECEIVE';
+export const POSTS_ERROR = 'wordpress:/posts/ERROR';
 
 function fetchPosts() {
   return {
@@ -17,7 +17,7 @@ function fetchPosts() {
 function shouldFetchPosts(state) {
   // TODO: optimise
   const postsReducer = state.postsReducer;
-  
+
   if (postsReducer.items.length === 0) {
     return true;
   }
