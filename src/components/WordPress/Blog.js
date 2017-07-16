@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Moment from 'react-moment';
 
 import Error from '../Helpers/Error';
 import Loader from '../Helpers/Loader';
@@ -17,7 +18,7 @@ class BlogPost extends Component {
         <a href={ post.link }>
           <h3 dangerouslySetInnerHTML={{__html: post.title.rendered }}></h3>
         </a>
-        <h4 dangerouslySetInnerHTML={{__html: new Date(post.date).toLocaleString()}}></h4>
+        <h4><Moment format='dddd DD MMMM YYYY, hh:mm a'>{ post.date }</Moment></h4>
         <div dangerouslySetInnerHTML={{__html: post.excerpt.rendered }}></div>
       </li>
     );
