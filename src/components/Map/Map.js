@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import MarkerClusterer from 'react-google-maps/lib/addons/MarkerClusterer';
 
 import './Map.css';
 
@@ -10,11 +11,18 @@ const Map = withGoogleMap(props => (
     defaultCenter={{ lat: -43.983333, lng: 170.450000 }}
     >
     { props.markers &&
-      props.markers.map((marker, index) => (
-        <Marker
-          {...marker}
-        />
-      ))
+      <MarkerClusterer
+        averageCenter
+        enableRetinaIcons
+        gridSize={20}
+        maxZoom={15}
+      >
+        { props.markers.map((marker, index) => (
+          <Marker
+            {...marker}
+          />
+        )) }
+      </MarkerClusterer>
     }
   </GoogleMap>
 ));

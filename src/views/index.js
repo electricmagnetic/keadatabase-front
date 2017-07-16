@@ -6,7 +6,7 @@ import Blog from '../components/WordPress/Blog';
 import Page from '../components/WordPress/Page';
 import Banner from '../components/Banner/Banner';
 import BirdFeatured from '../components/Bird/BirdFeatured';
-//import Sightings from '../components/Sightings/Sightings';
+import SightingsTable from '../components/Sightings/SightingsTable';
 
 import banner from '../assets/img/banners/home.jpg';
 
@@ -113,10 +113,12 @@ class HomePage extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-6">
+                <h2>Blog</h2>
                 <Blog />
               </div>
               <div className="col-md-6">
-                {/* <Sightings /> */}
+                <h2>Latest Sightings</h2>
+                <SightingsTable />
               </div>
             </div>
           </div>

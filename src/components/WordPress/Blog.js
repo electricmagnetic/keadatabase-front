@@ -41,7 +41,6 @@ class Blog extends Component {
     else {
       return(
         <div className="Blog">
-          <h2>Blog</h2>
           <ul className="list-unstyled">
             {this.props.items.map(post =>
               <BlogPost post={ post } key={ post.id }/>

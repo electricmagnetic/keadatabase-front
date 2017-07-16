@@ -7,17 +7,17 @@ class QualityIndicator extends Component {
     var indicator = '';
     var indicator_verbose = '';
 
-    if (quality === 0) {
+    if (quality === '-1') {
+      indicator = 'hourglass';
+      indicator_verbose = 'Unverified';
+    }
+    else if (quality === '0') {
       indicator = 'remove';
       indicator_verbose = 'Bad';
     }
-    else if (quality >= 1) {
+    else {
       indicator = 'ok';
       indicator_verbose = 'OK';
-    }
-    else {
-      indicator = 'hourglass';
-      indicator_verbose = 'Unverified';
     }
 
     return(
@@ -29,7 +29,7 @@ class QualityIndicator extends Component {
 }
 
 QualityIndicator.propTypes = {
-  quality: PropTypes.number.isRequired
+  quality: PropTypes.string.isRequired
 }
 
 export default QualityIndicator;
