@@ -23,6 +23,7 @@ class SightingsPage extends Component {
               <SightingsMap />
             </div>
           </div>
+          {/* TODO: <h2>Latest Non-Sightings</h2> */}
         </div>
       </div>
     );

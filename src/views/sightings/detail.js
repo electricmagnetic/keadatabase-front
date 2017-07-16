@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import Helmet from 'react-helmet';
+
+import SightingDetail from '../../components/Sighting/SightingDetail';
 
 class SightingDetailPage extends Component {
   render() {
     return (
       <div className="SightingDetailPage">
-        <Helmet title="Sighting" />
-        <div className="container">
-          <h1>Sighting Detail Page</h1>
-          <p>{this.props.match.params.id}</p>
-        </div>
+        <SightingDetail id={this.props.match.params.id} />
       </div>
     );
   }
