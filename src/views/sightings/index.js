@@ -14,6 +14,7 @@ class SightingsPage extends Component {
           <h1>Sightings</h1>
         </Banner>
         <div className="container">
+          <h2>Latest Sightings</h2>
           <div className="row">
             <div className="col-md-6 col-lg-7">
               <SightingsTable />

@@ -48,7 +48,13 @@ class SightingsTable extends Component {
       return (<div className="container"><Error /></div>);
     }
     else {
-      const sightings = this.props.items;
+      var sightings = this.props.items;
+
+      if(this.props.limit > 0) {
+        // Enables a reduced list to be shown, whilst still getting the full list of sightings
+        sightings = sightings.slice(0, this.props.limit);
+      }
+
       return(
         <table className="SightingsTable table table-responsive table-striped">
           <thead>
@@ -73,7 +79,12 @@ SightingsTable.propTypes = {
   items: PropTypes.array,
   isFetching: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
-  isError: PropTypes.bool.isRequired
+  isError: PropTypes.bool.isRequired,
+  limit: PropTypes.number.isRequired
+}
+
+SightingsTable.defaultProps = {
+  limit: 0,
 }
 
 const mapStateToProps = (state) => {

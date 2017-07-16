@@ -40,14 +40,11 @@ class Blog extends Component {
     }
     else {
       return(
-        <div className="Blog">
-          <ul className="list-unstyled">
-            {this.props.items.map(post =>
-              <BlogPost post={ post } key={ post.id }/>
-            )}
-          </ul>
-          <a href="https://blog.keadatabase.nz/">More posts</a>
-        </div>
+        <ul className="Blog list-unstyled">
+          {this.props.items.map(post =>
+            <BlogPost post={ post } key={ post.id }/>
+          )}
+        </ul>
       );
     }
   }
