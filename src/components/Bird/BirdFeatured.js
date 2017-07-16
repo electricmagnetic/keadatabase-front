@@ -18,6 +18,12 @@ class BirdFeatured extends Component {
     dispatch(fetchBirdIfNeeded(slug));
   }
 
+  componentDidUpdate() {
+    // Here if page is 'reloaded' without the component being re-rendered
+    const { dispatch, slug } = this.props;
+    dispatch(fetchBirdIfNeeded(slug));
+  }
+
   render() {
     const bird = this.props.item;
 
