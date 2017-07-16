@@ -17,6 +17,7 @@ function fetchPosts() {
 function shouldFetchPosts(state) {
   // TODO: optimise
   const postsReducer = state.postsReducer;
+  
   if (postsReducer.items.length === 0) {
     return true;
   }

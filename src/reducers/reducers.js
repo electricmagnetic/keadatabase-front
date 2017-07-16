@@ -60,7 +60,6 @@ function bird(state = initialBirdState, action) {
 };
 
 const birdsReducer = (state = {}, action) => {
-  console.log(action);
   switch (action.type) {
     case BIRD_REQUEST:
     case BIRD_RECEIVE:

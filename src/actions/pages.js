@@ -17,6 +17,7 @@ function fetchPages() {
 function shouldFetchPages(state) {
   // TODO: optimise number of calls
   const pagesReducer = state.pagesReducer;
+  
   if (pagesReducer.items.length === 0) {
     return true;
   }

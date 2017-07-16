@@ -29,7 +29,12 @@ function fetchBird(slug) {
 
 function shouldFetchBird(state, slug) {
   // TODO: optimise
-  return true;
+  const bird = state.birdsReducer[slug];
+
+  if (!bird) {
+    return true;
+  }
+  return false;
 }
 
 export function fetchBirdIfNeeded(slug) {
