@@ -1,41 +1,28 @@
-export const REQUEST_PAGES = 'REQUEST_PAGES';
-export const RECEIVE_PAGES = 'RECEIVE_PAGES';
+import { CALL_API } from 'redux-api-middleware';
 
-function requestPages() {
-  return {
-    type: REQUEST_PAGES
-  }
-}
-
-function receivePages(json) {
-  return {
-    type: RECEIVE_PAGES,
-    pages: json,
-    receivedAt: Date.now()
-  }
-}
+export const PAGES_REQUEST = '/pages/REQUEST';
+export const PAGES_RECEIVE = '/pages/RECEIVE';
+export const PAGES_ERROR = '/pages/ERROR';
 
 function fetchPages() {
-  return dispatch => {
-    dispatch(requestPages());
-    return fetch('https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/pages')
-      .then(response => response.json())
-      .then(json => dispatch(receivePages(json)));
+  return {
+    [CALL_API]: {
+      endpoint: `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/pages`,
+      method: 'GET',
+      types: [PAGES_REQUEST, PAGES_RECEIVE, PAGES_ERROR]
+    }
   }
 }
 
+
 function shouldFetchPages(state) {
-  const pages = state.pages;
-  if (!pages) {
-    return true;
-  }
-  else {
-    return false;
-  }
+  //TODO: optimise
+  return true;
 }
 
 export function fetchPagesIfNeeded() {
   return (dispatch, getState) => {
+    console.log(getState());
     if (shouldFetchPages(getState())) {
       return dispatch(fetchPages());
     }

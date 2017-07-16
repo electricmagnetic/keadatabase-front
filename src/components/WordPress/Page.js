@@ -11,12 +11,17 @@ class Page extends Component {
   }
 
   render() {
-    const page = this.props.pages.filter(page => { return page.id  === this.props.id });
+    const page = this.props.items.filter(page => { return page.id  === this.props.id });
     return(
       <div className="Page">
-        {!this.props.pages.length &&
+        {this.props.isFetching &&
           <div className="loader"></div>
         }
+        {this.props.isError &&
+          <div className="error"><p><span className="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+Hmm, something went wrong here. Try refreshing?</p></div>
+        }
+        {/* TODO */}
         {page.map(page =>
           <div className="Page-content" key={ page.id }>
             {
@@ -38,28 +43,29 @@ Page.defaultProps = {
 Page.propTypes = {
   id: PropTypes.number.isRequired,
   hideTitle: PropTypes.bool.isRequired,
-  pages: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  lastUpdated: PropTypes.number,
+  isError: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
-  const { pagesStore } = state;
+  const { pagesReducer } = state;
 
   const {
       isFetching,
-      lastUpdated,
-      items: pages
-  } = pagesStore || {
+      items,
+      isError
+  } = pagesReducer || {
     isFetching: true,
-    items: []
+    items: [],
+    isError: false
   }
 
   return {
     isFetching,
-    lastUpdated,
-    pages,
+    items,
+    isError
   }
 }
 

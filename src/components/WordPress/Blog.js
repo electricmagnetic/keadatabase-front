@@ -47,7 +47,8 @@ Hmm, something went wrong here. Try refreshing?</p></div>
 Blog.propTypes = {
   items: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  isError: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => {
