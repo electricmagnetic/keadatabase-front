@@ -22,10 +22,10 @@ class BirdFeatured extends Component {
     const bird = this.props.item;
 
     if (this.props.isFetching) {
-      return (<Loader />);
+      return (<div className="container"><Loader /></div>);
     }
     else if (this.props.isError) {
-      return (<Error />);
+      return (<div className="container"><Error /></div>);
     }
     else {
       return(

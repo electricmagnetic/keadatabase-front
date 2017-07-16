@@ -74,6 +74,12 @@ class Sponsors extends Component {
 
 class HomePage extends Component {
   render() {
+    // TODO: use 'featured birds' from API rather than hard-coded options
+    const getRandomFeaturedBird = function() {
+      const featuredBirds = ['schist', 'kauri', 'aroha', 'peggy', 'beryl'];
+      return featuredBirds[Math.floor(Math.random()*5)];
+    }
+
     return (
       <div className="HomePage">
         <Helmet title="Kea Database" />
@@ -101,7 +107,7 @@ class HomePage extends Component {
           </div>
         </section>
         <section>
-          <BirdFeatured slug="schist" />
+          <BirdFeatured slug={getRandomFeaturedBird()} />
         </section>
         <section>
           <div className="container">
