@@ -5,7 +5,7 @@ import Banner from '../../components/Banner/Banner';
 import Birds from '../../components/Birds/Birds';
 // import BirdsFilterForm from '../../components/Birds/BirdsFilterForm';
 import BirdsSearchForm from '../../components/Birds/BirdsSearchForm';
-import { fetchBandCombosIfNeeded } from '../../actions/bandcombos.js';
+import { fetchBandCombosIfNeeded } from '../../actions/bandCombos.js';
 
 class BirdsPage extends Component {
   submit = (data, dispatch) => {

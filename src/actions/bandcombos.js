@@ -1,43 +1,42 @@
-export const REQUEST_BANDCOMBOS = 'REQUEST_BANDCOMBOS';
-export const RECEIVE_BANDCOMBOS = 'RECEIVE_BANDCOMBOS';
+import { CALL_API } from 'redux-api-middleware';
 
-function requestBandCombos(query) {
-  return {
-    type: REQUEST_BANDCOMBOS,
-    query
-  }
-}
-
-function receiveBandCombos(query, json) {
-  return {
-    type: RECEIVE_BANDCOMBOS,
-    query,
-    bandcombos: json.results,
-    receivedAt: Date.now()
-  }
-}
+export const BANDCOMBOS_REQUEST = 'api:/band_combos/REQUEST';
+export const BANDCOMBOS_RECEIVE = 'api:/band_combos/RECEIVE';
+export const BANDCOMBOS_ERROR = 'api:/band_combosERROR';
 
 function fetchBandCombos(query) {
-  return dispatch => {
-    dispatch(requestBandCombos(query));
-    return fetch(`https://api.keadatabase.nz/band_combos/?ordering=bird__bird_extended,style,bird__name&search=${query}`)
-      .then(response => response.json())
-      .then(json => dispatch(receiveBandCombos(query, json)));
+  return {
+    [CALL_API]: {
+      endpoint: `https://api.keadatabase.nz/band_combos/?ordering=bird__bird_extended,style,bird__name&search=${encodeURIComponent(query)}`,
+      method: 'GET',
+      types: [
+        {
+          type: BANDCOMBOS_REQUEST,
+          meta: { query: query }
+        },
+        {
+          type: BANDCOMBOS_RECEIVE,
+          meta: { query: query }
+        },
+        {
+          type: BANDCOMBOS_ERROR,
+          meta: { query: query }
+        }
+      ]
+    }
   }
 }
 
 function shouldFetchBandCombos(state, query) {
-  const store = state.bandcombosStore;
-  if (!store) {
+  // TODO: optimise
+  const bandCombosReducer = state.bandCombosReducer;
+
+  if (bandCombosReducer.items.length === 0) {
     return true;
   }
 
-  if (query !== store.query) {
-    return true;
-  }
-
-  if (store.items.length === 0) {
-    return true;
+  if (query !== bandCombosReducer.query) {
+   return true;
   }
 
   return false;
@@ -45,6 +44,9 @@ function shouldFetchBandCombos(state, query) {
 
 export function fetchBandCombosIfNeeded(query='') {
   return (dispatch, getState) => {
+    // TODO: find a way of retaining search state (also in URL and textbox), but also allow empty searchs
+    //query = query || getState().bandCombosReducer.query;
+
     if (shouldFetchBandCombos(getState(), query)) {
       return dispatch(fetchBandCombos(query));
     }
