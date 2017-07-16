@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
+import { fetchBirdIfNeeded } from '../../actions/birds.js';
+
 import Banner from '../Banner/Banner';
 import TooltipText from '../Helpers/TooltipText';
 import PrettyBandCombo from '../Helpers/PrettyBandCombo';
+import Error from '../Helpers/Error';
+import Loader from '../Helpers/Loader';
 
-import { fetchBirdIfNeeded } from '../../actions/birds.js';
 import placeholder from '../../assets/img/placeholder_large.png';
-
 import './BirdProfile.css';
 
 class BirdProfile extends Component {
@@ -19,15 +21,19 @@ class BirdProfile extends Component {
   }
 
   render() {
-    const { bird } = this.props;
-    return(
-      <div className="BirdProfile">
-        <Helmet title={ bird.name } />
-        <Banner size="medium">
-          {!bird.slug &&
-            <div className="loader"></div>
-          }
-          { bird.slug &&
+    const bird = this.props.item;
+
+    if (this.props.isFetching) {
+      return (<div className="container"><Loader /></div>);
+    }
+    else if (this.props.isError) {
+      return (<div className="container"><Error>Either this bird doesn't exist, or something went wrong here.</Error></div>);
+    }
+    else {
+      return(
+        <div className="BirdProfile">
+          <Helmet title={ bird.name } />
+          <Banner size="medium">
             <div className="row">
               <div className="col-sm-4 col-sm-push-8">
                 <div className="profile-picture">
@@ -48,13 +54,8 @@ class BirdProfile extends Component {
                 </p>
               </div>
             </div>
-          }
-        </Banner>
-        <div className="container">
-          {!bird.slug &&
-            <div className="loader"></div>
-          }
-          { bird.slug &&
+          </Banner>
+          <div className="container">
             <div className="row">
               <div className="col-sm-7">
                 <section>
@@ -81,13 +82,7 @@ class BirdProfile extends Component {
                           { bird.get_age }
                         </td>
                       </tr>
-                      <tr>
-                        <th>Birthday</th>
-                        <td>
-                          { bird.birthday }
-                          <TooltipText text="NB: In most cases this was estimated when the bird was added to the database." />
-                        </td>
-                      </tr>
+
                       <tr>
                         <th>Sex</th>
                         <td>
@@ -127,39 +122,40 @@ class BirdProfile extends Component {
                 {/* Placeholder for image (with negative margins) */}
               </div>
             </div>
-          }
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
 BirdProfile.propTypes = {
   slug: PropTypes.string.isRequired,
-  bird: PropTypes.object.isRequired,
+  item: PropTypes.object,
   isFetching: PropTypes.bool.isRequired,
-  lastUpdated: PropTypes.number,
+  isError: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state, ownProps) {
   const { slug } = ownProps;
-  const { birdsStore } = state;
-  
+  const { birdsReducer } = state;
+
   const {
     isFetching,
-    lastUpdated,
-    item: bird,
-  } = birdsStore[slug] || {
+    item,
+    isError
+  } = birdsReducer[slug] || {
     isFetching: true,
-    item: {}
+    item: {},
+    isError: false
   };
 
   return {
     slug,
-    bird,
     isFetching,
-    lastUpdated
+    item,
+    isError
   }
 }
 

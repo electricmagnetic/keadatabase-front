@@ -1,0 +1,11 @@
+@import "../../assets/css/variables";
+
+.Error {
+  p {
+    font-style: italic;
+    margin: $line-height-computed/2 0;
+    .glyphicon {
+      margin-right: $grid-gutter-width/4;
+    }
+  }
+}

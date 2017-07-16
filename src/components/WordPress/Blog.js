@@ -1,10 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Moment from 'react-moment';
 
+import Error from '../Helpers/Error';
+import Loader from '../Helpers/Loader';
 import { fetchPostsIfNeeded } from '../../actions/posts.js';
 
 import './Blog.css';
+
+class BlogPost extends Component {
+  render () {
+    const { post } = this.props;
+
+    return(
+      <li className="BlogPost">
+        <a href={ post.link }>
+          <h3 dangerouslySetInnerHTML={{__html: post.title.rendered }}></h3>
+        </a>
+        <h4><Moment format='dddd DD MMMM YYYY, hh:mm a'>{ post.date }</Moment></h4>
+        <div dangerouslySetInnerHTML={{__html: post.excerpt.rendered }}></div>
+      </li>
+    );
+  }
+}
 
 class Blog extends Component {
   componentDidMount() {
@@ -13,52 +32,52 @@ class Blog extends Component {
   }
 
   render() {
-    return(
-      <div className="Blog">
-        <h2>Blog</h2>
-        {!this.props.posts.length &&
-          <div className="loader"></div>
-        }
-        <ul className="list-unstyled">
-          {this.props.posts.map(post =>
-            <li className="BlogPost" key={ post.id }>
-              <a href={ post.link }>
-                <h3 dangerouslySetInnerHTML={{__html: post.title.rendered }}></h3>
-              </a>
-              <h4 dangerouslySetInnerHTML={{__html: new Date(post.date).toLocaleString()}}></h4>
-              <div dangerouslySetInnerHTML={{__html: post.excerpt.rendered }}></div>
-            </li>
-          )}
-        </ul>
-        <a href="https://blog.keadatabase.nz/">More posts</a>
-      </div>
-    );
+    if (this.props.isFetching) {
+      return (<Loader />);
+    }
+    else if (this.props.isError) {
+      return (<Error />);
+    }
+    else {
+      return(
+        <div className="Blog">
+          <h2>Blog</h2>
+          <ul className="list-unstyled">
+            {this.props.items.map(post =>
+              <BlogPost post={ post } key={ post.id }/>
+            )}
+          </ul>
+          <a href="https://blog.keadatabase.nz/">More posts</a>
+        </div>
+      );
+    }
   }
 }
 
 Blog.propTypes = {
-  posts: PropTypes.array.isRequired,
+  items: PropTypes.array,
   isFetching: PropTypes.bool.isRequired,
-  lastUpdated: PropTypes.number,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  isError: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => {
-  const { postsStore } = state;
+  const { postsReducer } = state;
 
   const {
       isFetching,
-      lastUpdated,
-      items: posts
-  } = postsStore || {
+      items,
+      isError
+  } = postsReducer || {
     isFetching: true,
-    items: []
+    items: [],
+    isError: false
   }
 
   return {
     isFetching,
-    lastUpdated,
-    posts,
+    items,
+    isError
   }
 }
 

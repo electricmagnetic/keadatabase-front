@@ -1,29 +1,36 @@
 import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form'
+import { reducer as formReducer } from 'redux-form';
 
-import { REQUEST_BANDCOMBOS, RECEIVE_BANDCOMBOS } from '../actions/bandcombos.js';
-import { REQUEST_BIRD, RECEIVE_BIRD } from '../actions/birds.js'
-import { REQUEST_PAGES, RECEIVE_PAGES } from '../actions/pages.js';
-import { REQUEST_POSTS, RECEIVE_POSTS } from '../actions/posts.js';
+import { BANDCOMBOS_REQUEST, BANDCOMBOS_RECEIVE, BANDCOMBOS_ERROR } from '../actions/bandCombos.js';
+import { BIRD_REQUEST, BIRD_RECEIVE, BIRD_ERROR } from '../actions/birds.js';
+import { PAGES_REQUEST, PAGES_RECEIVE, PAGES_ERROR } from '../actions/pages.js';
+import { POSTS_REQUEST, POSTS_RECEIVE, POSTS_ERROR } from '../actions/posts.js';
 
 const initialBandCombosState = {
+  query: '',
   isFetching: false,
   items: [],
-  query: ''
+  isError: false
 };
 
-const bandcombosStore = (state = initialBandCombosState, action) => {
+const bandCombosReducer = (state = initialBandCombosState, action) => {
   switch (action.type) {
-    case REQUEST_BANDCOMBOS:
+    case BANDCOMBOS_REQUEST:
       return Object.assign({}, state, {
         isFetching: true,
-        query: action.query
+        query: action.meta.query
       });
-    case RECEIVE_BANDCOMBOS:
+    case BANDCOMBOS_RECEIVE:
       return Object.assign({}, state, {
         isFetching: false,
-        items: action.bandcombos,
-        lastUpdated: action.receivedAt
+        items: action.payload.results,
+        isError: false
+      });
+    case BANDCOMBOS_ERROR:
+      return Object.assign({}, state, {
+        isFetching: false,
+        items: null,
+        isError: true
       });
   default:
     return state;
@@ -32,32 +39,40 @@ const bandcombosStore = (state = initialBandCombosState, action) => {
 
 const initialBirdState = {
   isFetching: false,
-  item: {}
+  item: {},
+  isError: false
 };
 
 function bird(state = initialBirdState, action) {
   switch (action.type) {
-    case REQUEST_BIRD:
+    case BIRD_REQUEST:
       return Object.assign({}, state, {
         isFetching: true
       });
-    case RECEIVE_BIRD:
+    case BIRD_RECEIVE:
       return Object.assign({}, state, {
         isFetching: false,
-        item: action.item,
-        lastUpdated: action.receivedAt
+        item: action.payload,
+        isError: false
+      });
+    case BIRD_ERROR:
+      return Object.assign({}, state, {
+        isFetching: false,
+        item: null,
+        isError: true
       });
   default:
     return state;
   }
 };
 
-const birdsStore = (state = {}, action) => {
+const birdsReducer = (state = {}, action) => {
   switch (action.type) {
-    case REQUEST_BIRD:
-    case RECEIVE_BIRD:
+    case BIRD_REQUEST:
+    case BIRD_RECEIVE:
+    case BIRD_ERROR:
       return Object.assign({}, state, {
-        [action.slug]: bird(state[action.slug], action)
+        [action.meta.slug]: bird(state[action.meta.slug], action)
       });
   default:
     return state;
@@ -66,42 +81,56 @@ const birdsStore = (state = {}, action) => {
 
 const initialPagesState = {
   isFetching: false,
-  items: []
+  items: [],
+  isError: false
 };
 
-const pagesStore = (state = initialPagesState, action) => {
+const pagesReducer = (state = initialPagesState, action) => {
   switch (action.type) {
-    case REQUEST_PAGES:
+    case PAGES_REQUEST:
       return Object.assign({}, state, {
         isFetching: true
       });
-    case RECEIVE_PAGES:
+    case PAGES_RECEIVE:
       return Object.assign({}, state, {
         isFetching: false,
-        items: action.pages,
-        lastUpdated: action.receivedAt
+        items: action.payload,
+        isError: false
+      });
+    case PAGES_ERROR:
+      return Object.assign({}, state, {
+        isFetching: false,
+        items: null,
+        isError: true
       });
   default:
     return state;
   }
 };
 
-const initialPostsState = {
+const intialPostsState = {
   isFetching: false,
-  items: []
+  items: [],
+  isError: false
 };
 
-const postsStore = (state = initialPostsState, action) => {
+const postsReducer = (state = intialPostsState, action) => {
   switch (action.type) {
-    case REQUEST_POSTS:
+    case POSTS_REQUEST:
       return Object.assign({}, state, {
         isFetching: true
       });
-    case RECEIVE_POSTS:
+    case POSTS_RECEIVE:
       return Object.assign({}, state, {
         isFetching: false,
-        items: action.posts,
-        lastUpdated: action.receivedAt
+        items: action.payload,
+        isError: false
+      });
+    case POSTS_ERROR:
+      return Object.assign({}, state, {
+        isFetching: false,
+        items: null,
+        isError: true
       });
   default:
     return state;
@@ -109,9 +138,9 @@ const postsStore = (state = initialPostsState, action) => {
 };
 
 export default combineReducers({
-  bandcombosStore,
-  birdsStore,
-  pagesStore,
-  postsStore,
+  bandCombosReducer,
+  birdsReducer,
+  pagesReducer,
+  postsReducer,
   form: formReducer
 });

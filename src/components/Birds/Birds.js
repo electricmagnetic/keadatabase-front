@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fetchBandCombosIfNeeded } from '../../actions/bandcombos.js';
+import { fetchBandCombosIfNeeded } from '../../actions/bandCombos.js';
+
+import Error from '../Helpers/Error';
+import Loader from '../Helpers/Loader';
 import BirdCard from '../Bird/BirdCard';
 
 class Birds extends Component {
@@ -12,50 +15,60 @@ class Birds extends Component {
   }
 
   render() {
-    const { items, isFetching } = this.props;
-    return(
-      <div className="Birds">
-        {isFetching
-            ? <div className="loader"></div>
-            : !items.length && <p>No Results</p>
-        }
-        <div className="row is-flex">
-          {items.map(bandcombo =>
-            <div key={ bandcombo.bird.slug } className="col-xs-6 col-sm-4">
-              <BirdCard bird={ bandcombo.bird } />
-            </div>
-          )}
+    const bandCombos = this.props.items;
+
+    if (this.props.isFetching) {
+      return (<Loader />);
+    }
+    else if (this.props.isError) {
+      return (<Error />);
+    }
+    else {
+      return(
+        <div className="Birds">
+          {
+            !bandCombos.length && <p>No Results</p>
+          }
+          <div className="row is-flex">
+            {bandCombos.map(bandCombo =>
+              <div key={ bandCombo.bird.slug } className="col-xs-6 col-sm-4">
+                <BirdCard bird={ bandCombo.bird } />
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
 Birds.propTypes = {
-  items: PropTypes.array.isRequired,
+  query: PropTypes.string.isRequired,
+  items: PropTypes.array,
   isFetching: PropTypes.bool.isRequired,
-  lastUpdated: PropTypes.number,
+  isError: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { bandcombosStore } = state;
+  const { bandCombosReducer } = state;
 
   const {
       query,
       isFetching,
-      lastUpdated,
       items,
-  } = bandcombosStore || {
+      isError
+  } = bandCombosReducer || {
     isFetching: true,
-    items: []
+    items: [],
+    isError: false
   }
 
   return {
     query,
     isFetching,
-    lastUpdated,
     items,
+    isError
   }
 }
 

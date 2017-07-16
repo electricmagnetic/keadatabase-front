@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 
 import { fetchBirdIfNeeded } from '../../actions/birds.js';
 
+import Error from '../Helpers/Error';
+import Loader from '../Helpers/Loader';
+
 import placeholder from '../../assets/img/placeholder_large.png';
 import './BirdFeatured.css';
 
@@ -15,15 +18,25 @@ class BirdFeatured extends Component {
     dispatch(fetchBirdIfNeeded(slug));
   }
 
+  componentDidUpdate() {
+    // Here if page is 'reloaded' without the component being re-rendered
+    const { dispatch, slug } = this.props;
+    dispatch(fetchBirdIfNeeded(slug));
+  }
+
   render() {
-    const { bird } = this.props;
-    return(
-      <div className="BirdFeatured">
-        <div className="container">
-          {!bird.slug &&
-            <div className="loader"></div>
-          }
-          { bird.slug &&
+    const bird = this.props.item;
+
+    if (this.props.isFetching) {
+      return (<div className="container"><Loader /></div>);
+    }
+    else if (this.props.isError) {
+      return (<div className="container"><Error /></div>);
+    }
+    else {
+      return(
+        <div className="BirdFeatured">
+          <div className="container">
             <div className="row">
               <div className="col-sm-3 col-md-2 col-md-offset-2 featured-img">
                 <p>
@@ -48,38 +61,40 @@ class BirdFeatured extends Component {
                 </p>
               </div>
             </div>
-          }
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
 BirdFeatured.propTypes = {
   slug: PropTypes.string.isRequired,
-  bird: PropTypes.object.isRequired,
+  item: PropTypes.object,
   isFetching: PropTypes.bool.isRequired,
-  lastUpdated: PropTypes.number,
+  isError: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state, ownProps) {
   const { slug } = ownProps;
-  const { birdsStore } = state;
+  const { birdsReducer } = state;
+
   const {
     isFetching,
-    lastUpdated,
-    item: bird,
-  } = birdsStore[slug] || {
+    item,
+    isError
+  } = birdsReducer[slug] || {
     isFetching: true,
-    item: {}
+    item: {},
+    isError: false
   };
 
   return {
     slug,
-    bird,
     isFetching,
-    lastUpdated
+    item,
+    isError
   }
 }
 
