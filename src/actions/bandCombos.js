@@ -2,7 +2,7 @@ import { CALL_API } from 'redux-api-middleware';
 
 export const BANDCOMBOS_REQUEST = 'api:/band_combos/REQUEST';
 export const BANDCOMBOS_RECEIVE = 'api:/band_combos/RECEIVE';
-export const BANDCOMBOS_ERROR = 'api:/band_combosERROR';
+export const BANDCOMBOS_ERROR = 'api:/band_combos/ERROR';
 
 function fetchBandCombos(query) {
   return {
