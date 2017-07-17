@@ -27,7 +27,7 @@ function bird(state = initialBirdState, action) {
   default:
     return state;
   }
-};
+}
 
 const birdsReducer = (state = {}, action) => {
   switch (action.type) {

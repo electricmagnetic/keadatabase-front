@@ -1,5 +1,9 @@
 @import "../../assets/css/variables";
 
 .SightingDetail {
-
+  .details-table {
+    tr:last-child {
+      border-bottom: 1px solid $table-border-color;
+    }
+  }
 }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class QualityIndicator extends Component {
+  /* Renders a tick, hourglass or cross depending on quality state given (-1 to 2). SR friendly. */
+
   render() {
     const { quality } = this.props;
     var indicator = '';

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Moment from 'react-moment';
 import { connect } from 'react-redux';
 
 import { fetchSightingsIfNeeded } from '../../actions/sightings.js';
 
-import Error from '../../components/Helpers/Error';
-import Loader from '../../components/Helpers/Loader';
+import Error from '../Helpers/Error';
+import Loader from '../Helpers/Loader';
+import SightingsDate from '../Helpers/SightingsDate';
 import QualityIndicator from '../Helpers/QualityIndicator';
 
 class SightingTableRow extends Component {
@@ -18,9 +18,9 @@ class SightingTableRow extends Component {
       <tr>
         <td>
           <Link to={ '/sightings/' + sighting.id }>
-            <Moment format="dddd DD MMMM YYYY [at] h:mm a" parse="YYYY-MM-DD HH:mm:ss">
+            <SightingsDate>
               { sighting.date_sighted } { sighting.time_sighted }
-            </Moment>
+            </SightingsDate>
           </Link>
         </td>
         <td>
@@ -48,11 +48,11 @@ class SightingsTable extends Component {
       return (<div className="container"><Error /></div>);
     }
     else {
-      var sightings = this.props.items;
+      var { result, entities } = this.props;
 
       if(this.props.limit > 0) {
         // Enables a reduced list to be shown, whilst still getting the full list of sightings
-        sightings = sightings.slice(0, this.props.limit);
+        result = result.slice(0, this.props.limit);
       }
 
       return(
@@ -65,8 +65,8 @@ class SightingsTable extends Component {
             </tr>
           </thead>
           <tbody>
-            { sightings.map(sighting =>
-              <SightingTableRow key={ sighting.id } sighting={ sighting } />
+            { result.map(key =>
+              <SightingTableRow key={ key } sighting={ entities.sightings[key] } />
             ) }
           </tbody>
         </table>
@@ -76,7 +76,8 @@ class SightingsTable extends Component {
 }
 
 SightingsTable.propTypes = {
-  items: PropTypes.array,
+  entities: PropTypes.object,
+  result: PropTypes.array,
   isFetching: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
   isError: PropTypes.bool.isRequired,
@@ -92,17 +93,15 @@ const mapStateToProps = (state) => {
 
   const {
       isFetching,
-      items,
+      entities,
+      result,
       isError
-  } = sightingsReducer || {
-    isFetching: true,
-    items: [],
-    isError: false
-  }
+  } = sightingsReducer;
 
   return {
     isFetching,
-    items,
+    entities,
+    result,
     isError
   }
 }

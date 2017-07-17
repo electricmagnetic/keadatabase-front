@@ -4,22 +4,15 @@ import { connect } from 'react-redux';
 
 import { fetchSightingsIfNeeded } from '../../actions/sightings.js';
 
-import Error from '../../components/Helpers/Error';
-import Loader from '../../components/Helpers/Loader';
+import generateMarker from '../Helpers/generateMarker';
+import Error from '../Helpers/Error';
+import Loader from '../Helpers/Loader';
 import Map from '../Map/Map';
 
-function generateMarkers(sightings) {
-  return sightings.map(sighting => ({
-    position: {
-      lng: sighting.point_location.coordinates[0],
-      lat: sighting.point_location.coordinates[1]
-    },
-    key: sighting.id,
-    showInfo: false,
-    infoContent: (
-      sighting.date + sighting.time
-    )
-  }));
+function generateMarkers(result, entities) {
+  return result.map(key => {
+    return generateMarker(entities.sightings[key]);
+  });
 }
 
 class SightingsMap extends Component {
@@ -29,7 +22,6 @@ class SightingsMap extends Component {
   }
 
   render() {
-
     if (this.props.isFetching) {
       return (<div className="container"><Loader /></div>);
     }
@@ -37,8 +29,10 @@ class SightingsMap extends Component {
       return (<div className="container"><Error /></div>);
     }
     else {
-      const sightings = this.props.items;
-      const markers = generateMarkers(sightings);
+      var { result, entities } = this.props;
+
+      const markers = generateMarkers(result, entities);
+
       return(
         <div className="SightingsMap">
           <section>
@@ -55,7 +49,8 @@ class SightingsMap extends Component {
 }
 
 SightingsMap.propTypes = {
-  items: PropTypes.array,
+  entities: PropTypes.object,
+  result: PropTypes.array,
   isFetching: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
   isError: PropTypes.bool.isRequired
@@ -66,17 +61,15 @@ const mapStateToProps = (state) => {
 
   const {
       isFetching,
-      items,
+      entities,
+      result,
       isError
-  } = sightingsReducer || {
-    isFetching: true,
-    items: [],
-    isError: false
-  }
+  } = sightingsReducer;
 
   return {
     isFetching,
-    items,
+    entities,
+    result,
     isError
   }
 }
