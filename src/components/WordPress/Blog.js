@@ -18,7 +18,7 @@ class BlogPost extends Component {
         <a href={ post.link }>
           <h3 dangerouslySetInnerHTML={{__html: post.title.rendered }}></h3>
         </a>
-        <h4><Moment format='dddd DD MMMM YYYY, hh:mm a'>{ post.date }</Moment></h4>
+        <h4><Moment format="dddd DD MMMM YYYY, h:mm a">{ post.date }</Moment></h4>
         <div dangerouslySetInnerHTML={{__html: post.excerpt.rendered }}></div>
       </li>
     );
@@ -40,15 +40,11 @@ class Blog extends Component {
     }
     else {
       return(
-        <div className="Blog">
-          <h2>Blog</h2>
-          <ul className="list-unstyled">
-            {this.props.items.map(post =>
-              <BlogPost post={ post } key={ post.id }/>
-            )}
-          </ul>
-          <a href="https://blog.keadatabase.nz/">More posts</a>
-        </div>
+        <ul className="Blog list-unstyled">
+          {this.props.items.map(post =>
+            <BlogPost post={ post } key={ post.id }/>
+          )}
+        </ul>
       );
     }
   }

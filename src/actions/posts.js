@@ -7,7 +7,7 @@ export const POSTS_ERROR = 'wordpress:/posts/ERROR';
 function fetchPosts() {
   return {
     [CALL_API]: {
-      endpoint: `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/posts?per_page=2`,
+      endpoint: `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/posts?per_page=1`,
       method: 'GET',
       types: [POSTS_REQUEST, POSTS_RECEIVE, POSTS_ERROR]
     }

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import './TooltipText.css';
 
 class TooltipText extends Component {
+  /* Provides a clickable tooltip with a customisable glyphicon and placement */
   componentDidMount() {
     window.$('[data-toggle="tooltip"]').tooltip();
   }
