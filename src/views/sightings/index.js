@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
 import Banner from '../../components/presentation/Banner/Banner';
-import SightingsTable from '../../components/Sightings/SightingsTable';
-import SightingsMap from '../../components/Sightings/SightingsMap';
+import SightingsTable from '../../components/sightings/SightingsTable';
+import SightingsMap from '../../components/sightings/SightingsMap';
 
 class SightingsPage extends Component {
   render() {

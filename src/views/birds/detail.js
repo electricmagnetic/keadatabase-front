@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import BirdDetail from '../../components/Bird/BirdDetail';
-import BirdSightingsTable from '../../components/BirdSightings/BirdSightingsTable';
-import BirdSightingsMap from '../../components/BirdSightings/BirdSightingsMap';
+import BirdDetail from '../../components/birds/BirdDetail';
+import BirdSightingsTable from '../../components/birdSightings/BirdSightingsTable';
+import BirdSightingsMap from '../../components/birdSightings/BirdSightingsMap';
 
 class BirdDetailPage extends Component {
   render() {

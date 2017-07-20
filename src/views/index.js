@@ -5,8 +5,8 @@ import Helmet from 'react-helmet';
 import Blog from '../components/wordpress/Blog';
 import Page from '../components/wordpress/Page';
 import Banner from '../components/presentation/Banner/Banner';
-import BirdFeatured from '../components/Bird/BirdFeatured';
-import SightingsTable from '../components/Sightings/SightingsTable';
+import BirdFeatured from '../components/birds/BirdFeatured';
+import SightingsTable from '../components/sightings/SightingsTable';
 
 import banner from '../assets/img/banners/home.jpg';
 
