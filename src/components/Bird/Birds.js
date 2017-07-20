@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 import { fetchBandCombosIfNeeded } from '../../actions/bandCombos.js';
 
-import Error from '../Helpers/Error';
-import Loader from '../Helpers/Loader';
-import BirdCard from '../Bird/BirdCard';
+import Error from '../helpers/Error';
+import Loader from '../helpers/Loader';
+import BirdCard from './BirdCard';
 
 class Birds extends Component {
   componentDidMount() {

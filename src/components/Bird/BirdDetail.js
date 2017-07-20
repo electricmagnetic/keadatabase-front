@@ -5,16 +5,16 @@ import { connect } from 'react-redux';
 
 import { fetchBirdIfNeeded } from '../../actions/birds.js';
 
-import Banner from '../Banner/Banner';
-import TooltipText from '../Helpers/TooltipText';
-import PrettyBandCombo from '../Helpers/PrettyBandCombo';
-import Error from '../Helpers/Error';
-import Loader from '../Helpers/Loader';
+import Banner from '../presentation/Banner/Banner';
+import TooltipText from '../helpers/TooltipText';
+import PrettyBandCombo from '../helpers/PrettyBandCombo';
+import Error from '../helpers/Error';
+import Loader from '../helpers/Loader';
 
 import placeholder from '../../assets/img/placeholder_large.png';
-import './BirdProfile.css';
+import './BirdDetail.css';
 
-class BirdProfile extends Component {
+class BirdDetail extends Component {
   componentDidMount() {
     const { dispatch, slug } = this.props;
     dispatch(fetchBirdIfNeeded(slug));
@@ -31,7 +31,7 @@ class BirdProfile extends Component {
     }
     else {
       return(
-        <div className="BirdProfile">
+        <div className="BirdDetail">
           <Helmet title={ bird.name } />
           <Banner size="medium">
             <div className="row">
@@ -131,7 +131,7 @@ class BirdProfile extends Component {
   }
 }
 
-BirdProfile.propTypes = {
+BirdDetail.propTypes = {
   slug: PropTypes.string.isRequired,
   item: PropTypes.object,
   isFetching: PropTypes.bool.isRequired,
@@ -161,4 +161,4 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-export default connect(mapStateToProps)(BirdProfile);
+export default connect(mapStateToProps)(BirdDetail);

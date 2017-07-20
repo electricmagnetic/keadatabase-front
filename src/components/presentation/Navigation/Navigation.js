@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-import logo from '../../assets/img/logo.svg';
+import logo from '../../../assets/img/logo.svg';
 import './Navigation.css';
 
 class Navigation extends Component {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-import Banner from '../../components/Banner/Banner';
-import SightingDetail from '../../components/Sighting/SightingDetail';
+import Banner from '../../components/presentation/Banner/Banner';
+import SightingDetail from '../../components/Sightings/SightingDetail';
 import BirdSightingsTable from '../../components/BirdSightings/BirdSightingsTable';
 import SightingsMap from '../../components/Sightings/SightingsMap';
 

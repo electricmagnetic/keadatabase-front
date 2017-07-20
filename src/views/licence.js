@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-import Page from '../components/WordPress/Page';
+import Page from '../components/wordpress/Page';
 
 class LicencePage extends Component {
   render() {

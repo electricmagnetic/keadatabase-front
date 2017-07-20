@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-import Banner from '../../components/Banner/Banner';
-import Birds from '../../components/Birds/Birds';
-// import BirdsFilterForm from '../../components/Birds/BirdsFilterForm';
-import BirdsSearchForm from '../../components/Birds/BirdsSearchForm';
+import Banner from '../../components/presentation/Banner/Banner';
+import Birds from '../../components/Bird/Birds';
+// import BirdsFilterForm from '../../components/Bird/search/BirdsFilterForm';
+import BirdsSearchForm from '../../components/Bird/search/BirdsSearchForm';
 import { fetchBandCombosIfNeeded } from '../../actions/bandCombos.js';
 
 class BirdsPage extends Component {

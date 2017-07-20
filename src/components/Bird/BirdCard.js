@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import PrettyBandCombo from '../Helpers/PrettyBandCombo';
+import PrettyBandCombo from '../helpers/PrettyBandCombo';
 
 import placeholder from '../../assets/img/placeholder_thumbnail.png';
 import './BirdCard.css';

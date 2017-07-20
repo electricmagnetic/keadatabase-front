@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Error from '../Helpers/Error';
-import Loader from '../Helpers/Loader';
+import Error from '../helpers/Error';
+import Loader from '../helpers/Loader';
 import { fetchPagesIfNeeded } from '../../actions/pages.js';
 
 class Page extends Component {

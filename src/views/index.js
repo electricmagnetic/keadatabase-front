@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 
-import Blog from '../components/WordPress/Blog';
-import Page from '../components/WordPress/Page';
-import Banner from '../components/Banner/Banner';
+import Blog from '../components/wordpress/Blog';
+import Page from '../components/wordpress/Page';
+import Banner from '../components/presentation/Banner/Banner';
 import BirdFeatured from '../components/Bird/BirdFeatured';
 import SightingsTable from '../components/Sightings/SightingsTable';
 

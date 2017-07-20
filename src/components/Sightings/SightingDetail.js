@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import { fetchSightingsIfNeeded } from '../../actions/sightings.js';
 
-import Error from '../Helpers/Error';
-import Loader from '../Helpers/Loader';
-import QualityIndicator from '../Helpers/QualityIndicator';
-import SightingsDate from '../Helpers/SightingsDate';
+import Error from '../helpers/Error';
+import Loader from '../helpers/Loader';
+import QualityIndicator from '../helpers/QualityIndicator';
+import SightingsDate from '../helpers/SightingsDate';
 
 import './SightingDetail.css';
 
