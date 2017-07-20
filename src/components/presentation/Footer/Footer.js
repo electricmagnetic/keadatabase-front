@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import apkt from '../../assets/img/apkt.svg';
+import apkt from '../../../assets/img/apkt.svg';
 import './Footer.css';
 
 class Footer extends Component {

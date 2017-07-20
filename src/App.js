@@ -5,9 +5,9 @@ import ReactGA from 'react-ga';
 import createHistory from 'history/createBrowserHistory'
 
 import configureStore from './store/store';
-import Navigation from './components/Navigation/Navigation';
-import Footer from './components/Footer/Footer';
-import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import Navigation from './components/presentation/Navigation/Navigation';
+import Footer from './components/presentation/Footer/Footer';
+import ScrollToTop from './components/helpers/ScrollToTop';
 
 import HomePage from './views/index';
 import AboutPage from './views/about';

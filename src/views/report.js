@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-import Banner from '../components/Banner/Banner';
+import Banner from '../components/presentation/Banner/Banner';
 
 class ReportPage extends Component {
   render() {

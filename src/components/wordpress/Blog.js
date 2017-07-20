@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 
-import Error from '../Helpers/Error';
-import Loader from '../Helpers/Loader';
+import Error from '../helpers/Error';
+import Loader from '../helpers/Loader';
 import { fetchPostsIfNeeded } from '../../actions/posts.js';
 
 import './Blog.css';

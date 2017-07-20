@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-import Banner from '../../components/Banner/Banner';
-import SightingDetail from '../../components/Sighting/SightingDetail';
-import BirdSightingsTable from '../../components/BirdSightings/BirdSightingsTable';
-import SightingsMap from '../../components/Sightings/SightingsMap';
+import Banner from '../../components/presentation/Banner/Banner';
+import SightingDetail from '../../components/sightings/SightingDetail';
+import BirdSightingsTable from '../../components/birdSightings/BirdSightingsTable';
+import SightingsMap from '../../components/sightings/SightingsMap';
 
 class SightingDetailPage extends Component {
   render() {

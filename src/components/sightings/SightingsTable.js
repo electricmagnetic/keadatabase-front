@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 
 import { fetchSightingsIfNeeded } from '../../actions/sightings.js';
 
-import Error from '../Helpers/Error';
-import Loader from '../Helpers/Loader';
-import SightingsDate from '../Helpers/SightingsDate';
-import QualityIndicator from '../Helpers/QualityIndicator';
+import Error from '../helpers/Error';
+import Loader from '../helpers/Loader';
+import SightingsDate from '../helpers/SightingsDate';
+import QualityIndicator from '../helpers/QualityIndicator';
 
 class SightingTableRow extends Component {
   render() {

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './Error.css';
 
 class Error extends Component {
+  /* Implements an consistent error box with a customisable message */
   render() {
     return(
       <div className="Error">

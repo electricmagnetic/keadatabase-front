@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 
 import { fetchBirdIfNeeded } from '../../actions/birds.js';
 
-import Error from '../Helpers/Error';
-import Loader from '../Helpers/Loader';
+import Error from '../helpers/Error';
+import Loader from '../helpers/Loader';
 
 import placeholder from '../../assets/img/placeholder_large.png';
 import './BirdFeatured.css';

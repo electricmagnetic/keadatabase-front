@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 
 import { fetchBirdSightingsIfNeeded } from '../../actions/birdSightings.js';
 
-import SightingsDate from '../Helpers/SightingsDate';
-import Error from '../Helpers/Error';
-import Loader from '../Helpers/Loader';
+import SightingsDate from '../helpers/SightingsDate';
+import Error from '../helpers/Error';
+import Loader from '../helpers/Loader';
 
 import './BirdSightingsTable.css';
 

@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 import { fetchBirdSightingsIfNeeded } from '../../actions/birdSightings.js';
 
-import generateMarker from '../Helpers/generateMarker';
-import Error from '../Helpers/Error';
-import Loader from '../Helpers/Loader';
+import generateMarker from '../helpers/generateMarker';
+import Error from '../helpers/Error';
+import Loader from '../helpers/Loader';
 import Map from '../Map/Map';
 
 function generateMarkers(result, entities) {
