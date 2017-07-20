@@ -99,29 +99,31 @@ class BirdProfile extends Component {
                     </tbody>
                   </table>
                 </section>
-                { bird.bird_extended &&
-                  <div className="bird-extended">
-                    { bird.bird_extended.description &&
-                      <section>
-                        <h2>About Me</h2>
-                        <p>{ bird.bird_extended.description }</p>
-                      </section>
-                    }
-                    { bird.bird_extended.sponsor_name &&
-                      <section>
-                        <h2>Sponsor</h2>
-                        <p>
-                          I'm sponsored by { bird.bird_extended.sponsor_name }.
-                        </p>
-                      </section>
-                      }
-                  </div>
-                }
               </div>
               <div className="col-sm-4 col-sm-offset-1">
                 {/* Placeholder for image (with negative margins) */}
               </div>
             </div>
+            { bird.bird_extended &&
+              <section>
+                <div className="bird-extended">
+                  { bird.bird_extended.description &&
+                    <section>
+                      <h3>About Me</h3>
+                      <p>{ bird.bird_extended.description }</p>
+                    </section>
+                  }
+                  { bird.bird_extended.sponsor_name &&
+                    <section>
+                      <h3>Sponsor</h3>
+                      <p>
+                        My sponsor is: { bird.bird_extended.sponsor_name }.
+                      </p>
+                    </section>
+                    }
+                </div>
+              </section>
+            }
           </div>
         </div>
       );

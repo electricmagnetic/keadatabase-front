@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fetchSightingsIfNeeded } from '../../actions/sightings.js';
+import { fetchBirdSightingsIfNeeded } from '../../actions/birdSightings.js';
 
 import generateMarker from '../Helpers/generateMarker';
 import Error from '../Helpers/Error';
@@ -11,41 +11,32 @@ import Map from '../Map/Map';
 
 function generateMarkers(result, entities) {
   return result.map(key => {
-    return generateMarker(entities.sightings[key]);
+    return generateMarker(entities.birdSightings[key]);
   });
 }
 
-class SightingsMap extends Component {
+class BirdSightingsMap extends Component {
   componentDidMount() {
-    const { dispatch, id } = this.props;
-    dispatch(fetchSightingsIfNeeded(id));
+    const { dispatch, bird } = this.props;
+    dispatch(fetchBirdSightingsIfNeeded('', bird));
   }
 
   render() {
-    const { id } = this.props;
-
     if (this.props.isFetching) {
-      return (<Loader />);
-    }
-    else if (id && !this.props.entities.sightings[id]) {
       return (<Loader />);
     }
     else if (this.props.isError) {
       return (<Error />);
     }
+    else if (!this.props.entities.birdSightings) {
+      return(<p className="no-sightings" />);
+    }
     else {
       var { result, entities } = this.props;
-      var markers = {};
-
-      if (id) {
-        markers = [generateMarker(entities.sightings[id])];
-      }
-      else {
-        markers = generateMarkers(result, entities);
-      }
+      var markers = generateMarkers(result, entities);
 
       return(
-        <div className="SightingsMap">
+        <div className="BirdSightingsMap">
           <section>
             <Map
                containerElement={ <div className="map-container" /> }
@@ -59,8 +50,8 @@ class SightingsMap extends Component {
   }
 }
 
-SightingsMap.propTypes = {
-  id: PropTypes.string,
+BirdSightingsMap.propTypes = {
+  bird: PropTypes.string.isRequired,
   entities: PropTypes.object,
   result: PropTypes.array,
   isFetching: PropTypes.bool.isRequired,
@@ -68,19 +59,15 @@ SightingsMap.propTypes = {
   isError: PropTypes.bool.isRequired
 }
 
-SightingsMap.defaultProps = {
-  id: ''
-}
-
 const mapStateToProps = (state) => {
-  const { sightingsReducer } = state;
+  const { birdSightingsReducer } = state;
 
   const {
       isFetching,
       entities,
       result,
       isError
-  } = sightingsReducer;
+  } = birdSightingsReducer;
 
   return {
     isFetching,
@@ -90,4 +77,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(SightingsMap);
+export default connect(mapStateToProps)(BirdSightingsMap);

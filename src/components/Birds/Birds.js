@@ -50,7 +50,7 @@ Birds.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   const { bandCombosReducer } = state;
 
   const {

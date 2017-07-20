@@ -42,10 +42,10 @@ class SightingsTable extends Component {
 
   render() {
     if (this.props.isFetching) {
-      return (<div className="container"><Loader /></div>);
+      return (<Loader />);
     }
     else if (this.props.isError) {
-      return (<div className="container"><Error /></div>);
+      return (<Error />);
     }
     else {
       var { result, entities } = this.props;

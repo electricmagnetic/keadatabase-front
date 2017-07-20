@@ -9,6 +9,7 @@ const Map = withGoogleMap(props => (
   <GoogleMap
     defaultZoom={6}
     defaultCenter={{ lat: -43.983333, lng: 170.450000 }}
+    mapTypeId="terrain"
     >
     { props.markers &&
       <MarkerClusterer
