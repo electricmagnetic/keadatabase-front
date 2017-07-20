@@ -1,0 +1,13 @@
+@import "../../assets/css/variables";
+
+.ReportSelector, .ReportSighting, .ReportNonSighting {
+  p.question {
+
+  }
+  p.help-block {
+    font-size: $font-size-small;
+    @media (min-width: $screen-sm-min) {
+      margin-top: 0;
+    }
+  }
+}
