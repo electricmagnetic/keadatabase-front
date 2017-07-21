@@ -21,7 +21,7 @@ class BirdsPage extends Component {
           <h1>Birds</h1>
         </Banner>
         <div className="container">
-          <BirdsSearchForm onSubmit={this.submit} />
+          <BirdsSearchForm onSubmit={ this.submit } />
           {/* <div className="row">
             <div className="col-sm-4 col-md-3">
               <div className="panel panel-default">

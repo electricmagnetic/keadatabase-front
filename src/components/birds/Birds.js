@@ -26,8 +26,8 @@ class Birds extends Component {
     else {
       return(
         <div className="Birds">
-          {
-            !bandCombos.length && <p>No Results</p>
+          { !bandCombos.length &&
+            <p>No Results</p>
           }
           <div className="row is-flex">
             {bandCombos.map(bandCombo =>

@@ -13,7 +13,7 @@ let BirdsSearchForm = props => {
           </div>
           <Field name="search" component="input" className="form-control" type="text" placeholder="Search" />
           <span className="input-group-btn">
-            <button type="submit" className="btn btn-primary" disabled={submitting}>Search</button>
+            <button type="submit" className="btn btn-primary" disabled={ submitting }>Search</button>
           </span>
         </div>
       </div>
@@ -22,7 +22,7 @@ let BirdsSearchForm = props => {
 }
 
 BirdsSearchForm = reduxForm({
-  form: 'birdssearch'
+  form: 'birdsSearch'
 })(BirdsSearchForm)
 
 export default BirdsSearchForm;
