@@ -4,16 +4,14 @@ import Page from '../../wordpress/Page';
 
 class SubmitFieldset extends Component {
   render() {
-    const { pristine, reset, submitting } = this.props;
+    const { pristine, submitting } = this.props;
 
     return(
       <fieldset>
+        <h2>5. Confirmation</h2>
         <Page id={185} hideTitle />
         <button type="submit" className="btn btn-primary" disabled={ pristine || submitting }>
-          Submit
-        </button>
-        <button type="button" className="btn btn-default" disabled={ pristine || submitting } onClick={ reset }>
-          Clear
+          <span className="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit
         </button>
       </fieldset>
     );

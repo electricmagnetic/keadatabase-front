@@ -20,10 +20,10 @@ class BannerButtons extends Component {
               <Link to="/birds">Search Birds &raquo;</Link>
             </div>
             <div className="col-sm-4 banner-button button-sightings">
-              <Link to="/report">Report Sightings &raquo;</Link>
+              <Link to="/report/sighting">Report Sighting &raquo;</Link>
             </div>
             <div className="col-sm-4 banner-button button-non-sightings">
-              <Link to="/report">Report Non-Sightings &raquo;</Link>
+              <Link to="/report/non-sighting">Report Non-Sighting &raquo;</Link>
             </div>
           </div>
         </div>

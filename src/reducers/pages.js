@@ -1,4 +1,4 @@
-import { PAGES_REQUEST, PAGES_RECEIVE, PAGES_ERROR } from '../actions/pages.js';
+import { PAGES_REQUEST, PAGES_RECEIVE, PAGES_ERROR } from '../actions/pages';
 
 const initialPagesState = {
   isFetching: false,

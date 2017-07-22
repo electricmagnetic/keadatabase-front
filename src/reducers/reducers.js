@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+import { routerReducer } from 'react-router-redux';
 
 import birdsReducer from './birds';
 import pagesReducer from './pages';
@@ -15,5 +16,6 @@ export default combineReducers({
   postsReducer,
   sightingsReducer,
   birdSightingsReducer,
-  form: formReducer
+  router: routerReducer,
+  form: formReducer,
 });

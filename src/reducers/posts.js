@@ -1,4 +1,4 @@
-import { POSTS_REQUEST, POSTS_RECEIVE, POSTS_ERROR } from '../actions/posts.js';
+import { POSTS_REQUEST, POSTS_RECEIVE, POSTS_ERROR } from '../actions/posts';
 
 const initialPostsState = {
   isFetching: false,

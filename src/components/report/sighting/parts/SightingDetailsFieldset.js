@@ -31,11 +31,42 @@ class SightingDetailsFieldset extends Component {
                 />
               </div>
             </div>
-            {/* Region */}
-            {/* Point Location */}
-            {/* Accuracy */}
-            {/* Specificity */}
-            {/* Sighting Type */}
+            <Field
+              component={ renderField }
+              type="text"
+              name="region"
+              label="Region"
+            />
+            <Field
+              component={ renderField }
+              type="number"
+              name="point_location.coordinates[0]"
+              label="Longitude"
+            />
+            <Field
+              component={ renderField }
+              type="number"
+              name="point_location.coordinates[1]"
+              label="Latitude"
+            />
+            <Field
+              component={ renderField }
+              type="text"
+              name="accuracy"
+              label="Accuracy"
+            />
+            <Field
+              component={ renderField }
+              type="text"
+              name="specificity"
+              label="Specificity"
+            />
+            <Field
+              component={ renderField }
+              type="text"
+              name="sighting_type"
+              label="Seen or heard?"
+            />
           </div>
           <div className="col-sm-5 col-sm-offset-1">
             <p className="help-block">

@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import React, { Component  } from 'react';
+import { Route, Switch  } from 'react-router-dom';
+import { Provider  } from 'react-redux';
 import ReactGA from 'react-ga';
-import createHistory from 'history/createBrowserHistory'
+import { ConnectedRouter } from 'react-router-redux';
 
 import configureStore from './store/store';
 import Navigation from './components/presentation/Navigation/Navigation';
 import Footer from './components/presentation/Footer/Footer';
 import ScrollToTop from './components/helpers/ScrollToTop';
+import history from './history/history';
 
 import HomePage from './views/index';
 import AboutPage from './views/about';
@@ -19,6 +20,7 @@ import SightingDetailPage from './views/sightings/detail';
 import ReportPage from './views/report/index';
 import ReportSightingPage from './views/report/sighting';
 import ReportNonSightingPage from './views/report/nonSighting';
+import ReportSuccessPage from './views/report/success';
 import NoMatchPage from './views/nomatch';
 import LicencePage from './views/licence';
 
@@ -26,7 +28,6 @@ import './assets/css/bootstrap.css';
 import './assets/css/custom.css';
 
 const store = configureStore();
-const history = createHistory();
 
 if (process.env.NODE_ENV === 'production') {
   ReactGA.initialize('UA-67905653-2');
@@ -44,37 +45,38 @@ if (process.env.NODE_ENV === 'production') {
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <Router history={history}>
+      <Provider store={ store }>
+        <ConnectedRouter history={ history }>
           <ScrollToTop>
             <div className="MainRouter">
               <Navigation />
 
               <main className="constrainer">
                 <Switch>
-                  <Route exact path="/" component={HomePage} />
-                  <Route exact path="/about" component={AboutPage} />
-                  <Route exact path="/terms" component={TermsPage} />
-                  <Route exact path="/licence" component={LicencePage} />
+                  <Route exact path="/" component={ HomePage } />
+                  <Route exact path="/about" component={ AboutPage } />
+                  <Route exact path="/terms" component={ TermsPage } />
+                  <Route exact path="/licence" component={ LicencePage } />
 
-                  <Route exact path="/birds" component={BirdsPage} />
-                  <Route exact path="/birds/:slug" component={BirdDetailPage} />
+                  <Route exact path="/birds" component={ BirdsPage } />
+                  <Route exact path="/birds/:slug" component={ BirdDetailPage } />
 
-                  <Route exact path="/sightings" component={SightingsPage} />
-                  <Route exact path="/sightings/:id" component={SightingDetailPage} />
+                  <Route exact path="/sightings" component={ SightingsPage } />
+                  <Route exact path="/sightings/:id" component={ SightingDetailPage } />
 
-                  <Route exact path="/report" component={ReportPage} />
-                  <Route exact path="/report/sighting" component={ReportSightingPage} />
-                  <Route exact path="/report/non-sighting" component={ReportNonSightingPage} />
+                  <Route exact path="/report" component={ ReportPage } />
+                  <Route exact path="/report/sighting" component={ ReportSightingPage } />
+                  <Route exact path="/report/non-sighting" component={ ReportNonSightingPage } />
+                  <Route exact path="/report/success" component={ ReportSuccessPage } />
 
-                  <Route component={NoMatchPage} />
+                  <Route component={ NoMatchPage } />
                 </Switch>
               </main>
 
               <Footer />
             </div>
           </ScrollToTop>
-        </Router>
+        </ConnectedRouter>
       </Provider>
     );
   }

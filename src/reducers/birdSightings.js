@@ -1,7 +1,7 @@
 import { normalize, schema } from 'normalizr';
 import merge from "lodash/merge";
 
-import { BIRDSIGHTINGS_REQUEST, BIRDSIGHTINGS_RECEIVE, BIRDSIGHTINGS_ERROR } from '../actions/birdSightings.js';
+import { BIRDSIGHTINGS_REQUEST, BIRDSIGHTINGS_RECEIVE, BIRDSIGHTINGS_ERROR } from '../actions/birdSightings';
 
 const birdSightingSchema = new schema.Entity('birdSightings');
 

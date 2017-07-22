@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { push } from 'react-router-redux';
 
 import { postReportSighting } from '../../actions/report';
 import { formApiAdapter } from '../../components/helpers/formApiAdapter';
@@ -18,7 +19,10 @@ class ReportSightingPage extends Component {
           <h1>Report Sighting</h1>
         </Banner>
         <div className="container">
-          <ReportSighting onSubmit={ this.props.onSubmit } />
+          <ReportSighting
+            onSubmit={ this.props.onSubmit }
+            onSubmitSuccess={ this.props.onSubmitSuccess }
+          />
         </div>
       </div>
     );
@@ -26,12 +30,17 @@ class ReportSightingPage extends Component {
 }
 
 ReportSightingPage.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  onSubmitSuccess: PropTypes.func.isRequired
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     onSubmit: formApiAdapter(dispatch, postReportSighting),
+    onSubmitSuccess: (result, dispatch, props) => {
+      dispatch(push('/report/success'));
+      props.reset();
+    },
     ...bindActionCreators(dispatch)
   }
 }

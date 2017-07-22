@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 
 import ContributorFieldset from '../common/ContributorFieldset';
 import SightingDetailsFieldset from './parts/SightingDetailsFieldset';
@@ -23,7 +23,7 @@ class ReportSighting extends Component {
           </div>
         }
         <p>
-          All fields are required, except where indicated.
+          All fields in steps 1-3 are required.
         </p>
         <ContributorFieldset />
         <SightingDetailsFieldset />
