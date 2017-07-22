@@ -8,7 +8,7 @@ class ReportSelector extends Component {
     return(
       <div className="ReportSelector">
         <fieldset>
-          <p className="question">Are you reporting a <strong>Sighting</strong> or a <strong>Non-Sighting</strong>?</p>
+          <p>Are you reporting a <strong>Sighting</strong> or a <strong>Non-Sighting</strong>?</p>
           <div className="row">
             <div className="col-sm-6">
               <div className="btn-group btn-group-lg" role="group" aria-label="Report Type Selector">
@@ -16,7 +16,7 @@ class ReportSelector extends Component {
                 <Link to="/report/non-sighting/" role="button" className="btn btn-default">Non-Sighting</Link>
               </div>
             </div>
-            <div className="col-sm-6">
+            <div className="col-sm-5 col-sm-offset-1">
               <p className="help-block">
                 A <strong>Sighting</strong> is for recording any times you heard or saw kea.<br />
                 Equally as important is a <strong>Non-Sighting</strong>, i.e. if
