@@ -38,7 +38,6 @@ const sightingsReducer = (state = initialSightingsState, action) => {
     case SIGHTINGS_ERROR:
       return Object.assign({}, state, {
         isFetching: false,
-        entities: null,
         isError: true
       });
   default:

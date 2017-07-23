@@ -24,14 +24,14 @@ class SightingsMap extends Component {
   render() {
     const { id } = this.props;
 
-    if (this.props.isFetching) {
+    if (this.props.isError) {
+      return (<Error>Either this sighting doesn't exist, or something went wrong here.</Error>);
+    }
+    else if (this.props.isFetching) {
       return (<Loader />);
     }
     else if (id && !this.props.entities.sightings[id]) {
       return (<Loader />);
-    }
-    else if (this.props.isError) {
-      return (<Error />);
     }
     else {
       var { result, entities } = this.props;

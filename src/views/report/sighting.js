@@ -38,7 +38,12 @@ function mapDispatchToProps(dispatch) {
   return {
     onSubmit: formApiAdapter(dispatch, postReportSighting),
     onSubmitSuccess: (result, dispatch, props) => {
-      dispatch(push('/report/success'));
+      if(result.payload.id) {
+        dispatch(push(`/report/success/${result.payload.id}`));
+      }
+      else {
+        dispatch(push('/report/success'));
+      }
       props.reset();
     },
     ...bindActionCreators(dispatch)

@@ -68,6 +68,7 @@ class App extends Component {
                   <Route exact path="/report/sighting" component={ ReportSightingPage } />
                   <Route exact path="/report/non-sighting" component={ ReportNonSightingPage } />
                   <Route exact path="/report/success" component={ ReportSuccessPage } />
+                  <Route exact path="/report/success/:id" component={ ReportSuccessPage } />
 
                   <Route component={ NoMatchPage } />
                 </Switch>

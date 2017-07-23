@@ -31,7 +31,6 @@ const birdSightingsReducer = (state = initialBirdSightingsState, action) => {
     case BIRDSIGHTINGS_ERROR:
       return Object.assign({}, initialBirdSightingsState, {
         isFetching: false,
-        entities: null,
         isError: true
       });
   default:
