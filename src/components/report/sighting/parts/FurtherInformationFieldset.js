@@ -5,48 +5,52 @@ import { renderField } from '../../../helpers/renderField';
 
 class FurtherInformationFieldset extends Component {
   render() {
+    const { options } = this.props;
+
     return(
       <fieldset>
-        <h2>4. Further Information <small>Optional</small></h2>
+        <legend>4. Further Information <small>Optional</small></legend>
         <p><em>All of these fields are optional</em>. Skip them if you're in a hurry!</p>
         <Field
           component={ renderField }
           name="comments"
-          label="Comments"
+          options={ options.comments }
           placeholder="Any comments?"
-          textarea
+          type="textarea"
         />
         <Field
           component={ renderField }
           name="behaviour"
-          label="Behaviour"
+          options={ options.behaviour }
           placeholder="What were the kea doing?"
-          textarea
+          type="textarea"
         />
         <div className="row">
           <div className="col-sm-4">
             <Field
               component={ renderField }
-              type="text"
               name="contributor.activity"
-              label="I am a…"
+              options={ options.contributor.children.activity }
+              label="I'm a…"
+              type="choice"
             />
           </div>
           <div className="col-sm-4">
             <Field
               component={ renderField }
-              type="text"
               name="contributor.heard"
+              options={ options.contributor.children.heard }
               label="I heard about this from…"
+              type="choice"
             />
           </div>
           <div className="col-sm-4">
             <Field
               component={ renderField }
-              type="text"
               name="contributor.phone"
-              label="Phone"
+              options={ options.contributor.children.phone }
               placeholder="Phone number"
+              type="text"
             />
           </div>
         </div>

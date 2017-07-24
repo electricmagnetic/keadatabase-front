@@ -5,33 +5,55 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { push } from 'react-router-redux';
 
+import { getReportSightingOptions } from '../../actions/report';
 import { postReportSighting } from '../../actions/report';
 import { formApiAdapter } from '../../components/helpers/formApiAdapter';
+
+import Error from '../../components/helpers/Error';
+import Loader from '../../components/helpers/Loader';
 import Banner from '../../components/presentation/Banner/Banner';
 import ReportSighting from '../../components/report/sighting/ReportSighting';
 
 class ReportSightingPage extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(getReportSightingOptions());
+  }
+
   render() {
-    return (
-      <div className="ReportSightingPage">
-        <Helmet title="Report Sighting" />
-        <Banner size="small">
-          <h1>Report Sighting</h1>
-        </Banner>
-        <div className="container">
-          <ReportSighting
-            onSubmit={ this.props.onSubmit }
-            onSubmitSuccess={ this.props.onSubmitSuccess }
-          />
+    if (this.props.isFetching) {
+      return (<div className="container"><Loader /></div>);
+    }
+    else if (this.props.isError) {
+      return (<div className="container"><Error /></div>);
+    }
+    else {
+      return (
+        <div className="ReportSightingPage">
+          <Helmet title="Report Sighting" />
+          <Banner size="small">
+            <h1>Report Sighting</h1>
+          </Banner>
+          <div className="container">
+            <ReportSighting
+              onSubmit={ this.props.onSubmit }
+              onSubmitSuccess={ this.props.onSubmitSuccess }
+              sightingOptions={ this.props.sightingOptions }
+            />
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
 ReportSightingPage.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  onSubmitSuccess: PropTypes.func.isRequired
+  onSubmitSuccess: PropTypes.func.isRequired,
+  sightingOptions: PropTypes.object.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired
 }
 
 function mapDispatchToProps(dispatch) {
@@ -46,12 +68,29 @@ function mapDispatchToProps(dispatch) {
       }
       props.reset();
     },
+    dispatch,
     ...bindActionCreators(dispatch)
   }
 }
 
 function mapStateToProps(state) {
-  return {}
+  const { reportReducer } = state;
+
+  const {
+    isFetching,
+    sightingOptions,
+    isError
+  } = reportReducer || {
+    isFetching: true,
+    sightingOptions: {},
+    isError: false
+  };
+
+  return {
+    isFetching,
+    sightingOptions,
+    isError
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReportSightingPage);

@@ -3,7 +3,7 @@ import { Field, FieldArray } from 'redux-form';
 
 import { renderField } from '../../../helpers/renderField';
 
-const renderBirds = ({ fields, meta: { error, submitFailed } }) => (
+const renderBirds = ({ fields, meta: { error, submitFailed }, options }) => (
   <div className="row">
     { fields.map((bird, index) => (
       <div key={ index } className="col-sm-6 col-md-4">
@@ -11,29 +11,29 @@ const renderBirds = ({ fields, meta: { error, submitFailed } }) => (
           <div className="panel-heading">Bird #{index + 1}</div>
           <div className="panel-body">
             <Field
+              component={ renderField }
               name={ `${bird}.banded` }
-              type="text"
-              component={ renderField }
-              label="Banded?"
+              options={ options.birds.child.children.banded }
+              type="choice"
             />
             <Field
+              component={ renderField }
               name={ `${bird}.band_combo` }
-              type="text"
-              component={ renderField }
-              label="What band?"
+              options={ options.birds.child.children.band_combo }
               placeholder="e.g. Black C on Yellow"
+              type="text"
             />
             <Field
+              component={ renderField }
               name={ `${bird}.sex_guess` }
-              type="text"
-              component={ renderField }
-              label="Sex (guess)"
+              options={ options.birds.child.children.sex_guess }
+              type="choice"
             />
             <Field
-              name={ `${bird}.life_stage_guess` }
-              type="text"
               component={ renderField }
-              label="Life Stage (guess)"
+              name={ `${bird}.life_stage_guess` }
+              options={ options.birds.child.children.life_stage_guess }
+              type="choice"
             />
             <button className="btn btn-default btn-sm" type="button" onClick={() => fields.remove(index)}>
               <span className="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove Bird
@@ -54,26 +54,28 @@ const renderBirds = ({ fields, meta: { error, submitFailed } }) => (
 
 class SightingBirdsFieldset extends Component {
   render() {
+    const { options } = this.props;
+
     return(
       <fieldset>
-        <h2>2. Birds</h2>
+        <legend>2. Birds</legend>
         <p>Tell us about the birds you heard/saw.</p>
         <div className="row">
           <div className="col-xs-6 col-sm-3">
             <Field
               component={ renderField }
-              type="text"
               name="sighting_type"
-              label="Seen or heard?"
+              options={ options.sighting_type }
+              type="choice"
             />
           </div>
           <div className="col-xs-6 col-sm-3">
             <Field
               component={ renderField }
-              type="number"
               name="number"
-              label="Number"
+              options={ options.number }
               placeholder="# sighted/heard"
+              type="number"
             />
           </div>
           <div className="col-sm-5 col-sm-offset-1">
@@ -83,7 +85,7 @@ class SightingBirdsFieldset extends Component {
         <div className="panel panel-default">
           <div className="panel-heading">What did you see?</div>
           <div className="panel-body">
-            <FieldArray name="birds" component={ renderBirds } />
+            <FieldArray name="birds" component={ renderBirds } options={ options } />
           </div>
         </div>
       </fieldset>

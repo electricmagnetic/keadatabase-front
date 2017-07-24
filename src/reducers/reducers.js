@@ -8,6 +8,7 @@ import postsReducer from './posts';
 import bandCombosReducer from './bandCombos';
 import sightingsReducer from './sightings';
 import birdSightingsReducer from './birdSightings';
+import reportReducer from './report';
 
 export default combineReducers({
   bandCombosReducer,
@@ -16,6 +17,7 @@ export default combineReducers({
   postsReducer,
   sightingsReducer,
   birdSightingsReducer,
+  reportReducer,
   router: routerReducer,
   form: formReducer,
 });

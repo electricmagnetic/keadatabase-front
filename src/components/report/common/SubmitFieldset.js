@@ -8,7 +8,7 @@ class SubmitFieldset extends Component {
 
     return(
       <fieldset>
-        <h2>5. Confirmation</h2>
+        <legend>5. Confirmation</legend>
         <Page id={185} hideTitle />
         <button type="submit" className="btn btn-primary" disabled={ pristine || submitting }>
           <span className="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit

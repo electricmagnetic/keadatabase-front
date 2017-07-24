@@ -1,12 +1,15 @@
 import { CALL_API } from 'redux-api-middleware';
 
-export const SIGHTINGPOST_POST = 'api:/report/sighting/POST';
-export const SIGHTINGPOST_SUCCESS = 'api:/report/sighting/SUCCESS';
-export const SIGHTINGPOST_ERROR = 'api:/report/sighting/ERROR';
+export const REPORTSIGHTING_POST = 'api:/report/sighting/POST';
+export const REPORTSIGHTING_SUCCESS = 'api:/report/sighting/SUCCESS';
+export const REPORTSIGHTING_FAILURE = 'api:/report/sighting/FAILURE';
 
 function formatSighting(sighting={}) {
   // Add challenge (basic spam prevention)
   sighting.challenge = 'kea';
+
+  // Set region to 'all'. TODO: make choices available.
+  sighting.region = 'all';
 
   // Format coordinates into numbers with 'Point' type
   if (sighting.point_location) {
@@ -28,7 +31,7 @@ export function postReportSighting(sighting) {
       endpoint: `http://localhost:8000/report/sighting/`,
       method: 'POST',
       body: formatSighting(sighting),
-      types: [SIGHTINGPOST_POST, SIGHTINGPOST_SUCCESS, SIGHTINGPOST_ERROR],
+      types: [REPORTSIGHTING_POST, REPORTSIGHTING_SUCCESS, REPORTSIGHTING_FAILURE],
       headers: {
         'Content-Type': 'application/json'
       }
@@ -36,9 +39,9 @@ export function postReportSighting(sighting) {
   }
 }
 
-export const SIGHTINGOPTIONS_REQUEST = 'api:/report/sighting/REQUEST';
-export const SIGHTINGOPTIONS_RECEIVE = 'api:/report/sighting/RECEIVE';
-export const SIGHTINGOPTIONS_ERROR = 'api:/report/sighting/ERROR';
+export const REPORTSIGHTING_OPTIONS = 'api:/report/sighting/REQUEST';
+export const REPORTSIGHTING_RECEIVE = 'api:/report/sighting/RECEIVE';
+export const REPORTSIGHTING_ERROR = 'api:/report/sighting//ERROR';
 
 export function getReportSightingOptions() {
   // dropdowns -- initial values?
@@ -46,7 +49,7 @@ export function getReportSightingOptions() {
     [CALL_API]: {
       endpoint: `http://localhost:8000/report/sighting/`,
       method: 'OPTIONS',
-      types: [SIGHTINGOPTIONS_REQUEST, SIGHTINGOPTIONS_RECEIVE, SIGHTINGOPTIONS_ERROR]
+      types: [REPORTSIGHTING_OPTIONS, REPORTSIGHTING_RECEIVE, REPORTSIGHTING_ERROR]
     }
   }
 }

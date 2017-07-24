@@ -8,6 +8,7 @@ class ReportSelector extends Component {
     return(
       <div className="ReportSelector">
         <fieldset>
+          <legend className="sr-only">Report Type Selector</legend>
           <p>Are you reporting a <strong>Sighting</strong> or a <strong>Non-Sighting</strong>?</p>
           <div className="row">
             <div className="col-sm-6">

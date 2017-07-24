@@ -5,24 +5,26 @@ import { renderField } from '../../helpers/renderField';
 
 class ContributorFieldset extends Component {
   render() {
+    const { options } = this.props;
+
     return(
       <fieldset>
-        <h2>3. About You</h2>
+        <legend>3. About You</legend>
         <p>We need to know who is reporting the sighting.</p>
         <div className="row">
           <div className="col-sm-6">
             <Field
               component={ renderField }
-              type="text"
               name="contributor.name"
-              label="Name"
+              options={ options.contributor.children.name }
+              type="text"
               placeholder="Name"
             />
             <Field
               component={ renderField }
-              type="text"
               name="contributor.email"
-              label="Email"
+              options={ options.contributor.children.email }
+              type="email"
               placeholder="Email"
             />
           </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 
 import ContributorFieldset from '../common/ContributorFieldset';
@@ -12,6 +13,8 @@ import '../Report.css';
 class ReportSighting extends Component {
   render() {
     const { error, handleSubmit } = this.props;
+    const options = this.props.sightingOptions.actions.POST;
+
     return(
       <form className="ReportSighting" onSubmit={ handleSubmit }>
         { error &&
@@ -25,14 +28,18 @@ class ReportSighting extends Component {
         <p>
           All fields in steps 1-3 are required.
         </p>
-        <SightingDetailsFieldset />
-        <SightingBirdsFieldset />
-        <ContributorFieldset />
-        <FurtherInformationFieldset />
+        <SightingDetailsFieldset {...this.props} options={ options } />
+        <SightingBirdsFieldset {...this.props} options={ options } />
+        <ContributorFieldset {...this.props} options={ options } />
+        <FurtherInformationFieldset {...this.props} options={ options } />
         <SubmitFieldset {...this.props} />
       </form>
     );
   }
+}
+
+ReportSighting.propTypes = {
+  sightingOptions: PropTypes.object.isRequired
 }
 
 export default reduxForm({

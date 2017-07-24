@@ -6,9 +6,11 @@ import Map from '../../../Map/Map';
 
 class SightingDetailsFieldset extends Component {
   render() {
+    const { options } = this.props;
+
     return(
       <fieldset>
-        <h2>1. Sighting Details</h2>
+        <legend>1. Sighting Details</legend>
         <p>When &amp; where.</p>
         <div className="row">
           <div className="col-sm-6">
@@ -16,19 +18,19 @@ class SightingDetailsFieldset extends Component {
               <div className="col-sm-6">
                 <Field
                   component={ renderField }
-                  type="text"
                   name="date_sighted"
-                  label="Date"
+                  options={ options.date_sighted }
                   placeholder="Date sighted"
+                  type="text"
                 />
               </div>
               <div className="col-sm-6">
                 <Field
                   component={ renderField }
-                  type="text"
                   name="time_sighted"
-                  label="Time"
+                  options={ options.time_sighted }
                   placeholder="Time sighted"
+                  type="text"
                 />
               </div>
             </div>
@@ -52,36 +54,25 @@ class SightingDetailsFieldset extends Component {
               <div className="col-sm-3">
                 <Field
                   component={ renderField }
-                  type="text"
-                  name="accuracy"
-                  label="Accuracy"
-                />
-                <Field
-                  component={ renderField }
-                  type="text"
-                  name="specificity"
-                  label="Specificity"
+                  options={ options.precision }
+                  name="precision"
+                  label="Precision"
+                  type="choice"
                 />
                 <p>Manually add coordinates</p>
                 <Field
                   component={ renderField }
-                  type="number"
+                  options={ options.point_location }
                   name="point_location.coordinates[0]"
                   label="Longitude"
                   placeholder="e.g. 171.562"
                 />
                 <Field
                   component={ renderField }
-                  type="number"
+                  options={ options.point_location }
                   name="point_location.coordinates[1]"
                   label="Latitude"
                   placeholder="e.g. -42.940"
-                />
-                <Field
-                  component={ renderField }
-                  type="text"
-                  name="region"
-                  label="Region"
                 />
                 <small>
                   Use decimal degrees (DD.DD…)
