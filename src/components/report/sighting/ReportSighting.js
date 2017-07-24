@@ -26,7 +26,7 @@ class ReportSighting extends Component {
           </div>
         }
         <p>
-          All fields in steps 1-3 are required.
+          All fields are required, except where indicated.
         </p>
         <SightingDetailsFieldset {...this.props} options={ options } />
         <SightingBirdsFieldset {...this.props} options={ options } />

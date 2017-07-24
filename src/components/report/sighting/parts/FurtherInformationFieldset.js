@@ -9,7 +9,7 @@ class FurtherInformationFieldset extends Component {
 
     return(
       <fieldset>
-        <legend>4. Further Information <small>Optional</small></legend>
+        <legend>4. Further Information <small>(Optional)</small></legend>
         <p><em>All of these fields are optional</em>. Skip them if you're in a hurry!</p>
         <Field
           component={ renderField }
@@ -17,6 +17,7 @@ class FurtherInformationFieldset extends Component {
           options={ options.comments }
           placeholder="Any comments?"
           type="textarea"
+          small
         />
         <Field
           component={ renderField }
@@ -24,6 +25,7 @@ class FurtherInformationFieldset extends Component {
           options={ options.behaviour }
           placeholder="What were the kea doing?"
           type="textarea"
+          small
         />
         <div className="row">
           <div className="col-sm-4">
@@ -33,6 +35,7 @@ class FurtherInformationFieldset extends Component {
               options={ options.contributor.children.activity }
               label="I'm a…"
               type="choice"
+              small
             />
           </div>
           <div className="col-sm-4">
@@ -40,8 +43,9 @@ class FurtherInformationFieldset extends Component {
               component={ renderField }
               name="contributor.heard"
               options={ options.contributor.children.heard }
-              label="I heard about this from…"
+              label="I heard about this project from…"
               type="choice"
+              small
             />
           </div>
           <div className="col-sm-4">
@@ -51,6 +55,7 @@ class FurtherInformationFieldset extends Component {
               options={ options.contributor.children.phone }
               placeholder="Phone number"
               type="text"
+              small
             />
           </div>
         </div>

@@ -31,7 +31,7 @@ class Birds extends Component {
           }
           <div className="row is-flex">
             {bandCombos.map(bandCombo =>
-              <div key={ bandCombo.bird.slug } className="col-xs-6 col-sm-4">
+              <div key={ bandCombo.bird.slug } className="col-xs-6 col-sm-4 col-md-3">
                 <BirdCard bird={ bandCombo.bird } />
               </div>
             )}

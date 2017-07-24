@@ -11,7 +11,6 @@ class SightingDetailsFieldset extends Component {
     return(
       <fieldset>
         <legend>1. Sighting Details</legend>
-        <p>When &amp; where.</p>
         <div className="row">
           <div className="col-sm-6">
             <div className="row">
@@ -20,8 +19,7 @@ class SightingDetailsFieldset extends Component {
                   component={ renderField }
                   name="date_sighted"
                   options={ options.date_sighted }
-                  placeholder="Date sighted"
-                  type="text"
+                  type="date"
                 />
               </div>
               <div className="col-sm-6">
@@ -29,29 +27,30 @@ class SightingDetailsFieldset extends Component {
                   component={ renderField }
                   name="time_sighted"
                   options={ options.time_sighted }
-                  placeholder="Time sighted"
-                  type="text"
+                  type="time"
                 />
               </div>
             </div>
           </div>
           <div className="col-sm-5 col-sm-offset-1">
-            <p className="help-block">
-              Use format YYYY-MM-DD and HH:mm:ss
-            </p>
+            {/* Placeholder */}
           </div>
         </div>
         <div className="panel panel-default">
           <div className="panel-heading">Location</div>
           <div className="panel-body">
+            <p>
+              Use the map, or alternatively enter the coordinates below.
+            </p>
+            <Map
+               containerElement={ <div className="map-container" /> }
+               mapElement={ <div className="map-element" /> }
+             />
+            <p>
+              Use the precision dropdown to give us an indication of how accurate the location is (in metres).
+            </p>
             <div className="row">
-              <div className="col-sm-9">
-                <Map
-                   containerElement={ <div className="map-container" /> }
-                   mapElement={ <div className="map-element" /> }
-                 />
-              </div>
-              <div className="col-sm-3">
+              <div className="col-sm-4">
                 <Field
                   component={ renderField }
                   options={ options.precision }
@@ -59,7 +58,8 @@ class SightingDetailsFieldset extends Component {
                   label="Precision"
                   type="choice"
                 />
-                <p>Manually add coordinates</p>
+              </div>
+              <div className="col-sm-offset-2 col-sm-3">
                 <Field
                   component={ renderField }
                   options={ options.point_location }
@@ -67,6 +67,8 @@ class SightingDetailsFieldset extends Component {
                   label="Longitude"
                   placeholder="e.g. 171.562"
                 />
+              </div>
+              <div className="col-sm-3">
                 <Field
                   component={ renderField }
                   options={ options.point_location }
@@ -74,11 +76,16 @@ class SightingDetailsFieldset extends Component {
                   label="Latitude"
                   placeholder="e.g. -42.940"
                 />
-                <small>
-                  Use decimal degrees (DD.DD…)
-                </small>
               </div>
             </div>
+            <Field
+              component={ renderField }
+              options={ options.location_details }
+              name="location_details"
+              placeholder="e.g. Beside the Arthur's Pass Store"
+              type="textarea"
+              label="Location details (optional)"
+            />
           </div>
         </div>
       </fieldset>

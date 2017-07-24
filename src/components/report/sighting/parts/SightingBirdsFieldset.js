@@ -15,6 +15,7 @@ const renderBirds = ({ fields, meta: { error, submitFailed }, options }) => (
               name={ `${bird}.banded` }
               options={ options.birds.child.children.banded }
               type="choice"
+              small
             />
             <Field
               component={ renderField }
@@ -22,18 +23,21 @@ const renderBirds = ({ fields, meta: { error, submitFailed }, options }) => (
               options={ options.birds.child.children.band_combo }
               placeholder="e.g. Black C on Yellow"
               type="text"
+              small
             />
             <Field
               component={ renderField }
               name={ `${bird}.sex_guess` }
               options={ options.birds.child.children.sex_guess }
               type="choice"
+              small
             />
             <Field
               component={ renderField }
               name={ `${bird}.life_stage_guess` }
               options={ options.birds.child.children.life_stage_guess }
               type="choice"
+              small
             />
             <button className="btn btn-default btn-sm" type="button" onClick={() => fields.remove(index)}>
               <span className="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove Bird

@@ -11,7 +11,6 @@ class BirdCard extends Component {
     const bird = this.props.bird;
     return(
       <div className="BirdCard">
-        { bird.bird_extended && bird.bird_extended.is_featured && <span className="featured glyphicon glyphicon-star"></span>}
         <Link to={ '/birds/' + bird.slug }>
           { bird.bird_extended && bird.bird_extended.profile_picture
             ? <img src={ bird.bird_extended.profile_picture.thumbnail } alt={ bird.name } className="card-image img-responsive" />
