@@ -6,7 +6,7 @@ import { renderField } from '../../../helpers/renderField';
 const renderBirds = ({ fields, meta: { error, submitFailed } }) => (
   <div className="row">
     { fields.map((bird, index) => (
-      <div key={ index } className="col-md-4">
+      <div key={ index } className="col-sm-6 col-md-4">
         <div className="panel panel-default">
           <div className="panel-heading">Bird #{index + 1}</div>
           <div className="panel-body">
@@ -42,7 +42,7 @@ const renderBirds = ({ fields, meta: { error, submitFailed } }) => (
         </div>
       </div>
     )) }
-    <div className="col-md-4">
+    <div className="col-sm-6 col-md-4">
       <button className="btn btn-success btn-sm" type="button" onClick={() => fields.push()}>
         <span className="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Bird
       </button>
@@ -59,7 +59,15 @@ class SightingBirdsFieldset extends Component {
         <h2>3. Birds</h2>
         <p>Tell us about the birds you heard/saw.</p>
         <div className="row">
-          <div className="col-sm-3">
+          <div className="col-xs-6 col-sm-3">
+            <Field
+              component={ renderField }
+              type="text"
+              name="sighting_type"
+              label="Seen or heard?"
+            />
+          </div>
+          <div className="col-xs-6 col-sm-3">
             <Field
               component={ renderField }
               type="number"
@@ -68,7 +76,7 @@ class SightingBirdsFieldset extends Component {
               placeholder="# sighted/heard"
             />
           </div>
-          <div className="col-sm-5 col-sm-offset-4">
+          <div className="col-sm-5 col-sm-offset-1">
             <p className="help-block"></p>
           </div>
         </div>

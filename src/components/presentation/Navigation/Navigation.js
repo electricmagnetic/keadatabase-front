@@ -22,8 +22,8 @@ class Navigation extends Component {
               <Nav pullRight>
                 <LinkContainer to="/" exact><NavItem>Home</NavItem></LinkContainer>
                 <LinkContainer to="/birds"><NavItem>Birds</NavItem></LinkContainer>
-                <LinkContainer to="/sightings"><NavItem>Sightings</NavItem></LinkContainer>
-                <LinkContainer to="/report"><NavItem>Report</NavItem></LinkContainer>
+                <LinkContainer to="/sightings"><NavItem>View Sightings</NavItem></LinkContainer>
+                <LinkContainer to="/report"><NavItem>Report Sighting</NavItem></LinkContainer>
               </Nav>
             </Navbar.Collapse>
           </div>
