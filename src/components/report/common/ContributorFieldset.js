@@ -7,8 +7,8 @@ class ContributorFieldset extends Component {
   render() {
     return(
       <fieldset>
-        <h2>1. About You</h2>
-        <p>First we need some details about who's reporting the sighting.</p>
+        <h2>3. About You</h2>
+        <p>We need to know who is reporting the sighting.</p>
         <div className="row">
           <div className="col-sm-6">
             <Field

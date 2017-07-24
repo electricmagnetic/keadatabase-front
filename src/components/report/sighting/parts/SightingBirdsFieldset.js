@@ -56,7 +56,7 @@ class SightingBirdsFieldset extends Component {
   render() {
     return(
       <fieldset>
-        <h2>3. Birds</h2>
+        <h2>2. Birds</h2>
         <p>Tell us about the birds you heard/saw.</p>
         <div className="row">
           <div className="col-xs-6 col-sm-3">

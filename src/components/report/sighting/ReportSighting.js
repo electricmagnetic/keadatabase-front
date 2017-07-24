@@ -25,9 +25,9 @@ class ReportSighting extends Component {
         <p>
           All fields in steps 1-3 are required.
         </p>
-        <ContributorFieldset />
         <SightingDetailsFieldset />
         <SightingBirdsFieldset />
+        <ContributorFieldset />
         <FurtherInformationFieldset />
         <SubmitFieldset {...this.props} />
       </form>

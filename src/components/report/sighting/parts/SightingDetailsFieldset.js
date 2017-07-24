@@ -8,7 +8,7 @@ class SightingDetailsFieldset extends Component {
   render() {
     return(
       <fieldset>
-        <h2>2. Sighting Details</h2>
+        <h2>1. Sighting Details</h2>
         <p>When &amp; where.</p>
         <div className="row">
           <div className="col-sm-6">
