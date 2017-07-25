@@ -59,6 +59,7 @@ class SightingDetailsFieldset extends Component {
                   name="precision"
                   label="Precision"
                   type="choice"
+                  addBlank
                 />
               </div>
               <div className="col-sm-offset-2 col-sm-3">

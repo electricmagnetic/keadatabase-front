@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { push } from 'react-router-redux';
+import { formValueSelector } from 'redux-form'
 
 import { getReportSightingOptions } from '../../actions/report';
 import { postReportSighting } from '../../actions/report';
@@ -39,6 +40,7 @@ class ReportSightingPage extends Component {
               onSubmit={ this.props.onSubmit }
               onSubmitSuccess={ this.props.onSubmitSuccess }
               sightingOptions={ this.props.sightingOptions }
+              sightingType={ this.props.sightingType }
             />
           </div>
         </div>
@@ -54,6 +56,7 @@ ReportSightingPage.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onSubmitSuccess: PropTypes.func.isRequired,
   sightingOptions: PropTypes.object,
+  sightingType: PropTypes.string,
   isFetching: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
@@ -79,6 +82,9 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   const { reportReducer } = state;
 
+  const selector = formValueSelector('reportSighting');
+  const sightingType = selector(state, 'sighting_type');
+
   const {
     isFetching,
     sightingOptions,
@@ -92,7 +98,8 @@ function mapStateToProps(state) {
   return {
     isFetching,
     sightingOptions,
-    isError
+    isError,
+    sightingType
   }
 }
 

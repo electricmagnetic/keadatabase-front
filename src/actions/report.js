@@ -22,6 +22,13 @@ function formatSighting(sighting={}) {
     sighting.birds = [];
   }
 
+  // For 'sighted' sighting_type only (where number field is not defined), get length of array for number
+  if (sighting.sighting_type) {
+    if (sighting.sighting_type === 'sighted') {
+      sighting.number = sighting.birds.length;
+    }
+  }
+
   return JSON.stringify(sighting);
 }
 
