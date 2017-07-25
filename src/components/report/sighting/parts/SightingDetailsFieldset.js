@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field } from 'redux-form';
 
 import { renderField } from '../../../helpers/renderField';
-import Map from '../../../Map/Map';
+import Map from '../../../helpers/Map';
 
 class SightingDetailsFieldset extends Component {
   render() {
@@ -40,11 +40,13 @@ class SightingDetailsFieldset extends Component {
           <div className="panel-heading">Location</div>
           <div className="panel-body">
             <p>
-              Use the map, or alternatively enter the coordinates below.
+              Click/tap on the map to set a point, or alternatively enter the coordinates below.
             </p>
             <Map
                containerElement={ <div className="map-container" /> }
                mapElement={ <div className="map-element" /> }
+               formChange={ this.props.change }
+               click
              />
             <p>
               Use the precision dropdown to give us an indication of how accurate the location is (in metres).
