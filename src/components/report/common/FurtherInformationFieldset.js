@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 
-import { renderField } from '../../../helpers/renderField';
+import { renderField } from '../../helpers/renderField';
 
 class FurtherInformationFieldset extends Component {
   render() {
@@ -16,14 +16,6 @@ class FurtherInformationFieldset extends Component {
           name="comments"
           options={ options.comments }
           placeholder="Any comments?"
-          type="textarea"
-          small
-        />
-        <Field
-          component={ renderField }
-          name="behaviour"
-          options={ options.behaviour }
-          placeholder="What were the kea doing?"
           type="textarea"
           small
         />
@@ -43,7 +35,7 @@ class FurtherInformationFieldset extends Component {
               component={ renderField }
               name="contributor.heard"
               options={ options.contributor.children.heard }
-              label="I heard about this project from…"
+              label="How did you hear about this?"
               type="choice"
               small
             />

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 
-import ContributorFieldset from '../common/ContributorFieldset';
 import SightingDetailsFieldset from './parts/SightingDetailsFieldset';
 import SightingBirdsFieldset from './parts/SightingBirdsFieldset';
-import FurtherInformationFieldset from './parts/FurtherInformationFieldset';
+import ContributorFieldset from '../common/ContributorFieldset';
+import FurtherInformationFieldset from '../common/FurtherInformationFieldset';
 import SubmitFieldset from '../common/SubmitFieldset';
 
 import '../Report.css';
@@ -39,7 +39,7 @@ class ReportSighting extends Component {
 }
 
 ReportSighting.propTypes = {
-  sightingOptions: PropTypes.object.isRequired
+  sightingOptions: PropTypes.object
 }
 
 export default reduxForm({

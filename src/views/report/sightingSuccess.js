@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Page from '../../components/wordpress/Page';
 import Banner from '../../components/presentation/Banner/Banner';
 
-class ReportSuccessPage extends Component {
+class ReportSightingSuccessPage extends Component {
   render() {
     const id = this.props.match.params.id;
     return (
@@ -30,11 +30,10 @@ class ReportSuccessPage extends Component {
           <section>
             <Page id={191} hideTitle />
           </section>
-          {/* TODO: Most *recent* logged sightings */}
         </div>
       </div>
     );
   }
 }
 
-export default ReportSuccessPage;
+export default ReportSightingSuccessPage;

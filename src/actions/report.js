@@ -41,7 +41,7 @@ export function postReportSighting(sighting) {
 
 export const REPORTSIGHTING_OPTIONS = 'api:/report/sighting/REQUEST';
 export const REPORTSIGHTING_RECEIVE = 'api:/report/sighting/RECEIVE';
-export const REPORTSIGHTING_ERROR = 'api:/report/sighting//ERROR';
+export const REPORTSIGHTING_ERROR = 'api:/report/sighting/ERROR';
 
 export function getReportSightingOptions() {
   // dropdowns -- initial values?
@@ -50,6 +50,49 @@ export function getReportSightingOptions() {
       endpoint: `http://localhost:8000/report/sighting/`,
       method: 'OPTIONS',
       types: [REPORTSIGHTING_OPTIONS, REPORTSIGHTING_RECEIVE, REPORTSIGHTING_ERROR]
+    }
+  }
+}
+
+export const REPORTNONSIGHTING_POST = 'api:/report/non_sighting/POST';
+export const REPORTNONSIGHTING_SUCCESS = 'api:/report/non_sighting/SUCCESS';
+export const REPORTNONSIGHTING_FAILURE = 'api:/report/non_sighting/FAILURE';
+
+function formatNonSighting(nonSighting={}) {
+  // Add challenge (basic spam prevention)
+  nonSighting.challenge = 'kea';
+
+  // Set region to 'all'. TODO: make choices available.
+  nonSighting.region = 'all';
+
+  return JSON.stringify(nonSighting);
+}
+
+export function postReportNonSighting(nonSighting) {
+  return {
+    [CALL_API]: {
+      endpoint: `http://localhost:8000/report/non_sighting/`,
+      method: 'POST',
+      body: formatNonSighting(nonSighting),
+      types: [REPORTNONSIGHTING_POST, REPORTNONSIGHTING_SUCCESS, REPORTNONSIGHTING_FAILURE],
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  }
+}
+
+export const REPORTNONSIGHTING_OPTIONS = 'api:/report/non_sighting/REQUEST';
+export const REPORTNONSIGHTING_RECEIVE = 'api:/report/non_sighting/RECEIVE';
+export const REPORTNONSIGHTING_ERROR = 'api:/report/non_sighting/ERROR';
+
+export function getReportNonSightingOptions() {
+  // dropdowns -- initial values?
+  return {
+    [CALL_API]: {
+      endpoint: `http://localhost:8000/report/non_sighting/`,
+      method: 'OPTIONS',
+      types: [REPORTNONSIGHTING_OPTIONS, REPORTNONSIGHTING_RECEIVE, REPORTNONSIGHTING_ERROR]
     }
   }
 }

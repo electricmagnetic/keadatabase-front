@@ -21,13 +21,13 @@ class ReportSightingPage extends Component {
   }
 
   render() {
-    if (this.props.isFetching) {
-      return (<div className="container"><Loader /></div>);
-    }
-    else if (this.props.isError) {
+    if (this.props.isError) {
       return (<div className="container"><Error /></div>);
     }
-    else {
+    else if (this.props.isFetching) {
+      return (<div className="container"><Loader /></div>);
+    }
+    else if (this.props.sightingOptions) {
       return (
         <div className="ReportSightingPage">
           <Helmet title="Report Sighting" />
@@ -44,13 +44,16 @@ class ReportSightingPage extends Component {
         </div>
       );
     }
+    else {
+      return (null);
+    }
   }
 }
 
 ReportSightingPage.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onSubmitSuccess: PropTypes.func.isRequired,
-  sightingOptions: PropTypes.object.isRequired,
+  sightingOptions: PropTypes.object,
   isFetching: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
@@ -61,10 +64,10 @@ function mapDispatchToProps(dispatch) {
     onSubmit: formApiAdapter(dispatch, postReportSighting),
     onSubmitSuccess: (result, dispatch, props) => {
       if(result.payload.id) {
-        dispatch(push(`/report/success/${result.payload.id}`));
+        dispatch(push(`/report/sighting/success/${result.payload.id}`));
       }
       else {
-        dispatch(push('/report/success'));
+        dispatch(push('/report/sighting/success'));
       }
       props.reset();
     },

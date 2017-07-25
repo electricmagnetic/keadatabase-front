@@ -92,6 +92,14 @@ class SightingBirdsFieldset extends Component {
             <FieldArray name="birds" component={ renderBirds } options={ options } />
           </div>
         </div>
+        <Field
+          component={ renderField }
+          name="behaviour"
+          label="Behaviour (optional)"
+          options={ options.behaviour }
+          placeholder="e.g. Calling, Flying, Feeding…"
+          type="textarea"
+        />
       </fieldset>
     );
   }
