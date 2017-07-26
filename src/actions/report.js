@@ -35,7 +35,7 @@ function formatSighting(sighting={}) {
 export function postReportSighting(sighting) {
   return {
     [CALL_API]: {
-      endpoint: `http://localhost:8000/report/sighting/`,
+      endpoint: `https://api.keadatabase.nz/report/sighting/`,
       method: 'POST',
       body: formatSighting(sighting),
       types: [REPORTSIGHTING_POST, REPORTSIGHTING_SUCCESS, REPORTSIGHTING_FAILURE],
@@ -54,7 +54,7 @@ export function getReportSightingOptions() {
   // dropdowns -- initial values?
   return {
     [CALL_API]: {
-      endpoint: `http://localhost:8000/report/sighting/`,
+      endpoint: `https://api.keadatabase.nz/report/sighting/`,
       method: 'OPTIONS',
       types: [REPORTSIGHTING_OPTIONS, REPORTSIGHTING_RECEIVE, REPORTSIGHTING_ERROR]
     }
@@ -78,7 +78,7 @@ function formatNonSighting(nonSighting={}) {
 export function postReportNonSighting(nonSighting) {
   return {
     [CALL_API]: {
-      endpoint: `http://localhost:8000/report/non_sighting/`,
+      endpoint: `https://api.keadatabase.nz/report/non_sighting/`,
       method: 'POST',
       body: formatNonSighting(nonSighting),
       types: [REPORTNONSIGHTING_POST, REPORTNONSIGHTING_SUCCESS, REPORTNONSIGHTING_FAILURE],
@@ -97,7 +97,7 @@ export function getReportNonSightingOptions() {
   // dropdowns -- initial values?
   return {
     [CALL_API]: {
-      endpoint: `http://localhost:8000/report/non_sighting/`,
+      endpoint: `https://api.keadatabase.nz/report/non_sighting/`,
       method: 'OPTIONS',
       types: [REPORTNONSIGHTING_OPTIONS, REPORTNONSIGHTING_RECEIVE, REPORTNONSIGHTING_ERROR]
     }
