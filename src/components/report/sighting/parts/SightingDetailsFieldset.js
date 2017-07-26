@@ -20,6 +20,7 @@ class SightingDetailsFieldset extends Component {
                   name="date_sighted"
                   options={ options.date_sighted }
                   type="date"
+                  placeholder="YYYY-MM-DD"
                 />
               </div>
               <div className="col-sm-6">
@@ -28,6 +29,7 @@ class SightingDetailsFieldset extends Component {
                   name="time_sighted"
                   options={ options.time_sighted }
                   type="time"
+                  placeholder="hh:mm (24 hour time)"
                 />
               </div>
             </div>
