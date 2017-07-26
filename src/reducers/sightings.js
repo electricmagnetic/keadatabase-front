@@ -1,7 +1,7 @@
 import { normalize, schema } from 'normalizr';
 import merge from "lodash/merge";
 
-import { SIGHTINGS_REQUEST, SIGHTINGS_RECEIVE, SIGHTINGS_ERROR } from '../actions/sightings.js';
+import { SIGHTINGS_REQUEST, SIGHTINGS_RECEIVE, SIGHTINGS_ERROR } from '../actions/sightings';
 
 const sightingSchema = new schema.Entity('sightings');
 
@@ -38,7 +38,6 @@ const sightingsReducer = (state = initialSightingsState, action) => {
     case SIGHTINGS_ERROR:
       return Object.assign({}, state, {
         isFetching: false,
-        entities: null,
         isError: true
       });
   default:

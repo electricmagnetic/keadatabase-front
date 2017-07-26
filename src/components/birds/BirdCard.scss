@@ -5,14 +5,6 @@
   border: 1px solid  $gray-lightish;
   margin-bottom: $line-height-computed;
 
-  span.featured {
-    position: absolute;
-    top: $grid-gutter-width/4;
-    right: $grid-gutter-width/4;
-    font-size: $font-size-h3;
-    color: #fff;
-  }
-
   .card-details {
     margin: $line-height-computed/2;
 
@@ -22,7 +14,7 @@
       font-family: $font-family-base;
       color: $brand-green;
     }
-    p.bandcombo {
+    p.details {
       font-size: $font-size-small;
     }
   }

@@ -7,7 +7,7 @@ import { fetchSightingsIfNeeded } from '../../actions/sightings.js';
 import generateMarker from '../helpers/generateMarker';
 import Error from '../helpers/Error';
 import Loader from '../helpers/Loader';
-import Map from '../Map/Map';
+import Map from '../helpers/Map';
 
 function generateMarkers(result, entities) {
   return result.map(key => {
@@ -24,14 +24,14 @@ class SightingsMap extends Component {
   render() {
     const { id } = this.props;
 
-    if (this.props.isFetching) {
+    if (this.props.isError) {
+      return (<Error>Either this sighting doesn't exist, or something went wrong here.</Error>);
+    }
+    else if (this.props.isFetching) {
       return (<Loader />);
     }
     else if (id && !this.props.entities.sightings[id]) {
       return (<Loader />);
-    }
-    else if (this.props.isError) {
-      return (<Error />);
     }
     else {
       var { result, entities } = this.props;
@@ -51,6 +51,7 @@ class SightingsMap extends Component {
                containerElement={ <div className="map-container" /> }
                mapElement={ <div className="map-element" /> }
                markers={ markers }
+               cluster
              />
           </section>
         </div>

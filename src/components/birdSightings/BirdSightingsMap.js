@@ -7,7 +7,7 @@ import { fetchBirdSightingsIfNeeded } from '../../actions/birdSightings.js';
 import generateMarker from '../helpers/generateMarker';
 import Error from '../helpers/Error';
 import Loader from '../helpers/Loader';
-import Map from '../Map/Map';
+import Map from '../helpers/Map';
 
 function generateMarkers(result, entities) {
   return result.map(key => {
@@ -42,6 +42,7 @@ class BirdSightingsMap extends Component {
                containerElement={ <div className="map-container" /> }
                mapElement={ <div className="map-element" /> }
                markers={ markers }
+               cluster
              />
           </section>
         </div>

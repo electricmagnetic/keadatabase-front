@@ -1,0 +1,13 @@
+@import "../../assets/css/variables";
+
+.ReportSelector, .ReportSighting, .ReportNonSighting {
+  h2 {
+    font-size: $font-size-h3;
+  }
+  p.help-block {
+    font-size: $font-size-small;
+    @media (min-width: $screen-sm-min) {
+      margin-top: 0;
+    }
+  }
+}

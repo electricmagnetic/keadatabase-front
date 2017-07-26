@@ -15,9 +15,16 @@
   }
 
   &.huge {
-    padding-top: $line-height-computed*5;
-    padding-bottom: $line-height-computed*5;
+    padding-top: $line-height-computed*7;
+    padding-bottom: $line-height-computed*7;
   }
+  @media screen and (max-width: $screen-sm) {
+    &.huge {
+      padding-top: $line-height-computed*4;
+      padding-bottom: $line-height-computed*4;
+    }
+  }
+
   &.large {
     padding-top: $line-height-computed*3;
     padding-bottom: $line-height-computed*3;

@@ -1,4 +1,4 @@
-import { BIRD_REQUEST, BIRD_RECEIVE, BIRD_ERROR } from '../actions/birds.js';
+import { BIRD_REQUEST, BIRD_RECEIVE, BIRD_ERROR } from '../actions/birds';
 
 const initialBirdState = {
   isFetching: false,
