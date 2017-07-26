@@ -12,19 +12,11 @@ import '../Report.css';
 
 class ReportNonSighting extends Component {
   render() {
-    const { error, handleSubmit } = this.props;
+    const { handleSubmit } = this.props;
     const options = this.props.nonSightingOptions.actions.POST;
 
     return(
       <form className="ReportNonSighting" onSubmit={ handleSubmit }>
-        { error &&
-          <div className="alert alert-danger" role="alert">
-            <p>{ error.message }</p>
-            <pre>
-              {JSON.stringify(error.response, null, 2) }
-            </pre>
-          </div>
-        }
         <p>
           All fields are required, except where indicated.
         </p>
@@ -43,5 +35,5 @@ ReportNonSighting.propTypes = {
 }
 
 export default reduxForm({
-  form: 'reportNonSighting' // a unique identifier for this form
+  form: 'reportNonSighting'
 })(ReportNonSighting);

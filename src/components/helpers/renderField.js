@@ -6,8 +6,8 @@ export const renderField = ({ input, label, placeholder, type, options, addBlank
 
   if(type === 'choice') {
     return(
-      <div className="form-group">
-        <label htmlFor={ input.name }>{ label }</label>
+      <div className={ (touched && error) ? "form-group has-error" : "form-group"}>
+        <label className="control-label" htmlFor={ input.name }>{ label }</label>
         <select { ...input } className="form-control" id={ input.name }>
           // Add blank to compulsory fields (requiring the user to make a selection)
           { addBlank && <option default value={""}></option>}
@@ -17,25 +17,25 @@ export const renderField = ({ input, label, placeholder, type, options, addBlank
             </option>
           )) }
         </select>
-        { touched && error && <span>{ error }</span> }
+        { touched && error && <span className="help-block">{ error }</span> }
       </div>
     );
   }
   else if(type === 'textarea') {
     return(
-      <div className="form-group">
-        <label htmlFor={ input.name }>{ label }</label>
+      <div className={ (touched && error) ? "form-group has-error" : "form-group"}>
+        <label className="control-label" htmlFor={ input.name }>{ label }</label>
         <textarea { ...input } placeholder={ placeholder } className="form-control" id={ input.name } />
-        { touched && error && <span>{ error }</span> }
+        { touched && error && <span className="help-block">{ error }</span> }
       </div>
     );
   }
   else {
     return (
-      <div className="form-group">
-        <label htmlFor={ input.name }>{ label }</label>
+      <div className={ (touched && error) ? "form-group has-error" : "form-group"}>
+        <label className="control-label" htmlFor={ input.name }>{ label }</label>
         <input { ...input } type={ type } placeholder={ placeholder } className="form-control" id={ input.name } />
-        { touched && error && <span>{ error }</span> }
+        { touched && error && <span className="help-block">{ error }</span> }
       </div>
     );
   }

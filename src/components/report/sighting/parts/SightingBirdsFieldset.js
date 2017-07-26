@@ -30,6 +30,7 @@ class RenderBirds extends Component {
                       type="choice"
                       label="Banded?"
                       small
+                      addBlank
                     />
                     <Field
                       component={ renderField }
