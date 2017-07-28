@@ -18,11 +18,11 @@ class SightingContainingBirdsRow extends Component {
     var matched = false;
     var known = false;
 
-    if (birdSighting.life_stage_guess || birdSighting.sex_guess) {
-      known = true;
-    }
     if (birdSighting.bird) {
       matched = true;
+    }
+    else if (birdSighting.life_stage_guess || birdSighting.sex_guess) {
+      known = true;
     }
 
     return(

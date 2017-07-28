@@ -64,6 +64,12 @@ class SightingDetail extends Component {
                   </td>
                 </tr>
                 <tr>
+                  <th>Location precision</th>
+                  <td>
+                    Within { sighting.precision }m
+                  </td>
+                </tr>
+                <tr>
                   <th>Verification</th>
                   <td>
                     <QualityIndicator quality={ sighting.quality } verbose />
@@ -76,6 +82,12 @@ class SightingDetail extends Component {
             <section>
               <h2 className="sr-only">Comments</h2>
               { sighting.comments }
+            </section>
+          }
+          { sighting.location_details &&
+            <section>
+              <h3>Location details</h3>
+              { sighting.location_details }
             </section>
           }
           { sighting.behaviour &&

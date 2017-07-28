@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { fetchBirdIfNeeded } from '../../actions/birds.js';
 
 import Banner from '../presentation/Banner/Banner';
-import TooltipText from '../helpers/TooltipText';
 import PrettyBandCombo from '../helpers/PrettyBandCombo';
 import Error from '../helpers/Error';
 import Loader from '../helpers/Loader';
@@ -37,7 +36,6 @@ class BirdDetail extends Component {
             <div className="row">
               <div className="col-sm-4 col-sm-push-8">
                 <div className="profile-picture">
-                  { bird.bird_extended && bird.bird_extended.is_featured && <span className="featured glyphicon glyphicon-star"></span>}
                   { bird.bird_extended && bird.bird_extended.profile_picture
                     ? <img src={ bird.bird_extended.profile_picture.large } alt={ bird.name } className="img-thumbnail img-responsive" />
                     : <img src={ placeholder } alt="placeholder" className="img-thumbnail img-responsive" />
@@ -66,14 +64,12 @@ class BirdDetail extends Component {
                         <th>Status</th>
                         <td>
                           { bird.status }
-                          <TooltipText text="NB: This is the bird's last known status, it may since have changed." />
                         </td>
                       </tr>
                       <tr>
                         <th>Life Stage</th>
                         <td>
                           { bird.get_life_stage }
-                          <TooltipText text="NB: This is estimated based on age." />
                         </td>
                       </tr>
                       <tr>
@@ -93,7 +89,6 @@ class BirdDetail extends Component {
                         <th>Study Area</th>
                         <td>
                           { bird.study_area }
-                          <TooltipText text="NB: This kea may be found in other places!" />
                         </td>
                       </tr>
                     </tbody>
@@ -105,23 +100,35 @@ class BirdDetail extends Component {
               </div>
             </div>
             { bird.bird_extended &&
-              <section>
-                <div className="bird-extended">
-                  { bird.bird_extended.description &&
-                    <section>
-                      <h3>About Me</h3>
-                      <p>{ bird.bird_extended.description }</p>
-                    </section>
-                  }
-                  { bird.bird_extended.sponsor_name &&
-                    <section>
-                      <h3>Sponsor</h3>
-                      <p>
-                        My sponsor is: { bird.bird_extended.sponsor_name }.
-                      </p>
-                    </section>
-                    }
-                </div>
+              <section className="bird-extended">
+                { bird.bird_extended.description &&
+                  <section>
+                    <h3>About Me</h3>
+                    <p>{ bird.bird_extended.description }</p>
+                  </section>
+                }
+                { bird.bird_extended.sponsor_name &&
+                  <section>
+                    <h3>Sponsor</h3>
+                    <p>
+                      { bird.bird_extended.sponsor_website
+                        ? <a className="sponsor" href={ bird.bird_extended.sponsor_website }
+                             target="_blank" rel="noopener noreferrer">
+                            { bird.bird_extended.sponsor_name }
+                          </a>
+                        : <span className="sponsor">
+                            { bird.bird_extended.sponsor_name }
+                          </span>
+                      }
+                      .
+                    </p>
+                  </section>
+                }
+                { bird.bird_extended.profile_picture_attribution &&
+                  <span className="attribution">
+                    <strong>Photo:</strong> { bird.bird_extended.profile_picture_attribution }
+                  </span>
+                }
               </section>
             }
           </div>
