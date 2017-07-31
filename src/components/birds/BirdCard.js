@@ -12,11 +12,14 @@ class BirdCard extends Component {
     return(
       <div className="BirdCard">
         <Link to={ '/birds/' + bird.slug }>
-          { bird.bird_extended &&
-            <ProfilePicture
-              profilePicture={ bird.bird_extended.profile_picture }
-              alt={ bird.name }
-            />
+          { bird.bird_extended
+            ?
+              <ProfilePicture
+                profilePicture={ bird.bird_extended.profile_picture }
+                alt={ bird.name }
+              />
+            :
+              <ProfilePicture />
           }
         </Link>
         <div className="card-details">

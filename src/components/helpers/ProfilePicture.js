@@ -52,7 +52,9 @@ ProfilePicture.propTypes = {
 }
 
 ProfilePicture.defaultProps = {
+  profilePicture: {},
   size: 'thumbnail',
+  alt: '',
   isThumbnail: false,
   isCircle: false
 }

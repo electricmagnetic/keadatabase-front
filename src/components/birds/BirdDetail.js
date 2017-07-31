@@ -42,13 +42,16 @@ class BirdDetail extends Component {
           <Banner size="medium">
             <div className="row">
               <div className="col-sm-4 col-sm-push-8">
-                { bird.bird_extended &&
-                  <ProfilePicture
-                    profilePicture={ bird.bird_extended.profile_picture }
-                    alt={ bird.name }
-                    size="large"
-                    isThumbnail
-                  />
+                { bird.bird_extended
+                  ?
+                    <ProfilePicture
+                      profilePicture={ bird.bird_extended.profile_picture }
+                      alt={ bird.name }
+                      size="large"
+                      isThumbnail
+                    />
+                  :
+                    <ProfilePicture />
                 }
               </div>
               <div className="col-sm-8 col-sm-pull-4">
