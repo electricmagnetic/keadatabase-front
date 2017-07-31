@@ -8,7 +8,6 @@ import { fetchSightingsIfNeeded } from '../../actions/sightings.js';
 import Error from '../helpers/Error';
 import Loader from '../helpers/Loader';
 import SightingsDate from '../helpers/SightingsDate';
-import QualityIndicator from '../helpers/QualityIndicator';
 
 import './SightingsTable.css';
 

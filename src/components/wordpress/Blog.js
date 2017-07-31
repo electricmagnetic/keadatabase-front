@@ -18,7 +18,7 @@ class BlogPost extends Component {
         <a href={ post.link }>
           <h3 dangerouslySetInnerHTML={{__html: post.title.rendered }}></h3>
         </a>
-        <h4><Moment format="dddd DD MMMM YYYY, h:mm a">{ post.date }</Moment></h4>
+        <h4><Moment format="dddd DD MMMM YYYY [at] h:mm a">{ post.date }</Moment></h4>
         <div dangerouslySetInnerHTML={{__html: post.excerpt.rendered }}></div>
       </li>
     );

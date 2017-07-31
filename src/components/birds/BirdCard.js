@@ -24,7 +24,7 @@ class BirdCard extends Component {
         </Link>
         <div className="card-details">
           <Link to={ '/birds/' + bird.slug }>
-            <h2>{ bird.name } &raquo;</h2>
+            <h2>{ bird.name }&nbsp;&raquo;</h2>
           </Link>
           <p className="details">
             { bird.get_life_stage } { bird.sex }
