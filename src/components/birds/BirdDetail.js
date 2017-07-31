@@ -7,10 +7,10 @@ import { fetchBirdIfNeeded } from '../../actions/birds.js';
 
 import Banner from '../presentation/Banner/Banner';
 import PrettyBandCombo from '../helpers/PrettyBandCombo';
+import ProfilePicture from '../helpers/ProfilePicture';
 import Error from '../helpers/Error';
 import Loader from '../helpers/Loader';
 
-import placeholder from '../../assets/img/placeholder_large.png';
 import './BirdDetail.css';
 
 class BirdDetail extends Component {
@@ -35,12 +35,14 @@ class BirdDetail extends Component {
           <Banner size="medium">
             <div className="row">
               <div className="col-sm-4 col-sm-push-8">
-                <div className="profile-picture">
-                  { bird.bird_extended && bird.bird_extended.profile_picture
-                    ? <img src={ bird.bird_extended.profile_picture.large } alt={ bird.name } className="img-thumbnail img-responsive" />
-                    : <img src={ placeholder } alt="placeholder" className="img-thumbnail img-responsive" />
-                  }
-                </div>
+                { bird.bird_extended &&
+                  <ProfilePicture
+                    profilePicture={ bird.bird_extended.profile_picture }
+                    alt={ bird.name }
+                    size="large"
+                    isThumbnail
+                  />
+                }
               </div>
               <div className="col-sm-8 col-sm-pull-4">
                 <p className="introducing">Kia Ora, my name is:</p>
