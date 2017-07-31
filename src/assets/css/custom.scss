@@ -30,7 +30,7 @@ section, fieldset {
         color: $brand-dull;
         font-size: ceil(($font-size-base * 1.4));
       }
-      
+
       @media (max-width: $screen-sm-max) and (min-width: $screen-sm-min) {
         a {
           font-size: ceil(($font-size-base * 1.2));
@@ -48,7 +48,7 @@ section, fieldset {
 }
 
 // Provide constraint to 'background colour bars' of large container + 50px (either side)
-$constrainer-width: $container-lg+100px;
+$constrainer-width: $container-lg+160px;
 
 .constrainer {
   background-color: #fff;
@@ -79,4 +79,11 @@ $constrainer-width: $container-lg+100px;
 label {
   // Override 'bold' as 700 font not loaded
   font-weight: 600;
+}
+
+.glyphicon {
+  margin-right: $grid-gutter-width/4;
+  &.no-space {
+    margin-right: 0;
+  }
 }

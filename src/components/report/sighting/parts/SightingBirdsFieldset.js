@@ -14,7 +14,7 @@ class RenderBirds extends Component {
           <p>
             { submitFailed && error && <span>{ error }</span> }
             <button className="btn btn-success btn-sm" type="button" onClick={ () => fields.push() }>
-              <span className="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Bird
+              <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Bird
             </button>
           </p>
           <div className="row">
@@ -58,7 +58,7 @@ class RenderBirds extends Component {
                       small
                     />
                   <button className="btn btn-default btn-sm" type="button" onClick={ () => fields.remove(index) }>
-                      <span className="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove Bird
+                      <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>Remove Bird
                     </button>
                   </div>
                 </div>

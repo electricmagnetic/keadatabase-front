@@ -17,7 +17,7 @@ class ReportNonSightingSuccessPage extends Component {
           <section>
             <div className="btn-toolbar" role="toolbar">
               <Link to="/report" className="btn btn-success" role="button">
-                <span className="glyphicon glyphicon-repeat" aria-hidden="true"></span> Report Another
+                <span className="glyphicon glyphicon-repeat" aria-hidden="true"></span>Report Another
               </Link>
             </div>
           </section>

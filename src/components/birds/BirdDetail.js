@@ -51,7 +51,10 @@ class BirdDetail extends Component {
                       isThumbnail
                     />
                   :
-                    <ProfilePicture />
+                    <ProfilePicture
+                      size="large"
+                      isThumbnail
+                    />
                 }
               </div>
               <div className="col-sm-8 col-sm-pull-4">
@@ -61,82 +64,62 @@ class BirdDetail extends Component {
                     <PrettyBandCombo band={ bird.band_combo } />
                   }
                 </p>
+                <div className="info-bar">
+                  <p>
+                    <span className="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    <span className="sr-only">Information</span>
+                    { bird.status } &middot; { bird.get_life_stage } { bird.sex } { showAge && <span> (age { bird.get_age })</span> }
+                  </p>
+                  <p>
+                    <span className="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                    <span className="sr-only">Location</span>
+                    { bird.study_area }
+                  </p>
+                </div>
               </div>
             </div>
           </Banner>
           <div className="container">
             <div className="row">
               <div className="col-sm-7">
-                <section>
-                  <h2>My Details</h2>
-                  <table className="table table-condensed table-responsive details-table">
-                    <tbody>
-                      <tr>
-                        <th>Status</th>
-                        <td>
-                          { bird.status }
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>Life Stage</th>
-                        <td>
-                          { bird.get_life_stage }
-                          { showAge &&
-                            <span> (age { bird.get_age })</span>
+                { bird.bird_extended &&
+                  <section className="bird-extended">
+                    { bird.bird_extended.description &&
+                      <section>
+                        <h3 className="sr-only">About Me</h3>
+                        <p>{ bird.bird_extended.description }</p>
+                      </section>
+                    }
+                    { bird.bird_extended.sponsor_name &&
+                      <section>
+                        <p>
+                          <strong>Sponsor:</strong>&nbsp;
+                          { bird.bird_extended.sponsor_website
+                            ? <a className="sponsor" href={ bird.bird_extended.sponsor_website }
+                                 target="_blank" rel="noopener noreferrer">
+                                { bird.bird_extended.sponsor_name }
+                              </a>
+                            : <span className="sponsor">
+                                { bird.bird_extended.sponsor_name }
+                              </span>
                           }
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>Sex</th>
-                        <td>
-                          { bird.sex }
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>Study Area</th>
-                        <td>
-                          { bird.study_area }
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </section>
+                        </p>
+                      </section>
+                    }
+                    { bird.bird_extended.profile_picture_attribution &&
+                      <span className="attribution">
+                        <span className="glyphicon glyphicon-camera" aria-hidden="true"></span>
+                        <span className="sr-only">Photo Attribution</span>
+                        { bird.bird_extended.profile_picture_attribution }
+                      </span>
+                    }
+                  </section>
+                }
               </div>
               <div className="col-sm-4 col-sm-offset-1">
                 {/* Placeholder for image (with negative margins) */}
               </div>
             </div>
-            { bird.bird_extended &&
-              <section className="bird-extended">
-                { bird.bird_extended.description &&
-                  <section>
-                    <h3>About Me</h3>
-                    <p>{ bird.bird_extended.description }</p>
-                  </section>
-                }
-                { bird.bird_extended.sponsor_name &&
-                  <section>
-                    <h3>Sponsor</h3>
-                    <p>
-                      { bird.bird_extended.sponsor_website
-                        ? <a className="sponsor" href={ bird.bird_extended.sponsor_website }
-                             target="_blank" rel="noopener noreferrer">
-                            { bird.bird_extended.sponsor_name }
-                          </a>
-                        : <span className="sponsor">
-                            { bird.bird_extended.sponsor_name }
-                          </span>
-                      }
-                    </p>
-                  </section>
-                }
-                { bird.bird_extended.profile_picture_attribution &&
-                  <span className="attribution">
-                    <strong>Photo:</strong> { bird.bird_extended.profile_picture_attribution }
-                  </span>
-                }
-              </section>
-            }
           </div>
         </div>
       );

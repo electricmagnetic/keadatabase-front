@@ -26,13 +26,13 @@ class BirdCard extends Component {
           <Link to={ '/birds/' + bird.slug }>
             <h2>{ bird.name } &raquo;</h2>
           </Link>
+          <p className="details">
+            { bird.get_life_stage } { bird.sex }
+          </p>
           <p className="bandcombo">
             { bird.band_combo &&
               <PrettyBandCombo band={ bird.band_combo } />
             }
-          </p>
-          <p className="details">
-            { bird.get_life_stage } { bird.sex }
           </p>
         </div>
       </div>

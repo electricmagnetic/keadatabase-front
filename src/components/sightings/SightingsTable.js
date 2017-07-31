@@ -10,6 +10,8 @@ import Loader from '../helpers/Loader';
 import SightingsDate from '../helpers/SightingsDate';
 import QualityIndicator from '../helpers/QualityIndicator';
 
+import './SightingsTable.css';
+
 class SightingTableRow extends Component {
   render() {
     const { sighting } = this.props;
@@ -18,16 +20,17 @@ class SightingTableRow extends Component {
       <tr>
         <td>
           <Link to={ '/sightings/' + sighting.id }>
-            <SightingsDate>
+            <SightingsDate format="medium">
               { sighting.date_sighted } { sighting.time_sighted }
             </SightingsDate>
+            &nbsp;&raquo;
           </Link>
         </td>
         <td>
           { sighting.contributor }
         </td>
         <td>
-          <QualityIndicator quality={ sighting.quality } />
+          { sighting.get_sighting_type_display } { sighting.number } bird(s)
         </td>
       </tr>
     );
@@ -61,7 +64,7 @@ class SightingsTable extends Component {
             <tr>
               <th>When</th>
               <th>Who</th>
-              <th>Verified?</th>
+              <th>What</th>
             </tr>
           </thead>
           <tbody>
