@@ -39,16 +39,14 @@ class BirdFeatured extends Component {
           <div className="container">
             <div className="row">
               <div className="col-sm-3 col-md-2 col-md-offset-2 featured-img">
-                <p>
-                  <Link to={ '/birds/' + bird.slug }>
-                    <ProfilePicture
-                      profilePicture={ bird.bird_extended.profile_picture }
-                      alt={ bird.name }
-                      size="large"
-                      isCircle
-                    />
-                  </Link>
-                </p>
+                <Link to={ '/birds/' + bird.slug }>
+                  <ProfilePicture
+                    profilePicture={ bird.bird_extended.profile_picture }
+                    alt={ bird.name }
+                    size="large"
+                    isCircle
+                  />
+                </Link>
               </div>
               <div className="col-sm-9 col-md-6 featured-details">
                 <h2>Featured Bird</h2>

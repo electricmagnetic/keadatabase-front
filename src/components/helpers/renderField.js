@@ -9,7 +9,7 @@ export const renderField = ({ input, label, placeholder, type, options, addBlank
       <div className={ (touched && error) ? "form-group has-error" : "form-group"}>
         <label className="control-label" htmlFor={ input.name }>{ label }</label>
         <select { ...input } className="form-control" id={ input.name }>
-          // Add blank to compulsory fields (requiring the user to make a selection)
+          {/* Add blank to compulsory fields (requiring the user to make a selection) */}
           { addBlank && <option default value={""}></option>}
           { options.choices.map(option => (
             <option value={ option.value } key={ option.value }>

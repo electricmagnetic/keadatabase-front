@@ -1,7 +1,6 @@
 import React, { Component  } from 'react';
 import { Route, Switch  } from 'react-router-dom';
 import { Provider  } from 'react-redux';
-import ReactGA from 'react-ga';
 import { ConnectedRouter } from 'react-router-redux';
 
 import configureStore from './store/store';
@@ -9,6 +8,7 @@ import Navigation from './components/presentation/Navigation/Navigation';
 import Footer from './components/presentation/Footer/Footer';
 import ScrollToTop from './components/helpers/ScrollToTop';
 import history from './history/history';
+import initGa from './analytics';
 
 import HomePage from './views/index';
 import AboutPage from './views/about';
@@ -30,18 +30,7 @@ import './assets/css/custom.css';
 
 const store = configureStore();
 
-if (process.env.NODE_ENV === 'production') {
-  ReactGA.initialize('UA-67905653-2');
-
-  // Initial pageview
-  ReactGA.set({ page: location.pathname });
-  ReactGA.pageview(location.pathname);
-
-  history.listen((location, action) => {
-    ReactGA.set({ page: location.pathname });
-    ReactGA.pageview(location.pathname);
-  });
-}
+initGa(history);
 
 class App extends Component {
   render() {
@@ -70,7 +59,7 @@ class App extends Component {
                   <Route exact path="/report/sighting" component={ ReportSightingPage } />
                   <Route exact path="/report/sighting/success" component={ ReportSightingSuccessPage } />
                   <Route exact path="/report/sighting/success/:id" component={ ReportSightingSuccessPage } />
-                  
+
                   <Route exact path="/report/non-sighting" component={ ReportNonSightingPage } />
                   <Route exact path="/report/non-sighting/success" component={ ReportNonSightingSuccessPage } />
 

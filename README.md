@@ -27,7 +27,9 @@ TODO: Setup tests for Travis CI
 
 Deploying
 ---------
-Ensure you have the `awscli` Python package installed and configured with id and secret key.
+Ensure you have the following:
+* The `awscli` Python package installed and configured with id and secret key.
+* `REACT_APP_GOOGLE_API_KEY` and `REACT_APP_GA_ID` defined in `.env`
 
 To deploy to Amazon S3 (and hence make available at https://keadatabase.nz/):  
 `npm run deploy`
