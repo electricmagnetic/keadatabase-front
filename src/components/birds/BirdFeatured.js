@@ -8,8 +8,8 @@ import { fetchBirdIfNeeded } from '../../actions/birds.js';
 
 import Error from '../helpers/Error';
 import Loader from '../helpers/Loader';
+import ProfilePicture from '../helpers/ProfilePicture';
 
-import placeholder from '../../assets/img/placeholder_large.png';
 import './BirdFeatured.css';
 
 class BirdFeatured extends Component {
@@ -39,14 +39,14 @@ class BirdFeatured extends Component {
           <div className="container">
             <div className="row">
               <div className="col-sm-3 col-md-2 col-md-offset-2 featured-img">
-                <p>
-                  <Link to={ '/birds/' + bird.slug }>
-                    { bird.bird_extended.profile_picture
-                      ? <img src={ bird.bird_extended.profile_picture.large } alt={ bird.name } className="img-circle img-responsive" />
-                      : <img src={ placeholder } alt="placeholder" className="img-thumbnail img-responsive" />
-                    }
-                  </Link>
-                </p>
+                <Link to={ '/birds/' + bird.slug }>
+                  <ProfilePicture
+                    profilePicture={ bird.bird_extended.profile_picture }
+                    alt={ bird.name }
+                    size="large"
+                    isCircle
+                  />
+                </Link>
               </div>
               <div className="col-sm-9 col-md-6 featured-details">
                 <h2>Featured Bird</h2>

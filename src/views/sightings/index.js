@@ -16,10 +16,10 @@ class SightingsPage extends Component {
         <div className="container">
           <h2>Latest Sightings</h2>
           <div className="row">
-            <div className="col-md-6 col-lg-7">
+            <div className="col-md-6">
               <SightingsTable />
             </div>
-            <div className="col-md-6 col-lg-5">
+            <div className="col-md-6">
               <SightingsMap />
             </div>
           </div>

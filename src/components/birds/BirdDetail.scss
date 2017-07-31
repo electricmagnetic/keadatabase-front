@@ -39,13 +39,6 @@
   .Banner {
     background-color: $brand-dull;
 
-    p.introducing {
-      margin-bottom: 0;
-      font-weight: 600;
-      font-size: $font-size-large;
-      color: $brand-green;
-    }
-
     h1 {
       margin-top: 0;
       margin-bottom: $line-height-computed/2;
@@ -54,7 +47,6 @@
 
     .bandcombo {
       font-weight: 600;
-      margin-bottom: 0;
       border: 1px solid lighten($brand-dull, 15%);
       background-color: lighten($brand-dull, 5%);
       padding: $line-height-computed/2 $grid-gutter-width/2;

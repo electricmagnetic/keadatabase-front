@@ -12,7 +12,7 @@ class SubmitFieldset extends Component {
         <Page id={185} hideTitle />
         <p>
           <button type="submit" className="btn btn-primary" disabled={ pristine || submitting }>
-            <span className="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit
+            <span className="glyphicon glyphicon-ok" aria-hidden="true"></span>Submit
           </button>
         </p>
         { error &&

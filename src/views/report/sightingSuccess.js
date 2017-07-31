@@ -18,11 +18,11 @@ class ReportSightingSuccessPage extends Component {
           <section>
             <div className="btn-toolbar" role="toolbar">
               <Link to="/report" className="btn btn-success" role="button">
-                <span className="glyphicon glyphicon-repeat" aria-hidden="true"></span> Report Another
+                <span className="glyphicon glyphicon-repeat" aria-hidden="true"></span>Report Another
               </Link>
               { id &&
                 <Link to={'/sightings/' + this.props.match.params.id } className="btn btn-default" role="button">
-                  <span className="glyphicon glyphicon-share-alt" aria-hidden="true"></span> View Sighting
+                  <span className="glyphicon glyphicon-share-alt" aria-hidden="true"></span>View Sighting
                 </Link>
               }
             </div>
