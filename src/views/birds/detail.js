@@ -10,15 +10,17 @@ class BirdDetailPage extends Component {
       <div className="BirdDetailPage">
         <BirdDetail slug={this.props.match.params.slug} />
         <div className="container">
-          <h2>Latest Sightings</h2>
-          <div className="row">
-            <div className="col-md-6">
-              <BirdSightingsTable bird={this.props.match.params.slug} />
+          <section>
+            <h2>Latest Sightings</h2>
+            <div className="row">
+              <div className="col-md-6">
+                <BirdSightingsTable bird={this.props.match.params.slug} />
+              </div>
+              <div className="col-md-6">
+                <BirdSightingsMap bird={this.props.match.params.slug} />
+              </div>
             </div>
-            <div className="col-md-6">
-              <BirdSightingsMap bird={this.props.match.params.slug} />
-            </div>
-          </div>
+          </section>
         </div>
       </div>
     );

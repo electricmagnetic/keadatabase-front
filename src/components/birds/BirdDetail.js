@@ -29,6 +29,13 @@ class BirdDetail extends Component {
       return (<div className="container"><Error>Either this bird doesn't exist, or something went wrong here.</Error></div>);
     }
     else {
+      var showAge = true;
+
+      if (bird.get_life_stage === 'Adult') {
+        // As per Laura's request, hide the age if the bird is an adult
+        showAge = false;
+      }
+
       return(
         <div className="BirdDetail">
           <Helmet title={ bird.name } />
@@ -45,7 +52,6 @@ class BirdDetail extends Component {
                 }
               </div>
               <div className="col-sm-8 col-sm-pull-4">
-                <p className="introducing">Kia Ora, my name is:</p>
                 <h1>{ bird.name }</h1>
                 <p className="bandcombo">
                   { bird.band_combo &&
@@ -72,15 +78,11 @@ class BirdDetail extends Component {
                         <th>Life Stage</th>
                         <td>
                           { bird.get_life_stage }
+                          { showAge &&
+                            <span> (age { bird.get_age })</span>
+                          }
                         </td>
                       </tr>
-                      <tr>
-                        <th>Age</th>
-                        <td>
-                          { bird.get_age }
-                        </td>
-                      </tr>
-
                       <tr>
                         <th>Sex</th>
                         <td>
@@ -122,7 +124,6 @@ class BirdDetail extends Component {
                             { bird.bird_extended.sponsor_name }
                           </span>
                       }
-                      .
                     </p>
                   </section>
                 }

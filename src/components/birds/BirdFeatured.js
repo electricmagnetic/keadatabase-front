@@ -10,7 +10,6 @@ import Error from '../helpers/Error';
 import Loader from '../helpers/Loader';
 import ProfilePicture from '../helpers/ProfilePicture';
 
-import placeholder from '../../assets/img/placeholder_large.png';
 import './BirdFeatured.css';
 
 class BirdFeatured extends Component {
