@@ -18,14 +18,17 @@ class SightingDetailPage extends Component {
         </Banner>
         <div className="container">
           <div className="row">
-            <div className="col-md-7">
+            <div className="col-md-6">
               <SightingDetail id={id} />
             </div>
-            <div className="col-md-5">
+            <div className="col-md-6">
               <SightingsMap id={id} />
             </div>
           </div>
-          <BirdSightingsTable sighting={id} />
+          <section>
+            <h2>Birds</h2>
+            <BirdSightingsTable sighting={id} />
+          </section>
         </div>
       </div>
     );

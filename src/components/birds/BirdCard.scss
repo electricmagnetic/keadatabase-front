@@ -8,12 +8,15 @@
   .card-details {
     margin: $line-height-computed/2;
 
-    h2 {
+    h2, h3 {
       margin: 0;
-      font-size: $font-size-h4;
       font-family: $font-family-base;
+      font-size: $font-size-h4;
+    }
+    h2 {
       color: $brand-green;
     }
+
     p.details {
       font-size: $font-size-small;
       font-weight: 600;
