@@ -1,4 +1,4 @@
-import { CALL_API } from 'redux-api-middleware';
+import { RSAA } from 'redux-api-middleware';
 
 export const REPORTSIGHTING_POST = 'api:/report/sighting/POST';
 export const REPORTSIGHTING_SUCCESS = 'api:/report/sighting/SUCCESS';
@@ -34,7 +34,7 @@ function formatSighting(sighting={}) {
 
 export function postReportSighting(sighting) {
   return {
-    [CALL_API]: {
+    [RSAA]: {
       endpoint: `https://api.keadatabase.nz/report/sighting/`,
       method: 'POST',
       body: formatSighting(sighting),
@@ -53,7 +53,7 @@ export const REPORTSIGHTING_ERROR = 'api:/report/sighting/ERROR';
 export function getReportSightingOptions() {
   // dropdowns -- initial values?
   return {
-    [CALL_API]: {
+    [RSAA]: {
       endpoint: `https://api.keadatabase.nz/report/sighting/`,
       method: 'OPTIONS',
       types: [REPORTSIGHTING_OPTIONS, REPORTSIGHTING_RECEIVE, REPORTSIGHTING_ERROR]
@@ -77,7 +77,7 @@ function formatNonSighting(nonSighting={}) {
 
 export function postReportNonSighting(nonSighting) {
   return {
-    [CALL_API]: {
+    [RSAA]: {
       endpoint: `https://api.keadatabase.nz/report/non_sighting/`,
       method: 'POST',
       body: formatNonSighting(nonSighting),
@@ -96,7 +96,7 @@ export const REPORTNONSIGHTING_ERROR = 'api:/report/non_sighting/ERROR';
 export function getReportNonSightingOptions() {
   // dropdowns -- initial values?
   return {
-    [CALL_API]: {
+    [RSAA]: {
       endpoint: `https://api.keadatabase.nz/report/non_sighting/`,
       method: 'OPTIONS',
       types: [REPORTNONSIGHTING_OPTIONS, REPORTNONSIGHTING_RECEIVE, REPORTNONSIGHTING_ERROR]

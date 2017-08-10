@@ -1,4 +1,4 @@
-import { CALL_API } from 'redux-api-middleware';
+import { RSAA } from 'redux-api-middleware';
 
 export const BIRDSIGHTINGS_REQUEST = 'api:/bird_sightings/REQUEST';
 export const BIRDSIGHTINGS_RECEIVE = 'api:/bird_sightings/RECEIVE';
@@ -6,7 +6,7 @@ export const BIRDSIGHTINGS_ERROR = 'api:/bird_sightings/ERROR';
 
 function fetchBirdSightings(sighting, bird) {
   return {
-    [CALL_API]: {
+    [RSAA]: {
       endpoint: `https://api.keadatabase.nz/sightings/birds/?sighting=${sighting}&bird=${bird}`,
       method: 'GET',
       types: [BIRDSIGHTINGS_REQUEST, BIRDSIGHTINGS_RECEIVE, BIRDSIGHTINGS_ERROR]

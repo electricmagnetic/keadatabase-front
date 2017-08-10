@@ -1,4 +1,4 @@
-import { CALL_API } from 'redux-api-middleware';
+import { RSAA } from 'redux-api-middleware';
 
 export const BANDCOMBOS_REQUEST = 'api:/band_combos/REQUEST';
 export const BANDCOMBOS_RECEIVE = 'api:/band_combos/RECEIVE';
@@ -6,7 +6,7 @@ export const BANDCOMBOS_ERROR = 'api:/band_combos/ERROR';
 
 function fetchBandCombos(query) {
   return {
-    [CALL_API]: {
+    [RSAA]: {
       endpoint: `https://api.keadatabase.nz/band_combos/?ordering=bird__bird_extended,style,bird__name&search=${encodeURIComponent(query)}`,
       method: 'GET',
       types: [

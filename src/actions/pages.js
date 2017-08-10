@@ -1,4 +1,4 @@
-import { CALL_API } from 'redux-api-middleware';
+import { RSAA } from 'redux-api-middleware';
 
 export const PAGES_REQUEST = 'wordpress:/pages/REQUEST';
 export const PAGES_RECEIVE = 'wordpress:/pages/RECEIVE';
@@ -6,7 +6,7 @@ export const PAGES_ERROR = 'wordpress:/pages/ERROR';
 
 function fetchPages() {
   return {
-    [CALL_API]: {
+    [RSAA]: {
       endpoint: `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/pages?per_page=20`,
       method: 'GET',
       types: [PAGES_REQUEST, PAGES_RECEIVE, PAGES_ERROR]
