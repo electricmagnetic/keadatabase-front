@@ -15,7 +15,7 @@ class SightingsPage extends Component {
         </Banner>
         <div className="container">
           <section>
-            <SightingsMap />
+            <SightingsMap cluster />
           </section>
           <section>
             <h2>Recent Sightings</h2>

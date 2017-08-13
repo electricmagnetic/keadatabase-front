@@ -22,7 +22,7 @@ class SightingsMap extends Component {
   }
 
   render() {
-    const { id } = this.props;
+    const { id, cluster } = this.props;
 
     if (this.props.isError) {
       return (<Error>Either this sighting doesn't exist, or something went wrong here.</Error>);
@@ -51,7 +51,7 @@ class SightingsMap extends Component {
                containerElement={ <div className="map-container" /> }
                mapElement={ <div className="map-element" /> }
                markers={ markers }
-               cluster
+               cluster={ cluster }
              />
           </section>
         </div>
@@ -66,11 +66,13 @@ SightingsMap.propTypes = {
   result: PropTypes.array,
   isFetching: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
-  isError: PropTypes.bool.isRequired
+  isError: PropTypes.bool.isRequired,
+  cluster: PropTypes.bool.isRequired
 }
 
 SightingsMap.defaultProps = {
-  id: ''
+  id: '',
+  cluster: false
 }
 
 const mapStateToProps = (state) => {

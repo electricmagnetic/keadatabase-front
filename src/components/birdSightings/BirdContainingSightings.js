@@ -27,7 +27,7 @@ class BirdContainingSightings extends Component {
     var { result, entities } = this.props;
 
     return(
-      <table className="BirdSightingsTable BirdContainingSightings table table-responsive table-striped">
+      <table className="BirdContainingSightings table table-responsive table-striped">
         <thead>
           <tr>
             <th>Date</th>
