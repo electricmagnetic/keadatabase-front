@@ -65,7 +65,7 @@ class SightingContainingBirds extends Component {
 
     return(
       <div className="SightingContainingBirds">
-        <div className="row">
+        <div className="row is-flex">
           { result.map(key =>
             <SightingBirdCard key={ key } birdSighting={ entities.birdSightings[key] } />
           ) }
