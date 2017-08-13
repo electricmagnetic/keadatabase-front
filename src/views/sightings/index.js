@@ -14,15 +14,14 @@ class SightingsPage extends Component {
           <h1>Sightings</h1>
         </Banner>
         <div className="container">
-          <h2>Latest Sightings</h2>
-          <div className="row">
-            <div className="col-md-6">
-              <SightingsTable />
-            </div>
-            <div className="col-md-6">
-              <SightingsMap />
-            </div>
-          </div>
+          <section>
+            <SightingsMap />
+          </section>
+          <section>
+            <h2>Recent Sightings</h2>
+            <small>Showing last 50 sightings</small>
+            <SightingsTable />
+          </section>
           {/* TODO: <h2>Latest Non-Sightings</h2> */}
         </div>
       </div>

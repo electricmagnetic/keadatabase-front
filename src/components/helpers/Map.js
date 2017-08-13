@@ -59,7 +59,7 @@ class Map extends Component {
           <MarkerClusterer
             averageCenter
             enableRetinaIcons
-            gridSize={20}
+            gridSize={15}
             maxZoom={15}
           >
             { props.markers.map((marker, index) => (
