@@ -124,7 +124,7 @@ class HomePage extends Component {
                 <a href="https://blog.keadatabase.nz/">More posts</a>
               </div>
               <div className="col-md-6">
-                <h2>Latest Sightings</h2>
+                <h2>Recent Sightings</h2>
                 <SightingsTable limit={5} />
                 <Link to={ '/sightings/' }>More sightings</Link>
               </div>

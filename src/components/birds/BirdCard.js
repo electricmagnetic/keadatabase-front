@@ -9,9 +9,12 @@ import './BirdCard.css';
 class BirdCard extends Component {
   render() {
     const bird = this.props.bird;
+    /*const isDead = bird.status === 'Dead' ? true : false;*/
+
     return(
       <div className="BirdCard">
         <Link to={ '/birds/' + bird.slug }>
+          {/* isDead && <span className="is-dead glyphicon glyphicon-remove"></span> */}
           { bird.bird_extended
             ?
               <ProfilePicture
