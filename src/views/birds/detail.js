@@ -11,7 +11,6 @@ class BirdDetailPage extends Component {
         <BirdDetail slug={this.props.match.params.slug} />
         <div className="container">
           <section>
-            <h2>Latest Sightings</h2>
             <div className="row">
               <div className="col-md-6">
                 <BirdSightingsTable bird={this.props.match.params.slug} />

@@ -5,6 +5,17 @@
   border: 1px solid  $gray-lightish;
   margin-bottom: $line-height-computed;
 
+  .is-dead {
+    position: absolute;
+    top: $line-height-computed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    font-size: $font-size-h2;
+    color: $brand-danger;
+  }
+
   .card-details {
     margin: $line-height-computed/2;
 

@@ -25,10 +25,7 @@ class SightingDetailPage extends Component {
               <SightingsMap id={id} />
             </div>
           </div>
-          <section>
-            <h2>Birds</h2>
-            <BirdSightingsTable sighting={id} />
-          </section>
+          <BirdSightingsTable sighting={id} />
         </div>
       </div>
     );

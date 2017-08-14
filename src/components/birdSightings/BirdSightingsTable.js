@@ -25,14 +25,24 @@ class BirdSightingsTable extends Component {
       return (<Error />);
     }
     else if (!this.props.entities.birdSightings) {
-      return(<p className="no-sightings">No sightings have yet been recorded!</p>);
+      return(<span className="no-sightings"></span>);
     }
     else {
       if(this.props.bird) {
-        return(<BirdContainingSightings { ...this.props } />);
+        return(
+          <section className="BirdSightingsTable">
+            <h2>Sightings</h2>
+            <BirdContainingSightings { ...this.props } />
+          </section>
+        );
       }
       else {
-        return(<SightingContainingBirds { ...this.props } />);
+        return(
+          <section className="BirdSightingsTable">
+            <h2>Birds</h2>
+            <SightingContainingBirds { ...this.props } />
+          </section>
+        );
       }
     }
   }

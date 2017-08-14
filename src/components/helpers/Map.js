@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import MarkerClusterer from 'react-google-maps/lib/addons/MarkerClusterer';
 
 import './Map.css';
 
 class Map extends Component {
-  /* Common Google Map setup */
-
-  state = {
-    marker: null,
-  }
-
   constructor(props) {
     super(props);
+
+    this.state = {
+      marker: this.props.marker || null,
+      markers: this.props.markers || null
+    }
+
     this.handleMapClick = this.handleMapClick.bind(this);
     this.handleOnDragEnd = this.handleOnDragEnd.bind(this);
+    this.handleMarkerClick = this.handleMarkerClick.bind(this);
+    this.handleMarkerClose = this.handleMarkerClose.bind(this);
     this.updateLocation = this.updateLocation.bind(this);
   }
 
@@ -42,6 +44,40 @@ class Map extends Component {
     this.updateLocation(event);
   }
 
+  handleMarkerClick(targetMarker) {
+   this.setState({
+     markers: this.state.markers.map(marker => {
+       if (marker === targetMarker) {
+         return {
+           ...marker,
+           showInfo: true
+         };
+       }
+       else {
+         // Close other markers when opening new one
+         return {
+           ...marker,
+           showInfo: false
+         };
+       }
+     }),
+   });
+ }
+
+ handleMarkerClose(targetMarker) {
+   this.setState({
+     markers: this.state.markers.map(marker => {
+       if (marker === targetMarker) {
+         return {
+           ...marker,
+           showInfo: false,
+         };
+       }
+       return marker;
+     }),
+   });
+ }
+
   render() {
     const { props, state } = this;
     return (
@@ -51,35 +87,43 @@ class Map extends Component {
         defaultCenter={{ lat: -43.983333, lng: 170.450000 }}
         mapTypeId="terrain"
         onClick={ this.handleMapClick }
-        options={{ streetViewControl: false }}
+        options={{ streetViewControl: false, fullscreenControl: true }}
         >
 
-        { (props.markers && props.cluster) &&
-          // Display markers with clusters
+        { (state.markers && props.cluster) &&
           <MarkerClusterer
             averageCenter
             enableRetinaIcons
-            gridSize={20}
+            gridSize={15}
             maxZoom={15}
+            onMarkerClick={ props.onMarkerClick }
+            onMarkerClose={ props.onMarkerClose }
           >
-            { props.markers.map((marker, index) => (
+            { state.markers.map((marker, index) => (
               <Marker
                 {...marker}
-              />
+                onClick={ () => this.handleMarkerClick(marker) }
+              >
+                { marker.showInfo &&
+                  <InfoWindow onCloseClick={ () => this.handleMarkerClose(marker) }>
+                    <div>{ marker.infoContent }</div>
+                  </InfoWindow>
+                }
+              </Marker>
             )) }
           </MarkerClusterer>
         }
 
-        { (props.markers && !props.cluster) &&
+        { (state.markers && !props.cluster) &&
           // Display markers without clustering
-          props.markers.map((marker, index) => (
+          state.markers.map((marker, index) => (
             <Marker
               {...marker}
             />
           ))
         }
 
-        { (props.click && state.marker) &&
+        { (state.marker && props.click) &&
           // Display marker if 'click' state set
           <Marker
             {...state.marker}

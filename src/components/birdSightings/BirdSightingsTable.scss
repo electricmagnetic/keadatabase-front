@@ -5,5 +5,11 @@
 }
 
 .BirdSightingsTable {
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.BirdContainingSightings {
   font-size: $font-size-small;
 }
