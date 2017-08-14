@@ -16,14 +16,20 @@ class BannerButtons extends Component {
       <div className="BannerButtons">
         <div className="container">
           <div className="row">
-            <div className="col-sm-4 banner-button button-birds">
-              <Link to="/birds">Search Birds &raquo;</Link>
+            <div className="col-sm-4 banner-button">
+              <Link to="/birds" className="btn btn-lg btn-transparent">
+                <span className="glyphicon glyphicon-search" aria-hidden="true"></span>Search Birds
+              </Link>
             </div>
-            <div className="col-sm-4 banner-button button-sightings">
-              <Link to="/report/sighting">Report Sighting &raquo;</Link>
+            <div className="col-sm-4 banner-button">
+              <Link to="/report/sighting" className="btn btn-lg btn-transparent">
+                <span className="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Report Sighting
+              </Link>
             </div>
-            <div className="col-sm-4 banner-button button-non-sightings">
-              <Link to="/report/non-sighting">Report Non-Sighting &raquo;</Link>
+            <div className="col-sm-4 banner-button">
+              <Link to="/report/non-sighting" className="btn btn-lg btn-transparent">
+                <span className="glyphicon glyphicon-eye-close" aria-hidden="true"></span>Report Non-Sighting
+              </Link>
             </div>
           </div>
         </div>
@@ -90,11 +96,11 @@ class HomePage extends Component {
           <BannerButtons />
         </section>
         <section>
-          <div className="container">
+          {/*<div className="container">
             <div className="messages">
               <Page id={131} hideTitle />
             </div>
-          </div>
+          </div>*/}
           <div className="container">
             <div className="row">
               <div className="col-md-6">
