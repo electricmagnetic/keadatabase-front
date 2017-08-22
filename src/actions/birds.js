@@ -9,6 +9,7 @@ function fetchBird(slug) {
     [RSAA]: {
       endpoint: `https://api.keadatabase.nz/birds/${slug}/`,
       method: 'GET',
+      headers: { 'Accept': 'application/json' },
       types: [
         {
           type: BIRD_REQUEST,

@@ -9,6 +9,7 @@ function fetchBirdSightings(sighting, bird) {
     [RSAA]: {
       endpoint: `https://api.keadatabase.nz/sightings/birds/?sighting=${sighting}&bird=${bird}`,
       method: 'GET',
+      headers: { 'Accept': 'application/json' },
       types: [BIRDSIGHTINGS_REQUEST, BIRDSIGHTINGS_RECEIVE, BIRDSIGHTINGS_ERROR]
     }
   }

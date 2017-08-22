@@ -40,6 +40,7 @@ export function postReportSighting(sighting) {
       body: formatSighting(sighting),
       types: [REPORTSIGHTING_POST, REPORTSIGHTING_SUCCESS, REPORTSIGHTING_FAILURE],
       headers: {
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
     }
@@ -56,6 +57,7 @@ export function getReportSightingOptions() {
     [RSAA]: {
       endpoint: `https://api.keadatabase.nz/report/sighting/`,
       method: 'OPTIONS',
+      headers: { 'Accept': 'application/json' },
       types: [REPORTSIGHTING_OPTIONS, REPORTSIGHTING_RECEIVE, REPORTSIGHTING_ERROR]
     }
   }
@@ -83,6 +85,7 @@ export function postReportNonSighting(nonSighting) {
       body: formatNonSighting(nonSighting),
       types: [REPORTNONSIGHTING_POST, REPORTNONSIGHTING_SUCCESS, REPORTNONSIGHTING_FAILURE],
       headers: {
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
     }
@@ -99,6 +102,7 @@ export function getReportNonSightingOptions() {
     [RSAA]: {
       endpoint: `https://api.keadatabase.nz/report/non_sighting/`,
       method: 'OPTIONS',
+      headers: { 'Accept': 'application/json' },
       types: [REPORTNONSIGHTING_OPTIONS, REPORTNONSIGHTING_RECEIVE, REPORTNONSIGHTING_ERROR]
     }
   }

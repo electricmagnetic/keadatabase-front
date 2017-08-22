@@ -9,6 +9,7 @@ function fetchPages() {
     [RSAA]: {
       endpoint: `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/pages?per_page=20`,
       method: 'GET',
+      headers: { 'Accept': 'application/json' },
       types: [PAGES_REQUEST, PAGES_RECEIVE, PAGES_ERROR]
     }
   }

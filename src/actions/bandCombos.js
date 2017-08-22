@@ -9,6 +9,7 @@ function fetchBandCombos(query) {
     [RSAA]: {
       endpoint: `https://api.keadatabase.nz/band_combos/?ordering=bird__bird_extended,style,bird__name&search=${encodeURIComponent(query)}`,
       method: 'GET',
+      headers: { 'Accept': 'application/json' },
       types: [
         {
           type: BANDCOMBOS_REQUEST,
