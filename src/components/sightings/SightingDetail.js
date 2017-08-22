@@ -81,19 +81,25 @@ class SightingDetail extends Component {
           { sighting.comments &&
             <section>
               <h2 className="sr-only">Comments</h2>
-              { sighting.comments }
+              <p className="display-linebreak">
+                { sighting.comments }
+              </p>
             </section>
           }
           { sighting.location_details &&
             <section>
               <h3>Location details</h3>
-              { sighting.location_details }
+              <p className="display-linebreak">
+                { sighting.location_details }
+              </p>
             </section>
           }
           { sighting.behaviour &&
             <section>
               <h3>Behaviour</h3>
-              { sighting.behaviour }
+              <p className="display-linebreak">
+                { sighting.behaviour }
+              </p>
             </section>
           }
         </div>

@@ -89,3 +89,8 @@ label {
     margin-right: 0;
   }
 }
+
+// [#73] Show line-break in paragraphs where it is provided via API
+.display-linebreak {
+  white-space: pre-line;
+}
