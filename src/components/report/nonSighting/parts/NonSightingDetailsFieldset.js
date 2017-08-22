@@ -20,6 +20,7 @@ class NonSightingDetailsFieldset extends Component {
                   options={ options.date_sighted }
                   type="date"
                   placeholder="YYYY-MM-DD"
+                  label="Date"
                 />
               </div>
               <div className="col-sm-6">
@@ -29,6 +30,7 @@ class NonSightingDetailsFieldset extends Component {
                   options={ options.time_sighted }
                   type="time"
                   placeholder="hh:mm (24 hour time)"
+                  label="Time"
                 />
               </div>
             </div>
