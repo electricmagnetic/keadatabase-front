@@ -70,8 +70,7 @@ $constrainer-width: $container-lg+160px;
   display: flex;
   flex-wrap: wrap;
   &> [class*='col-'] {
-      display: flex;
-      flex-direction: column;
+    flex-direction: column;
   }
   &:before, &:after {
     display: none;
