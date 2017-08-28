@@ -10,7 +10,27 @@ section, fieldset {
 }
 
 .Sponsors {
-  border-top: 1px solid $gray-lightish;
+  padding: $line-height-computed 0;
+  background-color: lighten($brand-faded, 10%);
+  text-align: center;
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+    li a {
+      color: $text-color;
+      &:hover {
+        color: $link-color;
+      }
+    }
+  }
+
+  h3 {
+   font-size: $font-size-base;
+   font-weight: 600;
+   font-family: $font-family-base;
+   text-transform: uppercase;
+  }
 }
 
 .messages {
