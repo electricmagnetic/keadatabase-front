@@ -10,7 +10,9 @@ class TermsPage extends Component {
         <Helmet title="Terms/Privacy" />
         <div className="container">
           <h1>Terms of Use &amp; Privacy Policy</h1>
-          <Page id={3} hideTitle />
+          <section>
+            <Page id={3} hideTitle />
+          </section>
         </div>
       </div>
     );

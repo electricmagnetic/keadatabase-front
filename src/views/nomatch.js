@@ -11,16 +11,18 @@ class NoMatchPage extends Component {
         <div className="container text-center">
           <div className="row">
             <div className="col-md-6 col-md-offset-3">
-              <h1>Page Not Found</h1>
-              <p>
-                <img src={ error } alt="kea on car" className="img-circle" width="128px" />
-              </p>
-              <p className="lead">
-                Hmm, you seem to have come across a page that doesn't exist.
-              </p>
-              <p>
-                If you think there's an issue, please let us know.
-              </p>
+              <h1>404: Page Not Found</h1>
+              <section>
+                <p>
+                  <img src={ error } alt="kea on car" className="img-circle" width="128px" />
+                </p>
+                <p className="lead">
+                  Skrark! You seem to have come across a page that doesn't exist.
+                </p>
+                <p>
+                  If you think there's an issue, please let us know.
+                </p>
+              </section>
             </div>
           </div>
         </div>

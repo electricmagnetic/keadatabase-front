@@ -10,7 +10,9 @@ class AboutPage extends Component {
         <Helmet title="About" />
         <div className="container">
           <h1>About</h1>
-          <Page id={2} hideTitle />
+          <section>
+            <Page id={2} hideTitle />
+          </section>
         </div>
       </div>
     );
