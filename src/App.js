@@ -13,6 +13,7 @@ import initGa from './analytics';
 import HomePage from './views/index';
 import AboutPage from './views/about';
 import TermsPage from './views/terms';
+import SponsorPage from './views/sponsor';
 import BirdsPage from './views/birds/index';
 import BirdDetailPage from './views/birds/detail';
 import SightingsPage from './views/sightings/index';
@@ -47,6 +48,7 @@ class App extends Component {
                   <Route exact path="/about" component={ AboutPage } />
                   <Route exact path="/terms" component={ TermsPage } />
                   <Route exact path="/licence" component={ LicencePage } />
+                  <Route exact path="/sponsor" component={ SponsorPage } />
 
                   <Route exact path="/birds" component={ BirdsPage } />
                   <Route exact path="/birds/:slug" component={ BirdDetailPage } />
