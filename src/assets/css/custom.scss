@@ -113,3 +113,11 @@ label {
 .display-linebreak {
   white-space: pre-line;
 }
+
+.Page {
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}

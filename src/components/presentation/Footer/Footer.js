@@ -13,6 +13,7 @@ class Footer extends Component {
             <ul className="footer-links">
               <li><NavLink to="/">Home</NavLink></li>
               <li><NavLink to="/sponsor">Sponsor A Kea</NavLink></li>
+              <li><NavLink to="/help">Help</NavLink></li>
               <li><NavLink to="/about">About/Contact</NavLink></li>
               <li><NavLink to="/licence">Licence/Copyright</NavLink></li>
               <li><NavLink to="/terms">Terms/Privacy</NavLink></li>
