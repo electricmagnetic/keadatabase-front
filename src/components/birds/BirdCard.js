@@ -9,17 +9,17 @@ import './BirdCard.css';
 class BirdCard extends Component {
   render() {
     const bird = this.props.bird;
-    /*const isDead = bird.status === 'Dead' ? true : false;*/
+    const isDead = bird.status === 'Dead' ? true : false;
 
     return(
       <div className="BirdCard">
         <Link to={ '/birds/' + bird.slug }>
-          {/* isDead && <span className="is-dead glyphicon glyphicon-remove"></span> */}
           { bird.bird_extended
             ?
               <ProfilePicture
                 profilePicture={ bird.bird_extended.profile_picture }
                 alt={ bird.name }
+                isDead={ isDead }
               />
             :
               <ProfilePicture />
@@ -38,6 +38,11 @@ class BirdCard extends Component {
               <PrettyBandCombo band={ bird.band_combo } />
             }
           </p>
+          { isDead &&
+            <p className="status">
+              <span className="glyphicon glyphicon-remove"></span>
+            </p>
+          }
         </div>
       </div>
     );

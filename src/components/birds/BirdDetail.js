@@ -22,6 +22,7 @@ class BirdDetail extends Component {
   render() {
     const bird = this.props.item;
 
+
     if (this.props.isFetching) {
       return (<div className="container"><Loader /></div>);
     }
@@ -29,6 +30,7 @@ class BirdDetail extends Component {
       return (<div className="container"><Error>Either this bird doesn't exist, or something went wrong here.</Error></div>);
     }
     else {
+      const isDead = bird.status === 'Dead' ? true : false;
       var showAge = true;
 
       if (bird.get_life_stage === 'Adult') {
@@ -49,6 +51,7 @@ class BirdDetail extends Component {
                       alt={ bird.name }
                       size="large"
                       isThumbnail
+                      isDead={ isDead }
                     />
                   :
                     <ProfilePicture
