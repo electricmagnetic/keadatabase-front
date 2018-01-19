@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import placeholder_large from '../../assets/img/placeholder_large.png';
 import placeholder_thumbnail from '../../assets/img/placeholder_thumbnail.png';
 
+import './ProfilePicture.css';
 
 class ProfilePicture extends Component {
   /* Provide bird profile picture, given a profile picture object and size. Returns placeholder otherwise. */
 
   render() {
-    const { profilePicture, size, isThumbnail, isCircle } = this.props;
+    const { profilePicture, size, isThumbnail, isCircle, isDead } = this.props;
 
     var selectedPicture = '';
     var alt = '';
@@ -30,6 +31,9 @@ class ProfilePicture extends Component {
     if (isCircle) {
       classNames.push('img-circle');
     }
+    if (isDead) {
+      classNames.push('isDead');
+    }
 
     return(
       <div className="profile-picture">
@@ -48,7 +52,8 @@ ProfilePicture.propTypes = {
   size: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   isThumbnail: PropTypes.bool.isRequired,
-  isCircle: PropTypes.bool.isRequired
+  isCircle: PropTypes.bool.isRequired,
+  isDead: PropTypes.bool.isRequired
 }
 
 ProfilePicture.defaultProps = {
@@ -56,7 +61,8 @@ ProfilePicture.defaultProps = {
   size: 'thumbnail',
   alt: '',
   isThumbnail: false,
-  isCircle: false
+  isCircle: false,
+  isDead: false
 }
 
 export default ProfilePicture;

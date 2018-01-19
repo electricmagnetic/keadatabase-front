@@ -35,5 +35,19 @@
     p.bandcombo {
       font-size: $font-size-small;
     }
+    p.status {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 50px;
+      left: 0;
+      right: 0;
+      font-size: $font-size-h1;
+      text-transform: uppercase;
+      color: #fff;
+      .glyphicon {
+        margin: 0;
+      }
+    }
   }
 }
