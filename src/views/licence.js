@@ -10,7 +10,9 @@ class LicencePage extends Component {
         <Helmet title="Licence/Copyright" />
         <div className="container">
           <h1>Licence &amp; Copyright</h1>
-          <Page id={53} hideTitle />
+          <section>
+            <Page id={53} hideTitle />
+          </section>
         </div>
       </div>
     );

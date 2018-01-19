@@ -87,7 +87,7 @@ class BirdDetail extends Component {
                     { bird.bird_extended.description &&
                       <section>
                         <h3 className="sr-only">About Me</h3>
-                        <p>{ bird.bird_extended.description }</p>
+                        <p className="display-linebreak">{ bird.bird_extended.description }</p>
                       </section>
                     }
                     { bird.bird_extended.sponsor_name &&

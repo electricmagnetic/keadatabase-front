@@ -19,7 +19,7 @@ class SightingsPage extends Component {
           </section>
           <section>
             <h2>Recent Sightings</h2>
-            <small>Showing last 50 sightings</small>
+            <small>Showing last 250 sightings</small>
             <SightingsTable />
           </section>
           {/* TODO: <h2>Latest Non-Sightings</h2> */}

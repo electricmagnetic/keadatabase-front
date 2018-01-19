@@ -2,6 +2,7 @@
 
 footer {
   background-color: $brand-faded;
+  text-align: center;
 
   p {
     margin: 0;
@@ -12,6 +13,7 @@ footer {
     list-style: none;
     margin-bottom: 0;
     margin-left: -15px;
+    text-transform: uppercase;
 
     li {
       margin-left: $grid-gutter-width/2;
@@ -21,24 +23,10 @@ footer {
     }
   }
 
-  .footer-logo {
-    text-align: right;
+  .footer-attribution {
+    margin: $line-height-computed/2 0;
     img {
       display: inline-block;
-      padding-bottom: $line-height-computed/2;
-    }
-  }
-
-  @media (max-width: $screen-xs-max) {
-    text-align: center;
-
-    ul.footer-links {
-      padding-bottom: $line-height-computed/2;
-      margin-left: 0;
-    }
-
-    .footer-logo {
-      text-align: center;
     }
   }
 

@@ -10,7 +10,7 @@ class FurtherInformationFieldset extends Component {
     return(
       <fieldset>
         <legend>4. Further Information <small>(Optional)</small></legend>
-        <p><em>All of these fields are optional</em>. Skip them if you're in a hurry!</p>
+        <p><em>All of these fields are optional</em></p>
         <Field
           component={ renderField }
           name="comments"

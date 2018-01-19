@@ -43,32 +43,47 @@ class Sponsors extends Component {
     return(
       <div className="Sponsors">
         <div className="container">
-          <h2>Sponsors</h2>
+          <h2 className="sr-only">Sponsors & Supporters</h2>
           <p>Thank you very much for the generous support of our sponsors. This project simply wouldn't be possible without them!</p>
+          <h3>Sponsors</h3>
           <div className="row">
             <div className="col-sm-4">
               <ul>
-                <li>Active Adventures</li>
-                <li>The Bealey</li>
-                <li>TimeZoneOne</li>
-                <li>Jamie Ward Building</li>
-                <li>Orillion</li>
+                <li><a href="http://activeadventures.com" rel="noopener noreferrer" target="_blank">Active Adventures</a></li>
+                <li><a href="http://thebealeyhotel.co.nz" rel="noopener noreferrer" target="_blank">The Bealey</a></li>
+                <li><a href="http://timezoneone.com" rel="noopener noreferrer" target="_blank">TimeZoneOne</a></li>
               </ul>
             </div>
             <div className="col-sm-4">
               <ul>
-                <li>PlaceMakers Riccarton</li>
-                <li>Hirepool</li>
-                <li>ENGCO</li>
-                <li>Kathmandu</li>
+                <li><a href="http://placemakers.co.nz" rel="noopener noreferrer" target="_blank">PlaceMakers Riccarton</a></li>
+                <li><a href="http://hirepool.co.nz" rel="noopener noreferrer" target="_blank">Hirepool</a></li>
+                <li><a href="http://engco.co.nz" rel="noopener noreferrer" target="_blank">ENGCO</a></li>
               </ul>
             </div>
             <div className="col-sm-4">
-              <strong>Supporters</strong>
               <ul>
-                <li>Arthur's Pass Wildlife Trust</li>
-                <li>Kea Conservation Trust</li>
-                <li>Department of Conservation</li>
+                <li><a href="http://kathmandu.co.nz" rel="noopener noreferrer" target="_blank">Kathmandu</a></li>
+                <li><a href="https://builderscrack.co.nz/tradies/r9b36vw/jamie-ward-builder-limited" rel="noopener noreferrer" target="_blank">Jamie Ward Builder</a></li>
+                <li><a href="http://orillion.com" rel="noopener noreferrer" target="_blank">Orillion</a></li>
+              </ul>
+            </div>
+          </div>
+          <h3>Supporters</h3>
+          <div className="row">
+            <div className="col-sm-4">
+              <ul>
+                <li><a href="http://apwt.org.nz/" rel="noopener noreferrer" target="_blank">Arthur's Pass Wildlife Trust</a></li>
+              </ul>
+            </div>
+            <div className="col-sm-4">
+              <ul>
+                <li><a href="http://keaconservation.co.nz" rel="noopener noreferrer" target="_blank">Kea Conservation Trust</a></li>
+              </ul>
+            </div>
+            <div className="col-sm-4">
+              <ul>
+                <li><a href="http://doc.govt.nz" rel="noopener noreferrer" target="_blank">Department of Conservation</a></li>
               </ul>
             </div>
           </div>
@@ -131,9 +146,7 @@ class HomePage extends Component {
             </div>
           </div>
         </section>
-        <section>
-          <Sponsors />
-        </section>
+        <Sponsors />
       </div>
     );
   }

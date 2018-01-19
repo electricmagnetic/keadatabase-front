@@ -10,14 +10,16 @@ function fetchSightings(id) {
       [RSAA]: {
         endpoint: `https://api.keadatabase.nz/sightings/sightings/${id}/`,
         method: 'GET',
+        headers: { 'Accept': 'application/json' },
         types: [SIGHTINGS_REQUEST, SIGHTINGS_RECEIVE, SIGHTINGS_ERROR]
       }
     }
   }
   return {
     [RSAA]: {
-      endpoint: `https://api.keadatabase.nz/sightings/sightings/?page_size=50`,
+      endpoint: `https://api.keadatabase.nz/sightings/sightings/?page_size=250`,
       method: 'GET',
+      headers: { 'Accept': 'application/json' },
       types: [SIGHTINGS_REQUEST, SIGHTINGS_RECEIVE, SIGHTINGS_ERROR]
     }
   }

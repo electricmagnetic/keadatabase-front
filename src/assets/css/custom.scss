@@ -10,7 +10,27 @@ section, fieldset {
 }
 
 .Sponsors {
-  border-top: 1px solid $gray-lightish;
+  padding: $line-height-computed 0;
+  background-color: lighten($brand-faded, 10%);
+  text-align: center;
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+    li a {
+      color: $text-color;
+      &:hover {
+        color: $link-color;
+      }
+    }
+  }
+
+  h3 {
+   font-size: $font-size-base;
+   font-weight: 600;
+   font-family: $font-family-base;
+   text-transform: uppercase;
+  }
 }
 
 .messages {
@@ -70,8 +90,7 @@ $constrainer-width: $container-lg+160px;
   display: flex;
   flex-wrap: wrap;
   &> [class*='col-'] {
-      display: flex;
-      flex-direction: column;
+    flex-direction: column;
   }
   &:before, &:after {
     display: none;
@@ -87,5 +106,18 @@ label {
   margin-right: $grid-gutter-width/4;
   &.no-space {
     margin-right: 0;
+  }
+}
+
+// [#73] Show line-break in paragraphs where it is provided via API
+.display-linebreak {
+  white-space: pre-line;
+}
+
+.Page {
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
   }
 }

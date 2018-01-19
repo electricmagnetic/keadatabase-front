@@ -3,15 +3,15 @@ import Helmet from 'react-helmet';
 
 import Page from '../components/wordpress/Page';
 
-class AboutPage extends Component {
+class SponsorPage extends Component {
   render() {
     return (
-      <div className="AboutPage">
-        <Helmet title="About" />
+      <div className="SponsorPage">
+        <Helmet title="Sponsor A Kea" />
         <div className="container">
-          <h1>About</h1>
+          <h1>Sponsor A Kea</h1>
           <section>
-            <Page id={2} hideTitle />
+            <Page id={221} hideTitle />
           </section>
         </div>
       </div>
@@ -19,4 +19,4 @@ class AboutPage extends Component {
   }
 }
 
-export default AboutPage;
+export default SponsorPage;
