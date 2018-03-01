@@ -3,6 +3,9 @@ keadatabase-front
 
 [![Build Status](https://travis-ci.org/greenstone/keadatabase-front.svg?branch=master)](https://travis-ci.org/greenstone/keadatabase-front)
 
+The React-based front-end for the Kea Database <https://keadatabase.nz> citizen science project.
+Sponsored by [Catalyst](https://catalyst.net.nz).
+
 Setup
 -----
 You will need to have Node >= 4 installed (and npm). Then run:  
@@ -39,7 +42,7 @@ To deploy to Amazon S3 (and hence make available at https://keadatabase.nz/):
 Licence
 -------
 Kea Database  
-Copyright (C) 2016 Greenstone Limited  
+Copyright (C) 2018 Greenstone Limited  
 hello@greenstone.org.nz
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
