@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import apkt from '../../../assets/img/apkt.svg';
 import './Footer.css';
 
 class Footer extends Component {
@@ -20,7 +19,7 @@ class Footer extends Component {
               <li><a href="https://blog.keadatabase.nz">Blog</a></li>
             </ul>
             <p className="footer-attribution">
-              <img src={ apkt } alt="Arthur's Pass Kea Team" className="img-responsive" />
+              Kea Database sponsored by <a href="http://catalyst.net.nz" target="_blank" rel="noopener noreferrer" className="catalyst">Catalyst</a>.
             </p>
           </div>
         </div>

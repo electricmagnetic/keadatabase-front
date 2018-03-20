@@ -59,6 +59,7 @@ class Sponsors extends Component {
                 <li><a href="http://placemakers.co.nz" rel="noopener noreferrer" target="_blank">PlaceMakers Riccarton</a></li>
                 <li><a href="http://hirepool.co.nz" rel="noopener noreferrer" target="_blank">Hirepool</a></li>
                 <li><a href="http://engco.co.nz" rel="noopener noreferrer" target="_blank">ENGCO</a></li>
+                <li><a href="http://catalyst.net.nz" rel="noopener noreferrer" target="_blank">Catalyst</a></li>
               </ul>
             </div>
             <div className="col-sm-4">
@@ -73,7 +74,7 @@ class Sponsors extends Component {
           <div className="row">
             <div className="col-sm-4">
               <ul>
-                <li><a href="http://apwt.org.nz/" rel="noopener noreferrer" target="_blank">Arthur's Pass Wildlife Trust</a></li>
+                <li><a href="http://doc.govt.nz" rel="noopener noreferrer" target="_blank">Department of Conservation</a></li>
               </ul>
             </div>
             <div className="col-sm-4">
@@ -83,7 +84,7 @@ class Sponsors extends Component {
             </div>
             <div className="col-sm-4">
               <ul>
-                <li><a href="http://doc.govt.nz" rel="noopener noreferrer" target="_blank">Department of Conservation</a></li>
+                <li><a href="http://apwt.org.nz/" rel="noopener noreferrer" target="_blank">Arthur's Pass Wildlife Trust</a></li>
               </ul>
             </div>
           </div>
@@ -97,7 +98,7 @@ class HomePage extends Component {
   render() {
     // TODO: use 'featured birds' from API rather than hard-coded options
     const getRandomFeaturedBird = function() {
-      const featuredBirds = ['schist', 'kauri', 'aroha', 'peggy', 'beryl'];
+      const featuredBirds = ['hohoro', 'schist', 'aroha', 'tuhura', 'captain-sanderson'];
       return featuredBirds[Math.floor(Math.random()*5)];
     }
 
