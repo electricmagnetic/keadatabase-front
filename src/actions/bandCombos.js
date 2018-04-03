@@ -7,7 +7,7 @@ export const BANDCOMBOS_ERROR = 'api:/band_combos/ERROR';
 function fetchBandCombos(query) {
   return {
     [RSAA]: {
-      endpoint: `https://api.keadatabase.nz/band_combos/?page_size=144&ordering=bird__bird_extended,style,bird__name&search=${encodeURIComponent(query)}`,
+      endpoint: `https://api.keadatabase.nz/band_combos/?page_size=156&ordering=bird__bird_extended,style,bird__name&search=${encodeURIComponent(query)}`,
       method: 'GET',
       headers: { 'Accept': 'application/json' },
       types: [

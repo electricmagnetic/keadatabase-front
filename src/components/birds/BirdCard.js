@@ -31,7 +31,7 @@ class BirdCard extends Component {
           </Link>
           <p className="details">
             { bird.get_life_stage } { bird.sex }<br />
-            { bird.study_area }
+            { bird.study_area }{ bird.primary_band && <span className="primaryband"> &middot; { bird.primary_band }</span> }
           </p>
           <p className="bandcombo">
             { bird.band_combo &&
