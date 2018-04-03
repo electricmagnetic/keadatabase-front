@@ -11,7 +11,7 @@ let BirdsSearchForm = props => {
           <div className="input-group-addon">
             <span className="glyphicon glyphicon-search no-space"></span>
           </div>
-          <Field name="search" component="input" className="form-control" type="text" placeholder="Search by name (e.g. Schist) or band combo (e.g. Black K on White)" />
+          <Field name="search" component="input" className="form-control" type="text" placeholder="Search by name (e.g. Schist) or metal band (e.g. V-1696) or band combo (e.g. Black K on White)" />
           <span className="input-group-btn">
             <button type="submit" className="btn btn-primary" disabled={ submitting }>Search</button>
           </span>

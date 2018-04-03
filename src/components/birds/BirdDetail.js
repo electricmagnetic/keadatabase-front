@@ -37,6 +37,9 @@ class BirdDetail extends Component {
         // As per Laura's request, hide the age if the bird is an adult
         showAge = false;
       }
+      if (!bird.get_age) {
+        showAge = false;
+      }
 
       return(
         <div className="BirdDetail">
@@ -71,7 +74,7 @@ class BirdDetail extends Component {
                   <p>
                     <span className="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                     <span className="sr-only">Information</span>
-                    { bird.status } &middot; { bird.get_life_stage } { bird.sex } { showAge && <span> (age { bird.get_age })</span> }
+                    { bird.status }{ bird.primary_band && <span className="primaryband"> &middot; { bird.primary_band }</span> } &middot; { bird.get_life_stage } { bird.sex } { showAge && <span> (age { bird.get_age })</span> }
                   </p>
                   <p>
                     <span className="glyphicon glyphicon-globe" aria-hidden="true"></span>
