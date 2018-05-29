@@ -5,7 +5,7 @@ const SightingsPage = props => {
   return (
     <div className="SightingsPage">
       <Helmet title="Sightings" />
-      <div class="container">
+      <div className="container">
         <h1>Sightings</h1>
       </div>
     </div>

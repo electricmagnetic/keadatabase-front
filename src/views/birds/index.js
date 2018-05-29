@@ -5,7 +5,7 @@ const BirdsPage = props => {
   return (
     <div className="BirdsPage">
       <Helmet title="Birds" />
-      <div class="container">
+      <div className="container">
         <h1>Birds</h1>
       </div>
     </div>

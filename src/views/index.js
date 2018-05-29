@@ -5,7 +5,7 @@ const HomePage = props => {
   return (
     <div className="HomePage">
       <Helmet title="Kea Database" />
-      <div class="container">
+      <div className="container">
         <h1>Home</h1>
       </div>
     </div>

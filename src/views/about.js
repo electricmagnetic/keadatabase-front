@@ -5,7 +5,7 @@ const AboutPage = props => {
   return (
     <div className="AboutPage">
       <Helmet title="About" />
-      <div class="container">
+      <div className="container">
         <h1>About</h1>
       </div>
     </div>

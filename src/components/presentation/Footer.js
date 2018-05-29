@@ -5,8 +5,8 @@ import './Footer.css';
 
 const Footer = props => {
   return (
-    <footer class="py-3">
-      <div class="container">
+    <footer className="py-3">
+      <div className="container">
         <ul className="footer-links mb-3">
           <li><NavLink exact to="/">Home</NavLink></li>
           <li><NavLink to="/about">About</NavLink></li>

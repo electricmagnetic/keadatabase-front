@@ -5,7 +5,7 @@ const NoMatchPage = props => {
   return (
     <div className="NoMatchPage">
       <Helmet title="Page Not Found" />
-      <div class="container">
+      <div className="container">
         <h1>Page Not Found</h1>
       </div>
     </div>
