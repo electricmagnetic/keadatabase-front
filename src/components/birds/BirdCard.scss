@@ -1,0 +1,10 @@
+@import 'variables';
+
+.BirdCard {
+  .card-title {
+    font-family: $font-family-sans-serif;
+    a {
+      color: $green-dark;
+    }
+  }
+}

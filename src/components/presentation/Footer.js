@@ -5,7 +5,7 @@ import './Footer.css';
 
 const Footer = props => {
   return (
-    <footer className="py-3">
+    <footer className="py-3 mt-3">
       <div className="container">
         <ul className="footer-links mb-3">
           <li><NavLink exact to="/">Home</NavLink></li>

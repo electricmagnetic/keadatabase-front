@@ -5,7 +5,7 @@ import './Header.css';
 
 const Header = props => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
       <div className="container">
         <Link to="/" className="navbar-brand">Kea Database</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">

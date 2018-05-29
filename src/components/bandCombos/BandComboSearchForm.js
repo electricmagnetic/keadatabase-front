@@ -41,7 +41,7 @@ class BandComboSearchForm extends Component {
 
   render() {
     return (
-      <form className="BandComboSearchForm" onSubmit={ this.handleSubmit }>
+      <form className="BandComboSearchForm mb-3" onSubmit={ this.handleSubmit }>
         <div className="form-row">
           <div className="col">
             <label htmlFor="style">Style</label>
