@@ -1,0 +1,27 @@
+@import "variables";
+
+footer {
+  background-color: $brown-faded;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+
+  ul.footer-links {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
+    margin-left: -15px;
+    text-transform: uppercase;
+
+    li {
+      margin-left: $grid-gutter-width/2;
+      margin-right: $grid-gutter-width/2;
+      display: inline-block;
+    }
+  }
+  .catalyst {
+    color: #BA2025;
+  }
+}
