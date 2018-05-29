@@ -1,4 +1,4 @@
-import { SIGHTINGS_REQUEST, SIGHTINGS_RECEIVE, SIGHTINGS_ERROR } from '../actions/sightings';
+import { BANDCOMBOS_REQUEST, BANDCOMBOS_RECEIVE, BANDCOMBOS_ERROR } from '../actions/bandCombos';
 
 const initialState = {
   pending: false,
@@ -7,22 +7,22 @@ const initialState = {
   value: {},
 };
 
-const sightings = (state = initialState, action) => {
+const bandCombos = (state = initialState, action) => {
   switch(action.type) {
-    case SIGHTINGS_REQUEST:
+    case BANDCOMBOS_REQUEST:
       return Object.assign({}, state, {
         pending: true,
         rejected: false,
         fulfilled: false
       });
-    case SIGHTINGS_RECEIVE:
+    case BANDCOMBOS_RECEIVE:
       return Object.assign({}, state, {
         pending: false,
         rejected: false,
         fulfilled: true,
         value: action.payload
       });
-    case SIGHTINGS_ERROR:
+    case BANDCOMBOS_ERROR:
       return Object.assign({}, state, {
         pending: false,
         rejected: true,
@@ -34,4 +34,4 @@ const sightings = (state = initialState, action) => {
   }
 };
 
-export default sightings;
+export default bandCombos;

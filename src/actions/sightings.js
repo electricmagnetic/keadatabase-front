@@ -16,6 +16,7 @@ function fetchSightings() {
 }
 
 function shouldFetchSightings(state) {
+  // TODO: optimise
   return true;
 }
 
