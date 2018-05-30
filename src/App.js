@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Provider  } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
 
 import configureStore from './store/store';
+import history from './history/history';
 
 import Header from './components/presentation/Header';
 import Footer from './components/presentation/Footer';
@@ -20,7 +22,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={ store }>
-        <Router>
+        <ConnectedRouter history={ history }>
           <div className="Router">
             <Header />
 
@@ -41,7 +43,7 @@ class App extends Component {
 
             <Footer />
           </div>
-        </Router>
+        </ConnectedRouter>
       </Provider>
     );
   }
