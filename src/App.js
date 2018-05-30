@@ -24,7 +24,7 @@ class App extends Component {
           <div className="Router">
             <Header />
 
-            <main>
+            <main className="constrainer">
               <Switch>
                 <Route exact path="/" component={ HomePage } />
                 <Route exact path="/about" component={ AboutPage } />

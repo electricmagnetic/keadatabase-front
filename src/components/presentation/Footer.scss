@@ -24,4 +24,8 @@ footer {
   .catalyst {
     color: #BA2025;
   }
+  .constrainer {
+    background-color: lighten($brown-faded, 5%);
+    border-color: darken($brown-faded, 5%);
+  }
 }

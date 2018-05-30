@@ -1,2 +1,18 @@
-@import './variables';
+@import 'variables';
 @import 'node_modules/bootstrap/scss/bootstrap';
+
+$constrainer-width: map-get($container-max-widths, 'xl')+160px;
+
+.constrainer {
+  background-color: #fff;
+  overflow: hidden;
+
+  @media (min-width: $constrainer-width+1px) {
+    border: 1px solid rgba($black, .125);
+    border-top: 0;
+    border-bottom: 0;
+    margin: auto;
+    overflow: hidden;
+    width: $constrainer-width;
+  }
+}
