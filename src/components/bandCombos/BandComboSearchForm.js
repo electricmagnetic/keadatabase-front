@@ -16,7 +16,8 @@ class BandComboSearchForm extends Component {
       is_extended: 1,
       is_featured: 1,
       search: '',
-      page_size: 250
+      page_size: 250,
+      ordering: 'bird__bird_extended,bird__name'
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,7 +26,8 @@ class BandComboSearchForm extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(getBandCombos());
+
+    dispatch(getBandCombos(queryString.stringify(this.state)));
   }
 
   handleChange(e) {
@@ -36,6 +38,7 @@ class BandComboSearchForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { dispatch } = this.props;
+
     dispatch(getBandCombos(queryString.stringify(this.state)));
   }
 

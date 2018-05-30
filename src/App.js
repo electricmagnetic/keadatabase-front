@@ -6,6 +6,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import configureStore from './store/store';
 import history from './history/history';
 
+import ScrollToTop from './components/helpers/ScrollToTop';
 import Header from './components/presentation/Header';
 import Footer from './components/presentation/Footer';
 
@@ -23,26 +24,28 @@ class App extends Component {
     return (
       <Provider store={ store }>
         <ConnectedRouter history={ history }>
-          <div className="Router">
-            <Header />
+          <ScrollToTop>
+            <div className="Router">
+              <Header />
 
-            <main className="constrainer">
-              <Switch>
-                <Route exact path="/" component={ HomePage } />
-                <Route exact path="/about" component={ AboutPage } />
+              <main className="constrainer">
+                <Switch>
+                  <Route exact path="/" component={ HomePage } />
+                  <Route exact path="/about" component={ AboutPage } />
 
-                <Route exact path="/birds" component={ BirdsPage } />
+                  <Route exact path="/birds" component={ BirdsPage } />
 
-                <Route exact path="/sightings" component={ SightingsPage } />
+                  <Route exact path="/sightings" component={ SightingsPage } />
 
-                <Route exact path="/report" component={ ReportPage } />
+                  <Route exact path="/report" component={ ReportPage } />
 
-                <Route component={ NoMatchPage } />
-              </Switch>
-            </main>
+                  <Route component={ NoMatchPage } />
+                </Switch>
+              </main>
 
-            <Footer />
-          </div>
+              <Footer />
+            </div>
+          </ScrollToTop>
         </ConnectedRouter>
       </Provider>
     );
