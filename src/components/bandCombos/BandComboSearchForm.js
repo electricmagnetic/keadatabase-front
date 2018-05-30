@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import queryString from 'query-string';
+import qs from 'qs';
 
 import getBandCombos from '../../actions/bandCombos';
 
@@ -26,8 +26,7 @@ class BandComboSearchForm extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-
-    dispatch(getBandCombos(queryString.stringify(this.state)));
+    dispatch(getBandCombos(qs.stringify(this.state)));
   }
 
   handleChange(e) {
@@ -48,7 +47,7 @@ class BandComboSearchForm extends Component {
     e.preventDefault();
     const { dispatch } = this.props;
 
-    dispatch(getBandCombos(queryString.stringify(this.state)));
+    dispatch(getBandCombos(qs.stringify(this.state)));
   }
 
   render() {
