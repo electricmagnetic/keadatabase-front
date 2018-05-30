@@ -14,10 +14,15 @@ $body-bg: #f5f5f5;
 
 // Bootstrap Variables
 
-$primary: $orange-dark;
+$primary:   $orange-dark;
 $secondary: $green-dark;
+$dark:      #231f20;
 
 $font-family-sans-serif: "Open Sans", Roboto, Arial, sans-serif;
 $headings-font-family: $font-family-serif;
+
+$spacer: 1rem !default;
+
+$navbar-padding-y: $spacer;
 
 @import 'node_modules/bootstrap/scss/variables';
