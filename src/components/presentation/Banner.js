@@ -21,7 +21,7 @@ const Banner = ({ backgroundImage, size, additionalClasses, children }) => {
 
 
   // Add additional classes
-  classNames.push(additionalClasses)
+  classNames.push(additionalClasses);
 
   return (
     <div

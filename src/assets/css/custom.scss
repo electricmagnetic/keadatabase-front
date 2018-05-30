@@ -16,3 +16,12 @@ $constrainer-width: map-get($container-max-widths, 'xl')+160px;
     width: $constrainer-width;
   }
 }
+
+.btn-transparent {
+  @include button-variant(rgba(255,255,255,0.25), rgba(255,255,255,0.1));
+  color: rgba(255,255,255,1);
+
+  @include hover {
+    color: rgba(255,255,255,0.8);
+  }
+}

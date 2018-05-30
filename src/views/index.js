@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import Page from '../components/presentation/Page';
 import Posts from '../components/presentation/Posts';
 import Banner from '../components/presentation/Banner';
+import BannerButtons from '../components/presentation/BannerButtons';
 
 import banner from '../assets/img/banners/home.jpg';
 
@@ -11,9 +12,10 @@ const HomePage = props => {
   return (
     <div className="HomePage">
       <Helmet title="Kea Database" />
-      <Banner backgroundImage={ banner } additionalClasses="mb-4">
+      <Banner backgroundImage={ banner }>
         <Page id={34} hideTitle />
       </Banner>
+      <BannerButtons additionalClasses="mb-4" />
       <div className="container">
         <div className="row">
           <div className="col-md-6">

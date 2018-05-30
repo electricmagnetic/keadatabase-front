@@ -10,9 +10,13 @@ $brown-faded: #e6dfcc;
 
 $font-family-serif: "Playfair Display", Georgia, "Times New Roman", Times, serif;
 
-$body-bg: #f5f5f5;
+$footer-inner: lighten($brown-faded, 5%);
+$footer-outer: $brown-faded;
+$footer-border: darken($brown-faded, 5%);
 
 // Bootstrap Variables
+
+$body-bg: #f5f5f5;
 
 $primary:   $orange-dark;
 $secondary: $green-dark;
