@@ -14,17 +14,20 @@ class Page extends Component {
   }
 
   render() {
-    const { pages } = this.props;
+    const { pages, hideTitle, id } = this.props;
+
+    // Add sr-only (screen-reader only) class
+    const className = (hideTitle) ? 'sr-only' : '';
 
     if (pages.pending) return <Loader />;
     else if (pages.rejected) return <Error reason={ pages.value.message }/>;
     else if (pages.fulfilled) {
-      const page =  pages.value.page[this.props.id];
+      const page =  pages.value.page[id];
 
       return (
         <div className="Page">
           <div className="Page-content" key={ page.id }>
-            <h2 dangerouslySetInnerHTML={{__html: page.title.rendered }}></h2>
+            <h2 dangerouslySetInnerHTML={{__html: page.title.rendered }} className={ className }></h2>
             <p dangerouslySetInnerHTML={{__html: page.content.rendered }}></p>
           </div>
         </div>
@@ -35,9 +38,13 @@ class Page extends Component {
 };
 
 Page.propTypes = {
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
+  hideTitle: PropTypes.bool.isRequired
 }
 
+Page.defaultProps = {
+  hideTitle: false
+}
 
 const mapStateToProps = (state) => {
   return { pages: state.pages };

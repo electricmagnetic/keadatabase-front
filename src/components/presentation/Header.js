@@ -19,7 +19,7 @@ const Header = props => {
               <NavLink exact to="/" className="nav-link">Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/birds" className="nav-link">View kea</NavLink>
+              <NavLink to="/birds" className="nav-link">Browse birds</NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/sightings" className="nav-link">View sightings</NavLink>

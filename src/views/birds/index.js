@@ -3,14 +3,17 @@ import Helmet from 'react-helmet';
 
 import BandCombosList from '../../components/bandCombos/BandCombosList';
 import BandComboSearchForm from '../../components/bandCombos/BandComboSearchForm';
+import Banner from '../../components/presentation/Banner';
 
 const BirdsPage = props => {
   return (
     <div className="BirdsPage">
       <Helmet title="Birds" />
-      <div className="container">
-        <h1>Birds</h1>
+      <Banner size="small" additionalClasses="mb-3">
+        <h1 className="mb-3">Browse Birds</h1>
         <BandComboSearchForm />
+      </Banner>
+      <div className="container">
         <BandCombosList />
       </div>
     </div>
