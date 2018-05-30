@@ -32,7 +32,16 @@ class BandComboSearchForm extends Component {
 
   handleChange(e) {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    switch(name) {
+      case 'colours':
+        this.setState({ [name]: value.toLowerCase() });
+        break;
+      case 'symbols':
+        this.setState({ [name]: value.toUpperCase() });
+        break;
+    default:
+      this.setState({ [name]: value });
+    }
   }
 
   handleSubmit(e) {
@@ -47,6 +56,15 @@ class BandComboSearchForm extends Component {
       <form className="BandComboSearchForm mb-3" onSubmit={ this.handleSubmit }>
         <div className="form-row">
           <div className="col">
+            <label htmlFor="bird__status">Status</label>
+            <select className="form-control" name="bird__status" id="bird__status" onChange={ this.handleChange } value={ this.state.bird__status }>
+              <option value="">All</option>
+              <option value="alive">Alive</option>
+              <option value="dead">Dead</option>
+              <option value="unknown">Unknown</option>
+            </select>
+          </div>
+          <div className="col">
             <label htmlFor="style">Style</label>
             <select className="form-control" name="style" id="style" onChange={ this.handleChange } value={ this.state.style }>
               <option value="">All</option>
@@ -59,7 +77,7 @@ class BandComboSearchForm extends Component {
             <input type="text" className="form-control"  name="symbols" id="symbols" onChange={ this.handleChange } value={ this.state.symbols } />
           </div>
           <div className="col">
-            <label htmlFor="colours">Colour</label>
+            <label htmlFor="colours">Colours</label>
             <input type="text" className="form-control"  name="colours" id="colours" onChange={ this.handleChange } value={ this.state.colours } />
           </div>
         </div>
