@@ -15,6 +15,7 @@ import AboutPage from './views/about';
 import BirdsPage from './views/birds/index';
 import SightingsPage from './views/sightings/index';
 import ReportPage from './views/report/index';
+import BirdDetailPage from './views/birds/detail';
 import NoMatchPage from './views/nomatch';
 
 const store = configureStore();
@@ -34,6 +35,7 @@ class App extends Component {
                   <Route exact path="/about" component={ AboutPage } />
 
                   <Route exact path="/birds" component={ BirdsPage } />
+                  <Route exact path="/birds/:slug" component={ BirdDetailPage } />
 
                   <Route exact path="/sightings" component={ SightingsPage } />
 

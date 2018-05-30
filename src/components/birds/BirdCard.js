@@ -8,7 +8,9 @@ import './BirdCard.css';
 const BirdCard = ({ bird }) => {
   return (
     <div className="BirdCard card">
-      <ProfilePicture bird={ bird } classNames={ ["card-img-top"] } />
+      <Link to={ '/birds/' + bird.slug }>
+        <ProfilePicture bird={ bird } classNames={ ["card-img-top"] } />
+      </Link>
       <div className="card-body">
         <h2 className="card-title h5"><Link to={ '/birds/' + bird.slug }>{ bird.name }&nbsp;&raquo;</Link></h2>
         <p className="card-text">
