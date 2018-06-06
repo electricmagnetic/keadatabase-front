@@ -2,6 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import SightingsList from '../../components/sightings/SightingsList';
+import SightingsMap from '../../components/sightings/SightingsMap';
 import Banner from '../../components/presentation/Banner';
 
 const SightingsPage = props => {
@@ -11,6 +12,7 @@ const SightingsPage = props => {
       <Banner size="small">
         <h1>Sightings</h1>
       </Banner>
+      <SightingsMap />
       <div className="container">
         <SightingsList />
       </div>

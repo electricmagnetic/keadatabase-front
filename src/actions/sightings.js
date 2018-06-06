@@ -16,7 +16,16 @@ function fetchSightings() {
 }
 
 function shouldFetchSightings(state) {
-  // TODO: optimise
+  const { sightings } = state;
+
+  if (sightings.pending) {
+    return false;
+  }
+
+  if (sightings.fulfilled) {
+    return false;
+  }
+
   return true;
 }
 
