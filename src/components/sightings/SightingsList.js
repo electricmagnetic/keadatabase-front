@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import getSightings from '../../actions/sightings';
 
@@ -20,9 +21,24 @@ class SightingsList extends Component {
     else if (sightings.fulfilled) {
       return (
         <div className="SightingsList">
-          { sightings.value.results.map((sighting) =>
-            <li key={ sighting.id }>{ sighting.contributor } on { sighting.date_sighted }</li>
-          )}
+          <div className="row">
+            { sightings.value.results.map((sighting) =>
+              <div className="col-sm-4 col-md-3" key={ sighting.id }>
+                <div className="card mb-3">
+                  <div className="card-body">
+                    <span className="badge badge-primary">{ sighting.id }</span>
+                    <p>{ sighting.date_sighted } at { sighting.time_sighted }</p>
+                    <Link to={ '/sightings/' + sighting.id }>
+                      <h2 className="h5">{ sighting.contributor }</h2>
+                    </Link>
+                    <p>
+                      { sighting.get_sighting_type_display }&nbsp;{ sighting.number }&nbsp;{ sighting.number === 1 ? 'bird' : 'birds' }
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       );
     }
