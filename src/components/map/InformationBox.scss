@@ -1,0 +1,15 @@
+@import "variables";
+
+.TopBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%
+}
+
+.BottomBox {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+}

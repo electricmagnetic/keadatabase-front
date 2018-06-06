@@ -1,30 +1,23 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ReactMapboxGl, { Layer, Feature, Source } from "react-mapbox-gl";
-import 'mapbox-gl/dist/mapbox-gl.css';
+import { Layer, Feature } from "react-mapbox-gl";
+import { Link } from 'react-router-dom';
 
 import getSightings from '../../actions/sightings';
 
+import Map from '../map/Map';
+import { TopBox, BottomBox } from '../map/InformationBox';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
-
-const Map = ReactMapboxGl({
-  accessToken: process.env.REACT_APP_MAPBOX_API_KEY,
-  minZoom: 5.2,
-  maxZoom: 15
-});
-
-const RASTER_SOURCE_OPTIONS = {
-  "type": "raster",
-  "tiles": [
-    `https://tiles-a.data-cdn.linz.govt.nz/services;key=${process.env.REACT_APP_LINZ_API_KEY}/tiles/v4/layer=50767/EPSG:3857/{z}/{x}/{y}.png`
-  ],
-  "tileSize": 256
-};
 
 class SightingsMap extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      selectedFeature: this.props.selectedFeature || null
+    }
 
     this.markerClick = this.markerClick.bind(this);
   }
@@ -35,36 +28,28 @@ class SightingsMap extends Component {
   }
 
   markerClick(e) {
-    console.log('marker clicked');
-    console.log(e);
+    const { feature } = e;
+
+    this.setState({
+      selectedFeature: feature.properties
+    });
   }
 
   render() {
     const { sightings } = this.props;
+    const { selectedFeature } = this.state;
 
     if (sightings.pending) return <Loader />;
     else if (sightings.rejected) return <Error reason={ sightings.value.message }/>;
     else if (sightings.fulfilled) {
       return (
-        <div className="SightingsMap">
-          <Map
-            style="mapbox://styles/mapbox/outdoors-v9"
-            containerStyle={{
-              height: "520px",
-              width: "100%"
-            }}
-            center={ [170.45, -43.983333] }
-            zoom={ [5.2] }
-            >
-            <Source
-              id="topo50"
-              tileJsonSource={RASTER_SOURCE_OPTIONS}
-            />
-            <Layer
-              id="topo50"
-              type="raster"
-              sourceId="topo50"
-            />
+        <div className="SightingsMap mb-4">
+          <Map>
+            <TopBox>
+              <div className="container">
+                <h1 className="mt-4">Sightings</h1>
+              </div>
+            </TopBox>
             <Layer
               type="symbol"
               id="marker"
@@ -72,11 +57,20 @@ class SightingsMap extends Component {
               { sightings.value.results.map((sighting) =>
                 <Feature
                   key={ sighting.id }
+                  properties={{ sighting_id: sighting.id, ...sighting }}
                   coordinates={ sighting.point_location.coordinates }
                   onClick={ this.markerClick }
                 />
               )}
             </Layer>
+            { selectedFeature &&
+              <BottomBox>
+                <span className="badge badge-primary">{ selectedFeature.sighting_id }</span>
+                <Link to={ '/sightings/' + selectedFeature.sighting_id }>
+                  <p>{ selectedFeature.date_sighted }</p>
+                </Link>
+              </BottomBox>
+            }
           </Map>
         </div>
       );
@@ -84,6 +78,10 @@ class SightingsMap extends Component {
     else return null;
   }
 };
+
+SightingsMap.propTypes = {
+  selectedSighting: PropTypes.object
+}
 
 const mapStateToProps = (state) => {
   return { sightings: state.sightings };
