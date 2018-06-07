@@ -26,12 +26,13 @@ class SightingsList extends Component {
               <div className="col-sm-4 col-md-3" key={ sighting.id }>
                 <div className="card mb-3">
                   <div className="card-body">
-                    <span className="badge badge-primary">{ sighting.id }</span>
-                    <p>{ sighting.date_sighted } at { sighting.time_sighted }</p>
                     <Link to={ '/sightings/' + sighting.id }>
-                      <h2 className="h5">{ sighting.contributor }</h2>
+                      <span className="badge badge-primary">{ sighting.id }</span>
                     </Link>
                     <p>
+                      { sighting.date_sighted } at { sighting.time_sighted }<br />
+                      Around { sighting.geocode }<br />
+                      <strong>{ sighting.contributor }</strong><br />
                       { sighting.get_sighting_type_display }&nbsp;{ sighting.number }&nbsp;{ sighting.number === 1 ? 'bird' : 'birds' }
                     </p>
                   </div>
