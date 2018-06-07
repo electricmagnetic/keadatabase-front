@@ -29,7 +29,10 @@ class SightingTableRow extends Component {
           { sighting.contributor }
         </td>
         <td>
-          { sighting.get_sighting_type_display } { sighting.number } bird(s)
+          { sighting.get_sighting_type_display } { sighting.number } { sighting.number === 1 ? 'bird' : 'birds' }
+        </td>
+        <td>
+          Near { sighting.geocode }
         </td>
       </tr>
     );
@@ -64,6 +67,7 @@ class SightingsTable extends Component {
               <th>When</th>
               <th>Who</th>
               <th>What</th>
+              <th>Where</th>
             </tr>
           </thead>
           <tbody>
