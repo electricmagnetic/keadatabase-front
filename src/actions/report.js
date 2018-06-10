@@ -8,9 +8,6 @@ function formatSighting(sighting={}) {
   // Add challenge (basic spam prevention)
   sighting.challenge = 'kea';
 
-  // Set region to 'all'. TODO: make choices available.
-  sighting.region = 'all';
-
   // Format coordinates into numbers with 'Point' type
   if (sighting.point_location) {
     sighting.point_location.type = 'Point';
