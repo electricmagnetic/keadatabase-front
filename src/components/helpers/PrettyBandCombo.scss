@@ -1,0 +1,46 @@
+@import "variables";
+
+.PrettyBandCombo {
+  // Common
+  .leg {
+    display: inline-block;
+    margin-right: $grid-gutter-width/4;
+
+    .band {
+      background-color: transparent;
+      padding: 1px 5px;
+      font-size: $font-size-lg;
+      border: 1px solid transparent;
+      text-align: center;
+      margin: $grid-gutter-width/4 auto;
+    }
+  }
+
+  // New bands only
+  &.new {
+    .leg .band {
+      width: 80px;
+      min-height: 32px;
+
+      .symbol {
+        font-weight: $font-weight-bold;
+        text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  // Old bands only
+  &.old {
+    .leg  {
+      text-align: center;
+      background-color: $gray-500;
+      box-shadow: inset 0px 0px 0px 8px $light;
+
+
+      .band {
+        width: 32px;
+        min-height: 16px;
+      }
+    }
+  }
+}

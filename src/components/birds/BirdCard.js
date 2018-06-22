@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import PrettyBandCombo from '../helpers/PrettyBandCombo';
 import ProfilePicture from '../helpers/ProfilePicture';
 
 import './BirdCard.css';
@@ -14,12 +15,12 @@ const BirdCard = ({ bird }) => {
       <div className="card-body">
         <h2 className="card-title h5"><Link to={ '/birds/' + bird.slug }>{ bird.name }&nbsp;&raquo;</Link></h2>
         <p className="card-text">
-          { bird.get_life_stage }&nbsp;{ bird.sex }&nbsp;{ bird.study_area }
+          { bird.sex }&nbsp;{ bird.get_life_stage }<br />{ bird.study_area }
         </p>
       </div>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item">{ bird.band_combo }</li>
-        <li className="list-group-item">{ bird.primary_band }</li>
+        <li className="list-group-item bg-light"><PrettyBandCombo bandCombo={ bird.band_combo } /></li>
+        <li className="list-group-item">{ bird.band_combo }<br />{ bird.primary_band }</li>
       </ul>
     </div>
   );

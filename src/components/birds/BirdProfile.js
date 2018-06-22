@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
+import PrettyBandCombo from '../helpers/PrettyBandCombo';
+
 import getBird from '../../actions/bird';
 import ProfilePicture from '../helpers/ProfilePicture';
 import Banner from '../presentation/Banner';
@@ -33,6 +35,7 @@ class BirdProfile extends Component {
             <Banner>
               <h1>{ bird.name }</h1>
               <ProfilePicture bird={ bird } classNames={ ["img-responsive"] } size="large" />
+              <PrettyBandCombo bandCombo={ bird.band_combo } />
             </Banner>
             <ul>
               <li>{ bird.sex }</li>
