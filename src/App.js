@@ -14,6 +14,7 @@ import HomePage from './views/index';
 import AboutPage from './views/about';
 import BirdsPage from './views/birds/index';
 import SightingsPage from './views/sightings/index';
+import SightingsDetailPage from './views/sightings/detail';
 import ReportPage from './views/report/index';
 import BirdDetailPage from './views/birds/detail';
 import NoMatchPage from './views/nomatch';
@@ -38,6 +39,7 @@ class App extends Component {
                   <Route exact path="/birds/:slug" component={ BirdDetailPage } />
 
                   <Route exact path="/sightings" component={ SightingsPage } />
+                  <Route exact path="/sightings/:id" component={ SightingsDetailPage } />
 
                   <Route exact path="/report" component={ ReportPage } />
 
