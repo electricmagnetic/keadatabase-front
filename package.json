@@ -6,7 +6,7 @@
   "dependencies": {
     "bootstrap": "^4.1.1",
     "mapbox-gl": "^0.45.0",
-    "moment": "^2.22.1",
+    "moment": "^2.22.2",
     "normalizr": "^3.2.4",
     "prop-types": "^15.6.1",
     "qs": "^6.5.2",
@@ -14,7 +14,7 @@
     "react-dom": "^16.4.0",
     "react-helmet": "^5.2.0",
     "react-mapbox-gl": "^3.8.0",
-    "react-moment": "^0.7.0",
+    "react-moment": "^0.7.7",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
