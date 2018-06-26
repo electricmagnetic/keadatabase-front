@@ -11,12 +11,21 @@ import Header from './components/presentation/Header';
 import Footer from './components/presentation/Footer';
 
 import HomePage from './views/index';
+
 import AboutPage from './views/about';
+import TermsPage from './views/terms';
+import LicencePage from './views/licence';
+import SponsorPage from './views/sponsor';
+import HelpPage from './views/help';
+
 import BirdsPage from './views/birds/index';
+import BirdDetailPage from './views/birds/detail';
+
 import SightingsPage from './views/sightings/index';
 import SightingsDetailPage from './views/sightings/detail';
+
 import ReportPage from './views/report/index';
-import BirdDetailPage from './views/birds/detail';
+
 import NoMatchPage from './views/nomatch';
 
 const store = configureStore();
@@ -33,7 +42,12 @@ class App extends Component {
               <main className="constrainer">
                 <Switch>
                   <Route exact path="/" component={ HomePage } />
+
                   <Route exact path="/about" component={ AboutPage } />
+                  <Route exact path="/terms" component={ TermsPage } />
+                  <Route exact path="/licence" component={ LicencePage } />
+                  <Route exact path="/sponsor" component={ SponsorPage } />
+                  <Route exact path="/help" component={ HelpPage } />
 
                   <Route exact path="/birds" component={ BirdsPage } />
                   <Route exact path="/birds/:slug" component={ BirdDetailPage } />

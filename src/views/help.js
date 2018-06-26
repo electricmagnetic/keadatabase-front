@@ -1,25 +1,25 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import Banner from '../../components/presentation/Banner';
-import ReportType from '../../components/report/ReportType';
+import Banner from '../components/presentation/Banner';
+import Page from '../components/presentation/Page';
 
-const ReportPage = props => {
+const HelpPage = props => {
   return (
-    <div className="ReportPage">
-      <Helmet title="Report" />
+    <div className="HelpPage">
+      <Helmet title="About" />
       <section className="mb-4">
         <Banner size="small">
-          <h1>Report</h1>
+          <h1>Help</h1>
         </Banner>
       </section>
       <section className="mb-4">
         <div className="container">
-          <ReportType />
+          <Page id={286} hideTitle />
         </div>
       </section>
     </div>
   );
 };
 
-export default ReportPage;
+export default HelpPage;
