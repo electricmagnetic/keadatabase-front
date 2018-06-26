@@ -6,6 +6,8 @@ import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 import { getPages } from '../../actions/wordpress';
 
+import './Page.css';
+
 class Page extends Component {
   componentDidMount() {
     const { dispatch } = this.props;

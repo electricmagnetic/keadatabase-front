@@ -2,23 +2,24 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import Banner from '../components/presentation/Banner';
+import Page from '../components/presentation/Page';
 
-const NoMatchPage = props => {
+const SponsorPage = props => {
   return (
-    <div className="NoMatchPage">
-      <Helmet title="Page Not Found" />
+    <div className="SponsorPage">
+      <Helmet title="Sponsor A Kea" />
       <section className="mb-4">
         <Banner size="small">
-          <h1>Page Not Found</h1>
+          <h1>Sponsor A Kea</h1>
         </Banner>
       </section>
       <section className="mb-4">
         <div className="container">
-          <p>You seem to have encountered a page that doesn't exist. If you think it should exist, please contact us and we'll look into it.</p>
+          <Page id={221} hideTitle />
         </div>
       </section>
     </div>
   );
 };
 
-export default NoMatchPage;
+export default SponsorPage;
