@@ -27,10 +27,7 @@ const FormatDate = ({ format, children }) => {
 };
 
 FormatDate.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element.isRequired,
-    PropTypes.array.isRequired
-  ]),
+  children: PropTypes.any.isRequired,
   format: PropTypes.string.isRequired
 }
 

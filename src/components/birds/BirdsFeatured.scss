@@ -1,0 +1,46 @@
+@import 'variables';
+
+.BirdsFeatured {
+  color: #fff;
+  background-color: lighten($orange-dark, 10%);
+
+  a {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+
+  h2 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: $font-family-base;
+  }
+
+  img {
+    max-height: 192px;
+    display: inline-block;
+  }
+
+  .title {
+    text-align: right
+  }
+
+  .image {
+    text-align: center;
+  }
+
+  .text {
+    text-align: left;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .title, .text {
+      text-align: center;
+    }
+  }
+}
