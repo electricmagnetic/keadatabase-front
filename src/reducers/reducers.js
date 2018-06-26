@@ -4,7 +4,7 @@ import { routerReducer } from 'react-router-redux';
 import { sightings, birdSightings } from './sightings';
 import bandCombos from './bandCombos';
 import { pages, posts } from './wordpress';
-import birds from './birds';
+import { birds, featuredBirds } from './birds';
 
 export default combineReducers({
   birdSightings,
@@ -13,5 +13,6 @@ export default combineReducers({
   pages,
   posts,
   birds,
+  featuredBirds,
   router: routerReducer
 });
