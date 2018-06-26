@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import SightingsList from '../../components/sightings/SightingsList';
+import SightingsCards from '../../components/sightings/SightingsCards';
 import SightingsMap from '../../components/sightings/SightingsMap';
 
 const SightingsPage = props => {
@@ -10,7 +10,7 @@ const SightingsPage = props => {
       <Helmet title="Sightings" />
       <SightingsMap />
       <div className="container">
-        <SightingsList />
+        <SightingsCards />
       </div>
     </div>
   );

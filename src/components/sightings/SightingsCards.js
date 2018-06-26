@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import getSightings from '../../actions/sightings';
+import { getSightings } from '../../actions/sightings';
 
+import FormatDate from '../helpers/FormatDate';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 
-class SightingsList extends Component {
+class SightingsCards extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getSightings());
@@ -20,7 +21,7 @@ class SightingsList extends Component {
     else if (sightings.rejected) return <Error reason={ sightings.value.message }/>;
     else if (sightings.fulfilled) {
       return (
-        <div className="SightingsList">
+        <div className="SightingsCards">
           <div className="row">
             { sightings.value.results.map((sighting) =>
               <div className="col-sm-4 col-md-3" key={ sighting.id }>
@@ -30,7 +31,7 @@ class SightingsList extends Component {
                       <span className="badge badge-primary">{ sighting.id }</span>
                     </Link>
                     <p>
-                      { sighting.date_sighted } at { sighting.time_sighted }<br />
+                      <FormatDate>{ sighting.date_sighted } { sighting.time_sighted }</FormatDate>,<br />
                       Around { sighting.geocode }<br />
                       <strong>{ sighting.contributor }</strong><br />
                       { sighting.get_sighting_type_display }&nbsp;{ sighting.number }&nbsp;{ sighting.number === 1 ? 'bird' : 'birds' }
@@ -51,4 +52,4 @@ const mapStateToProps = (state) => {
   return { sightings: state.sightings };
 }
 
-export default connect(mapStateToProps)(SightingsList);
+export default connect(mapStateToProps)(SightingsCards);

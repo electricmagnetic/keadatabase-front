@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { Layer, Feature } from "react-mapbox-gl";
 import { Link } from 'react-router-dom';
 
-import getSightings from '../../actions/sightings';
+import { getSightings } from '../../actions/sightings';
 
 import Map from '../map/Map';
 import { TopBox, BottomBox } from '../map/InformationBox';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
+
+import './SightingsMap.css';
 
 class SightingsMap extends Component {
   constructor(props) {
@@ -39,7 +41,7 @@ class SightingsMap extends Component {
     const { sightings } = this.props;
     const { selectedFeature } = this.state;
 
-    if (sightings.pending) return <Loader />;
+    if (sightings.pending) return <div className="SightingsLoader"><Loader /></div>;
     else if (sightings.rejected) return <Error reason={ sightings.value.message }/>;
     else if (sightings.fulfilled) {
       return (

@@ -1,0 +1,10 @@
+$mapbox-background: #58d0ee;
+
+.SightingsLoader {
+  height: 640px;
+  background-color: $mapbox-background;
+  overflow: hidden;
+  .Loader {
+    border-top-color: darken($mapbox-background, 20%);
+  }
+}
