@@ -51,7 +51,6 @@ class BandComboSearchForm extends Component {
       ...this.state,
       colours: this.state.colours.map(colour => colour.value).join(','),
     })
-    console.log(query)
     dispatch(getBandCombos(query));
   }
 
