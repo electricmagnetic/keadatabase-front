@@ -7,12 +7,12 @@ const colours = {
   'green': '#008000',
   'grey': '#808080',
   'lime': '#00FF00',
-  'metal': '#808080',
+  'metal': 'linear-gradient(to right,#808080, #ddd, #808080)',
   'orange': '#FFA500',
   'pink': '#FFC0CB',
   'purple': '#800080',
-  'red': '	#FF0000',
-  'silver': '#808080',
+  'red': '#FF0000',
+  'silver': 'linear-gradient(to right,#C6C7BE, #eee, #C6C7BE)',
   'white': '#FFFFFF',
   'yellow': '#FFFF00'
 };
