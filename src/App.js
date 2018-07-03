@@ -25,6 +25,8 @@ import SightingsPage from './views/sightings/index';
 import SightingsDetailPage from './views/sightings/detail';
 
 import ReportPage from './views/report/index';
+import ReportSightingPage from './views/report/sighting';
+import ReportNonSightingPage from './views/report/nonSighting';
 
 import NoMatchPage from './views/nomatch';
 
@@ -56,6 +58,8 @@ class App extends Component {
                   <Route exact path="/sightings/:id" component={ SightingsDetailPage } />
 
                   <Route exact path="/report" component={ ReportPage } />
+                  <Route exact path="/report/sighting" component={ ReportSightingPage } />
+                  <Route exact path="/report/non-sighting" component={ ReportNonSightingPage } />
 
                   <Route component={ NoMatchPage } />
                 </Switch>
