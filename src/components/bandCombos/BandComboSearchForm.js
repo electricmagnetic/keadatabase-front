@@ -50,7 +50,7 @@ class BandComboSearchForm extends Component {
     const query = qs.stringify({
       ...this.state,
       colours: this.state.colours.map(colour => colour.value).join(','),
-    })
+    });
     dispatch(getBandCombos(query));
   }
 
@@ -60,9 +60,7 @@ class BandComboSearchForm extends Component {
       color: 'transparent',
       marginRight: '.5rem',
     };
-    if (colour.value === 'white') {
-      style.border = '1px solid #ddd';
-    }
+    if (colour.value === 'white') style.border = '1px solid #ddd';
     return (
       <React.Fragment key={index}>
         <span style={ style }>colour</span>
@@ -77,20 +75,20 @@ class BandComboSearchForm extends Component {
       color: 'transparent',
       width: '22%',
     };
-    if (colour.value === 'white') {
-      style.border = '1px solid #ddd';
-    }
+    if (colour.value === 'white') style.border = '1px solid #ddd';
     return (
       <Token
         key={ index }
         onRemove={ props.onRemove }
         style={ style }
-      >col</Token>
+      >
+        colour
+      </Token>
     );
   }
 
   render() {
-    let colourOptions = colours
+    var colourOptions = colours
       ? Object.keys(colours).map(colour => ({
         label: colour.charAt(0).toUpperCase() + colour.slice(1),
         value: colour,
@@ -98,10 +96,10 @@ class BandComboSearchForm extends Component {
       }))
       : [];
 
-    let emptyLabel = '';
+    var emptyLabel = '';
     if (this.state.colours.length >= 4) {
       colourOptions = this.state.colours;
-      emptyLabel = 'Up to 4 colours';
+      emptyLabel = 'Max of 4 colours';
     }
 
     return (
@@ -125,6 +123,23 @@ class BandComboSearchForm extends Component {
         <div id="advanced" className="collapse">
           <div className="form-row">
             <div className="col">
+              <label htmlFor="symbols">Symbols</label>
+              <input type="text" className="form-control"  name="symbols" id="symbols" onChange={ this.handleChange } value={ this.state.symbols } />
+            </div>
+            <div className="col">
+              <label htmlFor="colours">Colours</label>
+              <Typeahead
+                multiple
+                options={ colourOptions }
+                onChange={ selected => this.setState({ colours: selected }) }
+                selected={ this.state.selected }
+                emptyLabel={ emptyLabel }
+                renderMenuItemChildren={ this._renderMenuItemChildren }
+                renderToken={ this._renderToken }
+                clearButton
+              />
+            </div>
+            <div className="col">
               <label htmlFor="bird__status">Status</label>
               <select className="form-control" name="bird__status" id="bird__status" onChange={ this.handleChange } value={ this.state.bird__status }>
                 <option value="">All</option>
@@ -140,24 +155,6 @@ class BandComboSearchForm extends Component {
                 <option value="new">New</option>
                 <option value="old">Old</option>
               </select>
-            </div>
-            <div className="col">
-              <label htmlFor="symbols">Symbols</label>
-              <input type="text" className="form-control"  name="symbols" id="symbols" onChange={ this.handleChange } value={ this.state.symbols } />
-            </div>
-            <div className="col">
-              <label htmlFor="colours">Colours</label>
-              <Typeahead
-                multiple
-                options={ colourOptions }
-                onChange={ selected => this.setState({ colours: selected }) }
-                selected={ this.state.selected }
-                placeholder="Select up to 4 colours"
-                emptyLabel={ emptyLabel }
-                renderMenuItemChildren={ this._renderMenuItemChildren }
-                renderToken={ this._renderToken }
-                clearButton
-              />
             </div>
           </div>
         </div>
