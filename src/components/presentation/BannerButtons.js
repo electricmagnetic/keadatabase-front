@@ -20,12 +20,12 @@ const BannerButtons = ({ additionalClasses }) => {
             </Link>
           </div>
           <div className="col-md-4 banner-button">
-            <Link to="/report" className="btn btn-lg btn-transparent">
+            <Link to="/report/sighting" className="btn btn-lg btn-transparent">
               Report Sighting
             </Link>
           </div>
           <div className="col-md-4 banner-button">
-            <Link to="/report" className="btn btn-lg btn-transparent">
+            <Link to="/report/non-sighting" className="btn btn-lg btn-transparent">
               Report Non-Sighting
             </Link>
           </div>
