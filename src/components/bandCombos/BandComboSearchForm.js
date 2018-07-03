@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import qs from 'qs';
 
 import getBandCombos from '../../actions/bandCombos';
+import colours from '../helpers/colours';
 
 class BandComboSearchForm extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class BandComboSearchForm extends Component {
       style: '',
       study_area: '',
       bird__status: '',
-      colours: '',
+      colours: [],
       symbols: '',
       is_extended: 1,
       is_featured: 1,
@@ -33,7 +34,9 @@ class BandComboSearchForm extends Component {
     const { name, value } = e.target;
     switch(name) {
       case 'colours':
-        this.setState({ [name]: value.toLowerCase() });
+        const { options } = e.target;
+        const selected = Array.prototype.filter.call(options, option => option.selected).map(option => option.value);
+        this.setState({ [name]: selected });
         break;
       case 'symbols':
         this.setState({ [name]: value.toUpperCase() });
@@ -46,8 +49,11 @@ class BandComboSearchForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { dispatch } = this.props;
-
-    dispatch(getBandCombos(qs.stringify(this.state)));
+    const query = qs.stringify({
+      ...this.state,
+      colours: this.state.colours.join(','),
+    })
+    dispatch(getBandCombos(query));
   }
 
   render() {
@@ -94,7 +100,12 @@ class BandComboSearchForm extends Component {
             </div>
             <div className="col">
               <label htmlFor="colours">Colours</label>
-              <input type="text" className="form-control"  name="colours" id="colours" onChange={ this.handleChange } value={ this.state.colours } />
+              <select multiple className="form-control" size={1} name="colours" id="colours" onChange={ this.handleChange } value={ this.state.colours }>
+                <option value="">All</option>
+                {colours && Object.keys(colours).map(colour => (
+                  <option value={colour} key={colour}>{colour.charAt(0).toUpperCase() + colour.slice(1)}</option>
+                ))}
+              </select>
             </div>
           </div>
         </div>
