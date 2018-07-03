@@ -34,7 +34,7 @@ const PrettyBandCombo = ({ bandCombo }) => {
       { legs.map((leg, index) =>
         <div className="leg" key={ index }>
         { leg.map((band, index) =>
-          <div className="band" style={{'backgroundColor': band[0]}} key={ index }>
+          <div className="band" style={{'background': band[0]}} key={ index }>
             <span className="symbol" style={{'color': band[2]}}>
               { band[1] }
             </span>

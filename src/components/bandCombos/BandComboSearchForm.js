@@ -56,8 +56,8 @@ class BandComboSearchForm extends Component {
 
   _renderMenuItemChildren(colour, props, index) {
     const style = {
-      backgroundColor: colour.hex,
-      color: colour.hex,
+      background: colour.hex,
+      color: 'transparent',
       marginRight: '.5rem',
     };
     if (colour.value === 'white') {
@@ -73,8 +73,9 @@ class BandComboSearchForm extends Component {
 
   _renderToken(colour, props, index) {
     const style = {
-      backgroundColor: colour.hex,
-      color: colour.hex,
+      background: colour.hex,
+      color: 'transparent',
+      width: '22%',
     };
     if (colour.value === 'white') {
       style.border = '1px solid #ddd';
@@ -84,9 +85,7 @@ class BandComboSearchForm extends Component {
         key={ index }
         onRemove={ props.onRemove }
         style={ style }
-      >
-        c
-      </Token>
+      >col</Token>
     );
   }
 
