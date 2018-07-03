@@ -99,8 +99,10 @@ class BandComboSearchForm extends Component {
       }))
       : [];
 
+    let emptyLabel = '';
     if (this.state.colours.length >= 4) {
       colourOptions = this.state.colours;
+      emptyLabel = 'Up to 4 colours';
     }
 
     return (
@@ -151,7 +153,8 @@ class BandComboSearchForm extends Component {
                 options={ colourOptions }
                 onChange={ selected => this.setState({ colours: selected }) }
                 selected={ this.state.selected }
-                emptyLabel="Up to 4 colours"
+                placeholder="Select up to 4 colours"
+                emptyLabel={ emptyLabel }
                 renderMenuItemChildren={ this._renderMenuItemChildren }
                 renderToken={ this._renderToken }
                 clearButton
