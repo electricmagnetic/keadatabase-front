@@ -11,7 +11,7 @@ const colours = {
   'orange': '#FFA500',
   'pink': '#FFC0CB',
   'purple': '#800080',
-  'red': '	#FF0000',
+  'red': '#FF0000',
   'silver': '#808080',
   'white': '#FFFFFF',
   'yellow': '#FFFF00'

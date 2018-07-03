@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import qs from 'qs';
+import { Typeahead, Token } from 'react-bootstrap-typeahead';
+import 'react-bootstrap-typeahead/css/Typeahead.css';
+import 'react-bootstrap-typeahead/css/Typeahead-bs4.css';
 
 import getBandCombos from '../../actions/bandCombos';
 import colours from '../helpers/colours';
@@ -33,11 +36,6 @@ class BandComboSearchForm extends Component {
   handleChange(e) {
     const { name, value } = e.target;
     switch(name) {
-      case 'colours':
-        const { options } = e.target;
-        const selected = Array.prototype.filter.call(options, option => option.selected).map(option => option.value);
-        this.setState({ [name]: selected });
-        break;
       case 'symbols':
         this.setState({ [name]: value.toUpperCase() });
         break;
@@ -51,12 +49,61 @@ class BandComboSearchForm extends Component {
     const { dispatch } = this.props;
     const query = qs.stringify({
       ...this.state,
-      colours: this.state.colours.join(','),
+      colours: this.state.colours.map(colour => colour.value).join(','),
     })
+    console.log(query)
     dispatch(getBandCombos(query));
   }
 
+  _renderMenuItemChildren(colour, props, index) {
+    const style = {
+      backgroundColor: colour.hex,
+      color: colour.hex,
+      marginRight: '.5rem',
+    };
+    if (colour.value === 'white') {
+      style.border = '1px solid #ddd';
+    }
+    return (
+      <React.Fragment key={index}>
+        <span style={ style }>colour</span>
+        <span>{ colour.label }</span>
+      </React.Fragment>
+    );
+  }
+
+  _renderToken(colour, props, index) {
+    const style = {
+      backgroundColor: colour.hex,
+      color: colour.hex,
+    };
+    if (colour.value === 'white') {
+      style.border = '1px solid #ddd';
+    }
+    return (
+      <Token
+        key={ index }
+        onRemove={ props.onRemove }
+        style={ style }
+      >
+        c
+      </Token>
+    );
+  }
+
   render() {
+    let colourOptions = colours
+      ? Object.keys(colours).map(colour => ({
+        label: colour.charAt(0).toUpperCase() + colour.slice(1),
+        value: colour,
+        hex: colours[colour],
+      }))
+      : [];
+
+    if (this.state.colours.length >= 4) {
+      colourOptions = this.state.colours;
+    }
+
     return (
       <form className="BandComboSearchForm mb-3" onSubmit={ this.handleSubmit }>
         <div className="form-group">
@@ -100,12 +147,16 @@ class BandComboSearchForm extends Component {
             </div>
             <div className="col">
               <label htmlFor="colours">Colours</label>
-              <select multiple className="form-control" size={1} name="colours" id="colours" onChange={ this.handleChange } value={ this.state.colours }>
-                <option value="">All</option>
-                {colours && Object.keys(colours).map(colour => (
-                  <option value={colour} key={colour}>{colour.charAt(0).toUpperCase() + colour.slice(1)}</option>
-                ))}
-              </select>
+              <Typeahead
+                multiple
+                options={ colourOptions }
+                onChange={ selected => this.setState({ colours: selected }) }
+                selected={ this.state.selected }
+                emptyLabel="Up to 4 colours"
+                renderMenuItemChildren={ this._renderMenuItemChildren }
+                renderToken={ this._renderToken }
+                clearButton
+              />
             </div>
           </div>
         </div>
