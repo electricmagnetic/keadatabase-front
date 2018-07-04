@@ -23,10 +23,10 @@ class BirdProfile extends Component {
     const { slug, birds } = this.props;
 
     if (birds[slug]) {
-      if (birds[slug].pending) return <Loader />;
-      else if (birds[slug].rejected) return <Error reason={ birds.value.message }/>;
-      else if (birds[slug].fulfilled) {
-        const bird = birds[slug].value;
+      if (birds[slug].birdPending) return <Loader />;
+      else if (birds[slug].birdRejected) return <Error reason={ birds.birdValue.message }/>;
+      else if (birds[slug].birdFulfilled) {
+        const bird = birds[slug].birdValue;
         const extended = bird.bird_extended ? bird.bird_extended : null;
 
         return (

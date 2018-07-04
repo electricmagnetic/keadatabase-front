@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getBirdSightings } from '../../actions/sightings';
+import { getBirdSightings } from '../../actions/birdSightings';
 
 import FormatDate from '../helpers/FormatDate';
 import Loader from '../helpers/Loader';

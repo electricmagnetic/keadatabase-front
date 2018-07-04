@@ -2,33 +2,33 @@ import { BIRD_REQUEST, BIRD_RECEIVE, BIRD_ERROR } from '../actions/birds';
 import { FEATUREDBIRDS_REQUEST, FEATUREDBIRDS_RECEIVE, FEATUREDBIRDS_ERROR } from '../actions/birds';
 
 const initialBirdState = {
-  pending: false,
-  rejected: false,
-  fulfilled: false,
-  value: {},
+  birdPending: false,
+  birdRejected: false,
+  birdFulfilled: false,
+  birdValue: {},
 };
 
 const bird = (state = initialBirdState, action) => {
   switch(action.type) {
     case BIRD_REQUEST:
       return Object.assign({}, state, {
-        pending: true,
-        rejected: false,
-        fulfilled: false
+        birdPending: true,
+        birdRejected: false,
+        birdFulfilled: false
       });
     case BIRD_RECEIVE:
       return Object.assign({}, state, {
-        pending: false,
-        rejected: false,
-        fulfilled: true,
-        value: action.payload
+        birdPending: false,
+        birdRejected: false,
+        birdFulfilled: true,
+        birdValue: action.payload
       });
     case BIRD_ERROR:
       return Object.assign({}, state, {
-        pending: false,
-        rejected: true,
-        fulfilled: false,
-        value: action.payload
+        birdPending: false,
+        birdRejected: true,
+        birdFulfilled: false,
+        birdValue: action.payload
       });
   default:
     return state;
