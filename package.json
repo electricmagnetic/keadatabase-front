@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://beta.keadatabase.nz",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.1.1",
     "mapbox-gl": "^0.45.0",
     "moment": "^2.22.2",
