@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import qs from 'qs';
-import { Typeahead, Token } from 'react-bootstrap-typeahead';
+import { withRouter } from 'react-router';
+import { push } from 'react-router-redux';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import 'react-bootstrap-typeahead/css/Typeahead-bs4.css';
 
 import getBandCombos from '../../actions/bandCombos';
-import colours from '../helpers/colours';
+import ColourInput from './ColourInput';
 
 class BandComboSearchForm extends Component {
   constructor(props) {
     super(props);
+    const query = qs.parse(props.location.search, { ignoreQueryPrefix: true });
     this.state = {
-      style: '',
-      study_area: '',
-      bird__status: '',
-      colours: [],
-      symbols: '',
+      style: query.style || '',
+      study_area: query.study_area || '',
+      bird__status: query.bird__status || '',
+      colours: query.colours || '',
+      symbols: query.symbols || '',
       is_extended: 1,
       is_featured: 1,
-      search: '',
+      search: query.search || '',
       page_size: 250,
       ordering: 'bird__bird_extended,bird__name'
     };
@@ -47,61 +50,19 @@ class BandComboSearchForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { dispatch } = this.props;
-    const query = qs.stringify({
-      ...this.state,
-      colours: this.state.colours.map(colour => colour.value).join(','),
+    dispatch(getBandCombos(qs.stringify(this.state)));
+    const visibleQuery = qs.stringify({
+      style: this.state.style,
+      study_area: this.state.study_area,
+      bird__status: this.state.bird__status,
+      colours: this.state.colours,
+      symbols: this.state.symbols,
+      search: this.state.search,
     });
-    dispatch(getBandCombos(query));
-  }
-
-  _renderMenuItemChildren(colour, props, index) {
-    const style = {
-      background: colour.hex,
-      color: 'transparent',
-      marginRight: '.5rem',
-    };
-    if (colour.value === 'white') style.border = '1px solid #ddd';
-    return (
-      <React.Fragment key={index}>
-        <span style={ style }>colour</span>
-        <span>{ colour.label }</span>
-      </React.Fragment>
-    );
-  }
-
-  _renderToken(colour, props, index) {
-    const style = {
-      background: colour.hex,
-      color: 'transparent',
-      width: '22%',
-    };
-    if (colour.value === 'white') style.border = '1px solid #ddd';
-    return (
-      <Token
-        key={ index }
-        onRemove={ props.onRemove }
-        style={ style }
-      >
-        colour
-      </Token>
-    );
+    dispatch(push(`/birds?${visibleQuery}`));
   }
 
   render() {
-    var colourOptions = colours
-      ? Object.keys(colours).map(colour => ({
-        label: colour.charAt(0).toUpperCase() + colour.slice(1),
-        value: colour,
-        hex: colours[colour],
-      }))
-      : [];
-
-    var emptyLabel = '';
-    if (this.state.colours.length >= 4) {
-      colourOptions = this.state.colours;
-      emptyLabel = 'Max of 4 colours';
-    }
-
     return (
       <form className="BandComboSearchForm mb-3" onSubmit={ this.handleSubmit }>
         <div className="form-group">
@@ -127,16 +88,9 @@ class BandComboSearchForm extends Component {
               <input type="text" className="form-control"  name="symbols" id="symbols" onChange={ this.handleChange } value={ this.state.symbols } />
             </div>
             <div className="col">
-              <label htmlFor="colours">Colours</label>
-              <Typeahead
-                multiple
-                options={ colourOptions }
+              <ColourInput
+                selected={ this.state.colours }
                 onChange={ selected => this.setState({ colours: selected }) }
-                selected={ this.state.selected }
-                emptyLabel={ emptyLabel }
-                renderMenuItemChildren={ this._renderMenuItemChildren }
-                renderToken={ this._renderToken }
-                clearButton
               />
             </div>
             <div className="col">
@@ -167,4 +121,4 @@ const mapStateToProps = (state) => {
   return { bandCombos: state.bandCombos };
 }
 
-export default connect(mapStateToProps)(BandComboSearchForm);
+export default compose(withRouter, connect(mapStateToProps))(BandComboSearchForm);
