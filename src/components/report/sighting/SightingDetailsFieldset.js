@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
-import moment from 'moment';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -24,7 +22,7 @@ const SightingDetailsFieldset = ({
         showTimeSelect
         timeFormat="HH:mm"
         timeIntervals={15}
-        dateFormat="D MMM YYYY, h:mm a"
+        dateFormat="D MMM YYYY, hh:mm"
         timeCaption="time"
       />
     </label>
