@@ -4,12 +4,12 @@ import { Formik } from 'formik';
 import moment from 'moment';
 
 import SightingDetailsFieldset from './SightingDetailsFieldset';
-// import { getSightingOptions, reportSighting } from '../../../actions/report';
+import { getReportSightingOptions } from '../../../actions/reportSighting';
 
 class ReportSighting extends Component {
   componentDidMount() {
-    // const { getSightingOptions } = this.props;
-    // getSightingOptions();
+    const { dispatch } = this.props;
+    dispatch(getReportSightingOptions());
   }
 
   render() {
@@ -41,9 +41,4 @@ const mapStateToProps = state => ({
   // sightingOptions: state.reportOptions,
 });
 
-const mapDispatchToProps = dispatch => ({
-  // getSightingOptions: () => { dispatch(getSightingOptions()) },
-  // handleSubmit: values => { dispatch(reportSighting(values)) },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ReportSighting);
+export default connect(mapStateToProps)(ReportSighting);
