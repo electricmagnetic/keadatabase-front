@@ -11,7 +11,7 @@ const initialState = {
   value: {},
 };
 
-export const reportSightingOption = (state = initialState, action) => {
+export const reportSightingOptions = (state = initialState, action) => {
   switch(action.type) {
     case REPORT_SIGHTING_OPTIONS_REQUEST:
       return Object.assign({}, state, {

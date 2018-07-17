@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Formik } from 'formik';
 import moment from 'moment';
 
+import Loader from '../../helpers/Loader';
+import Error from '../../helpers/Error';
 import SightingDetailsFieldset from './SightingDetailsFieldset';
 import { getReportSightingOptions } from '../../../actions/reportSighting';
 
@@ -13,32 +15,39 @@ class ReportSighting extends Component {
   }
 
   render() {
-    // const { sightingOptions, handleSubmit } = this.props;
-    const handleSubmit = null;
-    return (
-      <div>
-        <p>All fields are required, except where indicated.</p>
-        <Formik
-          initialValues={{
-            dateTimeSighted: moment(),
-            longitude: '',
-            latitude: '',
-            locationDetails: '',
-          }}
-          onSubmit={handleSubmit}
-          render={props => (
-            <form onSubmit={props.handleSubmit}>
-              <SightingDetailsFieldset {...props} />
-            </form>
-          )}
-        />
-      </div>
-    );
+    const { reportSightingOptions } = this.props;
+
+    if (reportSightingOptions.pending) return <Loader />;
+    else if (reportSightingOptions.rejected) return <Error reason={ reportSightingOptions.value.message }/>;
+    else if (reportSightingOptions.fulfilled) {
+      const options = reportSightingOptions.value.actions.POST;
+      const handleSubmit = null;
+      return (
+        <div>
+          <p>All fields are required, except where indicated.</p>
+          <Formik
+            initialValues={{
+              dateTimeSighted: moment(),
+              precision: '',
+              longitude: '',
+              latitude: '',
+              locationDetails: '',
+            }}
+            onSubmit={handleSubmit}
+            render={props => (
+              <form onSubmit={props.handleSubmit}>
+                <SightingDetailsFieldset {...props} options={options} />
+              </form>
+            )}
+          />
+        </div>
+      );
+    } else return null;
   }
 }
 
 const mapStateToProps = state => ({
-  // sightingOptions: state.reportOptions,
+  reportSightingOptions: state.reportSightingOptions,
 });
 
 export default connect(mapStateToProps)(ReportSighting);
