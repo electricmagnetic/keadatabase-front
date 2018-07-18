@@ -1,6 +1,87 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'formik';
+import { Field, FieldArray } from 'formik';
+
+const RenderBirds = ({ arrayHelpers, options }) => {
+  const { values } = arrayHelpers.form;
+  return (
+    <div>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => arrayHelpers.push({
+          banded: 'unknown',
+          band_combo: '',
+          sex_guess: '',
+          life_stage_guess: '',
+        })}
+      >
+        Add Bird
+      </button>
+
+      {values.birds && values.birds.length > 0 &&
+        values.birds.map((bird, index) => (
+          <div key={ index } className="card">
+            <div className="card-header">Bird #{ index + 1 }</div>
+
+            <div className="card-body">
+              <label htmlFor={ `bird${index}banded` }>Banded?</label>
+              <Field
+                component="select"
+                name={ `birds.${index}.banded` }
+                id={ `bird${index}banded` }
+                className="form-control"
+              >
+                {options.banded.choices.map(option => (
+                  <option key={ option.value } value={ option.value }>{ option.display_name }</option>
+                ))}
+              </Field>
+
+              <label htmlFor={ `bird${index}bandcombo` }>Band combo (if known)</label>
+              <Field
+                name={ `birds.${index}.band_combo` }
+                id={ `bird${index}bandcombo` }
+                className="form-control"
+                placeholder="e.g. Black C on Yellow"
+              />
+
+              <label htmlFor={ `bird${index}sexguess` }>Male/Female (optional)</label>
+              <Field
+                component="select"
+                name={ `birds.${index}.sex_guess` }
+                id={ `bird${index}sexguess` }
+                className="form-control"
+              >
+                {options.sex_guess.choices.map(option => (
+                  <option key={ option.value } value={ option.value }>{ option.display_name }</option>
+                ))}
+              </Field>
+
+              <label htmlFor={ `bird${index}lifestageguess` }>Life Stage (optional)</label>
+              <Field
+                component="select"
+                name={ `birds.${index}.life_stage_guess` }
+                id={ `bird${index}lifestageguess` }
+                className="form-control"
+              >
+                {options.life_stage_guess.choices.map(option => (
+                  <option key={ option.value } value={ option.value }>{ option.display_name }</option>
+                ))}
+              </Field>
+
+              <button
+                type="button"
+                onClick={ () => arrayHelpers.remove(index) }
+              >
+                Remove Bird
+              </button>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  );
+};
 
 const SightingBirdsFieldset = ({
   options,
@@ -38,6 +119,15 @@ const SightingBirdsFieldset = ({
             </div>
 
             <div className="card-body">
+              <FieldArray
+                name="birds"
+                render={arrayHelpers => (
+                  <RenderBirds
+                    arrayHelpers={arrayHelpers}
+                    options={ options.birds.child.children }
+                  />
+                )}
+              />
             </div>
           </div>
         </React.Fragment>

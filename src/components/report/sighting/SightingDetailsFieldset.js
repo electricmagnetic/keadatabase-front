@@ -18,7 +18,7 @@ const SightingDetailsFieldset = ({
       <legend>1. Sighting Details</legend>
 
       <div className="form-group">
-        <label>Date and time sighted</label>
+        <label htmlFor="dateTimeSighted">Date and time sighted</label>
         <DatePicker
           selected={ values.dateTimeSighted }
           onChange={ date => setFieldValue('dateTimeSighted', date) }
@@ -27,13 +27,13 @@ const SightingDetailsFieldset = ({
           timeIntervals={ 15 }
           dateFormat="D MMM YYYY, hh:mm"
           timeCaption="time"
+          className="form-control"
+          id="dateTimeSighted"
         />
       </div>
 
       <div className="card">
-        <div className="card-header">
-          Location
-        </div>
+        <div className="card-header">Location</div>
 
         <div className="card-body">
           <Map

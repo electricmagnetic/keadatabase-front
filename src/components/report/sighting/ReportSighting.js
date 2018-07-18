@@ -35,6 +35,7 @@ class ReportSighting extends Component {
               latitude: '',
               locationDetails: '',
               sighting_type: '',
+              birds: [],
               number: 0,
               behaviour: '',
             }}
