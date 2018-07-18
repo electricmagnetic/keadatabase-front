@@ -10,7 +10,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 const SightingDetailsFieldset = ({
   options,
   values,
-  handleChange,
   setFieldValue,
 }) => {
   return (
@@ -117,7 +116,6 @@ SightingDetailsFieldset.propTypes = {
     }).isRequired,
   }).isRequired,
   values: PropTypes.object.isRequired,
-  handleChange: PropTypes.func.isRequired,
   setFieldValue: PropTypes.func.isRequired,
 };
 

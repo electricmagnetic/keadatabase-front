@@ -27,49 +27,57 @@ const RenderBirds = ({ arrayHelpers, options }) => {
             <div className="card-header">Bird #{ index + 1 }</div>
 
             <div className="card-body">
-              <label htmlFor={ `bird${index}banded` }>Banded?</label>
-              <Field
-                component="select"
-                name={ `birds.${index}.banded` }
-                id={ `bird${index}banded` }
-                className="form-control"
-              >
-                {options.banded.choices.map(option => (
-                  <option key={ option.value } value={ option.value }>{ option.display_name }</option>
-                ))}
-              </Field>
+              <div className="form-group">
+                <label htmlFor={ `bird${index}banded` }>Banded?</label>
+                <Field
+                  component="select"
+                  name={ `birds.${index}.banded` }
+                  id={ `bird${index}banded` }
+                  className="form-control"
+                >
+                  {options.banded.choices.map(option => (
+                    <option key={ option.value } value={ option.value }>{ option.display_name }</option>
+                  ))}
+                </Field>
+              </div>
 
-              <label htmlFor={ `bird${index}bandcombo` }>Band combo (if known)</label>
-              <Field
-                name={ `birds.${index}.band_combo` }
-                id={ `bird${index}bandcombo` }
-                className="form-control"
-                placeholder="e.g. Black C on Yellow"
-              />
+              <div className="form-group">
+                <label htmlFor={ `bird${index}bandcombo` }>Band combo (if known)</label>
+                <Field
+                  name={ `birds.${index}.band_combo` }
+                  id={ `bird${index}bandcombo` }
+                  className="form-control"
+                  placeholder="e.g. Black C on Yellow"
+                />
+              </div>
 
-              <label htmlFor={ `bird${index}sexguess` }>Male/Female (optional)</label>
-              <Field
-                component="select"
-                name={ `birds.${index}.sex_guess` }
-                id={ `bird${index}sexguess` }
-                className="form-control"
-              >
-                {options.sex_guess.choices.map(option => (
-                  <option key={ option.value } value={ option.value }>{ option.display_name }</option>
-                ))}
-              </Field>
+              <div className="form-group">
+                <label htmlFor={ `bird${index}sexguess` }>Male/Female (optional)</label>
+                <Field
+                  component="select"
+                  name={ `birds.${index}.sex_guess` }
+                  id={ `bird${index}sexguess` }
+                  className="form-control"
+                >
+                  {options.sex_guess.choices.map(option => (
+                    <option key={ option.value } value={ option.value }>{ option.display_name }</option>
+                  ))}
+                </Field>
+              </div>
 
-              <label htmlFor={ `bird${index}lifestageguess` }>Life Stage (optional)</label>
-              <Field
-                component="select"
-                name={ `birds.${index}.life_stage_guess` }
-                id={ `bird${index}lifestageguess` }
-                className="form-control"
-              >
-                {options.life_stage_guess.choices.map(option => (
-                  <option key={ option.value } value={ option.value }>{ option.display_name }</option>
-                ))}
-              </Field>
+              <div className="form-group">
+                <label htmlFor={ `bird${index}lifestageguess` }>Life Stage (optional)</label>
+                <Field
+                  component="select"
+                  name={ `birds.${index}.life_stage_guess` }
+                  id={ `bird${index}lifestageguess` }
+                  className="form-control"
+                >
+                  {options.life_stage_guess.choices.map(option => (
+                    <option key={ option.value } value={ option.value }>{ option.display_name }</option>
+                  ))}
+                </Field>
+              </div>
 
               <button
                 type="button"
@@ -88,8 +96,6 @@ const RenderBirds = ({ arrayHelpers, options }) => {
 const SightingBirdsFieldset = ({
   options,
   values,
-  handleChange,
-  setFieldValue,
 }) => {
   return (
     <fieldset>
@@ -173,8 +179,6 @@ SightingBirdsFieldset.propTypes = {
     }).isRequired,
   }).isRequired,
   values: PropTypes.object.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  setFieldValue: PropTypes.func.isRequired,
 };
 
 export default SightingBirdsFieldset;
