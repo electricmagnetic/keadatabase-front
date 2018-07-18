@@ -9,6 +9,7 @@ import SightingDetailsFieldset from './fieldset/SightingDetailsFieldset';
 import SightingBirdsFieldset from './fieldset/SightingBirdsFieldset';
 import ContributorFieldset from './fieldset/ContributorFieldset';
 import FurtherInformationFieldset from './fieldset/FurtherInformationFieldset';
+import SubmitFieldset from './fieldset/SubmitFieldset';
 import { getReportSightingOptions } from '../../actions/reportSighting';
 
 class ReportSighting extends Component {
@@ -57,6 +58,7 @@ class ReportSighting extends Component {
                 <SightingBirdsFieldset {...props} options={options} />
                 <ContributorFieldset {...props} options={options} />
                 <FurtherInformationFieldset {...props} options={options} />
+                <SubmitFieldset {...props} />
               </Form>
             )}
           />
