@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { Formik, Form } from 'formik';
 import moment from 'moment';
 
-import Loader from '../../helpers/Loader';
-import Error from '../../helpers/Error';
-import SightingDetailsFieldset from './SightingDetailsFieldset';
-import SightingBirdsFieldset from './SightingBirdsFieldset';
-import { getReportSightingOptions } from '../../../actions/reportSighting';
+import Loader from '../helpers/Loader';
+import Error from '../helpers/Error';
+import SightingDetailsFieldset from './fieldset/SightingDetailsFieldset';
+import SightingBirdsFieldset from './fieldset/SightingBirdsFieldset';
+import { getReportSightingOptions } from '../../actions/reportSighting';
 
 class ReportSighting extends Component {
   componentDidMount() {

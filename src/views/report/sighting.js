@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import Banner from '../../components/presentation/Banner';
-import ReportSighting from '../../components/report/sighting/ReportSighting';
+import ReportSighting from '../../components/report/ReportSighting';
 
 const ReportSightingPage = props => {
   return (
