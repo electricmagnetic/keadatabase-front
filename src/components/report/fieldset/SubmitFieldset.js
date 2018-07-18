@@ -4,45 +4,18 @@ import { Field } from 'formik';
 
 import Page from '../../presentation/Page';
 
-const isReady = () => typeof window !== 'undefined'
-  && typeof window.grecaptcha !== 'undefined'
-  && typeof window.grecaptcha.render === 'function';
+const SubmitFieldset = ({ isSubmitting }) => {
+  return (
+    <fieldset>
+      <legend>5. Confirmation</legend>
+      <Page id={185} hideTitle />
 
-class SubmitFieldset extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ready: isReady(),
-    }
-    this.recaptchaRef = React.createRef();
-  }
+      <button type="submit" className="btn btn-primary" disabled={ isSubmitting }>
+        Submit
+      </button>
 
-  componentDidMount() {
-    if (this.state.ready) {
-      window.grecaptcha.render(this.recaptchaRef.current)
-    }
-  }
-
-  render() {
-    const { isSubmitting } = this.props;
-    return (
-      <fieldset>
-        <legend>5. Confirmation</legend>
-        <Page id={185} hideTitle />
-
-        <div
-          className="g-recaptcha"
-          data-sitekey="6Ld-vWQUAAAAADt4VZq2waJDiW2ggBm_Zb7IxHO3"
-          ref={this.recaptchaRef}
-        ></div>
-
-        <button type="submit" className="btn btn-primary" disabled={ isSubmitting }>
-          Submit
-        </button>
-
-      </fieldset>
-    );
-  }
+    </fieldset>
+  );
 }
 
 SubmitFieldset.propTypes = {
