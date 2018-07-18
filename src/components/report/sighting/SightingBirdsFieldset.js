@@ -4,17 +4,19 @@ import { Field, FieldArray } from 'formik';
 
 const RenderBirds = ({ arrayHelpers, options }) => {
   const { values } = arrayHelpers.form;
+  const initialBirdValues = {
+    banded: 'unknown',
+    band_combo: '',
+    sex_guess: '',
+    life_stage_guess: '',
+  };
+
   return (
     <div>
       <button
         type="button"
         className="btn btn-primary"
-        onClick={() => arrayHelpers.push({
-          banded: 'unknown',
-          band_combo: '',
-          sex_guess: '',
-          life_stage_guess: '',
-        })}
+        onClick={() => arrayHelpers.push(initialBirdValues)}
       >
         Add Bird
       </button>
