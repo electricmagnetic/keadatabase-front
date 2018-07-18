@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Field } from 'formik';
 import DatePicker from 'react-datepicker';
 import { Marker } from "react-mapbox-gl";
 
@@ -56,51 +57,47 @@ const SightingDetailsFieldset = ({
 
           <div className="form-group">
             <label htmlFor="precision">Precision</label>
-            <select
+            <Field
+              component="select"
+              name="precision"
               className="form-control"
               id="precision"
-              value={ values.precision }
-              onChange={ handleChange }
             >
               <option default value=""></option>
               {options.precision.choices.map(option => (
                 <option key={ option.value } value={ option.value }>{ option.display_name }</option>
               ))}
-            </select>
+            </Field>
           </div>
 
           <div className="form-group">
             <label htmlFor="longitude">Longitude</label>
-            <input
-              type="text"
+            <Field
+              name="longitude"
               className="form-control"
               id="longitude"
               placeholder="e.g. 171.562"
-              value={ values.longitude }
-              onChange={ handleChange }
             />
           </div>
 
           <div className="form-group">
             <label htmlFor="latitude">Latitude</label>
-            <input
-              type="text"
+            <Field
+              name="latitude"
               className="form-control"
               id="latitude"
               placeholder="e.g. -42.940"
-              value={ values.latitude }
-              onChange={ handleChange }
             />
           </div>
 
           <div className="form-group">
             <label htmlFor="locationDetails">Location details (optional)</label>
-            <textarea
+            <Field
+              component="textarea"
+              name="locationDetails"
               className="form-control"
               id="locationDetails"
               placeholder="e.g. Beside the Arthur's Pass Store"
-              value={ values.locationDetails }
-              onChange={ handleChange }
             />
           </div>
 

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 import moment from 'moment';
 
 import Loader from '../../helpers/Loader';
 import Error from '../../helpers/Error';
 import SightingDetailsFieldset from './SightingDetailsFieldset';
+import SightingBirdsFieldset from './SightingBirdsFieldset';
 import { getReportSightingOptions } from '../../../actions/reportSighting';
 
 class ReportSighting extends Component {
@@ -21,6 +22,7 @@ class ReportSighting extends Component {
     else if (reportSightingOptions.rejected) return <Error reason={ reportSightingOptions.value.message }/>;
     else if (reportSightingOptions.fulfilled) {
       const options = reportSightingOptions.value.actions.POST;
+      console.log(options)
       const handleSubmit = null;
       return (
         <div>
@@ -32,12 +34,16 @@ class ReportSighting extends Component {
               longitude: '',
               latitude: '',
               locationDetails: '',
+              sighting_type: '',
+              number: 0,
+              behaviour: '',
             }}
             onSubmit={handleSubmit}
             render={props => (
-              <form onSubmit={props.handleSubmit}>
+              <Form>
                 <SightingDetailsFieldset {...props} options={options} />
-              </form>
+                <SightingBirdsFieldset {...props} options={options} />
+              </Form>
             )}
           />
         </div>
