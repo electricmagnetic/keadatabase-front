@@ -8,6 +8,7 @@ import Error from '../helpers/Error';
 import SightingDetailsFieldset from './fieldset/SightingDetailsFieldset';
 import SightingBirdsFieldset from './fieldset/SightingBirdsFieldset';
 import ContributorFieldset from './fieldset/ContributorFieldset';
+import FurtherInformationFieldset from './fieldset/FurtherInformationFieldset';
 import { getReportSightingOptions } from '../../actions/reportSighting';
 
 class ReportSighting extends Component {
@@ -42,7 +43,12 @@ class ReportSighting extends Component {
               contributor: {
                 name: '',
                 email: '',
+                phone: '',
+                activity: '',
+                heard: '',
+                communications: false,
               },
+              comments: '',
             }}
             onSubmit={handleSubmit}
             render={props => (
@@ -50,6 +56,7 @@ class ReportSighting extends Component {
                 <SightingDetailsFieldset {...props} options={options} />
                 <SightingBirdsFieldset {...props} options={options} />
                 <ContributorFieldset {...props} options={options} />
+                <FurtherInformationFieldset {...props} options={options} />
               </Form>
             )}
           />
