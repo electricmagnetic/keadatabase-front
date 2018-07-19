@@ -37,13 +37,13 @@ const SightingDetailsFieldset = ({
         <div className="card-body">
           <Map
             onClick={(map, e) => {
-              setFieldValue('longitude', e.lngLat.lng)
-              setFieldValue('latitude', e.lngLat.lat)
+              setFieldValue('point_location.coordinates[0]', e.lngLat.lng)
+              setFieldValue('point_location.coordinates[1]', e.lngLat.lat)
             }}
           >
-            {values.longitude && values.latitude &&
+            {values.point_location.coordinates[0] && values.point_location.coordinates[1] &&
               <Marker
-                coordinates={ [values.longitude, values.latitude] }
+                coordinates={ values.point_location.coordinates }
               >
                 <p>Marker</p>
               </Marker>
@@ -72,7 +72,7 @@ const SightingDetailsFieldset = ({
           <div className="form-group">
             <label htmlFor="longitude">Longitude</label>
             <Field
-              name="longitude"
+              name="point_location.coordinates[0]"
               className="form-control"
               id="longitude"
               placeholder="e.g. 171.562"
@@ -82,7 +82,7 @@ const SightingDetailsFieldset = ({
           <div className="form-group">
             <label htmlFor="latitude">Latitude</label>
             <Field
-              name="latitude"
+              name="point_location.coordinates[1]"
               className="form-control"
               id="latitude"
               placeholder="e.g. -42.940"
@@ -93,7 +93,7 @@ const SightingDetailsFieldset = ({
             <label htmlFor="locationDetails">Location details (optional)</label>
             <Field
               component="textarea"
-              name="locationDetails"
+              name="location_details"
               className="form-control"
               id="locationDetails"
               placeholder="e.g. Beside the Arthur's Pass Store"

@@ -5,6 +5,8 @@ import { Field } from 'formik';
 const FurtherInformationFieldset = ({
   options,
   values,
+  errors,
+  touched,
 }) => {
   return (
     <fieldset>
@@ -67,7 +69,7 @@ const FurtherInformationFieldset = ({
           className="form-check-input"
           id="contributor-communications"
         />
-        <label 
+        <label
           className="form-check-label"
           htmlFor="contributor-communications"
         >

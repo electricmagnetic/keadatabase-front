@@ -10,12 +10,22 @@ import SightingBirdsFieldset from './fieldset/SightingBirdsFieldset';
 import ContributorFieldset from './fieldset/ContributorFieldset';
 import FurtherInformationFieldset from './fieldset/FurtherInformationFieldset';
 import SubmitFieldset from './fieldset/SubmitFieldset';
-import { getReportSightingOptions } from '../../actions/reportSighting';
+import { getReportSightingOptions, postReportSighting } from '../../actions/reportSighting';
 
 class ReportSighting extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getReportSightingOptions());
+  }
+
+  handleSubmit(values) {
+    const { dispatch } = this.props;
+    dispatch(postReportSighting(values));
   }
 
   render() {
@@ -26,7 +36,7 @@ class ReportSighting extends Component {
     else if (reportSightingOptions.fulfilled) {
       const options = reportSightingOptions.value.actions.POST;
       console.log(options)
-      const handleSubmit = null;
+      const validate = null;
       return (
         <div>
           <p>All fields are required, except where indicated.</p>
@@ -34,9 +44,10 @@ class ReportSighting extends Component {
             initialValues={{
               dateTimeSighted: moment(),
               precision: '',
-              longitude: '',
-              latitude: '',
-              locationDetails: '',
+              point_location: {
+                coordinates: ['', ''],
+              },
+              location_details: '',
               sighting_type: '',
               birds: [],
               number: 0,
@@ -51,7 +62,8 @@ class ReportSighting extends Component {
               },
               comments: '',
             }}
-            onSubmit={handleSubmit}
+            validate={validate}
+            onSubmit={this.handleSubmit}
             render={props => (
               <Form>
                 <SightingDetailsFieldset {...props} options={options} />
