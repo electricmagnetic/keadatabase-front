@@ -28,7 +28,7 @@ const FurtherInformationFieldset = ({
         <label htmlFor="activity">I'm a...</label>
         <Field
           component="select"
-          name="activity"
+          name="contributor.activity"
           className="form-control"
           id="activity"
         >
@@ -42,7 +42,7 @@ const FurtherInformationFieldset = ({
         <label htmlFor="heard">How did you hear about this?</label>
         <Field
           component="select"
-          name="heard"
+          name="contributor.heard"
           className="form-control"
           id="heard"
         >
