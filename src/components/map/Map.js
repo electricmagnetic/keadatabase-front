@@ -28,13 +28,13 @@ class Map extends Component {
   }
 
   render() {
-    const { onClick, children } = this.props;
+    const { onClick, children, height } = this.props;
     return (
       <MapboxMap
         style="mapbox://styles/mapbox/outdoors-v9"
         containerStyle={{
-          height: "640px",
-          width: "100%"
+          height: height || "640px",
+          width: "100%",
         }}
         center={ this.state.center }
         zoom={ this.state.zoom }

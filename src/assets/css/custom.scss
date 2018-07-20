@@ -26,6 +26,28 @@ $constrainer-width: map-get($container-max-widths, 'xl')+160px;
   }
 }
 
-ul {
-  padding-left: 0;
+fieldset {
+  margin-bottom: 2rem;
+}
+
+legend {
+  border-bottom: 1px solid rgba($black, .125);
+  margin-bottom: 1.5rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+.map-container {
+  margin-bottom: 1.5rem;
+}
+
+.fa-map-marker-alt {
+  font-size: 3rem;
+  color: $primary;
+}
+
+.card {
+  margin-bottom: 1rem;
 }

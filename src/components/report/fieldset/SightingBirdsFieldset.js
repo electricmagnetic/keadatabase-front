@@ -15,65 +15,73 @@ const RenderBirds = ({ arrayHelpers, options }) => {
 
   return (
     <div>
-      <button
-        type="button"
-        className="btn btn-primary"
-        onClick={() => arrayHelpers.push(initialBirdValues)}
-      >
-        Add Bird
-      </button>
+      <div style={{ marginBottom: '1rem' }}>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => arrayHelpers.push(initialBirdValues)}
+        >
+          Add Bird
+        </button>
+      </div>
 
-      {values.birds && values.birds.length > 0 &&
-        values.birds.map((bird, index) => (
-          <div key={ index } className="card">
-            <div className="card-header">Bird #{ index + 1 }</div>
+      <div className="row">
+        {values.birds && values.birds.length > 0 &&
+          values.birds.map((bird, index) => (
+            <div key={ index } className="col-md-6 col-lg-4">
+              <div className="card">
+                <div className="card-header">Bird #{ index + 1 }</div>
 
-            <div className="card-body">
+                <div className="card-body">
 
-              <Field
-                component={ RenderField }
-                options={ options.banded }
-                name={ `birds.${index}.banded` }
-                type="choice"
-                label="Banded?"
-                addBlank
-              />
+                  <Field
+                    component={ RenderField }
+                    options={ options.banded }
+                    name={ `birds.${index}.banded` }
+                    type="choice"
+                    label="Banded?"
+                    addBlank
+                  />
 
-              <Field
-                component={ RenderField }
-                options={ options.band_combo }
-                name={ `birds.${index}.band_combo` }
-                type="text"
-                label="Band combo (if known)"
-                placeholder="e.g. Black C on Yellow"
-              />
+                  <Field
+                    component={ RenderField }
+                    options={ options.band_combo }
+                    name={ `birds.${index}.band_combo` }
+                    type="text"
+                    label="Band combo (if known)"
+                    placeholder="e.g. Black C on Yellow"
+                  />
 
-              <Field
-                component={ RenderField }
-                options={ options.sex_guess }
-                name={ `birds.${index}.sex_guess` }
-                type="choice"
-                label="Male/Female (optional)"
-              />
+                  <Field
+                    component={ RenderField }
+                    options={ options.sex_guess }
+                    name={ `birds.${index}.sex_guess` }
+                    type="choice"
+                    label="Male/Female (optional)"
+                  />
 
-              <Field
-                component={ RenderField }
-                options={ options.life_stage_guess }
-                name={ `birds.${index}.life_stage_guess` }
-                type="choice"
-                label="Life Stage (optional)"
-              />
+                  <Field
+                    component={ RenderField }
+                    options={ options.life_stage_guess }
+                    name={ `birds.${index}.life_stage_guess` }
+                    type="choice"
+                    label="Life Stage (optional)"
+                  />
 
-              <button
-                type="button"
-                onClick={ () => arrayHelpers.remove(index) }
-              >
-                Remove Bird
-              </button>
+                  <button
+                    type="button"
+                    className="btn btn-outline-dark"
+                    onClick={ () => arrayHelpers.remove(index) }
+                  >
+                    <i className="fas fa-times"></i>&nbsp;
+                    Remove Bird
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
     </div>
   );
 };
@@ -87,13 +95,28 @@ const SightingBirdsFieldset = ({
       <legend>2. Birds</legend>
       <p>If you heard birds, or only saw them in the distance (e.g. flying overhead) choose 'Sighted (distant)' or 'Heard'. Otherwise pick 'Sighted'.</p>
 
-      <Field
-        component={ RenderField }
-        options={ options.sighting_type }
-        name="sighting_type"
-        type="choice"
-        addBlank
-      />
+      <div className="row">
+        <div className="col-md-4 col-lg-3">
+          <Field
+            component={ RenderField }
+            options={ options.sighting_type }
+            name="sighting_type"
+            type="choice"
+            addBlank
+          />
+        </div>
+
+        {(values.sighting_type === 'heard' || values.sighting_type === 'distant') &&
+          <div className="col-md-4 col-lg-3">
+            <Field
+              component={ RenderField }
+              options={ options.number }
+              name="number"
+              type="number"
+            />
+          </div>
+        }
+      </div>
 
       {values.sighting_type === 'sighted' &&
         <React.Fragment>
@@ -117,16 +140,6 @@ const SightingBirdsFieldset = ({
             </div>
           </div>
         </React.Fragment>
-      }
-
-      {(values.sighting_type === 'heard' || values.sighting_type === 'distant') &&
-        <Field
-          component={ RenderField }
-          options={ options.number }
-          name="number"
-          type="number"
-        />
-
       }
 
       {values.sighting_type !== '' &&

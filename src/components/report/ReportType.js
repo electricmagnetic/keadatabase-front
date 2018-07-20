@@ -15,7 +15,7 @@ const ReportType = props => {
             </div>
           </div>
           <div className="col-sm-5 col-sm-offset-1">
-            <div className="help-block">
+            <div className="text-muted">
               <p>
                 A <strong>Sighting</strong> is for recording any times you heard or saw kea.
               </p>

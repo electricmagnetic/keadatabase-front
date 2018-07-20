@@ -14,25 +14,32 @@ const ContributorFieldset = ({
 
       <p>We need to know who is reporting the sighting.</p>
 
-      <Field
-        component={ RenderField }
-        options={ options.contributor.children.name }
-        name="contributor.name"
-        type="text"
-        placeholder="Name"
-      />
+      <div className="row">
+        <div className="col-md-6">
+          <Field
+            component={ RenderField }
+            options={ options.contributor.children.name }
+            name="contributor.name"
+            type="text"
+            placeholder="Name"
+          />
 
-      <Field
-        component={ RenderField }
-        options={ options.contributor.children.email }
-        name="contributor.email"
-        type="email"
-        placeholder="Email"
-      />
+          <Field
+            component={ RenderField }
+            options={ options.contributor.children.email }
+            name="contributor.email"
+            type="text"
+            placeholder="Email"
+          />
+        </div>
 
-      <p className="help-block">
-        Your name will be public (as part of your sighting), but any contact information you provide will not be.
-      </p>
+        <div className="col-md-5 offset-md-1">
+          <p className="text-muted">
+            Your name will be public (as part of your sighting), but any contact information you provide will not be.
+          </p>
+        </div>
+      </div>
+
     </fieldset>
   );
 };

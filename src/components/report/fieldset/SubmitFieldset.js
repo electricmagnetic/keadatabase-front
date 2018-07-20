@@ -12,15 +12,17 @@ const SubmitFieldset = ({ submitCount, isValid, isSubmitting, reportSightingPost
       <legend>5. Confirmation</legend>
       <Page id={185} hideTitle />
 
-      <button type="submit" className="btn btn-primary" disabled={ isSubmitting }>
-        Submit
-      </button>
+      <p>
+        <button type="submit" className="btn btn-primary" disabled={ isSubmitting }>
+          Submit
+        </button>
+      </p>
 
       {showInvalid &&
         <div className="alert alert-danger" role="alert">
-          <p>
+          <div style={{ marginBottom: '1rem' }}>
             Hmm, it seems there were some errors. Please scroll up and check the data you've entered.
-          </p>
+          </div>
           {reportSightingPost.rejected &&
             <small>{reportSightingPost.value.message}</small>
           }

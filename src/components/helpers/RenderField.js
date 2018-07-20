@@ -1,5 +1,6 @@
 import React from 'react';
 import { getIn } from 'formik';
+import classnames from 'classnames';
 
 export const RenderField = (props) => {
   // Use label if provided, otherwise default on OPTIONS label
@@ -7,13 +8,17 @@ export const RenderField = (props) => {
   const label = props.label || options.label;
   const touched = getIn(form.touched, field.name);
   const error = getIn(form.errors, field.name);
+  const formControlClasses = classnames(
+    'form-control',
+    { 'is-invalid': touched && error }
+);
 
   return (
-    <div className={ (touched && error) ? "form-group has-error" : "form-group"}>
+    <div className="form-group">
       <label className="control-label" htmlFor={ field.name }>{ label }</label>
 
       { type === 'choice' &&
-        <select { ...field } className="form-control" id={ field.name } >
+        <select { ...field } className={ formControlClasses } id={ field.name } >
           {/* Add blank to compulsory fields (requiring the user to make a selection) */}
           { addBlank && <option default value={""}></option>}
           { options.choices.map(option => (
@@ -28,7 +33,7 @@ export const RenderField = (props) => {
         <textarea
           { ...field }
           placeholder={ placeholder }
-          className="form-control"
+          className={ formControlClasses }
           id={ field.name }
         />
       }
@@ -38,12 +43,12 @@ export const RenderField = (props) => {
           { ...field }
           type={ type }
           placeholder={ placeholder }
-          className="form-control"
+          className={ formControlClasses }
           id={ field.name }
         />
       }
 
-      { touched && error && <span className="help-block">{ error }</span> }
+      { touched && error && <span className="invalid-feedback">{ error }</span> }
     </div>
   );
 };

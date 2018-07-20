@@ -23,30 +23,37 @@ const FurtherInformationFieldset = ({
         placeholder="Any comments?"
       />
 
-      <Field
-        component={ RenderField }
-        options={ options.contributor.children.activity }
-        name="contributor.activity"
-        type="choice"
-        label="I'm a..."
-      />
+      <div className="row">
+        <div className="col-md-4">
+          <Field
+            component={ RenderField }
+            options={ options.contributor.children.activity }
+            name="contributor.activity"
+            type="choice"
+            label="I'm a..."
+          />
+        </div>
 
-      <Field
-        component={ RenderField }
-        options={ options.contributor.children.heard }
-        name="contributor.heard"
-        type="choice"
-        label="How did you hear about this?"
-      />
+        <div className="col-md-4">
+          <Field
+            component={ RenderField }
+            options={ options.contributor.children.heard }
+            name="contributor.heard"
+            type="choice"
+            label="How did you hear about this?"
+          />
+        </div>
 
-      <Field
-        component={ RenderField }
-        options={ options.contributor.children.phone }
-        name="contributor.phone"
-        type="text"
-        placeholder="Phone number"
-      />
-
+        <div className="col-md-4">
+          <Field
+            component={ RenderField }
+            options={ options.contributor.children.phone }
+            name="contributor.phone"
+            type="text"
+            placeholder="Phone number"
+          />
+        </div>
+      </div>
 
       <div className="form-check">
         <Field

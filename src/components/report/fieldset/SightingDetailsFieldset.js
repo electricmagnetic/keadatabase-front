@@ -44,48 +44,63 @@ const SightingDetailsFieldset = ({
         <div className="card-header">Location</div>
 
         <div className="card-body">
-          <Map
-            onClick={(map, e) => {
-              setFieldValue('point_location[0]', e.lngLat.lng)
-              setFieldValue('point_location[1]', e.lngLat.lat)
-            }}
-          >
-            {isValidCoordinates &&
-              <Marker
-                coordinates={ values.point_location }
-              >
-                <p>Marker</p>
-              </Marker>
-            }
-          </Map>
+          <p>
+            Click/tap on the map to set a point, or alternatively enter the coordinates below.
+          </p>
+
+          <div className="map-container">
+            <Map
+              onClick={(map, e) => {
+                setFieldValue('point_location[0]', e.lngLat.lng)
+                setFieldValue('point_location[1]', e.lngLat.lat)
+              }}
+              height="480px"
+            >
+              {isValidCoordinates &&
+                <Marker
+                  coordinates={ values.point_location }
+                >
+                  <i className="fas fa-map-marker-alt"></i>
+                </Marker>
+              }
+            </Map>
+          </div>
 
           <p>
             Use the precision dropdown to give us an indication of how accurate the location is (in metres).
           </p>
 
-          <Field
-            component={ RenderField }
-            options={ options.precision }
-            name="precision"
-            type="choice"
-            addBlank
-          />
+          <div className="row">
+            <div className="col-md-6 col-lg-4">
+              <Field
+                component={ RenderField }
+                options={ options.precision }
+                name="precision"
+                type="choice"
+                addBlank
+              />
+            </div>
 
-          <Field
-            component={ RenderField }
-            options={ options.point_location }
-            name="point_location[0]"
-            label="Longitude"
-            placeholder="e.g. 171.562"
-          />
+            <div className="offset-lg-2 col-md-3">
+              <Field
+                component={ RenderField }
+                options={ options.point_location }
+                name="point_location[0]"
+                label="Longitude"
+                placeholder="e.g. 171.562"
+              />
+            </div>
 
-          <Field
-            component={ RenderField }
-            options={ options.point_location }
-            name="point_location[1]"
-            label="Latitude"
-            placeholder="e.g. -42.940"
-          />
+            <div className="col-md-3">
+              <Field
+                component={ RenderField }
+                options={ options.point_location }
+                name="point_location[1]"
+                label="Latitude"
+                placeholder="e.g. -42.940"
+              />
+            </div>
+          </div>
 
           <Field
             component={ RenderField }
