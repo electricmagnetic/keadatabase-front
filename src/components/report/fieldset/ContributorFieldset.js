@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'formik';
 
+import { RenderField } from '../../helpers/RenderField';
+
 const ContributorFieldset = ({
   options,
   values,
@@ -12,26 +14,21 @@ const ContributorFieldset = ({
 
       <p>We need to know who is reporting the sighting.</p>
 
-      <div className="form-group">
-        <label htmlFor="contributor-name">Name</label>
-        <Field
-          name="contributor.name"
-          className="form-control"
-          id="contributor-name"
-          placeholder="Name"
-        />
-      </div>
+      <Field
+        component={ RenderField }
+        options={ options.contributor.children.name }
+        name="contributor.name"
+        type="text"
+        placeholder="Name"
+      />
 
-      <div className="form-group">
-        <label htmlFor="contributor-email">Email</label>
-        <Field
-          name="contributor.email"
-          type="email"
-          className="form-control"
-          id="contributor-email"
-          placeholder="Email"
-        />
-      </div>
+      <Field
+        component={ RenderField }
+        options={ options.contributor.children.email }
+        name="contributor.email"
+        type="email"
+        placeholder="Email"
+      />
 
       <p className="help-block">
         Your name will be public (as part of your sighting), but any contact information you provide will not be.

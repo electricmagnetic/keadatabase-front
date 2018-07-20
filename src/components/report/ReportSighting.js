@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Formik, Form } from 'formik';
 import moment from 'moment';
+import * as yup from 'yup';
 
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
@@ -12,9 +13,47 @@ import FurtherInformationFieldset from './fieldset/FurtherInformationFieldset';
 import SubmitFieldset from './fieldset/SubmitFieldset';
 import { getReportSightingOptions, postReportSighting } from '../../actions/reportSighting';
 
+const initialValues = {
+  dateTimeSighted: moment(),
+  precision: '',
+  point_location: ['', ''],
+  location_details: '',
+  sighting_type: '',
+  birds: [],
+  number: 0,
+  behaviour: '',
+  contributor: {
+    name: '',
+    email: '',
+    phone: '',
+    activity: '',
+    heard: '',
+    communications: false,
+  },
+  comments: '',
+};
+
+const requiredMessage = 'This field is required.';
+const schema = yup.object().shape({
+  dateTimeSighted: yup.object().required(requiredMessage),
+  precision: yup.string().required(requiredMessage),
+  point_location: yup.array().of(
+    yup.number().required().min(-180).max(180), // longitude
+    yup.number().required().min(-90).max(90), // latitude
+  ).required().min(2).max(2),
+  sighting_type: yup.string().required(requiredMessage),
+  // birds: [],
+  number: yup.number().required(requiredMessage),
+  contributor: yup.object().shape({
+    name: yup.string().required(),
+    email: yup.string().email().required(),
+  }),
+});
+
 class ReportSighting extends Component {
   constructor(props) {
     super(props);
+    this.handleValidate = this.handleValidate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -23,9 +62,12 @@ class ReportSighting extends Component {
     dispatch(getReportSightingOptions());
   }
 
-  handleSubmit(values) {
+  handleValidate(values) {
+  }
+
+  handleSubmit(values, formikBag) {
     const { dispatch } = this.props;
-    dispatch(postReportSighting(values));
+    dispatch(postReportSighting(values, formikBag));
   }
 
   render() {
@@ -35,34 +77,12 @@ class ReportSighting extends Component {
     else if (reportSightingOptions.rejected) return <Error reason={ reportSightingOptions.value.message }/>;
     else if (reportSightingOptions.fulfilled) {
       const options = reportSightingOptions.value.actions.POST;
-      console.log(options)
-      const validate = null;
       return (
         <div>
           <p>All fields are required, except where indicated.</p>
           <Formik
-            initialValues={{
-              dateTimeSighted: moment(),
-              precision: '',
-              point_location: {
-                coordinates: ['', ''],
-              },
-              location_details: '',
-              sighting_type: '',
-              birds: [],
-              number: 0,
-              behaviour: '',
-              contributor: {
-                name: '',
-                email: '',
-                phone: '',
-                activity: '',
-                heard: '',
-                communications: false,
-              },
-              comments: '',
-            }}
-            validate={validate}
+            initialValues={initialValues}
+            validationSchema={schema}
             onSubmit={this.handleSubmit}
             render={props => (
               <Form>

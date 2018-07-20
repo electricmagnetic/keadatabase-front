@@ -26,7 +26,8 @@
     "react-truncate": "^2.3.0",
     "redux": "^4.0.0",
     "redux-api-middleware": "^2.3.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "yup": "^0.25.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./node_modules --include-path ./src/assets/css src/ -o src/",

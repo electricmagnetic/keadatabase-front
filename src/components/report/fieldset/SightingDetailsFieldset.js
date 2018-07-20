@@ -5,11 +5,13 @@ import DatePicker from 'react-datepicker';
 import { Marker } from "react-mapbox-gl";
 
 import Map from '../../map/Map';
+import { RenderField } from '../../helpers/RenderField';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const SightingDetailsFieldset = ({
   options,
   values,
+  errors,
   setFieldValue,
 }) => {
   return (
@@ -37,13 +39,13 @@ const SightingDetailsFieldset = ({
         <div className="card-body">
           <Map
             onClick={(map, e) => {
-              setFieldValue('point_location.coordinates[0]', e.lngLat.lng)
-              setFieldValue('point_location.coordinates[1]', e.lngLat.lat)
+              setFieldValue('point_location[0]', e.lngLat.lng)
+              setFieldValue('point_location[1]', e.lngLat.lat)
             }}
           >
-            {values.point_location.coordinates[0] && values.point_location.coordinates[1] &&
+            {values.point_location && values.point_location[0] && values.point_location[1] &&
               <Marker
-                coordinates={ values.point_location.coordinates }
+                coordinates={ values.point_location }
               >
                 <p>Marker</p>
               </Marker>
@@ -54,51 +56,38 @@ const SightingDetailsFieldset = ({
             Use the precision dropdown to give us an indication of how accurate the location is (in metres).
           </p>
 
-          <div className="form-group">
-            <label htmlFor="precision">Precision</label>
-            <Field
-              component="select"
-              name="precision"
-              className="form-control"
-              id="precision"
-            >
-              <option default value=""></option>
-              {options.precision.choices.map(option => (
-                <option key={ option.value } value={ option.value }>{ option.display_name }</option>
-              ))}
-            </Field>
-          </div>
+          <Field
+            component={ RenderField }
+            options={ options.precision }
+            name="precision"
+            type="choice"
+            addBlank
+          />
 
-          <div className="form-group">
-            <label htmlFor="longitude">Longitude</label>
-            <Field
-              name="point_location.coordinates[0]"
-              className="form-control"
-              id="longitude"
-              placeholder="e.g. 171.562"
-            />
-          </div>
+          <Field
+            component={ RenderField }
+            options={ options.point_location }
+            name="point_location[0]"
+            label="Longitude"
+            placeholder="e.g. 171.562"
+          />
 
-          <div className="form-group">
-            <label htmlFor="latitude">Latitude</label>
-            <Field
-              name="point_location.coordinates[1]"
-              className="form-control"
-              id="latitude"
-              placeholder="e.g. -42.940"
-            />
-          </div>
+          <Field
+            component={ RenderField }
+            options={ options.point_location }
+            name="point_location[1]"
+            label="Latitude"
+            placeholder="e.g. -42.940"
+          />
 
-          <div className="form-group">
-            <label htmlFor="locationDetails">Location details (optional)</label>
-            <Field
-              component="textarea"
-              name="location_details"
-              className="form-control"
-              id="locationDetails"
-              placeholder="e.g. Beside the Arthur's Pass Store"
-            />
-          </div>
+          <Field
+            component={ RenderField }
+            options={ options.location_details }
+            name="location_details"
+            type="textarea"
+            label="Location details (optional)"
+            placeholder="e.g. Beside the Arthur's Pass Store"
+          />
 
         </div>
       </div>

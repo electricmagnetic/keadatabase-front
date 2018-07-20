@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'formik';
 
+import { RenderField } from '../../helpers/RenderField';
+
 const RenderBirds = ({ arrayHelpers, options }) => {
   const { values } = arrayHelpers.form;
   const initialBirdValues = {
-    banded: 'unknown',
+    banded: '',
     band_combo: '',
     sex_guess: '',
     life_stage_guess: '',
@@ -27,57 +29,40 @@ const RenderBirds = ({ arrayHelpers, options }) => {
             <div className="card-header">Bird #{ index + 1 }</div>
 
             <div className="card-body">
-              <div className="form-group">
-                <label htmlFor={ `bird${index}banded` }>Banded?</label>
-                <Field
-                  component="select"
-                  name={ `birds.${index}.banded` }
-                  id={ `bird${index}banded` }
-                  className="form-control"
-                >
-                  {options.banded.choices.map(option => (
-                    <option key={ option.value } value={ option.value }>{ option.display_name }</option>
-                  ))}
-                </Field>
-              </div>
 
-              <div className="form-group">
-                <label htmlFor={ `bird${index}bandcombo` }>Band combo (if known)</label>
-                <Field
-                  name={ `birds.${index}.band_combo` }
-                  id={ `bird${index}bandcombo` }
-                  className="form-control"
-                  placeholder="e.g. Black C on Yellow"
-                />
-              </div>
+              <Field
+                component={ RenderField }
+                options={ options.banded }
+                name={ `birds.${index}.banded` }
+                type="choice"
+                label="Banded?"
+                addBlank
+              />
 
-              <div className="form-group">
-                <label htmlFor={ `bird${index}sexguess` }>Male/Female (optional)</label>
-                <Field
-                  component="select"
-                  name={ `birds.${index}.sex_guess` }
-                  id={ `bird${index}sexguess` }
-                  className="form-control"
-                >
-                  {options.sex_guess.choices.map(option => (
-                    <option key={ option.value } value={ option.value }>{ option.display_name }</option>
-                  ))}
-                </Field>
-              </div>
+              <Field
+                component={ RenderField }
+                options={ options.band_combo }
+                name={ `birds.${index}.band_combo` }
+                type="text"
+                label="Band combo (if known)"
+                placeholder="e.g. Black C on Yellow"
+              />
 
-              <div className="form-group">
-                <label htmlFor={ `bird${index}lifestageguess` }>Life Stage (optional)</label>
-                <Field
-                  component="select"
-                  name={ `birds.${index}.life_stage_guess` }
-                  id={ `bird${index}lifestageguess` }
-                  className="form-control"
-                >
-                  {options.life_stage_guess.choices.map(option => (
-                    <option key={ option.value } value={ option.value }>{ option.display_name }</option>
-                  ))}
-                </Field>
-              </div>
+              <Field
+                component={ RenderField }
+                options={ options.sex_guess }
+                name={ `birds.${index}.sex_guess` }
+                type="choice"
+                label="Male/Female (optional)"
+              />
+
+              <Field
+                component={ RenderField }
+                options={ options.life_stage_guess }
+                name={ `birds.${index}.life_stage_guess` }
+                type="choice"
+                label="Life Stage (optional)"
+              />
 
               <button
                 type="button"
@@ -102,20 +87,13 @@ const SightingBirdsFieldset = ({
       <legend>2. Birds</legend>
       <p>If you heard birds, or only saw them in the distance (e.g. flying overhead) choose 'Sighted (distant)' or 'Heard'. Otherwise pick 'Sighted'.</p>
 
-      <div className="form-group">
-        <label htmlFor="sighting_type">Sighting type</label>
-        <Field
-          component="select"
-          name="sighting_type"
-          className="form-control"
-          id="sighting_type"
-        >
-          <option default value=""></option>
-          {options.sighting_type.choices.map(option => (
-            <option key={ option.value } value={ option.value }>{ option.display_name }</option>
-          ))}
-        </Field>
-      </div>
+      <Field
+        component={ RenderField }
+        options={ options.sighting_type }
+        name="sighting_type"
+        type="choice"
+        addBlank
+      />
 
       {values.sighting_type === 'sighted' &&
         <React.Fragment>
@@ -142,28 +120,23 @@ const SightingBirdsFieldset = ({
       }
 
       {(values.sighting_type === 'heard' || values.sighting_type === 'distant') &&
-        <div className="form-group">
-          <label htmlFor="number">Number</label>
-          <Field
-            type="number"
-            name="number"
-            className="form-control"
-            id="number"
-          />
-        </div>
+        <Field
+          component={ RenderField }
+          options={ options.number }
+          name="number"
+          type="number"
+        />
+
       }
 
       {values.sighting_type !== '' &&
-        <div className="form-group">
-          <label htmlFor="behaviour">Behaviour</label>
-          <Field
-            component="textarea"
-            name="behaviour"
-            className="form-control"
-            id="behaviour"
-            placeholder="e.g. Calling, Flying, Feeding…"
-          />
-        </div>
+        <Field
+          component={ RenderField }
+          options={ options.behaviour }
+          name="behaviour"
+          type="textarea"
+          placeholder="e.g. Calling, Flying, Feeding…"
+        />
       }
     </fieldset>
   );

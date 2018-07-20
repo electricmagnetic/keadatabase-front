@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 // import { Field } from 'formik';
 
 import Page from '../../presentation/Page';
 
-const SubmitFieldset = ({ isSubmitting }) => {
+const SubmitFieldset = ({ isSubmitting, reportSightingPost }) => {
   return (
     <fieldset>
       <legend>5. Confirmation</legend>
@@ -14,6 +15,10 @@ const SubmitFieldset = ({ isSubmitting }) => {
         Submit
       </button>
 
+      {reportSightingPost.rejected &&
+        <p>{reportSightingPost.value.message}</p>
+      }
+
     </fieldset>
   );
 }
@@ -21,4 +26,8 @@ const SubmitFieldset = ({ isSubmitting }) => {
 SubmitFieldset.propTypes = {
 };
 
-export default SubmitFieldset;
+const mapStateToProps = state => ({
+  reportSightingPost: state.reportSightingPost,
+});
+
+export default connect(mapStateToProps)(SubmitFieldset);
