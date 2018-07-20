@@ -20,7 +20,7 @@ const initialValues = {
   location_details: '',
   sighting_type: '',
   birds: [],
-  number: 0,
+  number: 1,
   behaviour: '',
   contributor: {
     name: '',
@@ -38,15 +38,19 @@ const schema = yup.object().shape({
   dateTimeSighted: yup.object().required(requiredMessage),
   precision: yup.string().required(requiredMessage),
   point_location: yup.array().of(
-    yup.number().required().min(-180).max(180), // longitude
-    yup.number().required().min(-90).max(90), // latitude
-  ).required().min(2).max(2),
+    yup.string().required(requiredMessage),
+    yup.string().required(requiredMessage),
+  ),
   sighting_type: yup.string().required(requiredMessage),
-  // birds: [],
+  birds: yup.array().of(
+    yup.object().shape({
+      banded: yup.string().required(requiredMessage),
+    }),
+  ),
   number: yup.number().required(requiredMessage),
   contributor: yup.object().shape({
-    name: yup.string().required(),
-    email: yup.string().email().required(),
+    name: yup.string().required(requiredMessage),
+    email: yup.string().email('Invalid email address').required(requiredMessage),
   }),
 });
 

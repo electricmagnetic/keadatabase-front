@@ -14,6 +14,13 @@ const SightingDetailsFieldset = ({
   errors,
   setFieldValue,
 }) => {
+  const longitude = values.point_location && values.point_location[0];
+  const latitude = values.point_location && values.point_location[1];
+  const isValidCoordinates = (
+    longitude && latitude &&
+    -180 <= longitude && longitude <= 180 &&
+    -90 <= latitude && latitude <= 90
+  );
   return (
     <fieldset>
       <legend>1. Sighting Details</legend>
@@ -43,7 +50,7 @@ const SightingDetailsFieldset = ({
               setFieldValue('point_location[1]', e.lngLat.lat)
             }}
           >
-            {values.point_location && values.point_location[0] && values.point_location[1] &&
+            {isValidCoordinates &&
               <Marker
                 coordinates={ values.point_location }
               >

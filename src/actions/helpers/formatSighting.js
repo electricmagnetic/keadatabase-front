@@ -1,6 +1,7 @@
 import moment from 'moment';
 
 export function formatSighting(values={}) {
+  console.log(values);
   const sighting = {};
 
   // Add challenge (basic spam prevention)
@@ -24,9 +25,11 @@ export function formatSighting(values={}) {
   if (values.birds && values.birds.length > 0) {
     sighting.birds = [];
     values.birds.forEach((bird, i) => {
+      const formattedBird = {};
       Object.keys(bird).forEach(key => {
-        if (bird[key]) sighting.birds[i][key] = bird[key];
+        if (bird[key]) formattedBird[key] = bird[key];
       });
+      sighting.birds.push(formattedBird);
     })
   } else {
     // Add empty sighting.birds if none defined as back-end requires it to be at least defined
@@ -34,8 +37,8 @@ export function formatSighting(values={}) {
   }
 
   // For 'sighted' sighting_type only (where number field is not defined), get length of array for number
-  if (sighting.sighting_type) {
-    if (sighting.sighting_type === 'sighted') {
+  if (values.sighting_type) {
+    if (values.sighting_type === 'sighted') {
       sighting.number = sighting.birds.length;
     } else {
       sighting.number = values.number;

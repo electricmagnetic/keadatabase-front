@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 
 import Page from '../../presentation/Page';
 
-const SubmitFieldset = ({ isSubmitting, reportSightingPost }) => {
+const SubmitFieldset = ({ submitCount, isValid, isSubmitting, reportSightingPost }) => {
+  const showInvalid = (submitCount > 0 && !isValid) || reportSightingPost.rejected;
   return (
     <fieldset>
       <legend>5. Confirmation</legend>
@@ -15,8 +16,15 @@ const SubmitFieldset = ({ isSubmitting, reportSightingPost }) => {
         Submit
       </button>
 
-      {reportSightingPost.rejected &&
-        <p>{reportSightingPost.value.message}</p>
+      {showInvalid &&
+        <div className="alert alert-danger" role="alert">
+          <p>
+            Hmm, it seems there were some errors. Please scroll up and check the data you've entered.
+          </p>
+          {reportSightingPost.rejected &&
+            <small>{reportSightingPost.value.message}</small>
+          }
+        </div>
       }
 
     </fieldset>
