@@ -11,7 +11,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 const SightingDetailsFieldset = ({
   options,
   values,
-  errors,
   setFieldValue,
 }) => {
   const longitude = values.point_location && values.point_location[0];

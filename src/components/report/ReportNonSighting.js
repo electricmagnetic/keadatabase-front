@@ -6,22 +6,17 @@ import * as yup from 'yup';
 
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
-import SightingDetailsFieldset from './fieldset/SightingDetailsFieldset';
-import SightingBirdsFieldset from './fieldset/SightingBirdsFieldset';
+import NonSightingDetailsFieldset from './fieldset/NonSightingDetailsFieldset';
+import ExpectationsFieldset from './fieldset/ExpectationsFieldset';
 import ContributorFieldset from './fieldset/ContributorFieldset';
 import FurtherInformationFieldset from './fieldset/FurtherInformationFieldset';
 import SubmitFieldset from './fieldset/SubmitFieldset';
-import { getReportSightingOptions, postReportSighting } from '../../actions/reportSighting';
+import { getReportNonSightingOptions, postReportNonSighting } from '../../actions/reportNonSighting';
 
 const initialValues = {
   dateTimeSighted: moment(),
-  precision: '',
-  point_location: ['', ''],
   location_details: '',
-  sighting_type: '',
-  birds: [],
-  number: 1,
-  behaviour: '',
+  expectations: '',
   contributor: {
     name: '',
     email: '',
@@ -36,18 +31,7 @@ const initialValues = {
 const requiredMessage = 'This field is required.';
 const schema = yup.object().shape({
   dateTimeSighted: yup.object().required(requiredMessage),
-  precision: yup.string().required(requiredMessage),
-  point_location: yup.array().of(
-    yup.string().required(requiredMessage),
-    yup.string().required(requiredMessage),
-  ),
-  sighting_type: yup.string().required(requiredMessage),
-  birds: yup.array().of(
-    yup.object().shape({
-      banded: yup.string().required(requiredMessage),
-    }),
-  ),
-  number: yup.number().required(requiredMessage),
+  location_details: yup.string().required(requiredMessage),
   contributor: yup.object().shape({
     name: yup.string().required(requiredMessage),
     email: yup.string().email('Invalid email address').required(requiredMessage),
@@ -63,7 +47,7 @@ class ReportSighting extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(getReportSightingOptions());
+    dispatch(getReportNonSightingOptions());
   }
 
   handleValidate(values) {
@@ -71,16 +55,16 @@ class ReportSighting extends Component {
 
   handleSubmit(values, formikBag) {
     const { dispatch } = this.props;
-    dispatch(postReportSighting(values, formikBag));
+    dispatch(postReportNonSighting(values, formikBag));
   }
 
   render() {
-    const { reportSightingOptions, reportSightingPost } = this.props;
+    const { reportNonSightingOptions, reportNonSightingPost } = this.props;
 
-    if (reportSightingOptions.pending) return <Loader />;
-    else if (reportSightingOptions.rejected) return <Error reason={ reportSightingOptions.value.message }/>;
-    else if (reportSightingOptions.fulfilled) {
-      const options = reportSightingOptions.value.actions.POST;
+    if (reportNonSightingOptions.pending) return <Loader />;
+    else if (reportNonSightingOptions.rejected) return <Error reason={ reportNonSightingOptions.value.message }/>;
+    else if (reportNonSightingOptions.fulfilled) {
+      const options = reportNonSightingOptions.value.actions.POST;
       return (
         <div>
           <p>All fields are required, except where indicated.</p>
@@ -90,11 +74,11 @@ class ReportSighting extends Component {
             onSubmit={this.handleSubmit}
             render={props => (
               <Form>
-                <SightingDetailsFieldset {...props} options={options} />
-                <SightingBirdsFieldset {...props} options={options} />
+                <NonSightingDetailsFieldset {...props} options={options} />
+                <ExpectationsFieldset {...props} options={options} />
                 <ContributorFieldset {...props} options={options} />
                 <FurtherInformationFieldset {...props} options={options} />
-                <SubmitFieldset {...props} response={reportSightingPost} />
+                <SubmitFieldset {...props} response={reportNonSightingPost} />
               </Form>
             )}
           />
@@ -105,8 +89,8 @@ class ReportSighting extends Component {
 }
 
 const mapStateToProps = state => ({
-  reportSightingOptions: state.reportSightingOptions,
-  reportSightingPost: state.reportSightingPost,
+  reportNonSightingOptions: state.reportNonSightingOptions,
+  reportNonSightingPost: state.reportNonSightingPost,
 });
 
 export default connect(mapStateToProps)(ReportSighting);

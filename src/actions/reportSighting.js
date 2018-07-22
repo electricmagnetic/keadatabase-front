@@ -15,7 +15,7 @@ export function getReportSightingOptions() {
       headers: { 'Accept': 'application/json' },
       types: [REPORT_SIGHTING_OPTIONS_REQUEST, REPORT_SIGHTING_OPTIONS_RECEIVE, REPORT_SIGHTING_OPTIONS_ERROR]
     }
-  }
+  };
 };
 
 export const REPORT_SIGHTING_POST_REQUEST = 'reportSighting/post/REQUEST';
@@ -42,11 +42,11 @@ export function postReportSighting(values, formikBag) {
     // Use response to dispatch further actions
     if (response.error) {
       // Receiving error doesn't dispatch REPORT_SIGHTING_POST_ERROR somehow so dispatch it here
-      dispatch({ type: REPORT_SIGHTING_POST_ERROR, payload: response.payload })
+      dispatch({ type: REPORT_SIGHTING_POST_ERROR, payload: response.payload });
     } else {
       const id = response.payload.id || '';
       dispatch(push(`/report/sighting/success/${id}`));
     }
     return response;
-  }
+  };
 };

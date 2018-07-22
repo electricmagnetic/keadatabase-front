@@ -29,7 +29,7 @@ export function formatSighting(values={}) {
         if (bird[key]) formattedBird[key] = bird[key];
       });
       sighting.birds.push(formattedBird);
-    })
+    });
   } else {
     // Add empty sighting.birds if none defined as back-end requires it to be at least defined
     sighting.birds = [];
@@ -59,7 +59,7 @@ export function formatSighting(values={}) {
     'behaviour',
     'comments'
   ].forEach(key => {
-    if (values[key]) { sighting[key] = values[key] }
+    if (values[key]) { sighting[key] = values[key]; }
   });
 
   return JSON.stringify(sighting);

@@ -1,12 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
-// import { Field } from 'formik';
+import PropTypes from 'prop-types';
 
 import Page from '../../presentation/Page';
 
-const SubmitFieldset = ({ submitCount, isValid, isSubmitting, reportSightingPost }) => {
-  const showInvalid = (submitCount > 0 && !isValid) || reportSightingPost.rejected;
+const SubmitFieldset = ({ submitCount, isValid, isSubmitting, response }) => {
+  const showInvalid = (submitCount > 0 && !isValid) || response.rejected;
   return (
     <fieldset>
       <legend>5. Confirmation</legend>
@@ -23,21 +21,24 @@ const SubmitFieldset = ({ submitCount, isValid, isSubmitting, reportSightingPost
           <div style={{ marginBottom: '1rem' }}>
             Hmm, it seems there were some errors. Please scroll up and check the data you've entered.
           </div>
-          {reportSightingPost.rejected &&
-            <small>{reportSightingPost.value.message}</small>
+          {response.rejected &&
+            <small>{response.value.message}</small>
           }
         </div>
       }
 
     </fieldset>
   );
-}
-
-SubmitFieldset.propTypes = {
 };
 
-const mapStateToProps = state => ({
-  reportSightingPost: state.reportSightingPost,
-});
+SubmitFieldset.propTypes = {
+  submitCount: PropTypes.number.isRequired,
+  isValid: PropTypes.bool.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
+  response: PropTypes.shape({
+    rejected: PropTypes.bool.isRequired,
+    value: PropTypes.object.isRequired,
+  }).isRequired,
+};
 
-export default connect(mapStateToProps)(SubmitFieldset);
+export default SubmitFieldset;
