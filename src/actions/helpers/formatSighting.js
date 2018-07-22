@@ -1,7 +1,6 @@
 import moment from 'moment';
 
 export function formatSighting(values={}) {
-  console.log(values);
   const sighting = {};
 
   // Add challenge (basic spam prevention)
@@ -63,6 +62,5 @@ export function formatSighting(values={}) {
     if (values[key]) { sighting[key] = values[key] }
   });
 
-  console.log(`sighting: `, sighting)
   return JSON.stringify(sighting);
 };

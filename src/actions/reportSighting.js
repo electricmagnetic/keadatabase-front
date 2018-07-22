@@ -40,10 +40,9 @@ export function postReportSighting(values, formikBag) {
     formikBag.setSubmitting(false);
 
     // Use response to dispatch further actions
-    console.log(response)
     if (response.error) {
-      console.log(response.payload.response)
-      formikBag.setErrors(response.payload.response);
+      // Receiving error doesn't dispatch REPORT_SIGHTING_POST_ERROR somehow so dispatch it here
+      dispatch({ type: REPORT_SIGHTING_POST_ERROR, payload: response.payload })
     } else {
       const id = response.payload.id || '';
       dispatch(push(`/report/sighting/success/${id}`));
