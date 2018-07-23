@@ -6,9 +6,6 @@ import { RenderField } from '../../helpers/RenderField';
 
 const FurtherInformationFieldset = ({
   options,
-  values,
-  errors,
-  touched,
 }) => {
   return (
     <fieldset>
@@ -75,7 +72,6 @@ const FurtherInformationFieldset = ({
 
 FurtherInformationFieldset.propTypes = {
   options: PropTypes.object.isRequired,
-  values: PropTypes.object.isRequired,
 };
 
 export default FurtherInformationFieldset;

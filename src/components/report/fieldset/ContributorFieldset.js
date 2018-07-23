@@ -6,7 +6,6 @@ import { RenderField } from '../../helpers/RenderField';
 
 const ContributorFieldset = ({
   options,
-  values,
 }) => {
   return (
     <fieldset>
@@ -46,7 +45,6 @@ const ContributorFieldset = ({
 
 ContributorFieldset.propTypes = {
   options: PropTypes.object.isRequired,
-  values: PropTypes.object.isRequired,
 };
 
 export default ContributorFieldset;
