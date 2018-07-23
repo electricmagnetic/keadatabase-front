@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Field } from 'formik';
 import DatePicker from 'react-datepicker';
 import { Marker } from "react-mapbox-gl";
+import moment from 'moment';
 
 import Map from '../../map/Map';
 import { RenderField } from '../../helpers/RenderField';
@@ -29,10 +30,14 @@ const SightingDetailsFieldset = ({
         <DatePicker
           selected={ values.dateTimeSighted }
           onChange={ date => setFieldValue('dateTimeSighted', date) }
+          onChangeRaw={ e => {
+            const date = moment(e.target.value, 'D MMM YYYY, HH:mm');
+            if (date.isValid()) setFieldValue('dateTimeSighted', date);
+          }}
           showTimeSelect
           timeFormat="HH:mm"
           timeIntervals={ 15 }
-          dateFormat="D MMM YYYY, hh:mm"
+          dateFormat="D MMM YYYY, HH:mm"
           timeCaption="time"
           className="form-control"
           id="dateTimeSighted"
