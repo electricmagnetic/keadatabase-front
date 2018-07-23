@@ -50,8 +50,8 @@ const SightingDetailsFieldset = ({
           <div className="map-container">
             <Map
               onClick={(map, e) => {
-                setFieldValue('point_location[0]', e.lngLat.lng)
-                setFieldValue('point_location[1]', e.lngLat.lat)
+                setFieldValue('point_location[0]', e.lngLat.lng);
+                setFieldValue('point_location[1]', e.lngLat.lat);
               }}
               height="480px"
             >

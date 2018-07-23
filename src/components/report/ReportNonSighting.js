@@ -29,7 +29,7 @@ const initialValues = {
 };
 
 const requiredMessage = 'This field is required.';
-const schema = yup.object().shape({
+const validationSchema = yup.object().shape({
   dateTimeSighted: yup.object().required(requiredMessage),
   location_details: yup.string().required(requiredMessage),
   contributor: yup.object().shape({
@@ -50,9 +50,6 @@ class ReportSighting extends Component {
     dispatch(getReportNonSightingOptions());
   }
 
-  handleValidate(values) {
-  }
-
   handleSubmit(values, formikBag) {
     const { dispatch } = this.props;
     dispatch(postReportNonSighting(values, formikBag));
@@ -70,7 +67,7 @@ class ReportSighting extends Component {
           <p>All fields are required, except where indicated.</p>
           <Formik
             initialValues={initialValues}
-            validationSchema={schema}
+            validationSchema={validationSchema}
             onSubmit={this.handleSubmit}
             render={props => (
               <Form>
