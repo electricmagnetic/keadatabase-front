@@ -57,7 +57,6 @@ const validationSchema = yup.object().shape({
 class ReportSighting extends Component {
   constructor(props) {
     super(props);
-    this.handleValidate = this.handleValidate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
