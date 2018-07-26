@@ -45,7 +45,7 @@ class SightingsMap extends Component {
     else if (sightings.rejected) return <Error reason={ sightings.value.message }/>;
     else if (sightings.fulfilled) {
       return (
-        <div className="SightingsMap mb-4">
+        <div className="SightingsMap">
           <Map>
             <TopBox>
               <div className="container">
