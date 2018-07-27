@@ -1,43 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
 import { CSVLink } from 'react-csv';
 
 import FormatDate from '../helpers/FormatDate';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
-
-const MACHINE_DATE_FORMAT = 'YYYY-MM-DD';
-
-const getFilteredSightings = (sightings, filter) => {
-  const date_from = filter.date_from && moment(filter.date_from).startOf('day');
-  const date_to = filter.date_to && moment(filter.date_to).endOf('day');
-  const geocode = filter.geocode.toLowerCase();
-  const contributor = filter.contributor.toLowerCase();
-  const isValidGroupSize = size => {
-    switch (filter.group_size_validator) {
-      case '>=':
-        return size >= filter.group_size;
-      case '<=':
-        return size <= filter.group_size;
-      default:
-        return size === filter.group_size;
-    }
-  };
-
-  return sightings.filter(sighting => {
-    const date_sighted = moment(sighting.date_sighted, MACHINE_DATE_FORMAT);
-    const withinPeriod =
-      (!date_from || (date_from && date_from <= date_sighted)) &&
-      (!date_to || (date_to && date_sighted <= date_to));
-
-    const matchGeocode = sighting.geocode.toLowerCase().includes(geocode);
-    const matchContributor = sighting.contributor.toLowerCase().includes(contributor);
-
-    return withinPeriod && matchGeocode && matchContributor && isValidGroupSize(sighting.number);
-  });
-};
+import { getFilteredSightings } from './getFilteredSightings';
 
 class SightingsCards extends Component {
   render() {
