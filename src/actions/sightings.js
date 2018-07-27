@@ -22,7 +22,7 @@ function shouldFetchSightings(state, pageSize) {
     return false;
   }
 
-  if (sightings.fulfilled && sightings.value.results.length === pageSize) {
+  if (sightings.fulfilled) {
     return false;
   }
 
