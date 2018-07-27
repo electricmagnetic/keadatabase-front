@@ -35,8 +35,16 @@ class SightingsCards extends Component {
 
       return (
         <div className="SightingsCards">
-          <span>Showing {filteredSightings.length} results</span>&nbsp;
-          <CSVLink headers={csvHeader} data={csvData} filename="kea-sightings.csv">Download CSV</CSVLink>
+          <div className="row mb-3">
+            <div className="col-6 col-md-3">
+              <p>Showing {filteredSightings.length} results</p>
+            </div>
+            <div className="col-6 col-md-3">
+              <CSVLink headers={csvHeader} data={csvData} filename="kea-sightings.csv">
+                <button className="btn btn-secondary">Download CSV</button>
+              </CSVLink>
+            </div>
+          </div>
 
           <div className="row">
             { filteredSightings.map((sighting) =>
