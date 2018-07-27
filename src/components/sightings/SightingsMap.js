@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { Layer, Feature } from "react-mapbox-gl";
 import { Link } from 'react-router-dom';
 
-import { getSightings } from '../../actions/sightings';
-
 import Map from '../map/Map';
 import { TopBox, BottomBox } from '../map/InformationBox';
 import Loader from '../helpers/Loader';
@@ -19,14 +17,9 @@ class SightingsMap extends Component {
 
     this.state = {
       selectedFeature: this.props.selectedFeature || null
-    }
+    };
 
     this.markerClick = this.markerClick.bind(this);
-  }
-
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getSightings());
   }
 
   markerClick(e) {
@@ -83,10 +76,10 @@ class SightingsMap extends Component {
 
 SightingsMap.propTypes = {
   selectedSighting: PropTypes.object
-}
+};
 
 const mapStateToProps = (state) => {
   return { sightings: state.sightings };
-}
+};
 
 export default connect(mapStateToProps)(SightingsMap);

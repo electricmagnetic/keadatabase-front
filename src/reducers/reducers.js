@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
 import { sightings } from './sightings';
+import { sightingsFilter } from './sightingsFilter';
 import { birdSightings } from './birdSightings';
 import bandCombos from './bandCombos';
 import { pages, posts } from './wordpress';
@@ -12,6 +13,7 @@ import { reportNonSightingOptions, reportNonSightingPost } from './reportNonSigh
 export default combineReducers({
   birdSightings,
   sightings,
+  sightingsFilter,
   bandCombos,
   pages,
   posts,

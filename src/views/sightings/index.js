@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import Banner from '../../components/presentation/Banner';
 import SightingsCards from '../../components/sightings/SightingsCards';
 import SightingsMap from '../../components/sightings/SightingsMap';
+import SightingsSearchForm from '../../components/sightings/SightingsSearchForm';
 
 const SightingsPage = props => {
   return (
@@ -12,7 +13,7 @@ const SightingsPage = props => {
       <SightingsMap />
 
       <Banner size="small" additionalClasses="mb-3">
-        <p>Sightings Search Form</p>
+        <SightingsSearchForm />
       </Banner>
 
       <div className="container">

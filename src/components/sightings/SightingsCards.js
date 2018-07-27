@@ -1,29 +1,56 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import { getSightings } from '../../actions/sightings';
+import moment from 'moment';
 
 import FormatDate from '../helpers/FormatDate';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 
-class SightingsCards extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getSightings());
-  }
+const MACHINE_DATE_FORMAT = 'YYYY-MM-DD';
 
+const getFilteredSightings = (sightings, filter) => {
+  const date_from = filter.date_from && moment(filter.date_from).startOf('day');
+  const date_to = filter.date_to && moment(filter.date_to).endOf('day');
+  const geocode = filter.geocode.toLowerCase();
+  const contributor = filter.contributor.toLowerCase();
+  const isValidGroupSize = size => {
+    switch (filter.group_size_validator) {
+      case '>=':
+        return size >= filter.group_size;
+      case '<=':
+        return size <= filter.group_size;
+      default:
+        return size === filter.group_size;
+    }
+  };
+
+  return sightings.filter(sighting => {
+    const date_sighted = moment(sighting.date_sighted, MACHINE_DATE_FORMAT);
+    const withinPeriod =
+      (!date_from || (date_from && date_from <= date_sighted)) &&
+      (!date_to || (date_to && date_sighted <= date_to));
+
+    const matchGeocode = sighting.geocode.toLowerCase().includes(geocode);
+    const matchContributor = sighting.contributor.toLowerCase().includes(contributor);
+
+    return withinPeriod && matchGeocode && matchContributor && isValidGroupSize(sighting.number);
+  });
+};
+
+class SightingsCards extends Component {
   render() {
-    const { sightings } = this.props;
+    const { sightings, sightingsFilter } = this.props;
 
     if (sightings.pending) return <Loader />;
     else if (sightings.rejected) return <Error reason={ sightings.value.message }/>;
     else if (sightings.fulfilled) {
+      const filteredSightings = getFilteredSightings(sightings.value.results, sightingsFilter);
       return (
         <div className="SightingsCards">
+          <p>Showing {filteredSightings.length} results</p>
           <div className="row">
-            { sightings.value.results.map((sighting) =>
+            { filteredSightings.map((sighting) =>
               <div className="col-sm-4 col-md-3" key={ sighting.id }>
                 <div className="card mb-3">
                   <div className="card-body">
@@ -48,8 +75,9 @@ class SightingsCards extends Component {
   }
 };
 
-const mapStateToProps = (state) => {
-  return { sightings: state.sightings };
-}
+const mapStateToProps = (state) => ({
+  sightings: state.sightings,
+  sightingsFilter: state.sightingsFilter,
+});
 
 export default connect(mapStateToProps)(SightingsCards);
