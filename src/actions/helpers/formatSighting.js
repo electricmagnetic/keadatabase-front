@@ -62,7 +62,5 @@ export function formatSighting(values={}) {
     if (values[key]) { sighting[key] = values[key]; }
   });
 
-  console.log(sighting);
-
   return JSON.stringify(sighting);
 };
