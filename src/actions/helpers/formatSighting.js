@@ -13,10 +13,10 @@ export function formatSighting(values={}) {
   }
 
   // Format coordinates into numbers with 'Point' type
-  if (values.point_location && values.point_location[0] && values.point_location[1]) {
+  if (values.longitude && values.latitude) {
     sighting.point_location = {
       type: 'Point',
-      coordinates: values.point_location.map(parseFloat),
+      coordinates: [values.longitude, values.latitude],
     };
   }
 
@@ -61,6 +61,8 @@ export function formatSighting(values={}) {
   ].forEach(key => {
     if (values[key]) { sighting[key] = values[key]; }
   });
+
+  console.log(sighting);
 
   return JSON.stringify(sighting);
 };

@@ -16,7 +16,8 @@ import { getReportSightingOptions, postReportSighting } from '../../actions/repo
 const initialValues = {
   dateTimeSighted: moment(),
   precision: '',
-  point_location: ['', ''],
+  longitude: '',
+  latitude: '',
   location_details: '',
   sighting_type: '',
   birds: [],
@@ -34,13 +35,14 @@ const initialValues = {
 };
 
 const requiredMessage = 'This field is required.';
+const notNumber = 'This field must be a number.';
+const underMin = 'Must be more than or equal to ${min}';
+const overMax = 'Must be less than or equal to ${max}';
 const validationSchema = yup.object().shape({
   dateTimeSighted: yup.object().required(requiredMessage),
   precision: yup.string().required(requiredMessage),
-  point_location: yup.array().of(
-    yup.string().required(requiredMessage),
-    yup.string().required(requiredMessage),
-  ),
+  longitude: yup.number(notNumber).min(-180, underMin).max(180, overMax).required(requiredMessage),
+  latitude: yup.number(notNumber).min(-90, underMin).max(90, overMax).required(requiredMessage),
   sighting_type: yup.string().required(requiredMessage),
   birds: yup.array().of(
     yup.object().shape({
@@ -50,7 +52,7 @@ const validationSchema = yup.object().shape({
   number: yup.number().required(requiredMessage),
   contributor: yup.object().shape({
     name: yup.string().required(requiredMessage),
-    email: yup.string().email('Invalid email address').required(requiredMessage),
+    email: yup.string().email('Invalid email address.').required(requiredMessage),
   }),
 });
 

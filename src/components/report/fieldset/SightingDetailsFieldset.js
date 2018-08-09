@@ -14,8 +14,7 @@ const SightingDetailsFieldset = ({
   values,
   setFieldValue,
 }) => {
-  const longitude = values.point_location && values.point_location[0];
-  const latitude = values.point_location && values.point_location[1];
+  const { longitude, latitude } = values;
   const isValidCoordinates = (
     longitude && latitude &&
     -180 <= longitude && longitude <= 180 &&
@@ -55,14 +54,14 @@ const SightingDetailsFieldset = ({
           <div className="map-container">
             <Map
               onClick={(map, e) => {
-                setFieldValue('point_location[0]', e.lngLat.lng);
-                setFieldValue('point_location[1]', e.lngLat.lat);
+                setFieldValue('longitude', e.lngLat.lng);
+                setFieldValue('latitude', e.lngLat.lat);
               }}
               height="480px"
             >
               {isValidCoordinates &&
                 <Marker
-                  coordinates={ values.point_location }
+                  coordinates={[ longitude, latitude ]}
                 >
                   <i className="fas fa-map-marker-alt"></i>
                 </Marker>
@@ -89,7 +88,7 @@ const SightingDetailsFieldset = ({
               <Field
                 component={ RenderField }
                 options={ options.point_location }
-                name="point_location[0]"
+                name="longitude"
                 label="Longitude"
                 placeholder="e.g. 171.562"
               />
@@ -99,7 +98,7 @@ const SightingDetailsFieldset = ({
               <Field
                 component={ RenderField }
                 options={ options.point_location }
-                name="point_location[1]"
+                name="latitude"
                 label="Latitude"
                 placeholder="e.g. -42.940"
               />
