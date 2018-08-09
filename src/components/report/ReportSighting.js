@@ -36,13 +36,11 @@ const initialValues = {
 
 const requiredMessage = 'This field is required.';
 const notNumber = 'This field must be a number.';
-const underMin = 'Must be more than or equal to ${min}';
-const overMax = 'Must be less than or equal to ${max}';
 const validationSchema = yup.object().shape({
   dateTimeSighted: yup.object().required(requiredMessage),
   precision: yup.string().required(requiredMessage),
-  longitude: yup.number(notNumber).min(-180, underMin).max(180, overMax).required(requiredMessage),
-  latitude: yup.number(notNumber).min(-90, underMin).max(90, overMax).required(requiredMessage),
+  longitude: yup.number().min(-180).max(180).required(requiredMessage).typeError(notNumber),
+  latitude: yup.number().min(-90).max(90).required(requiredMessage).typeError(notNumber),
   sighting_type: yup.string().required(requiredMessage),
   birds: yup.array().of(
     yup.object().shape({
