@@ -43,6 +43,15 @@ export function postReportSighting(values, formikBag) {
     if (response.error) {
       // Receiving error doesn't dispatch REPORT_SIGHTING_POST_ERROR somehow so dispatch it here
       dispatch({ type: REPORT_SIGHTING_POST_ERROR, payload: response.payload });
+
+      const errors = response.payload.response;
+      // Convert point_location validation message to formik parameters
+      // Show the error message to both fields as you can't tell which was wrong
+      if (errors.point_location && errors.point_location[0]) {
+        errors.longitude = errors.point_location[0];
+        errors.latitude = errors.point_location[0];
+      }
+      formikBag.setErrors(errors);
     } else {
       const id = response.payload.id || '';
       dispatch(push(`/report/sighting/success/${id}`));
