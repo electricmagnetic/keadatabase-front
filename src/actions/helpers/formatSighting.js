@@ -16,7 +16,7 @@ export function formatSighting(values={}) {
   if (values.longitude && values.latitude) {
     sighting.point_location = {
       type: 'Point',
-      coordinates: [values.longitude, values.latitude],
+      coordinates: [parseFloat(values.longitude), parseFloat(values.latitude)],
     };
   }
 
