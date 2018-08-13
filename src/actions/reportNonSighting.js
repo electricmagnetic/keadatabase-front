@@ -27,7 +27,7 @@ export function postReportNonSighting(values, formikBag) {
   return async(dispatch, getState) => {
     const response = await dispatch({
       [RSAA]: {
-        endpoint: `http://api.keadatabase.nz/report/non_sighting/`,
+        endpoint: `https://api.keadatabase.nz/report/non_sighting/`,
         method: 'POST',
         body: formatNonSighting(values),
         types: [REPORT_NONSIGHTING_POST_REQUEST, REPORT_NONSIGHTING_POST_RECEIVE, REPORT_NONSIGHTING_POST_ERROR],

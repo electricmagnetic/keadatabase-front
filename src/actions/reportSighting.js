@@ -27,7 +27,7 @@ export function postReportSighting(values, formikBag) {
   return async(dispatch, getState) => {
     const response = await dispatch({
       [RSAA]: {
-        endpoint: `http://api.keadatabase.nz/report/sighting/`,
+        endpoint: `https://api.keadatabase.nz/report/sighting/`,
         method: 'POST',
         body: formatSighting(values),
         types: [REPORT_SIGHTING_POST_REQUEST, REPORT_SIGHTING_POST_RECEIVE, REPORT_SIGHTING_POST_ERROR],
