@@ -25,3 +25,33 @@ $constrainer-width: map-get($container-max-widths, 'xl')+160px;
     color: rgba(255,255,255,0.8);
   }
 }
+
+fieldset {
+  margin-bottom: 2rem;
+}
+
+legend {
+  border-bottom: 1px solid rgba($black, .125);
+  margin-bottom: 1.5rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+.map-container {
+  margin-bottom: 1.5rem;
+}
+
+.fa-map-marker-alt {
+  font-size: 3rem;
+  color: $primary;
+}
+
+.card {
+  margin-bottom: 1rem;
+}
+
+.react-datepicker__time-list {
+  padding-left: 0;
+}
