@@ -22,7 +22,7 @@ class ReportSightingSuccessPage extends Component {
               </Link>
               { id &&
                 <Link to={'/sightings/' + this.props.match.params.id } className="btn btn-outline-primary" role="button">
-                  <span className="glyphicon glyphicon-share-alt" aria-hidden="true"></span>View Sighting
+                  View Sighting
                 </Link>
               }
             </div>
