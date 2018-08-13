@@ -2,6 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import Banner from '../../components/presentation/Banner';
+import ReportSighting from '../../components/report/ReportNonSighting';
 
 const ReportNonSightingPage = props => {
   return (
@@ -14,7 +15,7 @@ const ReportNonSightingPage = props => {
       </section>
       <section className="mb-4">
         <div className="container">
-          Report Non-Sighting
+          <ReportSighting />
         </div>
       </section>
     </div>

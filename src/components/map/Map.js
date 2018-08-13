@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactMapboxGl, { Layer, Source } from "react-mapbox-gl";
+import React, { Component } from 'react';
+import ReactMapboxGl, { Layer, Source, ZoomControl } from "react-mapbox-gl";
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -18,17 +18,31 @@ const RASTER_SOURCE_OPTIONS = {
 };
 
 
-const Map = ({ children }) => {
-  return (
-    <MapboxMap
-      style="mapbox://styles/mapbox/outdoors-v9"
-      containerStyle={{
-        height: "640px",
-        width: "100%"
-      }}
-      center={ [170.45, -43.983333] }
-      zoom={ [5.2] }
+class Map extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      center: [170.45, -43.983333],
+      zoom: [5.2],
+    };
+  }
+
+  render() {
+    const { onClick, children, height } = this.props;
+    return (
+      <MapboxMap
+        style="mapbox://styles/mapbox/outdoors-v9"
+        containerStyle={{
+          height: height || "640px",
+          width: "100%",
+        }}
+        center={ this.state.center }
+        zoom={ this.state.zoom }
+        onClick={onClick}
       >
+        <ZoomControl
+          zoomDiff={1}
+        />
         <Source
           id="topo50"
           tileJsonSource={RASTER_SOURCE_OPTIONS}
@@ -39,8 +53,9 @@ const Map = ({ children }) => {
           sourceId="topo50"
         />
         { children }
-    </MapboxMap>
-  );
-};
+      </MapboxMap>
+    );
+  }
+}
 
 export default Map;

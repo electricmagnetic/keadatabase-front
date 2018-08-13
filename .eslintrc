@@ -1,0 +1,7 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "semi": ["warn", "always"],
+    "no-console": ["warn"]
+  }
+}
