@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 
 import Banner from '../../components/presentation/Banner';
 import SightingDetail from '../../components/sightings/SightingDetail';
+import SightedBirds from '../../components/sightings/SightedBirds';
 
 const SightingDetailPage = ({ match }) => {
   const id = match.params.id;
@@ -19,7 +20,7 @@ const SightingDetailPage = ({ match }) => {
 
       <SightingDetail id={id}/>
 
-      <p>Birds</p>
+      <SightedBirds id={id}/>
     </div>
   );
 };
