@@ -71,7 +71,11 @@ class SightingDetail extends Component {
             </div>
 
             <div className='col-md-6'>
-              <Map height='480px'>
+              <Map
+                height='480px'
+                center={sighting.point_location.coordinates}
+                zoom={[13]}
+              >
                 <Marker
                   coordinates={ sighting.point_location.coordinates }
                 >
