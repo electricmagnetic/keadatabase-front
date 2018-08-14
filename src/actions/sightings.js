@@ -4,11 +4,10 @@ export const SIGHTINGS_REQUEST = 'sightings/REQUEST';
 export const SIGHTINGS_RECEIVE = 'sightings/RECEIVE';
 export const SIGHTINGS_ERROR = 'sightings/ERROR';
 
-function fetchSightings({ pageSize, id }) {
-  const query = `?page_size=${pageSize}&sighting=${id}`;
+function fetchSightings(pageSize) {
   return {
     [RSAA]: {
-      endpoint: `https://api.keadatabase.nz/sightings/sightings/${query}`,
+      endpoint: `https://api.keadatabase.nz/sightings/sightings/?page_size=${pageSize}`,
       method: 'GET',
       headers: { 'Accept': 'application/json' },
       types: [SIGHTINGS_REQUEST, SIGHTINGS_RECEIVE, SIGHTINGS_ERROR]
@@ -16,26 +15,25 @@ function fetchSightings({ pageSize, id }) {
   };
 }
 
-function shouldFetchSightings(state, { pageSize, id }) {
+function shouldFetchSightings(state, pageSize) {
   const { sightings } = state;
 
-  if (sightings.pending) return false;
-  if (sightings.fulfilled && !id) return false;
+  if (sightings.pending) {
+    return false;
+  }
 
-  if (sightings.fulfilled && id) {
-    const found = sightings.value && sightings.value.results
-      && sightings.value.results.find(sighting => sighting.id === Number(id));
-    if (found) return false;
-    return true;
+  if (sightings.fulfilled) {
+    if (sightings.value.results.length !== pageSize) return true;
+    return false;
   }
 
   return true;
 }
 
-export function getSightings({ pageSize = 250, id = '' } = {}) {
+export function getSightings(pageSize = 250) {
   return (dispatch, getState) => {
-    if (shouldFetchSightings(getState(), { pageSize, id })) {
-      return dispatch(fetchSightings({ pageSize, id }));
+    if (shouldFetchSightings(getState(), pageSize)) {
+      return dispatch(fetchSightings(pageSize));
     }
   };
 }
