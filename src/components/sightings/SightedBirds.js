@@ -46,6 +46,9 @@ class SightedBirds extends Component {
     if (birdSightings.pending) return <Loader />;
     else if (birdSightings.rejected) return <Error reason={ birdSightings.value.message }/>;
     else if (birdSightings.fulfilled) {
+      if (!birdSightings.value.results || birdSightings.value.results.length === 0) {
+        return <span className='no-sightings'></span>;
+      }
 
       return (
         <div className='SightedBirds container'>
