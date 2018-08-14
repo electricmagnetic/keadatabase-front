@@ -10,6 +10,6 @@ const BirdDetailPage = ({ match }) => {
       <BirdProfile slug={ slug } />
     </div>
   );
-}
+};
 
 export default BirdDetailPage;
