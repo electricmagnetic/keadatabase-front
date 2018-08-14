@@ -24,7 +24,7 @@ class BirdProfile extends Component {
 
     if (birds[slug]) {
       if (birds[slug].birdPending) return <Loader />;
-      else if (birds[slug].birdRejected) return <Error reason={ birds.birdValue.message }/>;
+      else if (birds[slug].birdRejected) return <Error reason={ birds[slug].birdValue.message }/>;
       else if (birds[slug].birdFulfilled) {
         const bird = birds[slug].birdValue;
         const extended = bird.bird_extended ? bird.bird_extended : null;
@@ -62,10 +62,10 @@ class BirdProfile extends Component {
 
 BirdProfile.propTypes = {
   slug: PropTypes.string.isRequired
-}
+};
 
 const mapStateToProps = (state) => {
   return { birds: state.birds };
-}
+};
 
 export default connect(mapStateToProps)(BirdProfile);
