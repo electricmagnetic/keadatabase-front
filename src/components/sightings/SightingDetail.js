@@ -47,8 +47,26 @@ class SightingDetail extends Component {
                 </tbody>
               </table>
 
-              <h3>Behaviour</h3>
-              <p>{ sighting.behaviour }</p>
+              {sighting.comments &&
+                <section className='comments'>
+                  <h3>Comments</h3>
+                  <p>{ sighting.comments }</p>
+                </section>
+              }
+
+              {sighting.location_details &&
+                <section className='location_details'>
+                  <h3>Location details</h3>
+                  <p>{ sighting.location_details }</p>
+                </section>
+              }
+
+              {sighting.behaviour &&
+                <section className='behaviour'>
+                  <h3>Behaviour</h3>
+                  <p>{ sighting.behaviour }</p>
+                </section>
+              }
             </div>
 
             <div className='col-md-6'>
