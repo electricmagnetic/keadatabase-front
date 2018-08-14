@@ -74,7 +74,7 @@ class SightingDetail extends Component {
               <Map
                 height='480px'
                 center={sighting.point_location.coordinates}
-                zoom={[13]}
+                zoom={[12]}
               >
                 <Marker
                   coordinates={ sighting.point_location.coordinates }
