@@ -4,18 +4,18 @@ export const SIGHTINGS_REQUEST = 'sightings/REQUEST';
 export const SIGHTINGS_RECEIVE = 'sightings/RECEIVE';
 export const SIGHTINGS_ERROR = 'sightings/ERROR';
 
-function fetchSightings(pageSize) {
+function fetchSightings() {
   return {
     [RSAA]: {
-      endpoint: `https://api.keadatabase.nz/sightings/sightings/?page_size=${pageSize}`,
+      endpoint: `https://api.keadatabase.nz/sightings/sightings/?page_size=250`,
       method: 'GET',
       headers: { 'Accept': 'application/json' },
       types: [SIGHTINGS_REQUEST, SIGHTINGS_RECEIVE, SIGHTINGS_ERROR]
     }
-  };
+  }
 }
 
-function shouldFetchSightings(state, pageSize) {
+function shouldFetchSightings(state) {
   const { sightings } = state;
 
   if (sightings.pending) {
@@ -23,17 +23,16 @@ function shouldFetchSightings(state, pageSize) {
   }
 
   if (sightings.fulfilled) {
-    if (sightings.value.results.length !== pageSize) return true;
     return false;
   }
 
   return true;
 }
 
-export function getSightings(pageSize = 250) {
+export function getSightings() {
   return (dispatch, getState) => {
-    if (shouldFetchSightings(getState(), pageSize)) {
-      return dispatch(fetchSightings(pageSize));
+    if (shouldFetchSightings(getState())) {
+      return dispatch(fetchSightings());
     }
-  };
+  }
 }
