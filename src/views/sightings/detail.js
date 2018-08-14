@@ -1,13 +1,27 @@
 import React from 'react';
+import Helmet from 'react-helmet';
+
+import Banner from '../../components/presentation/Banner';
+import SightingDetail from '../../components/sightings/SightingDetail';
 
 const SightingDetailPage = ({ match }) => {
   const id = match.params.id;
 
   return (
     <div className="SightingDetailPage">
-      <span>Sighting profile { id }</span>
+      <Helmet title={`#${id} - Sighting`} />
+
+      <section className="mb-4">
+        <Banner size="small">
+          <h1>Sighting #{id}</h1>
+        </Banner>
+      </section>
+
+      <SightingDetail id={id}/>
+
+      <p>Birds</p>
     </div>
   );
-}
+};
 
 export default SightingDetailPage;
