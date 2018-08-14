@@ -16,11 +16,12 @@ class SightingDetail extends Component {
   }
 
   render() {
-    const { sightings, sighting } = this.props;
+    const { id, sightings, sighting } = this.props;
 
     if (sightings.pending) return <Loader />;
     else if (sightings.rejected) return <Error reason={ sightings.value.message }/>;
     else if (sightings.fulfilled) {
+      if (!sighting) return <Error reason={ `Sighting #${id} not found.` }/>;
 
       const tableData = [
         { key: 'When', value: <FormatDate>{ sighting.date_sighted } { sighting.time_sighted }</FormatDate> },
