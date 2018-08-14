@@ -8,6 +8,7 @@ import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 import FormatDate from '../helpers/FormatDate';
 import Map from '../map/Map';
+import './SightingDetail.css';
 
 class SightingDetail extends Component {
   componentDidMount() {
@@ -33,7 +34,7 @@ class SightingDetail extends Component {
       ];
 
       return (
-        <div className="container">
+        <div className="SightingDetail container">
           <div className='row'>
             <div className='col-md-6'>
               <table className="table table-sm">

@@ -1,0 +1,14 @@
+@import "variables";
+
+.SightingDetail {
+  margin-bottom: 2rem;
+
+  table,
+  section {
+    margin-bottom: 2rem;
+  }
+
+  table {
+    border-bottom: $table-border-width solid $table-border-color;
+  }
+}

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { getBirdSightings } from '../../actions/birdSightings';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
+import './SightedBirds.css';
 
 const BirdCard = ({ bird }) => {
   let name = 'Unknown';
@@ -17,13 +18,13 @@ const BirdCard = ({ bird }) => {
 
   const bandCombo = bird.band_combo
     ? bird.band_combo
-    : bird.get_banded_display;
+    : <em>{ bird.get_banded_display }</em>;
 
   return (
     <div className='col-6 col-md-3'>
       <div className='card'>
         <div className='card-body'>
-          <h2 className="card-title h5">{ name }</h2>
+          <h5 className="card-title">{ name }</h5>
           <p className="card-text">
             { bandCombo }
           </p>
@@ -47,7 +48,7 @@ class SightedBirds extends Component {
     else if (birdSightings.fulfilled) {
 
       return (
-        <div className='container'>
+        <div className='SightedBirds container'>
           <h2>Birds</h2>
           <div className='row'>
             {birdSightings.value.results.map(bird => (
