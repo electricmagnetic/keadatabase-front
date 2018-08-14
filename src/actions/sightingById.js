@@ -13,6 +13,7 @@ function fetchSightingById(id) {
         {
           type: SIGHTINGS_RECEIVE,
           // Process payload so that it doesn't break state structure
+          // https://github.com/agraboso/redux-api-middleware#success-type-descriptors
           payload: (action, state, res) => {
             return getJSON(res).then(json => ({
               count: 1,

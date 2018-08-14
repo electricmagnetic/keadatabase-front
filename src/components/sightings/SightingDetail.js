@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Marker } from "react-mapbox-gl";
 
 import { getSightingById } from '../../actions/sightingById';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
+import FormatDate from '../helpers/FormatDate';
+import Map from '../map/Map';
 
 class SightingDetail extends Component {
   componentDidMount() {
@@ -19,11 +22,44 @@ class SightingDetail extends Component {
     else if (sightings.rejected) return <Error reason={ sightings.value.message }/>;
     else if (sightings.fulfilled) {
 
-      console.log(sighting);
+      const tableData = [
+        { key: 'When', value: <FormatDate>{ sighting.date_sighted } { sighting.time_sighted }</FormatDate> },
+        { key: 'Where', value: sighting.region },
+        { key: 'Who', value: sighting.contributor },
+        { key: 'What', value: `${ sighting.get_sighting_type_display } ${ sighting.number } bird(s)` },
+        { key: 'Precision', value: `Within ${ sighting.precision } m` },
+        { key: 'Verification', value: sighting.get_quality_display },
+      ];
 
       return (
         <div className="container">
-          <p>Sighting Detail</p>
+          <div className='row'>
+            <div className='col-md-6'>
+              <table className="table table-sm">
+                <tbody>
+                  {tableData.map(row => (
+                    <tr key={ row.key }>
+                      <th>{ row.key }</th>
+                      <td>{ row.value }</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              <h3>Behaviour</h3>
+              <p>{ sighting.behaviour }</p>
+            </div>
+
+            <div className='col-md-6'>
+              <Map height='480px'>
+                <Marker
+                  coordinates={ sighting.point_location.coordinates }
+                >
+                  <i className="fas fa-map-marker-alt"></i>
+                </Marker>
+              </Map>
+            </div>
+          </div>
         </div>
       );
     }
