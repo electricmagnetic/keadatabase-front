@@ -23,11 +23,6 @@ function shouldFetchBirdSightings(state, id) {
     return false;
   }
 
-  if (birdSightings.fulfilled) {
-    if (id) return true;
-    return false;
-  }
-
   return true;
 }
 
