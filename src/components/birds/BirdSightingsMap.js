@@ -1,10 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layer, Feature, Popup } from "react-mapbox-gl";
+import { Popup, Cluster, Marker } from "react-mapbox-gl";
 import { Link } from 'react-router-dom';
 
 import Map from '../map/Map';
 import './BirdSightingsMap.css';
+
+const clusterMarker = (coordinates, pointCount) => (
+  <Marker coordinates={ coordinates }>
+    <div className='cluster-marker'>
+      <div className='number'>{ pointCount }</div>
+    </div>
+  </Marker>
+);
 
 const BirdSightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
   <div className='BirdSightingsMap mb-4'>
@@ -13,20 +21,20 @@ const BirdSightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
       center={ sightings[0].sighting__point_location.coordinates }
       zoom={ [12] }
     >
-      <Layer
-        type="symbol"
-        id="marker"
-        layout={{ "icon-image": "circle-11" }}
+      <Cluster
+        ClusterMarkerFactory={ clusterMarker }
+        zoomOnClick
       >
         {sightings.map(sighting => (
-          <Feature
+          <Marker
             key={ sighting.id }
-            properties={{ sighting_id: sighting.sighting, ...sighting }}
             coordinates={ sighting.sighting__point_location.coordinates }
-            onClick={ e => selectFeature(e.feature.properties) }
-          />
+            onClick={ () => selectFeature({ sighting_id: sighting.sighting, ...sighting }) }
+          >
+            <i className="fas fa-map-marker-alt"></i>
+          </Marker>
         ))}
-      </Layer>
+      </Cluster>
 
       {selectedFeature &&
         <Popup
