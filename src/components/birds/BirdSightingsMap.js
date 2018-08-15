@@ -20,6 +20,7 @@ const BirdSightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
       height='480px'
       center={ sightings[0].sighting__point_location.coordinates }
       zoom={ [12] }
+      onClick={ () => selectFeature() }
     >
       <Cluster
         ClusterMarkerFactory={ clusterMarker }
@@ -39,7 +40,6 @@ const BirdSightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
       {selectedFeature &&
         <Popup
           coordinates={ selectedFeature.sighting__point_location.coordinates }
-          onClick={ () => selectFeature() }
         >
           <span className="badge badge-primary">{ selectedFeature.sighting_id }</span>
           <Link to={ '/sightings/' + selectedFeature.sighting_id }>
