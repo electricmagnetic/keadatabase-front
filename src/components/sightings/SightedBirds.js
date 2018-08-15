@@ -17,7 +17,7 @@ const BirdCard = ({ birdSighting }) => {
   if (matched) {
     name = <Link to={ '/birds/' + birdSighting.bird }>{ birdSighting.get_bird_display }&nbsp;&raquo;</Link>;
   } else if (known) {
-    name = `${birdSighting.get_life_stage_guess_display} ${birdSighting.get_sex_guess_display}`;
+    name = `${birdSighting.get_life_stage_guess_display || ''} ${birdSighting.get_sex_guess_display || ''}`;
   } else if (banded) {
     name = <em>Unmatched</em>;
   }
