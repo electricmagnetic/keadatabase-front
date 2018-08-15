@@ -1,0 +1,13 @@
+@import 'variables';
+
+.BirdSightingsMap {
+  .mapboxgl-popup-content {
+    display: flex;
+    align-items: center;
+    font-size: $font-size-sm;
+
+    .badge {
+      margin-right: .25rem;
+    }
+  }
+}
