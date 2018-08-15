@@ -1,37 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { getBirdSightingsByBird } from '../../actions/birdSightings';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
-import FormatDate from '../helpers/FormatDate';
 import BirdSightingsMap from './BirdSightingsMap';
-import './BirdSightings.css';
-
-const SightingCard = ({ sighting, selectFeature }) => {
-  const feature = { sighting_id: sighting.sighting, ...sighting };
-  return (
-    <div className='SightingCard card' onClick={ () => selectFeature(feature) }>
-      <div className='card-body'>
-        <p className='card-text'>
-          <FormatDate>{ sighting.sighting__date_sighted } { sighting.sighting__time_sighted }</FormatDate>
-        </p>
-        <div className='row justify-content-between'>
-          <div className='col'>
-            <span className="badge badge-primary">{ sighting.sighting }</span>
-          </div>
-          <div className='col'>
-            <Link to={ '/sightings/' + sighting.sighting }>
-              <small>View sighting&nbsp;&raquo;</small>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import BirdSightingCard from './BirdSightingCard';
 
 class BirdSightings extends Component {
   constructor(props) {
@@ -81,7 +56,7 @@ class BirdSightings extends Component {
           <div className='row'>
             {sightings.map(sighting => (
               <div className='col-sm-6 col-lg-4 col-xl-3' key={ sighting.id }>
-                <SightingCard
+                <BirdSightingCard
                   sighting={ sighting }
                   selectFeature={ this.selectFeature }
                 />

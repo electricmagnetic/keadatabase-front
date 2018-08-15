@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Popup, Cluster, Marker } from "react-mapbox-gl";
-import { Link } from 'react-router-dom';
 
+import BirdSightingCard from './BirdSightingCard';
 import Map from '../map/Map';
 import './BirdSightingsMap.css';
 
@@ -19,7 +19,7 @@ const BirdSightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
     <Map
       height='480px'
       center={ sightings[0].sighting__point_location.coordinates }
-      zoom={ [12] }
+      zoom={ [11] }
       onClick={ () => selectFeature() }
     >
       <Cluster
@@ -41,10 +41,10 @@ const BirdSightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
         <Popup
           coordinates={ selectedFeature.sighting__point_location.coordinates }
         >
-          <span className="badge badge-primary">{ selectedFeature.sighting_id }</span>
-          <Link to={ '/sightings/' + selectedFeature.sighting_id }>
-            { selectedFeature.sighting__date_sighted }
-          </Link>
+          <BirdSightingCard
+            sighting={ selectedFeature }
+            selectFeature={ selectFeature }
+          />
         </Popup>
       }
     </Map>
