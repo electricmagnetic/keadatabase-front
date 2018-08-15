@@ -1,0 +1,14 @@
+@import 'variables';
+
+.SightingCard {
+  cursor: pointer;
+
+  .card-body {
+    padding: .5rem;
+  }
+
+  .card-text {
+    font-size: $font-size-sm;
+    margin-bottom: 0;
+  }
+}
