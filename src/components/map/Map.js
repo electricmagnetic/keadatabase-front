@@ -22,13 +22,13 @@ class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      center: [170.45, -43.983333],
-      zoom: [5.2],
+      center: props.center || [170.45, -43.983333],
+      zoom: props.zoom || [5.2],
     };
   }
 
   render() {
-    const { onClick, children, height, center, zoom } = this.props;
+    const { onClick, children, height } = this.props;
     return (
       <MapboxMap
         style="mapbox://styles/mapbox/outdoors-v9"
@@ -36,8 +36,8 @@ class Map extends Component {
           height: height || "640px",
           width: "100%",
         }}
-        center={ center || this.state.center }
-        zoom={ zoom || this.state.zoom }
+        center={ this.state.center }
+        zoom={ this.state.zoom }
         onClick={onClick}
       >
         <ZoomControl
