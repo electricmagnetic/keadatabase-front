@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Layer, Feature } from "react-mapbox-gl";
 import { Link } from 'react-router-dom';
 
 import { getBirdSightingsByBird } from '../../actions/birdSightings';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
-import Map from '../map/Map';
-import { BottomBox } from '../map/InformationBox';
+import FormatDate from '../helpers/FormatDate';
+import BirdSightingsMap from './BirdSightingsMap';
+import './BirdSightings.css';
+
+const SightingCard = ({ sighting, selectFeature }) => {
+  const feature = { sighting_id: sighting.sighting, ...sighting };
+  return (
+    <div className='SightingCard card' onClick={ () => selectFeature(feature) }>
+      <div className='card-body'>
+        <p className='card-text'>
+          <FormatDate>{ sighting.sighting__date_sighted } { sighting.sighting__time_sighted }</FormatDate>
+        </p>
+        <Link to={ '/sightings/' + sighting.sighting }>
+          <small>View sighting&nbsp;&raquo;</small>
+        </Link>
+      </div>
+    </div>
+  );
+};
 
 class BirdSightings extends Component {
   constructor(props) {
@@ -17,7 +33,7 @@ class BirdSightings extends Component {
       selectedFeature: null
     };
 
-    this.markerClick = this.markerClick.bind(this);
+    this.selectFeature = this.selectFeature.bind(this);
   }
 
   componentDidMount() {
@@ -25,11 +41,9 @@ class BirdSightings extends Component {
     dispatch(getBirdSightingsByBird(slug));
   }
 
-  markerClick(e) {
-    const { feature } = e;
-
+  selectFeature(feature) {
     this.setState({
-      selectedFeature: feature.properties
+      selectedFeature: feature
     });
   }
 
@@ -49,46 +63,23 @@ class BirdSightings extends Component {
       return (
         <div className='BirdSightings container'>
           <h2>Sightings</h2>
+          <p>Showing 20 most recent sightings.</p>
+
+          <BirdSightingsMap
+            sightings={ sightings }
+            selectedFeature={ selectedFeature }
+            selectFeature={ this.selectFeature }
+          />
 
           <div className='row'>
-            <div className='col-md-6'>
-              <p>Showing 20 most recent sightings.</p>
-              {sightings.map(sighting => (
-                <p key={ sighting.id }>{ sighting.sighting }</p>
-              ))}
-            </div>
-
-            <div className='col-md-6'>
-              <Map
-                height='480px'
-                center={ sightings[0].sighting__point_location.coordinates }
-                zoom={ [12] }
-              >
-                <Layer
-                  type="symbol"
-                  id="marker"
-                  layout={{ "icon-image": "circle-11" }}
-                >
-                  {sightings.map(sighting => (
-                    <Feature
-                      key={ sighting.sighting }
-                      properties={{ sighting_id: sighting.sighting, ...sighting }}
-                      coordinates={ sighting.sighting__point_location.coordinates }
-                      onClick={ this.markerClick }
-                    />
-                  ))}
-                </Layer>
-
-                { selectedFeature &&
-                  <BottomBox>
-                    <span className="badge badge-primary">{ selectedFeature.sighting_id }</span>
-                    <Link to={ '/sightings/' + selectedFeature.sighting_id }>
-                      <p>{ selectedFeature.sighting__date_sighted }</p>
-                    </Link>
-                  </BottomBox>
-                }
-              </Map>
-            </div>
+            {sightings.map(sighting => (
+              <div className='col-sm-6 col-lg-4 col-xl-3' key={ sighting.id }>
+                <SightingCard
+                  sighting={ sighting }
+                  selectFeature={ this.selectFeature }
+                />
+              </div>
+            ))}
           </div>
         </div>
       );
