@@ -18,9 +18,16 @@ const SightingCard = ({ sighting, selectFeature }) => {
         <p className='card-text'>
           <FormatDate>{ sighting.sighting__date_sighted } { sighting.sighting__time_sighted }</FormatDate>
         </p>
-        <Link to={ '/sightings/' + sighting.sighting }>
-          <small>View sighting&nbsp;&raquo;</small>
-        </Link>
+        <div className='row justify-content-between'>
+          <div className='col'>
+            <span className="badge badge-primary">{ sighting.sighting }</span>
+          </div>
+          <div className='col'>
+            <Link to={ '/sightings/' + sighting.sighting }>
+              <small>View sighting&nbsp;&raquo;</small>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
