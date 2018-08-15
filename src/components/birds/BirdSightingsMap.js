@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layer, Feature } from "react-mapbox-gl";
+import { Layer, Feature, Popup } from "react-mapbox-gl";
 import { Link } from 'react-router-dom';
 
 import Map from '../map/Map';
-import { BottomBox } from '../map/InformationBox';
+import './BirdSightingsMap.css';
 
 const BirdSightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
   <div className='BirdSightingsMap mb-4'>
@@ -28,13 +28,15 @@ const BirdSightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
         ))}
       </Layer>
 
-      { selectedFeature &&
-        <BottomBox>
+      {selectedFeature &&
+        <Popup
+          coordinates={ selectedFeature.sighting__point_location.coordinates }
+        >
           <span className="badge badge-primary">{ selectedFeature.sighting_id }</span>
           <Link to={ '/sightings/' + selectedFeature.sighting_id }>
-            <p>{ selectedFeature.sighting__date_sighted }</p>
+            { selectedFeature.sighting__date_sighted }
           </Link>
-        </BottomBox>
+        </Popup>
       }
     </Map>
   </div>
