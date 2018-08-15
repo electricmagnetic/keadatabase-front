@@ -2,12 +2,12 @@
 
 .BirdSightingsMap {
   .mapboxgl-popup-content {
-    display: flex;
-    align-items: center;
-    font-size: $font-size-sm;
+    font-size: $font-size-base;
+    padding: 0;
 
-    .badge {
-      margin-right: .25rem;
+    .BirdSightingCard {
+      border: none;
+      margin: 0;
     }
   }
 
@@ -20,6 +20,7 @@
     width: 60px;
     position: relative;
     top: 30px;
+    cursor: pointer;
 
     .number {
       position: absolute;
