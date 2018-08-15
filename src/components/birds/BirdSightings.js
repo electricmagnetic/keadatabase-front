@@ -70,7 +70,7 @@ class BirdSightings extends Component {
       return (
         <div className='BirdSightings container'>
           <h2>Sightings</h2>
-          <p>Showing 20 most recent sightings.</p>
+          <p>Showing up to 20 most recent sightings.</p>
 
           <BirdSightingsMap
             sightings={ sightings }
