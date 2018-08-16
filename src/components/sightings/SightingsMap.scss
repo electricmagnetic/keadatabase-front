@@ -1,10 +1,33 @@
-$mapbox-background: #58d0ee;
+@import 'variables';
 
-.SightingsLoader {
-  height: 640px;
-  background-color: $mapbox-background;
-  overflow: hidden;
-  .Loader {
-    border-top-color: darken($mapbox-background, 20%);
+.SightingsMap {
+  .mapboxgl-popup-content {
+    font-size: $font-size-base;
+    padding: 0;
+
+    .SightingCard {
+      border: none;
+      margin: 0;
+    }
+  }
+
+  .cluster-marker {
+    background: $primary;
+    border: 1px solid $white;
+    border-radius: 50%;
+    color: $white;
+    height: 60px;
+    width: 60px;
+    position: relative;
+    top: 30px;
+    cursor: pointer;
+
+    .number {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1rem;
+    }
   }
 }

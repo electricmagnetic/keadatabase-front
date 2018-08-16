@@ -1,92 +1,58 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Layer, Feature } from "react-mapbox-gl";
-import { Link } from 'react-router-dom';
-
-import { getSightings } from '../../actions/sightings';
+import { Popup, Cluster, Marker } from "react-mapbox-gl";
 
 import Map from '../map/Map';
-import { TopBox, BottomBox } from '../map/InformationBox';
-import Loader from '../helpers/Loader';
-import Error from '../helpers/Error';
-
+import SightingCard from './SightingCard';
 import './SightingsMap.css';
 
-class SightingsMap extends Component {
-  constructor(props) {
-    super(props);
+const clusterMarker = (coordinates, pointCount) => (
+  <Marker coordinates={ coordinates } key={ coordinates[0] }>
+    <div className='cluster-marker'>
+      <div className='number'>{ pointCount }</div>
+    </div>
+  </Marker>
+);
 
-    this.state = {
-      selectedFeature: this.props.selectedFeature || null
-    }
+const SightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
+  <div className='SightingsMap mb-4'>
+    <Map
+      onClick={ () => selectFeature() }
+      center={ selectedFeature && selectedFeature.point_location.coordinates }
+    >
+      <Cluster
+        ClusterMarkerFactory={ clusterMarker }
+        zoomOnClick
+      >
+        {sightings.map(sighting => (
+          <Marker
+            key={ sighting.id }
+            coordinates={ sighting.point_location.coordinates }
+            onClick={ () => selectFeature({ sighting_id: sighting.id, ...sighting }) }
+          >
+            <i className="fas fa-map-marker-alt"></i>
+          </Marker>
+        ))}
+      </Cluster>
 
-    this.markerClick = this.markerClick.bind(this);
-  }
-
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getSightings());
-  }
-
-  markerClick(e) {
-    const { feature } = e;
-
-    this.setState({
-      selectedFeature: feature.properties
-    });
-  }
-
-  render() {
-    const { sightings } = this.props;
-    const { selectedFeature } = this.state;
-
-    if (sightings.pending) return <div className="SightingsLoader"><Loader /></div>;
-    else if (sightings.rejected) return <Error reason={ sightings.value.message }/>;
-    else if (sightings.fulfilled) {
-      return (
-        <div className="SightingsMap mb-4">
-          <Map>
-            <TopBox>
-              <div className="container">
-                <h1 className="mt-4">Sightings</h1>
-              </div>
-            </TopBox>
-            <Layer
-              type="symbol"
-              id="marker"
-              layout={{ "icon-image": "circle-11" }}>
-              { sightings.value.results.map((sighting) =>
-                <Feature
-                  key={ sighting.id }
-                  properties={{ sighting_id: sighting.id, ...sighting }}
-                  coordinates={ sighting.point_location.coordinates }
-                  onClick={ this.markerClick }
-                />
-              )}
-            </Layer>
-            { selectedFeature &&
-              <BottomBox>
-                <span className="badge badge-primary">{ selectedFeature.sighting_id }</span>
-                <Link to={ '/sightings/' + selectedFeature.sighting_id }>
-                  <p>{ selectedFeature.date_sighted }</p>
-                </Link>
-              </BottomBox>
-            }
-          </Map>
-        </div>
-      );
-    }
-    else return null;
-  }
-};
+      {selectedFeature &&
+        <Popup
+          coordinates={ selectedFeature.point_location.coordinates }
+        >
+          <SightingCard
+            sighting={ selectedFeature }
+            selectFeature={ selectFeature }
+          />
+        </Popup>
+      }
+    </Map>
+  </div>
+);
 
 SightingsMap.propTypes = {
-  selectedSighting: PropTypes.object
-}
+  sightings: PropTypes.array.isRequired,
+  selectedFeature: PropTypes.object,
+  selectFeature: PropTypes.func.isRequired,
+};
 
-const mapStateToProps = (state) => {
-  return { sightings: state.sightings };
-}
-
-export default connect(mapStateToProps)(SightingsMap);
+export default SightingsMap;
