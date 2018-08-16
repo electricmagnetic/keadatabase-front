@@ -27,8 +27,17 @@ class Map extends Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    // Update center of the map but not when center is unset
+    if (this.props.center && this.props.center !== prevProps.center) {
+      this.setState({
+        center: this.props.center
+      });
+    }
+  }
+
   render() {
-    const { onClick, children, height, center } = this.props;
+    const { onClick, children, height } = this.props;
     return (
       <MapboxMap
         style="mapbox://styles/mapbox/outdoors-v9"
@@ -36,7 +45,7 @@ class Map extends Component {
           height: height || "640px",
           width: "100%",
         }}
-        center={ center || this.state.center }
+        center={ this.state.center }
         zoom={ this.state.zoom }
         onClick={onClick}
       >
