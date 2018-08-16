@@ -32,25 +32,43 @@ class BirdProfile extends Component {
         return (
           <div className="BirdProfile">
             <Helmet title={ bird.name } />
-            <Banner>
-              <h1>{ bird.name }</h1>
-              <ProfilePicture bird={ bird } classNames={ ['img-fluid'] } size="large" />
-              <PrettyBandCombo bandCombo={ bird.band_combo } />
+            <Banner size='small' additionalClasses="mb-4">
+              <div className='row'>
+                <div className='col-md-4 order-md-9 profile-picture'>
+                  <figure>
+                    <ProfilePicture bird={ bird } classNames={ ['img-fluid'] } size="large" />
+                  </figure>
+                </div>
+
+                <div className='col-md-8 order-md-1'>
+                  <h1>{ bird.name }</h1>
+
+                  <p>
+                    <i className="fas fa-info-circle"></i> { bird.get_life_stage || '' } { bird.sex || '' }, { bird.status || '' }<br />
+                    <i className="fas fa-map-marker-alt"></i> { bird.study_area || '' }
+                  </p>
+
+                  <div className='band-combo'>
+                    <PrettyBandCombo bandCombo={ bird.band_combo } />
+                    <span>{ bird.band_combo }, { bird.primary_band || '' }</span>
+                  </div>
+                </div>
+              </div>
             </Banner>
-            <ul>
-              <li>{ bird.sex }</li>
-              <li>{ bird.status }</li>
-              <li>{ bird.get_life_stage }</li>
-              <li>{ bird.study_area }</li>
-              <li>{ bird.primary_band }</li>
-              <li>{ bird.band_combo }</li>
-            </ul>
             { extended &&
-              <ul>
-                <li>{ extended.description }</li>
-                <li>{ extended.sponsor_name } { extended.sponsor_website }</li>
-                <li>{ extended.profile_picture_attribution }</li>
-              </ul>
+              <div className='container extended'>
+                <div className='row'>
+                  <div className='col-lg-7'>
+                    <p className='description'>{ extended.description }</p>
+                    {extended.sponsor_name &&
+                      <p><strong>Sponsor: </strong><a href={ extended.sponsor_website }>{ extended.sponsor_name }</a></p>
+                    }
+                    {extended.profile_picture_attribution &&
+                      <p><i className="fas fa-camera"></i> { extended.profile_picture_attribution }</p>
+                    }
+                  </div>
+                </div>
+              </div>
             }
           </div>
         );
