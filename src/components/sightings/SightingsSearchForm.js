@@ -37,10 +37,8 @@ class SightingsSearchForm extends Component {
   }
 
   componentDidMount() {
-    const { dispatch, location } = this.props;
-    if (location.search) {
-      dispatch(setSightingsFilter(this.state));
-    }
+    const { dispatch } = this.props;
+    dispatch(setSightingsFilter(this.state));
   }
 
   componentDidUpdate(prevProps) {
