@@ -15,7 +15,7 @@ function fetchBirdSightings(query) {
   };
 }
 
-function shouldFetchBirdSightings(state) {
+function shouldFetchBirdSightings(state, id) {
   const { birdSightings } = state;
 
   if (birdSightings.pending) {
@@ -50,4 +50,5 @@ export function getBirdSightingsByBird(slug = '') {
       return dispatch(fetchBirdSightings(query));
     }
   };
+
 }

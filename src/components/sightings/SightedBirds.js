@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getBirdSightingsById } from '../../actions/birdSightings';
+
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 import './SightedBirds.css';
