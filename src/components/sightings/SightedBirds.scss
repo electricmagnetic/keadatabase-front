@@ -1,0 +1,12 @@
+@import "variables";
+
+.SightedBirds {
+  .card-title {
+    font-family: $font-family-sans-serif;
+    margin-bottom: .5rem;
+  }
+
+  .card-text {
+    font-size: $font-size-sm;
+  }
+}

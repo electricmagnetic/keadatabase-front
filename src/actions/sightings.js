@@ -12,17 +12,13 @@ function fetchSightings() {
       headers: { 'Accept': 'application/json' },
       types: [SIGHTINGS_REQUEST, SIGHTINGS_RECEIVE, SIGHTINGS_ERROR]
     }
-  }
+  };
 }
 
 function shouldFetchSightings(state) {
   const { sightings } = state;
 
   if (sightings.pending) {
-    return false;
-  }
-
-  if (sightings.fulfilled) {
     return false;
   }
 
@@ -34,5 +30,5 @@ export function getSightings() {
     if (shouldFetchSightings(getState())) {
       return dispatch(fetchSightings());
     }
-  }
+  };
 }
