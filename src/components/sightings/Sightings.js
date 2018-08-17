@@ -37,13 +37,10 @@ class Sightings extends Component {
 
   componentDidUpdate(prevProps) {
     const { dispatch, location } = this.props;
-    if (location.search && location.search !== prevProps.location.search) {
+    if (location.search) {
+      // When changed from no query to query is set
       dispatch(getAllSightings());
     }
-  }
-
-  filterIsSet() {
-    return Object.keys(this.props.sightingsFilter).length > 0;
   }
 
   selectFeature(feature) {
@@ -60,13 +57,11 @@ class Sightings extends Component {
     else if (sightings.rejected) return <Error reason={ sightings.value.message }/>;
     else if (sightings.fulfilled) {
 
-      const filteredSightings = this.filterIsSet()
-        ? getFilteredSightings(sightings.value.results, sightingsFilter)
-        : sightings.value.results;
+      const filteredSightings = getFilteredSightings(sightings.value.results, sightingsFilter);
 
       const resultsCountMessage = filteredSightings.length === 250
         ? 'Showing most recent 250 results'
-        : `Showing ${filteredSightings.length} results`;
+        : `Showing ${filteredSightings.length} ${filteredSightings.length === 1 ? 'result' : 'results'}`;
 
       return (
         <React.Fragment>
