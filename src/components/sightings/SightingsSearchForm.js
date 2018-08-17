@@ -76,7 +76,7 @@ class SightingsSearchForm extends Component {
       <Banner size="small" additionalClasses="mb-4">
         <form className="SightingsSearchForm" onSubmit={ this.handleSubmit }>
           <div className="form-row mb-3">
-            <div className="col-md">
+            <div className="col-md-3 col-lg">
               <label htmlFor="date_from">Date from</label>
               <DatePicker
                 selected={ this.state.date_from }
@@ -87,7 +87,7 @@ class SightingsSearchForm extends Component {
               />
             </div>
 
-            <div className="col-md">
+            <div className="col-md-3 col-lg">
               <label htmlFor="date_to">Date to</label>
               <DatePicker
                 selected={ this.state.date_to }
@@ -98,30 +98,33 @@ class SightingsSearchForm extends Component {
               />
             </div>
 
-            <div className="col-md">
+            <div className="col-md-3 col-lg">
               <label htmlFor="geocode">Location</label>
               <input type="text" className="form-control"  name="geocode" id="geocode" onChange={ this.handleChange } value={ this.state.geocode } />
             </div>
 
-            <div className="col-md">
+            <div className="col-md-3 col-lg">
               <label htmlFor="contributor">Contributor</label>
               <input type="text" className="form-control"  name="contributor" id="contributor" onChange={ this.handleChange } value={ this.state.contributor } />
             </div>
-          </div>
 
-          <div className="form-row mb-3">
-            <div className="col-4 col-md-2">
-              <label htmlFor="group_size_validator">Group size</label>
-              <select className="form-control" name="group_size_validator" id="group_size_validator" onChange={ this.handleChange } value={ this.state.group_size_validator }>
-                <option value=">=" default>{'>='}</option>
-                <option value="<=">{'<='}</option>
-                <option value="=">{'='}</option>
-              </select>
-            </div>
+            <div className="col-md-6 col-lg">
+              <div className="form-row">
 
-            <div className="col-4 col-md-2">
-              <label htmlFor="group_size" style={{ color: 'transparent' }}>number</label>
-              <input type="number" className="form-control" name="group_size" id="group_size" onChange={ this.handleChange } value={ this.state.group_size } />
+                <div className="col">
+                  <label htmlFor="group_size_validator">Group size</label>
+                  <select className="form-control" name="group_size_validator" id="group_size_validator" onChange={ this.handleChange } value={ this.state.group_size_validator }>
+                    <option value=">=" default>{'>='}</option>
+                    <option value="<=">{'<='}</option>
+                    <option value="=">{'='}</option>
+                  </select>
+                </div>
+
+                <div className="col">
+                  <label htmlFor="group_size" style={{ color: 'transparent' }}>Number</label>
+                  <input type="number" className="form-control" name="group_size" id="group_size" onChange={ this.handleChange } value={ this.state.group_size } />
+                </div>
+              </div>
             </div>
           </div>
 
