@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { CSVLink } from 'react-csv';
 
-import { getSightings } from '../../actions/sightings';
+import { getSightings, getAllSightings } from '../../actions/sightings';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 import SightingsMap from './SightingsMap';
+import SightingsSearchForm from './SightingsSearchForm';
 import SightingCard from './SightingCard';
+import { getFilteredSightings } from '../helpers/getFilteredSightings';
+import { csvHeader, getCsvData } from '../helpers/sightingsCsv';
 
 class Sightings extends Component {
   constructor(props) {
@@ -19,8 +25,25 @@ class Sightings extends Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getSightings());
+    const { dispatch, location } = this.props;
+    if (location.search) {
+      // Get all records if query is set
+      dispatch(getAllSightings());
+    } else {
+      // Get 250 records by default
+      dispatch(getSightings());
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { dispatch, location } = this.props;
+    if (location.search && location.search !== prevProps.location.search) {
+      dispatch(getAllSightings());
+    }
+  }
+
+  filterIsSet() {
+    return Object.keys(this.props.sightingsFilter).length > 0;
   }
 
   selectFeature(feature) {
@@ -30,23 +53,45 @@ class Sightings extends Component {
   }
 
   render() {
-    const { sightings } = this.props;
+    const { sightings, sightingsFilter } = this.props;
     const { selectedFeature } = this.state;
 
     if (sightings.pending) return <Loader />;
     else if (sightings.rejected) return <Error reason={ sightings.value.message }/>;
     else if (sightings.fulfilled) {
+
+      const filteredSightings = this.filterIsSet()
+        ? getFilteredSightings(sightings.value.results, sightingsFilter)
+        : sightings.value.results;
+
+      const resultsCountMessage = filteredSightings.length === 250
+        ? 'Showing most recent 250 results'
+        : `Showing ${filteredSightings.length} results`;
+
       return (
         <React.Fragment>
           <SightingsMap
-            sightings={ sightings.value.results }
+            sightings={ filteredSightings }
             selectedFeature={ selectedFeature }
             selectFeature={ this.selectFeature }
           />
 
+          <SightingsSearchForm />
+
           <div className='container'>
+            <div className="row align-items-center mb-3">
+              <div className="col-auto mr-auto">
+                <span>{ resultsCountMessage }</span>
+              </div>
+              <div className="col-auto">
+                <CSVLink headers={ csvHeader } data={ getCsvData(filteredSightings) } filename="kea-sightings.csv">
+                  <button className="btn btn-secondary">Download CSV</button>
+                </CSVLink>
+              </div>
+            </div>
+
             <div className='row'>
-              {sightings.value.results.map(sighting => (
+              {filteredSightings.map(sighting => (
                 <div className='col-sm-6 col-lg-4 col-xl-3' key={ sighting.id }>
                   <SightingCard
                     sighting={ sighting }
@@ -70,6 +115,7 @@ Sightings.propTypes = {
 
 const mapStateToProps = state => ({
   sightings: state.sightings,
+  sightingsFilter: state.sightingsFilter,
 });
 
-export default connect(mapStateToProps)(Sightings);
+export default compose(withRouter, connect(mapStateToProps))(Sightings);

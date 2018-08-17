@@ -8,10 +8,12 @@ import { pages, posts } from './wordpress';
 import { birds, featuredBirds } from './birds';
 import { reportSightingOptions, reportSightingPost } from './reportSighting';
 import { reportNonSightingOptions, reportNonSightingPost } from './reportNonSighting';
+import { sightingsFilter } from './sightingsFilter';
 
 export default combineReducers({
   birdSightings,
   sightings,
+  sightingsFilter,
   bandCombos,
   pages,
   posts,
