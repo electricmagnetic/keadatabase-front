@@ -23,7 +23,11 @@ function shouldFetchSightings(state) {
   }
 
   // All records are already retrieved
-  if (sightings.value.results && sightings.value.results.length === sightings.value.count) {
+  if (
+    sightings.value.results &&
+    sightings.value.count > 1 &&
+    sightings.value.results.length === sightings.value.count
+  ) {
     return false;
   }
 
