@@ -55,6 +55,14 @@ label {
   margin-bottom: 1rem;
 }
 
+.react-datepicker-wrapper {
+  display: block;
+
+  .react-datepicker__input-container {
+    display: block;
+  }
+}
+
 .react-datepicker__time-list {
   padding-left: 0;
 }
