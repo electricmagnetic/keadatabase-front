@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Popup, Cluster, Marker } from "react-mapbox-gl";
 
 import Map from '../map/Map';
+import { TopBox } from '../map/InformationBox';
 import SightingCard from './SightingCard';
 import './SightingsMap.css';
 
@@ -20,6 +21,12 @@ const SightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
       onClick={ () => selectFeature() }
       center={ selectedFeature && selectedFeature.point_location.coordinates }
     >
+      <TopBox>
+        <div className="container">
+          <h1 className="mt-4">Sightings</h1>
+        </div>
+      </TopBox>
+
       <Cluster
         ClusterMarkerFactory={ clusterMarker }
         zoomOnClick
