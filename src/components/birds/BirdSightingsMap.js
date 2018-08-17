@@ -7,7 +7,7 @@ import Map from '../map/Map';
 import './BirdSightingsMap.css';
 
 const clusterMarker = (coordinates, pointCount) => (
-  <Marker coordinates={ coordinates } key={ coordinates[0] }>
+  <Marker coordinates={ coordinates } key={ coordinates.toString() }>
     <div className='cluster-marker'>
       <div className='number'>{ pointCount }</div>
     </div>
@@ -25,6 +25,8 @@ const BirdSightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
       <Cluster
         ClusterMarkerFactory={ clusterMarker }
         zoomOnClick
+        maxZoom={ 14 }
+        radius={ 40 }
       >
         {sightings.map(sighting => (
           <Marker
