@@ -16,7 +16,7 @@ const clusterMarker = (coordinates, pointCount) => (
 );
 
 const SightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
-  <div className='SightingsMap mb-4'>
+  <div className='SightingsMap'>
     <Map
       onClick={ () => selectFeature() }
       center={ selectedFeature && selectedFeature.point_location.coordinates }
