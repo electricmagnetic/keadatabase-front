@@ -26,10 +26,9 @@ class SightingDetail extends Component {
 
       const tableData = [
         { key: 'When', value: <FormatDate>{ sighting.date_sighted } { sighting.time_sighted }</FormatDate> },
-        { key: 'Where', value: sighting.region },
+        { key: 'Where', value: <span className="where">{ sighting.geocode }, { sighting.region }</span> },
         { key: 'Who', value: sighting.contributor },
         { key: 'What', value: `${ sighting.get_sighting_type_display } ${ sighting.number } bird(s)` },
-        { key: 'Precision', value: `Within ${ sighting.precision } m` },
         { key: 'Verification', value: sighting.get_quality_display },
       ];
 
