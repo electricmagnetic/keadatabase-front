@@ -51,6 +51,7 @@ class Map extends Component {
           id="topo50"
           type="raster"
           sourceId="topo50"
+          minZoom={ 11 }
         />
         { children }
       </MapboxMap>
