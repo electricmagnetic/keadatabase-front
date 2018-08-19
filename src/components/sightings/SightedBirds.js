@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getBirdSightings } from '../../actions/birdSightings';
+import { getBirdSightingsById } from '../../actions/birdSightings';
+
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 import './SightedBirds.css';
@@ -41,7 +42,7 @@ const BirdCard = ({ birdSighting }) => {
 class SightedBirds extends Component {
   componentDidMount() {
     const { id, dispatch } = this.props;
-    dispatch(getBirdSightings(id));
+    dispatch(getBirdSightingsById(id));
   }
 
   render() {

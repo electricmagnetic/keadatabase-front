@@ -22,8 +22,8 @@ class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      center: [170.45, -43.983333],
-      zoom: [5.2],
+      center: props.center || [170.45, -43.983333],
+      zoom: props.zoom || [5.2],
     };
   }
 
@@ -51,6 +51,7 @@ class Map extends Component {
           id="topo50"
           type="raster"
           sourceId="topo50"
+          minZoom={ 11 }
         />
         { children }
       </MapboxMap>
