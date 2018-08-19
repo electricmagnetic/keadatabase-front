@@ -8,7 +8,7 @@ import SightingCard from './SightingCard';
 import './SightingsMap.css';
 
 const clusterMarker = (coordinates, pointCount) => (
-  <Marker coordinates={ coordinates } key={ coordinates[0] }>
+  <Marker coordinates={ coordinates } key={ coordinates.toString() }>
     <div className='cluster-marker'>
       <div className='number'>{ pointCount }</div>
     </div>
