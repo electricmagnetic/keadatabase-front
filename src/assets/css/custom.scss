@@ -43,10 +43,12 @@ label {
   margin-bottom: 1.5rem;
 }
 
-.fa-map-marker-alt {
-  font-size: 3rem;
-  color: $primary;
-  cursor: pointer;
+.mapboxgl-marker {
+  .fa-map-marker-alt {
+    font-size: 3rem;
+    color: $primary;
+    cursor: pointer;
+  }
 }
 
 .card {

@@ -27,6 +27,15 @@ class Map extends Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    // Update center of the map but not when center is unset
+    if (this.props.center && this.props.center !== prevProps.center) {
+      this.setState({
+        center: this.props.center
+      });
+    }
+  }
+
   render() {
     const { onClick, children, height, center, zoom } = this.props;
     return (

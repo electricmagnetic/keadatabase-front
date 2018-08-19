@@ -50,5 +50,4 @@ export function getBirdSightingsByBird(slug = '') {
       return dispatch(fetchBirdSightings(query));
     }
   };
-
 }
