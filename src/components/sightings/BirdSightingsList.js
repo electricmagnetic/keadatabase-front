@@ -33,8 +33,8 @@ class BirdSightingsList extends Component {
               { birdSightings.value.results.map((birdSighting) =>
                 <tr key={ birdSighting.id }>
                   <td>
-                    <Link to={ '/birds/' + birdSighting.bird }>
-                    { birdSighting.get_bird_display }
+                    <Link to={ '/birds/' + birdSighting.bird.slug }>
+                    { birdSighting.bird.name }
                     </Link>
                   </td>
                   <td>
