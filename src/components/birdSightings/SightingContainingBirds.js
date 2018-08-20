@@ -21,8 +21,8 @@ class SightingBirdCard extends Component {
           <div className="card-details">
             <h3>
               { matched &&
-                <Link to={ '/birds/' + birdSighting.bird }>
-                  { birdSighting.get_bird_display }&nbsp;&raquo;
+                <Link to={ '/birds/' + birdSighting.bird.slug }>
+                  { birdSighting.bird.name }&nbsp;&raquo;
                 </Link>
               }
               { known &&
