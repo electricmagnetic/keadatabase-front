@@ -30,4 +30,16 @@ $spacer: 1rem !default;
 
 $navbar-padding-y: $spacer;
 
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1080px
+);
+
+$list-group-item-padding-x: 1rem;
+$list-group-item-padding-y: .5rem;
+
+$card-border-radius: 0;
+
 @import 'node_modules/bootstrap/scss/variables';

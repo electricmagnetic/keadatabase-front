@@ -12,14 +12,14 @@
       font-size: $font-size-lg;
       border: 1px solid transparent;
       text-align: center;
-      margin: $grid-gutter-width/4 auto;
+      margin: 0.5rem auto;
     }
   }
 
   // New bands only
   &.new {
     .leg .band {
-      width: 80px;
+      width: 70px;
       min-height: 32px;
 
       .symbol {
@@ -34,7 +34,7 @@
     .leg  {
       text-align: center;
       background-color: $gray-500;
-      box-shadow: inset 0px 0px 0px 8px $light;
+      box-shadow: inset 0px 0px 0px 8px $body-bg;
 
 
       .band {

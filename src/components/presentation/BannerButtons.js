@@ -16,17 +16,17 @@ const BannerButtons = ({ additionalClasses }) => {
         <div className="row">
           <div className="col-md-4 banner-button">
             <Link to="/birds" className="btn btn-lg btn-transparent">
-              Browse Birds
+            <i className="fas fa-search"></i> Browse Birds
             </Link>
           </div>
           <div className="col-md-4 banner-button">
             <Link to="/report/sighting" className="btn btn-lg btn-transparent">
-              Report Sighting
+              <i className="fas fa-feather-alt"></i> Report Sighting
             </Link>
           </div>
           <div className="col-md-4 banner-button">
             <Link to="/report/non-sighting" className="btn btn-lg btn-transparent">
-              Report Non-Sighting
+              <i className="fas fa-eye-slash"></i> Report Non-Sighting
             </Link>
           </div>
         </div>

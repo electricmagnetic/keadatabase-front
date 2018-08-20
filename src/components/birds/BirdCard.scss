@@ -1,11 +1,18 @@
 @import 'variables';
 
 .BirdCard {
-  text-align: center;
+  &.card, .list-group-item {
+    background-color: $body-bg;
+  }
+
   .card-title {
     font-family: $font-family-sans-serif;
+    font-weight: 600;
     a {
       color: $green-dark;
     }
+  }
+  .card-text {
+    font-size: $font-size-sm;
   }
 }

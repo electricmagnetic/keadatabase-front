@@ -51,7 +51,7 @@ const SightingDetailsFieldset = ({
             Click/tap on the map to set a point, or alternatively enter the coordinates below.
           </p>
 
-          <div className="map-container">
+          <div className="map-container mb-3">
             <Map
               onClick={(map, e) => {
                 setFieldValue('longitude', e.lngLat.lng);

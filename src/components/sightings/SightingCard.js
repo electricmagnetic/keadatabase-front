@@ -8,7 +8,7 @@ import './SightingCard.css';
 const SightingCard = ({ sighting, selectFeature }) => {
   const feature = { sighting_id: sighting.id, ...sighting };
   return (
-    <div className="SightingCard card" onClick={ () => selectFeature(feature) }>
+    <div className="SightingCard card mb-3" onClick={ () => selectFeature(feature) }>
       <div className="card-body">
         <Link to={ '/sightings/' + sighting.id }>
           <span className="badge badge-primary">{ sighting.id }</span>

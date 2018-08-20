@@ -39,20 +39,12 @@ label {
   font-weight: bold;
 }
 
-.map-container {
-  margin-bottom: 1.5rem;
-}
-
 .mapboxgl-marker {
   .fa-map-marker-alt {
     font-size: 3rem;
     color: $primary;
     cursor: pointer;
   }
-}
-
-.card {
-  margin-bottom: 1rem;
 }
 
 .react-datepicker__time-list {
