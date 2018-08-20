@@ -30,22 +30,26 @@ class BirdSightingsList extends Component {
               </tr>
             </thead>
             <tbody>
-              { birdSightings.value.results.map((birdSighting) =>
-                <tr key={ birdSighting.id }>
-                  <td>
-                    <Link to={ '/birds/' + birdSighting.bird.slug }>
-                    { birdSighting.bird.name }
-                    </Link>
-                  </td>
-                  <td>
-                    <Link to={ '/sightings/' + birdSighting.sighting }>
-                      <FormatDate format="date">
-                        { birdSighting.sighting__date_sighted }
-                      </FormatDate>
-                    </Link>
-                  </td>
-                </tr>
-              )}
+              { birdSightings.value.results.map((birdSighting) => (
+                <React.Fragment key={ birdSighting.id }>
+                  {birdSighting.bird &&
+                    <tr>
+                      <td>
+                        <Link to={ '/birds/' + birdSighting.bird.slug }>
+                          { birdSighting.bird.name }
+                        </Link>
+                      </td>
+                      <td>
+                        <Link to={ '/sightings/' + birdSighting.sighting }>
+                          <FormatDate format="date">
+                            { birdSighting.sighting__date_sighted }
+                          </FormatDate>
+                        </Link>
+                      </td>
+                    </tr>
+                  }
+                </React.Fragment>
+              ))}
             </tbody>
           </table>
         </div>
@@ -57,6 +61,6 @@ class BirdSightingsList extends Component {
 
 const mapStateToProps = (state) => {
   return { birdSightings: state.birdSightings };
-}
+};
 
 export default connect(mapStateToProps)(BirdSightingsList);
