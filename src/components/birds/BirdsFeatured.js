@@ -38,7 +38,7 @@ class BirdsFeatured extends Component {
                         <p className="mb-0">{ bird.get_life_stage } { bird.sex }</p>
                       </div>
                       <div className="col-md-auto image my-2">
-                        <ProfilePicture bird={ bird } classNames={ ['img-fluid', 'rounded-circle'] } size="large" />
+                        <ProfilePicture bird={ bird } classNames={ ['img-fluid', 'rounded-circle'] } size="large" asLink />
                       </div>
                       <div className="col col-md-3 text">
                         <p className="mb-0">

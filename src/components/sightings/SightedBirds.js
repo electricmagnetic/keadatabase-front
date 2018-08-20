@@ -7,6 +7,7 @@ import { getBirdSightingsById } from '../../actions/birdSightings';
 
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
+import ProfilePicture from '../helpers/ProfilePicture';
 import './SightedBirds.css';
 
 const BirdCard = ({ birdSighting }) => {
@@ -28,9 +29,10 @@ const BirdCard = ({ birdSighting }) => {
     : <em>{ birdSighting.get_banded_display }</em>;
 
   return (
-    <div className='col-6 col-md-3'>
-      <div className='card'>
-        <div className='card-body'>
+    <div className="col-6 col-sm-4 col-md-3">
+      <div className="card">
+        <ProfilePicture bird={ birdSighting.bird } classNames={ ["card-img-top"] } asLink={ matched } />
+        <div className="card-body">
           <h5 className="card-title">{ name }</h5>
           <p className="card-text">{ bandCombo }</p>
         </div>
@@ -52,13 +54,13 @@ class SightedBirds extends Component {
     else if (birdSightings.rejected) return <Error reason={ birdSightings.value.message }/>;
     else if (birdSightings.fulfilled) {
       if (!birdSightings.value.results || birdSightings.value.results.length === 0) {
-        return <span className='no-sightings'></span>;
+        return <span className="no-sightings"></span>;
       }
 
       return (
-        <div className='SightedBirds container'>
-          <h2>Birds</h2>
-          <div className='row'>
+        <div className="SightedBirds container">
+          <h2>Birds sighted</h2>
+          <div className="row">
             {birdSightings.value.results.map(birdSighting => (
               <BirdCard birdSighting={ birdSighting } key={ birdSighting.id } />
             ))}

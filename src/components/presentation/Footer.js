@@ -5,7 +5,7 @@ import './Footer.css';
 
 const Footer = props => {
   return (
-    <footer>
+    <footer className="d-print-none">
       <div className="constrainer">
         <div className="container py-3">
           <ul className="footer-links mb-3">

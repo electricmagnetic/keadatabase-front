@@ -15,7 +15,7 @@ const clusterMarker = (coordinates, pointCount) => (
 );
 
 const BirdSightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
-  <div className='BirdSightingsMap mb-4'>
+  <div className='BirdSightingsMap mb-4  d-print-none'>
     <Map
       height='480px'
       center={ sightings[0].sighting__point_location.coordinates }
