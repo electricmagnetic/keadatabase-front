@@ -26,7 +26,7 @@ function shouldFetchBirdSightings(state, id) {
 }
 
 export function getBirdSightings() {
-  const query = '?has_bird=2&page_size=5';
+  const query = '?has_bird=2&page_size=4';
   return (dispatch, getState) => {
     if (shouldFetchBirdSightings(getState())) {
       return dispatch(fetchBirdSightings(query));

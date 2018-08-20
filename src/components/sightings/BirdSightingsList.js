@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 
 import { getBirdSightings } from '../../actions/birdSightings';
 
+import ProfilePicture from '../helpers/ProfilePicture';
 import FormatDate from '../helpers/FormatDate';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
+
+import './BirdSightingsList.css';
 
 class BirdSightingsList extends Component {
   componentDidMount() {
@@ -22,36 +25,23 @@ class BirdSightingsList extends Component {
     else if (birdSightings.fulfilled) {
       return (
         <div className="BirdSightingsList">
-          <table className="table table-sm">
-            <thead>
-              <tr>
-                <th>Bird</th>
-                <th>When</th>
-              </tr>
-            </thead>
-            <tbody>
-              { birdSightings.value.results.map((birdSighting) => (
-                <React.Fragment key={ birdSighting.id }>
-                  {birdSighting.bird &&
-                    <tr>
-                      <td>
-                        <Link to={ '/birds/' + birdSighting.bird.slug }>
-                          { birdSighting.bird.name }
-                        </Link>
-                      </td>
-                      <td>
-                        <Link to={ '/sightings/' + birdSighting.sighting }>
-                          <FormatDate format="date">
-                            { birdSighting.sighting__date_sighted }
-                          </FormatDate>
-                        </Link>
-                      </td>
-                    </tr>
-                  }
-                </React.Fragment>
-              ))}
-            </tbody>
-          </table>
+          <div className="row">
+            { birdSightings.value.results.map((birdSighting) => (
+              <React.Fragment key={ birdSighting.id }>
+                { birdSighting.bird &&
+                  <div className="col-6 col-md-3 mb-3">
+                    <ProfilePicture bird={ birdSighting.bird } asLink size="large" classNames={ ['img-fluid', 'rounded-circle', 'mb-3'] } />
+                    <Link to={ '/birds/' + birdSighting.bird.slug }>
+                      <h3 className="h5 mb-0">{ birdSighting.bird.name }</h3>
+                    </Link>
+                    <FormatDate calendar>
+                      { birdSighting.sighting__date_sighted } { birdSighting.sighting__time_sighted }
+                    </FormatDate>
+                  </div>
+                }
+              </React.Fragment>
+            ))}
+          </div>
         </div>
       );
     }

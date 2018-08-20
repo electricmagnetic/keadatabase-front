@@ -40,12 +40,12 @@ const HomePage = props => {
         <div className="container">
           <div className="row">
             <div className="col-md-6">
-              <h2 className="mb-3">Blog</h2>
-              <Posts />
-            </div>
-            <div className="col-md-6">
               <h2 className="mb-3">Recently Sighted</h2>
               <BirdSightingsList />
+            </div>
+            <div className="col-md-6">
+              <h2 className="mb-3">Blog</h2>
+              <Posts />
             </div>
           </div>
         </div>
