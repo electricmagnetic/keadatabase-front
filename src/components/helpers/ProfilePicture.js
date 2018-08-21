@@ -6,8 +6,11 @@ import placeholder_large from '../../assets/img/placeholder_large.png';
 import placeholder_thumbnail from '../../assets/img/placeholder_thumbnail.png';
 import './ProfilePicture.css';
 
-const ProfilePicture = ({ bird, size, classNames, asLink }) => {
+const ProfilePicture = ({ bird, size, classNames, asLink, isDead }) => {
   /* Helper function for displaying profile pictures in all cases */
+
+  // Create container class array
+  var containerClassNames = ['ProfilePicture'];
 
   // Define default images
   var src = '';
@@ -32,6 +35,10 @@ const ProfilePicture = ({ bird, size, classNames, asLink }) => {
 
     // Define alt text
     var alt = bird.name;
+
+    if (isDead) {
+      containerClassNames.push('isDead');
+    }
   }
 
   // Create image object
@@ -41,25 +48,30 @@ const ProfilePicture = ({ bird, size, classNames, asLink }) => {
     className={ classNames.join(' ') }
   />;
 
-  if (asLink) {
-    return <Link to={ '/birds/' + bird.slug }>{ image }</Link>;
-  }
-  else {
-    return image;
-  }
+  return (
+    <div className={ containerClassNames.join(' ') }>
+      { asLink ? <Link to={ '/birds/' + bird.slug }>{ image }</Link> : image }
+      { isDead &&
+        <span className="deadIndicator"><i className="fas fa-times fa-3x"></i></span>
+      }
+    </div>
+  );
+
 };
 
 ProfilePicture.propTypes = {
   bird: PropTypes.object,
   size: PropTypes.string.isRequired,
   classNames: PropTypes.array.isRequired,
-  asLink: PropTypes.bool.isRequired
+  asLink: PropTypes.bool.isRequired,
+  isDead: PropTypes.bool.isRequired
 }
 
 ProfilePicture.defaultProps = {
   size: 'thumbnail',
   classNames: [''],
-  asLink: false
+  asLink: false,
+  isDead: false
 }
 
 export default ProfilePicture;

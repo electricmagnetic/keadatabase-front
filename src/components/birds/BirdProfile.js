@@ -29,7 +29,15 @@ class BirdProfile extends Component {
         const bird = birds[slug].birdValue;
         const extended = bird.bird_extended ? bird.bird_extended : null;
 
-        const details = [bird.get_life_stage, bird.sex]
+        var details = [];
+        const isDead = bird.status === 'Dead' ? true : false;
+
+        if (isDead) {
+          details.push('Deceased');
+        }
+
+        details.push(bird.get_life_stage);
+        details.push(bird.sex);
 
         if (bird.primary_band) {
           details.push('·');
@@ -43,17 +51,17 @@ class BirdProfile extends Component {
               <div className="row">
                 <div className="col-md-4 order-md-9 profile-picture">
                   <figure>
-                    <ProfilePicture bird={ bird } classNames={ ['img-fluid'] } size="large" />
+                    <ProfilePicture bird={ bird } classNames={ ['img-fluid'] } size="large" isDead={ isDead } />
                   </figure>
                 </div>
 
                 <div className="col-md-8 order-md-1">
                   <h1 className="mb-3">{ bird.name }</h1>
-                  <li className="list-unstyled mb-3">
+                  <ul className="list-unstyled mb-3">
                     <li><i className="fas fa-fw fa-info-circle"></i> { details.join(' ') }</li>
                     <li><i className="fas fa-fw fa-map-marker-alt"></i> { bird.study_area }</li>
                     <li><i className="far fa-fw fa-circle"></i> { bird.band_combo }</li>
-                  </li>
+                  </ul>
                   <div className="band-combo">
                     <PrettyBandCombo bandCombo={ bird.band_combo } />
                   </div>
