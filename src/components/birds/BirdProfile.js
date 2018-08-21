@@ -29,37 +29,42 @@ class BirdProfile extends Component {
         const bird = birds[slug].birdValue;
         const extended = bird.bird_extended ? bird.bird_extended : null;
 
+        const details = [bird.get_life_stage, bird.sex]
+
+        if (bird.primary_band) {
+          details.push('·');
+          details.push(bird.primary_band);
+        }
+
         return (
           <div className="BirdProfile">
             <Helmet title={ bird.name } />
-            <Banner size='small' additionalClasses="mb-4">
-              <div className='row'>
-                <div className='col-md-4 order-md-9 profile-picture'>
+            <Banner size="small" additionalClasses="mb-4">
+              <div className="row">
+                <div className="col-md-4 order-md-9 profile-picture">
                   <figure>
                     <ProfilePicture bird={ bird } classNames={ ['img-fluid'] } size="large" />
                   </figure>
                 </div>
 
-                <div className='col-md-8 order-md-1'>
-                  <h1>{ bird.name }</h1>
-
-                  <p>
-                    <i className="fas fa-info-circle"></i> { bird.get_life_stage || '' } { bird.sex || '' }, { bird.status || '' }<br />
-                    <i className="fas fa-map-marker-alt"></i> { bird.study_area || '' }
-                  </p>
-
-                  <div className='band-combo'>
+                <div className="col-md-8 order-md-1">
+                  <h1 className="mb-3">{ bird.name }</h1>
+                  <li className="list-unstyled mb-3">
+                    <li><i className="fas fa-fw fa-info-circle"></i> { details.join(' ') }</li>
+                    <li><i className="fas fa-fw fa-map-marker-alt"></i> { bird.study_area }</li>
+                    <li><i className="far fa-fw fa-circle"></i> { bird.band_combo }</li>
+                  </li>
+                  <div className="band-combo">
                     <PrettyBandCombo bandCombo={ bird.band_combo } />
-                    <span>{ bird.band_combo }, { bird.primary_band || '' }</span>
                   </div>
                 </div>
               </div>
             </Banner>
             { extended &&
-              <div className='container extended'>
-                <div className='row'>
-                  <div className='col-lg-7'>
-                    <p className='description'>{ extended.description }</p>
+              <div className="container extended">
+                <div className="row">
+                  <div className="col-lg-7">
+                    <p className="description">{ extended.description }</p>
                     {extended.sponsor_name &&
                       <p><strong>Sponsor: </strong><a href={ extended.sponsor_website }>{ extended.sponsor_name }</a></p>
                     }

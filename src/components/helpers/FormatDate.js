@@ -9,9 +9,9 @@ const FormatDate = ({ format, calendar, children }) => {
     lastDay : '[Yesterday at] LT',
     sameDay : '[Today at] LT',
     nextDay : '[Tomorrow at] LT',
-    lastWeek : '[last] dddd [at] LT',
+    lastWeek : '[Last] dddd [at] LT',
     nextWeek : 'dddd [at] LT',
-    sameElse : 'L'
+    sameElse : 'ddd DD MMM[,] LT'
 };
 
   if (calendar) {
@@ -27,6 +27,9 @@ const FormatDate = ({ format, calendar, children }) => {
     switch (format) {
       case 'short':
         momentFormat = 'DD/MM/YY h:mm a';
+        break;
+      case 'medium':
+        momentFormat = 'ddd DD MMM[,] h:mm a';
         break;
       case 'long':
         momentFormat = 'dddd DD MMMM YYYY[,] h:mm a';

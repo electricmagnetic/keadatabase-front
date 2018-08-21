@@ -6,8 +6,10 @@
     padding: 0;
 
     .BirdSightingCard {
-      border: none;
-      margin: 0;
+      margin: 0 !important;
+    }
+    .locate {
+      display: none;
     }
   }
 

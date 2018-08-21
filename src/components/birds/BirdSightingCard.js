@@ -8,22 +8,26 @@ import './BirdSightingCard.css';
 const BirdSightingCard = ({ sighting, selectFeature }) => {
   const feature = { sighting_id: sighting.sighting, ...sighting };
   return (
-    <div className='BirdSightingCard card' onClick={ () => selectFeature(feature) }>
-      <div className='card-body'>
-        <p className='card-text'>
-          <FormatDate>{ sighting.sighting__date_sighted } { sighting.sighting__time_sighted }</FormatDate>
-        </p>
-        <div className='row justify-content-between'>
-          <div className='col'>
-            <span className="badge badge-primary">{ sighting.sighting }</span>
+    <div className="BirdSightingCard card mb-4 card-dull">
+      <ul className="list-group list-group-flush">
+        <li className="list-group-item">
+          <i className="far fa-fw fa-clock"></i> <FormatDate calendar>{ sighting.sighting__date_sighted } { sighting.sighting__time_sighted }</FormatDate>
+        </li>
+        <li className="list-group-item bg-white">
+          <div className="row">
+            <div className="col view">
+              <Link className="btn btn-link btn-sm p-0" to={ '/sightings/' + sighting.sighting }>
+                <i className="fas fa-fw fa-info-circle"></i> View
+              </Link>
+            </div>
+            <div className="col locate">
+              <button className="btn btn-link btn-sm p-0" onClick={ () => selectFeature(feature) }>
+                <i className="fas fa-fw fa-search"></i> Locate
+              </button>
+            </div>
           </div>
-          <div className='col'>
-            <Link to={ '/sightings/' + sighting.sighting }>
-              <small>View sighting&nbsp;&raquo;</small>
-            </Link>
-          </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   );
 };

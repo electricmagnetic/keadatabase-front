@@ -18,7 +18,7 @@ class BandCombosList extends Component {
         <div className="BandCombosList">
           <div className="row">
             { bandCombos.value.results.map((bandCombo) =>
-              <div className="col-6 col-sm-4 col-md-3 mb-3" key={ bandCombo.bird.slug }>
+              <div className="col-6 col-sm-4 col-md-3" key={ bandCombo.bird.slug }>
                 <BirdCard bird={ bandCombo.bird }  />
               </div>
             )}

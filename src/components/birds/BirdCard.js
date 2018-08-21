@@ -15,7 +15,7 @@ const BirdCard = ({ bird }) => {
   }
 
   return (
-    <div className="BirdCard card">
+    <div className="BirdCard card card-dull mb-4">
       <ProfilePicture bird={ bird } classNames={ ["card-img-top"] } asLink />
       <div className="card-body">
         <h2 className="card-title h5 mb-1"><Link to={ '/birds/' + bird.slug }>{ bird.name }&nbsp;&raquo;</Link></h2>

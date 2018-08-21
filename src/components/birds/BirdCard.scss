@@ -1,9 +1,7 @@
 @import 'variables';
 
 .BirdCard {
-  &.card, .list-group-item {
-    background-color: $body-bg;
-  }
+  font-size: $font-size-md;
 
   .card-title {
     font-family: $font-family-sans-serif;
@@ -11,8 +9,5 @@
     a {
       color: $green-dark;
     }
-  }
-  .card-text {
-    font-size: $font-size-sm;
   }
 }

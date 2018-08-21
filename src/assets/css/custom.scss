@@ -50,3 +50,13 @@ label {
 .react-datepicker__time-list {
   padding-left: 0;
 }
+
+.card-dull {
+  &.card, .list-group-item {
+    background-color: lighten($brown-faded, 10%);
+    border-color: darken($brown-faded, 5%);
+    i {
+      color: darken($brown-faded, 50%);
+    }
+  }
+}

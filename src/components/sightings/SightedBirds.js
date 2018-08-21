@@ -30,7 +30,7 @@ const BirdCard = ({ birdSighting }) => {
 
   return (
     <div className="col-6 col-sm-4 col-md-3">
-      <div className="card mb-3">
+      <div className="card mb-4">
         <ProfilePicture bird={ birdSighting.bird } classNames={ ["card-img-top"] } asLink={ matched } />
         <div className="card-body">
           <h5 className="card-title">{ name }</h5>
