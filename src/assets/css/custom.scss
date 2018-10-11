@@ -3,10 +3,11 @@
 
 $constrainer-width: map-get($container-max-widths, 'xl')+160px;
 
-.constrainer {
+#root {
   background-color: #fff;
-  overflow: hidden;
+}
 
+.constrainer {
   @media (min-width: $constrainer-width+1px) {
     border: 1px solid rgba($black, .125);
     border-top: 0;
