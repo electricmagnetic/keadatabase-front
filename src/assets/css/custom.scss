@@ -13,7 +13,6 @@ $constrainer-width: map-get($container-max-widths, 'xl')+160px;
     border-top: 0;
     border-bottom: 0;
     margin: auto;
-    overflow: hidden;
     width: $constrainer-width;
   }
 }
