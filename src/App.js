@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Provider  } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
+import ReactGA from 'react-ga';
 
 import configureStore from './store/store';
 import history from './history/history';
@@ -33,6 +34,19 @@ import ReportNonSightingSuccessPage from './views/report/nonSightingSuccess';
 import NoMatchPage from './views/nomatch';
 
 const store = configureStore();
+
+if (process.env.NODE_ENV === 'production') {
+  ReactGA.initialize('UA-67905653-2');
+
+  // Initial pageview
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+
+  history.listen((location, action) => {
+    ReactGA.set({ page: location.pathname });
+    ReactGA.pageview(location.pathname);
+  });
+}
 
 class App extends Component {
   render() {
