@@ -10,7 +10,7 @@ export const REPORT_NONSIGHTING_OPTIONS_ERROR = 'reportNonSighting/options/ERROR
 export function getReportNonSightingOptions() {
   return {
     [RSAA]: {
-      endpoint: `https://api.keadatabase.nz/report/non_sighting/`,
+      endpoint: `${process.env.REACT_APP_API_BASEURL}/report/non_sighting/`,
       method: 'OPTIONS',
       headers: { 'Accept': 'application/json' },
       types: [REPORT_NONSIGHTING_OPTIONS_REQUEST, REPORT_NONSIGHTING_OPTIONS_RECEIVE, REPORT_NONSIGHTING_OPTIONS_ERROR]
@@ -27,7 +27,7 @@ export function postReportNonSighting(values, formikBag) {
   return async(dispatch, getState) => {
     const response = await dispatch({
       [RSAA]: {
-        endpoint: `https://api.keadatabase.nz/report/non_sighting/`,
+        endpoint: `${process.env.REACT_APP_API_BASEURL}/report/non_sighting/`,
         method: 'POST',
         body: formatNonSighting(values),
         types: [REPORT_NONSIGHTING_POST_REQUEST, REPORT_NONSIGHTING_POST_RECEIVE, REPORT_NONSIGHTING_POST_ERROR],
