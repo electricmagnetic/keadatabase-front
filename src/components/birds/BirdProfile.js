@@ -51,7 +51,7 @@ class BirdProfile extends Component {
               <div className="row">
                 <div className="col-md-4 order-md-9 profile-picture">
                   <figure>
-                    <ProfilePicture bird={ bird } classNames={ ['img-fluid'] } size="large" isDead={ isDead } />
+                    <ProfilePicture bird={ bird } classNames={ ['img-fluid'] } size={extended ? 'large' : 'thumbnail'} isDead={ isDead } />
                   </figure>
                 </div>
 
@@ -68,11 +68,14 @@ class BirdProfile extends Component {
                 </div>
               </div>
             </Banner>
-            { extended &&
-              <div className="container extended">
+
+            <div className="container extended">
+              {extended &&
                 <div className="row">
                   <div className="col-lg-7">
-                    <p className="description">{ extended.description }</p>
+                    {extended.description &&
+                      <p className="description">{ extended.description }</p>
+                    }
                     {extended.sponsor_name &&
                       <p><strong>Sponsor: </strong><a href={ extended.sponsor_website }>{ extended.sponsor_name }</a></p>
                     }
@@ -81,8 +84,11 @@ class BirdProfile extends Component {
                     }
                   </div>
                 </div>
-              </div>
-            }
+              }
+              {!extended &&
+                <h4>There is no extended information for this bird.</h4>
+              }
+            </div>
           </div>
         );
       }
