@@ -19,7 +19,7 @@ class BandCombosList extends Component {
           <div className="row">
             { bandCombos.value.results.length === 0 &&
               <div className="col-12">
-                <h3>Bird not found.</h3>
+                <h3>No birds found with that search criteria.</h3>
               </div>
             }
             { bandCombos.value.results.map((bandCombo) =>
