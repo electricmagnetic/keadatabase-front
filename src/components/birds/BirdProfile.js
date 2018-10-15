@@ -86,7 +86,7 @@ class BirdProfile extends Component {
                 </div>
               }
               {!extended &&
-                <h4>There is no extended information for this bird.</h4>
+                <h3>No additional information found for this bird</h3>
               }
             </div>
           </div>
