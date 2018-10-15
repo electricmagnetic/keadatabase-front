@@ -14,6 +14,11 @@ $constrainer-width: map-get($container-max-widths, 'xl')+160px;
     border-bottom: 0;
     margin: auto;
     width: $constrainer-width;
+    &::before, &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
   }
 }
 
