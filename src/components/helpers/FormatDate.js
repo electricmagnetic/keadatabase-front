@@ -11,7 +11,7 @@ const FormatDate = ({ format, calendar, children }) => {
     nextDay : '[Tomorrow at] LT',
     lastWeek : '[Last] dddd [at] LT',
     nextWeek : 'dddd [at] LT',
-    sameElse : 'ddd DD MMM[,] LT'
+    sameElse : 'ddd DD MMM YYYY[,] LT'
 };
 
   if (calendar) {
@@ -53,11 +53,11 @@ FormatDate.propTypes = {
   children: PropTypes.any.isRequired,
   format: PropTypes.string.isRequired,
   calendar: PropTypes.bool.isRequired,
-}
+};
 
 FormatDate.defaultProps = {
   format: 'long',
   calendar: false,
-}
+};
 
 export default FormatDate;
