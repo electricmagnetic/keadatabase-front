@@ -8,8 +8,8 @@ export function formatNonSighting(values={}) {
 
   // Format date and time sighted
   if (values.dateTimeSighted) {
-    sighting.date_sighted = moment(sighting.dateTimeSighted).format('YYYY-MM-DD');
-    sighting.time_sighted = moment(sighting.dateTimeSighted).format('HH:mm');
+    sighting.date_sighted = moment(values.dateTimeSighted).format('YYYY-MM-DD');
+    sighting.time_sighted = moment(values.dateTimeSighted).format('HH:mm');
   }
 
   if (values.contributor) {
