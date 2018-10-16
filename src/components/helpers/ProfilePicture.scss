@@ -1,3 +1,11 @@
+.ProfilePicture {
+  min-height: 1px; // Workaround for IE img height issue https://github.com/philipwalton/flexbugs/issues/75
+
+  img {
+    width: 100%;
+  }
+}
+
 .ProfilePicture.isDead {
   position: relative;
 
