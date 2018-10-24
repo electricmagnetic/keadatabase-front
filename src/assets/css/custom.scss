@@ -52,8 +52,12 @@ label {
   }
 }
 
+.react-datepicker-popper {
+  z-index: 100;
+}
+
 .react-datepicker__time-list {
-  padding-left: 0;
+  padding: 0 !important;
 }
 
 .card-dull {
@@ -63,5 +67,17 @@ label {
     i {
       color: darken($brown-faded, 50%);
     }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .mobile {
+    display: none;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .desktop {
+    display: none;
   }
 }

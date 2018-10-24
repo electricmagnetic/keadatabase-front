@@ -24,7 +24,7 @@ const SightingDetailsFieldset = ({
     <fieldset>
       <legend>1. Sighting Details</legend>
 
-      <div className="form-group">
+      <div className="form-group desktop">
         <label htmlFor="dateTimeSighted">Date and time sighted</label>
         <DatePicker
           selected={ values.dateTimeSighted }
@@ -40,6 +40,30 @@ const SightingDetailsFieldset = ({
           timeCaption="time"
           className="form-control"
           id="dateTimeSighted"
+        />
+      </div>
+
+      <div className="form-group mobile">
+        <label htmlFor="dateTimeSightedMobile">Date and time sighted</label>
+        <input type='date'
+          value={ values.dateTimeSighted.format('YYYY-MM-DD') }
+          onChange={ e => {
+            e.preventDefault();
+            const time = values.dateTimeSighted.format('HH:mm');
+            const newDateTime = moment(`${e.target.value} ${time}`, 'YYYY-MM-DD HH:mm');
+            setFieldValue('dateTimeSighted', newDateTime);
+          }}
+          className="form-control"
+        />
+        <input type='time'
+          value={ values.dateTimeSighted.format('HH:mm') }
+          onChange={ e => {
+            e.preventDefault();
+            const date = values.dateTimeSighted.format('YYYY-MM-DD');
+            const newDateTime = moment(`${date} ${e.target.value}`, 'YYYY-MM-DD HH:mm');
+            setFieldValue('dateTimeSighted', newDateTime);
+          }}
+          className="form-control"
         />
       </div>
 
