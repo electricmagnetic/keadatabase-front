@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { Field } from 'formik';
 import DatePicker from 'react-datepicker';
 import { Marker } from "react-mapbox-gl";
+import { Layer, Feature } from "react-mapbox-gl";
 import moment from 'moment';
 
 import Map from '../../map/Map';
 import { RenderField } from '../../helpers/RenderField';
 import 'react-datepicker/dist/react-datepicker.css';
+import markerIcon from '../../../assets/img/map-marker-alt-solid.svg';
 
 const SightingDetailsFieldset = ({
   options,
@@ -20,6 +22,10 @@ const SightingDetailsFieldset = ({
     -180 <= longitude && longitude <= 180 &&
     -90 <= latitude && latitude <= 90
   );
+
+  const marker = new Image();
+  marker.src = markerIcon;
+
   return (
     <fieldset>
       <legend>1. Sighting Details</legend>
@@ -83,13 +89,37 @@ const SightingDetailsFieldset = ({
               }}
               height="480px"
             >
-              {isValidCoordinates &&
+              <Layer
+                id='sightingMarker'
+                type='symbol'
+                images={[ 'fa-map-marker-alt', marker ]}
+                layout={{
+                  'icon-image': 'fa-map-marker-alt',
+                  'icon-size': 0.3,
+                  'icon-anchor': 'bottom',
+                }}
+                paint={{
+                  'icon-opacity': 1,
+                  'icon-opacity-transition': {
+                    'duration': 0,
+                    'delay': 0,
+                  }
+                }}
+              >
+                {isValidCoordinates &&
+                  <Feature
+                    coordinates={[ longitude, latitude ]}
+                    draggable
+                  />
+                }
+              </Layer>
+              {/* {isValidCoordinates &&
                 <Marker
                   coordinates={[ longitude, latitude ]}
                 >
                   <i className="fas fa-map-marker-alt"></i>
                 </Marker>
-              }
+              } */}
             </Map>
           </div>
 
