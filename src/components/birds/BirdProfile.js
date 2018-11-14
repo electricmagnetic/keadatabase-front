@@ -60,7 +60,7 @@ class BirdProfile extends Component {
                   <ul className="list-unstyled mb-3">
                     <li><i className="fas fa-fw fa-info-circle"></i> { details.join(' ') }</li>
                     <li><i className="fas fa-fw fa-map-marker-alt"></i> { bird.study_area }</li>
-                    <li><i className="far fa-fw fa-circle"></i> { bird.band_combo }</li>
+                    { bird.band_combo && <li><i className="far fa-fw fa-circle"></i> { bird.band_combo }</li> }
                   </ul>
                   <div className="band-combo">
                     <PrettyBandCombo bandCombo={ bird.band_combo } />

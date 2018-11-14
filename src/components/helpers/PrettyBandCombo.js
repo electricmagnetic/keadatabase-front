@@ -4,6 +4,8 @@ import colours from '../helpers/colours';
 import './PrettyBandCombo.css';
 
 const PrettyBandCombo = ({ bandCombo }) => {
+  if (!bandCombo) return null;
+
   // [Common] Detect whether new band or not
   const isNew = bandCombo.includes('on');
 
