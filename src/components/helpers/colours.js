@@ -14,7 +14,8 @@ const colours = {
   'red': '#FF0000',
   'silver': 'linear-gradient(to right,#C6C7BE, #eee, #C6C7BE)',
   'white': '#FFFFFF',
-  'yellow': '#FFFF00'
+  'yellow': '#FFFF00',
+  'lightblue': '#ADD8E6'
 };
 
 export default colours;
