@@ -5,6 +5,7 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import configureStore from './store/store';
 import history from './history/history';
+import initGa from './analytics';
 
 import ScrollToTop from './components/helpers/ScrollToTop';
 import Header from './components/presentation/Header';
@@ -33,6 +34,8 @@ import ReportNonSightingSuccessPage from './views/report/nonSightingSuccess';
 import NoMatchPage from './views/nomatch';
 
 const store = configureStore();
+
+initGa(history);
 
 class App extends Component {
   render() {
