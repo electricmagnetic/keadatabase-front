@@ -1,6 +1,8 @@
 @import 'variables';
 
 .SightingsMap {
+  background: $footer-inner;
+  
   .mapboxgl-popup-content {
     font-size: $font-size-base;
     padding: 0;
