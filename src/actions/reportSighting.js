@@ -10,7 +10,7 @@ export const REPORT_SIGHTING_OPTIONS_ERROR = 'reportSighting/options/ERROR';
 export function getReportSightingOptions() {
   return {
     [RSAA]: {
-      endpoint: `https://api.keadatabase.nz/report/sighting/`,
+      endpoint: `https://data.keadatabase.nz/report/sighting/`,
       method: 'OPTIONS',
       headers: { 'Accept': 'application/json' },
       types: [REPORT_SIGHTING_OPTIONS_REQUEST, REPORT_SIGHTING_OPTIONS_RECEIVE, REPORT_SIGHTING_OPTIONS_ERROR]
@@ -27,7 +27,7 @@ export function postReportSighting(values, formikBag) {
   return async(dispatch, getState) => {
     const response = await dispatch({
       [RSAA]: {
-        endpoint: `https://api.keadatabase.nz/report/sighting/`,
+        endpoint: `https://data.keadatabase.nz/report/sighting/`,
         method: 'POST',
         body: formatSighting(values),
         types: [REPORT_SIGHTING_POST_REQUEST, REPORT_SIGHTING_POST_RECEIVE, REPORT_SIGHTING_POST_ERROR],

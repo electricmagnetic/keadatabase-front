@@ -7,7 +7,7 @@ export const BIRDSIGHTINGS_ERROR = 'birdSightings/ERROR';
 function fetchBirdSightings(query) {
   return {
     [RSAA]: {
-      endpoint: `https://api.keadatabase.nz/sightings/birds/${query}`,
+      endpoint: `https://data.keadatabase.nz/sightings/birds/${query}`,
       method: 'GET',
       headers: { 'Accept': 'application/json' },
       types: [BIRDSIGHTINGS_REQUEST, BIRDSIGHTINGS_RECEIVE, BIRDSIGHTINGS_ERROR]
