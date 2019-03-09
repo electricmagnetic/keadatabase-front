@@ -29,7 +29,7 @@ class SightingDetail extends Component {
         { key: 'Where', value: <span className="where">{ sighting.geocode }, { sighting.region }</span> },
         { key: 'Who', value: sighting.contributor },
         { key: 'What', value: `${ sighting.get_sighting_type_display } ${ sighting.number } bird(s)` },
-        { key: 'Verification', value: sighting.get_quality_display },
+        { key: 'Status', value: sighting.get_status_display },
       ];
 
       return (
