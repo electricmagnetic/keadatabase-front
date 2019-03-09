@@ -32,7 +32,7 @@ Deploying
 ---------
 Ensure you have the following:
 * The `awscli` Python package installed and configured with id and secret key.
-* `REACT_APP_GOOGLE_API_KEY` and `REACT_APP_GA_ID` defined in `.env`
+* `REACT_APP_MAPBOX_API_KEY`, `REACT_APP_LINZ_API_KEY`, `REACT_APP_GA_ID` defined in `.env.local`
 
 To deploy to Amazon S3 (and hence make available at https://keadatabase.nz/):  
 `npm run deploy`
