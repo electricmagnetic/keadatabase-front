@@ -7,7 +7,7 @@ export const SIGHTINGS_ERROR = 'sightings/ERROR';
 function fetchSightings() {
   return {
     [RSAA]: {
-      endpoint: `https://api.keadatabase.nz/sightings/sightings/?page_size=250`,
+      endpoint: `https://data.keadatabase.nz/sightings/sightings/?page_size=250`,
       method: 'GET',
       headers: { 'Accept': 'application/json' },
       types: [SIGHTINGS_REQUEST, SIGHTINGS_RECEIVE, SIGHTINGS_ERROR]

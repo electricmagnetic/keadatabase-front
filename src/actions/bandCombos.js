@@ -7,7 +7,7 @@ export const BANDCOMBOS_ERROR = 'bandCombos/ERROR';
 function fetchBandCombos(query) {
   return {
     [RSAA]: {
-      endpoint: `https://api.keadatabase.nz/band_combos/?${query}`,
+      endpoint: `https://data.keadatabase.nz/band_combos/?${query}`,
       method: 'GET',
       headers: { 'Accept': 'application/json' },
       types: [BANDCOMBOS_REQUEST, BANDCOMBOS_RECEIVE, BANDCOMBOS_ERROR]
