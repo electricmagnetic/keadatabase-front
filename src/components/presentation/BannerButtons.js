@@ -15,18 +15,18 @@ const BannerButtons = ({ additionalClasses }) => {
       <div className="container">
         <div className="row">
           <div className="col-md-4 banner-button">
-            <Link to="/birds" className="btn btn-lg btn-transparent">
-            <i className="fas fa-search"></i> Browse Birds
-            </Link>
-          </div>
-          <div className="col-md-4 banner-button">
             <Link to="/report/sighting" className="btn btn-lg btn-transparent">
-              <i className="fas fa-feather-alt"></i> Report Sighting
+              <i className="fas fa-feather-alt"></i> Report Kea Observation
             </Link>
           </div>
           <div className="col-md-4 banner-button">
             <Link to="/report/non-sighting" className="btn btn-lg btn-transparent">
-              <i className="fas fa-eye-slash"></i> Report Non-Sighting
+              <i className="fas fa-eye-slash"></i> Report Kea Absence
+            </Link>
+          </div>
+          <div className="col-md-4 banner-button">
+            <Link to="/birds" className="btn btn-lg btn-transparent">
+              <i className="fas fa-search"></i> Browse Birds
             </Link>
           </div>
         </div>
