@@ -26,7 +26,7 @@ const BannerButtons = ({ additionalClasses }) => {
           </div>
           <div className="col-lg-4 col-md-2 banner-button">
             <Link to="/birds" className="btn btn-lg btn-transparent">
-              <i className="fas fa-search"></i> <span className="d-md-none">Browse </span>Birds
+              <i className="fas fa-search"></i> <span className="d-md-none d-lg-inline">Browse </span>Birds
             </Link>
           </div>
         </div>
