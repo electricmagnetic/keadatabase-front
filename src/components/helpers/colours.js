@@ -57,7 +57,7 @@ const colours = {
     'name': 'Yellow',
     'hex': '#FFFF00',
   },
-  'light-blue': {
+  'lightblue': {
     'name': 'Light Blue',
     'hex': '#ADD8E6',
   },
