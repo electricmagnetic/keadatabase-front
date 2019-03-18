@@ -20,7 +20,7 @@ const PrettyBandCombo = ({ bandCombo }) => {
   legs = legs.map(leg => leg.split(/ \/ /));
 
   // [Common] Modify Light Blue into LightBlue
-  legs = legs.map(leg => leg.map(band => band.replace('Light Blue', 'Light-Blue')));
+  legs = legs.map(leg => leg.map(band => band.replace('Light Blue', 'LightBlue')));
 
   // [Common] Split each band into parts, reverse array to produce consistent ordering: bandColour, [symbol, symbolColour]
   legs = legs.map(leg => leg.map(band => band.split(' ').reverse()));
