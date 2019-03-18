@@ -53,9 +53,9 @@ class ColourInput extends Component {
   render() {
     var colourOptions = colours
       ? Object.keys(colours).map(colour => ({
-        label: colour.charAt(0).toUpperCase() + colour.slice(1),
+        label: colours[colour].name,
         value: colour,
-        hex: colours[colour],
+        hex: colours[colour].hex,
       }))
       : [];
 
