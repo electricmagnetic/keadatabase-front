@@ -6,22 +6,21 @@ const FormatDate = ({ format, calendar, children }) => {
   const momentParse = 'YYYY-MM-DD HH:mm:ss';
 
   const momentCalendarStrings = {
-    lastDay : '[Yesterday at] LT',
-    sameDay : '[Today at] LT',
-    nextDay : '[Tomorrow at] LT',
-    lastWeek : '[Last] dddd [at] LT',
-    nextWeek : 'dddd [at] LT',
-    sameElse : 'ddd DD MMM YYYY[,] LT'
-};
+    lastDay: '[Yesterday at] LT',
+    sameDay: '[Today at] LT',
+    nextDay: '[Tomorrow at] LT',
+    lastWeek: '[Last] dddd [at] LT',
+    nextWeek: 'dddd [at] LT',
+    sameElse: 'ddd DD MMM YYYY[,] LT',
+  };
 
   if (calendar) {
-    return(
-      <Moment calendar={ momentCalendarStrings } parse={ momentParse }>
-        { children }
+    return (
+      <Moment calendar={momentCalendarStrings} parse={momentParse}>
+        {children}
       </Moment>
     );
-  }
-  else {
+  } else {
     var momentFormat = '';
 
     switch (format) {
@@ -37,13 +36,13 @@ const FormatDate = ({ format, calendar, children }) => {
       case 'date':
         momentFormat = 'ddd DD MMMM';
         break;
-    default:
-      momentFormat = 'ddd DD/MM/YY [at] h:mm a';
+      default:
+        momentFormat = 'ddd DD/MM/YY [at] h:mm a';
     }
 
-    return(
-      <Moment format={ momentFormat } parse={ momentParse }>
-        { children }
+    return (
+      <Moment format={momentFormat} parse={momentParse}>
+        {children}
       </Moment>
     );
   }

@@ -11,22 +11,20 @@ const SubmitFieldset = ({ submitCount, isValid, isSubmitting, response }) => {
       <Page id={185} hideTitle />
 
       <p>
-        <button type="submit" className="btn btn-primary" disabled={ isSubmitting }>
+        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
           Submit
         </button>
       </p>
 
-      {showInvalid &&
+      {showInvalid && (
         <div className="alert alert-danger" role="alert">
           <div style={{ marginBottom: '1rem' }}>
-            Hmm, it seems there were some errors. Please scroll up and check the data you've entered.
+            Hmm, it seems there were some errors. Please scroll up and check the data you've
+            entered.
           </div>
-          {response.rejected &&
-            <small>{response.value.message}</small>
-          }
+          {response.rejected && <small>{response.value.message}</small>}
         </div>
-      }
-
+      )}
     </fieldset>
   );
 };

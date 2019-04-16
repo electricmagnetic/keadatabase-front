@@ -26,27 +26,35 @@ const PrettyBandCombo = ({ bandCombo }) => {
   legs = legs.map(leg => leg.map(band => band.split(' ').reverse()));
 
   // [Common] Convert names into colours
-  legs = legs.map(leg => leg.map(band => band.map(function(part) {
-      const partLowerCase = part.toLowerCase();
-      return partLowerCase in colours ? colours[partLowerCase].hex : part;
-  })));
+  legs = legs.map(leg =>
+    leg.map(band =>
+      band.map(function(part) {
+        const partLowerCase = part.toLowerCase();
+        return partLowerCase in colours ? colours[partLowerCase].hex : part;
+      })
+    )
+  );
 
   // [New] Remove 'on' [Old] Remove 'x'
-  legs = legs.map(leg => leg.map(band => isNew ? band.filter(part => part !== 'on') : band.filter(part => part !== 'x')));
+  legs = legs.map(leg =>
+    leg.map(band =>
+      isNew ? band.filter(part => part !== 'on') : band.filter(part => part !== 'x')
+    )
+  );
 
   return (
-    <div className={ classNames.join(' ') }>
-      { legs.map((leg, index) =>
-        <div className="leg" key={ index }>
-        { leg.map((band, index) =>
-          <div className="band" style={{'background': band[0]}} key={ index }>
-            <span className="symbol" style={{'color': band[2]}}>
-              { band[1] }
-            </span>
-          </div>
-        )}
+    <div className={classNames.join(' ')}>
+      {legs.map((leg, index) => (
+        <div className="leg" key={index}>
+          {leg.map((band, index) => (
+            <div className="band" style={{ background: band[0] }} key={index}>
+              <span className="symbol" style={{ color: band[2] }}>
+                {band[1]}
+              </span>
+            </div>
+          ))}
         </div>
-      )}
+      ))}
     </div>
   );
 };

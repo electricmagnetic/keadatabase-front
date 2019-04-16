@@ -6,18 +6,18 @@ const Error = props => {
     <div className="Error">
       <div className="alert alert-danger" role="alert">
         <h1 className="alert-heading h4">Error</h1>
-        { props.reason && <span className="reason">{ props.reason }</span> }
+        {props.reason && <span className="reason">{props.reason}</span>}
       </div>
     </div>
   );
 };
 
 Error.propTypes = {
-  reason: PropTypes.string
-}
+  reason: PropTypes.string,
+};
 
 Error.defaultProps = {
-  reason: ''
-}
+  reason: '',
+};
 
 export default Error;

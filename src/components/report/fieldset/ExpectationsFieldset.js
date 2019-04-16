@@ -4,9 +4,7 @@ import { Field } from 'formik';
 
 import { RenderField } from '../../helpers/RenderField';
 
-const ExpectationsFieldset = ({
-  options,
-}) => {
+const ExpectationsFieldset = ({ options }) => {
   return (
     <fieldset>
       <legend>2. Expectations (Optional)</legend>
@@ -15,12 +13,11 @@ const ExpectationsFieldset = ({
       </p>
 
       <Field
-        component={ RenderField }
-        options={ options.expectations }
+        component={RenderField}
+        options={options.expectations}
         name="expectations"
         type="textarea"
       />
-
     </fieldset>
   );
 };

@@ -8,24 +8,42 @@ const Header = props => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <div className="container">
-        <Link to="/" className="navbar-brand"><img src={ logo } alt="Kea Database" /></Link>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
+        <Link to="/" className="navbar-brand">
+          <img src={logo} alt="Kea Database" />
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbar"
+          aria-controls="navbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" />
         </button>
 
         <div className="collapse navbar-collapse" id="navbar">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <NavLink exact to="/" className="nav-link">Home</NavLink>
+              <NavLink exact to="/" className="nav-link">
+                Home
+              </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/birds" className="nav-link">Browse birds</NavLink>
+              <NavLink to="/birds" className="nav-link">
+                Browse birds
+              </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/sightings" className="nav-link">View sightings</NavLink>
+              <NavLink to="/sightings" className="nav-link">
+                View sightings
+              </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/report" className="nav-link">Report</NavLink>
+              <NavLink to="/report" className="nav-link">
+                Report
+              </NavLink>
             </li>
           </ul>
         </div>

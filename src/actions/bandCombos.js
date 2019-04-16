@@ -9,10 +9,10 @@ function fetchBandCombos(query) {
     [RSAA]: {
       endpoint: `https://data.keadatabase.nz/band_combos/?${query}`,
       method: 'GET',
-      headers: { 'Accept': 'application/json' },
-      types: [BANDCOMBOS_REQUEST, BANDCOMBOS_RECEIVE, BANDCOMBOS_ERROR]
-    }
-  }
+      headers: { Accept: 'application/json' },
+      types: [BANDCOMBOS_REQUEST, BANDCOMBOS_RECEIVE, BANDCOMBOS_ERROR],
+    },
+  };
 }
 
 function shouldFetchBandCombos(state) {
@@ -20,10 +20,10 @@ function shouldFetchBandCombos(state) {
   return true;
 }
 
-export default function getBandCombos(query='') {
+export default function getBandCombos(query = '') {
   return (dispatch, getState) => {
     if (shouldFetchBandCombos(getState())) {
       return dispatch(fetchBandCombos(query));
     }
-  }
+  };
 }

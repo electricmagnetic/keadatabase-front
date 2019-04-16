@@ -20,11 +20,15 @@ class ReportSightingSuccessPage extends Component {
               <Link to="/report" className="btn btn-primary mr-2" role="button">
                 Report Another
               </Link>
-              { id &&
-                <Link to={'/sightings/' + this.props.match.params.id } className="btn btn-outline-primary" role="button">
+              {id && (
+                <Link
+                  to={'/sightings/' + this.props.match.params.id}
+                  className="btn btn-outline-primary"
+                  role="button"
+                >
                   View Sighting
                 </Link>
-              }
+              )}
             </div>
           </section>
           <section>

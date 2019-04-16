@@ -14,7 +14,4 @@ const initGa = history => {
   }
 };
 
-export {
-  initGa as default,
-  trackPageView
-};
+export { initGa as default, trackPageView };

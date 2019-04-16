@@ -10,29 +10,30 @@ const BannerButtons = ({ additionalClasses }) => {
   // Add additional classes
   classNames.push(additionalClasses);
 
-  return(
-    <div className={ classNames.join(' ') }>
+  return (
+    <div className={classNames.join(' ')}>
       <div className="container">
         <div className="row">
           <div className="col-lg-4 col-md-5 banner-button">
             <Link to="/report/sighting" className="btn btn-lg btn-transparent">
-              <i className="fas fa-feather-alt"></i> Report Observation
+              <i className="fas fa-feather-alt" /> Report Observation
             </Link>
           </div>
           <div className="col-lg-4 col-md-5 banner-button">
             <Link to="/report/non-sighting" className="btn btn-lg btn-transparent">
-              <i className="fas fa-eye-slash"></i> Report Absence
+              <i className="fas fa-eye-slash" /> Report Absence
             </Link>
           </div>
           <div className="col-lg-4 col-md-2 banner-button">
             <Link to="/birds" className="btn btn-lg btn-transparent">
-              <i className="fas fa-search"></i> <span className="d-md-none d-lg-inline">Browse </span>Birds
+              <i className="fas fa-search" /> <span className="d-md-none d-lg-inline">Browse </span>
+              Birds
             </Link>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default BannerButtons;

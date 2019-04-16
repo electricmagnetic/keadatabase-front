@@ -7,7 +7,7 @@ function fetchSightingById(id) {
     [RSAA]: {
       endpoint: `https://data.keadatabase.nz/sightings/sightings/${id}/`,
       method: 'GET',
-      headers: { 'Accept': 'application/json' },
+      headers: { Accept: 'application/json' },
       types: [
         SIGHTINGS_REQUEST,
         {
@@ -19,13 +19,13 @@ function fetchSightingById(id) {
               count: 1,
               next: null,
               previous: null,
-              results: [json]
+              results: [json],
             }));
           },
         },
-        SIGHTINGS_ERROR
-      ]
-    }
+        SIGHTINGS_ERROR,
+      ],
+    },
   };
 }
 
@@ -37,8 +37,10 @@ function shouldFetchSightingById(state, id) {
   }
 
   if (sightings.fulfilled) {
-    const found = sightings.value && sightings.value.results
-      && sightings.value.results.find(sighting => sighting.id === Number(id));
+    const found =
+      sightings.value &&
+      sightings.value.results &&
+      sightings.value.results.find(sighting => sighting.id === Number(id));
     if (found) return false;
     return true;
   }

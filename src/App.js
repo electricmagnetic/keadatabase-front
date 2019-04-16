@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Provider  } from 'react-redux';
+import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 
 import configureStore from './store/store';
@@ -40,36 +40,48 @@ initGa(history);
 class App extends Component {
   render() {
     return (
-      <Provider store={ store }>
-        <ConnectedRouter history={ history }>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
           <ScrollToTop>
             <div className="Router">
               <Header />
 
               <main className="constrainer">
                 <Switch>
-                  <Route exact path="/" component={ HomePage } />
+                  <Route exact path="/" component={HomePage} />
 
-                  <Route exact path="/about" component={ AboutPage } />
-                  <Route exact path="/terms" component={ TermsPage } />
-                  <Route exact path="/licence" component={ LicencePage } />
-                  <Route exact path="/sponsor" component={ SponsorPage } />
-                  <Route exact path="/help" component={ HelpPage } />
+                  <Route exact path="/about" component={AboutPage} />
+                  <Route exact path="/terms" component={TermsPage} />
+                  <Route exact path="/licence" component={LicencePage} />
+                  <Route exact path="/sponsor" component={SponsorPage} />
+                  <Route exact path="/help" component={HelpPage} />
 
-                  <Route exact path="/birds" component={ BirdsPage } />
-                  <Route exact path="/birds/:slug" component={ BirdDetailPage } />
+                  <Route exact path="/birds" component={BirdsPage} />
+                  <Route exact path="/birds/:slug" component={BirdDetailPage} />
 
-                  <Route exact path="/sightings" component={ SightingsPage } />
-                  <Route exact path="/sightings/:id" component={ SightingsDetailPage } />
+                  <Route exact path="/sightings" component={SightingsPage} />
+                  <Route exact path="/sightings/:id" component={SightingsDetailPage} />
 
-                  <Route exact path="/report" component={ ReportPage } />
-                  <Route exact path="/report/sighting" component={ ReportSightingPage } />
-                  <Route exact path="/report/sighting/success" component={ ReportSightingSuccessPage } />
-                  <Route exact path="/report/sighting/success/:id" component={ ReportSightingSuccessPage } />
-                  <Route exact path="/report/non-sighting" component={ ReportNonSightingPage } />
-                  <Route exact path="/report/non-sighting/success" component={ ReportNonSightingSuccessPage } />
+                  <Route exact path="/report" component={ReportPage} />
+                  <Route exact path="/report/sighting" component={ReportSightingPage} />
+                  <Route
+                    exact
+                    path="/report/sighting/success"
+                    component={ReportSightingSuccessPage}
+                  />
+                  <Route
+                    exact
+                    path="/report/sighting/success/:id"
+                    component={ReportSightingSuccessPage}
+                  />
+                  <Route exact path="/report/non-sighting" component={ReportNonSightingPage} />
+                  <Route
+                    exact
+                    path="/report/non-sighting/success"
+                    component={ReportNonSightingSuccessPage}
+                  />
 
-                  <Route component={ NoMatchPage } />
+                  <Route component={NoMatchPage} />
                 </Switch>
               </main>
 

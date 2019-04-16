@@ -11,7 +11,10 @@ import ExpectationsFieldset from './fieldset/ExpectationsFieldset';
 import ContributorFieldset from './fieldset/ContributorFieldset';
 import FurtherInformationFieldset from './fieldset/FurtherInformationFieldset';
 import SubmitFieldset from './fieldset/SubmitFieldset';
-import { getReportNonSightingOptions, postReportNonSighting } from '../../actions/reportNonSighting';
+import {
+  getReportNonSightingOptions,
+  postReportNonSighting,
+} from '../../actions/reportNonSighting';
 
 const initialValues = {
   dateTimeSighted: moment(),
@@ -34,7 +37,10 @@ const validationSchema = yup.object().shape({
   location_details: yup.string().required(requiredMessage),
   contributor: yup.object().shape({
     name: yup.string().required(requiredMessage),
-    email: yup.string().email('Invalid email address').required(requiredMessage),
+    email: yup
+      .string()
+      .email('Invalid email address')
+      .required(requiredMessage),
   }),
 });
 
@@ -58,7 +64,8 @@ class ReportSighting extends Component {
     const { reportNonSightingOptions, reportNonSightingPost } = this.props;
 
     if (reportNonSightingOptions.pending) return <Loader />;
-    else if (reportNonSightingOptions.rejected) return <Error reason={ reportNonSightingOptions.value.message }/>;
+    else if (reportNonSightingOptions.rejected)
+      return <Error reason={reportNonSightingOptions.value.message} />;
     else if (reportNonSightingOptions.fulfilled) {
       const options = reportNonSightingOptions.value.actions.POST;
       return (

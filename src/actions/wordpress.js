@@ -9,10 +9,10 @@ function fetchPages() {
     [RSAA]: {
       endpoint: `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/pages?per_page=100`,
       method: 'GET',
-      headers: { 'Accept': 'application/json' },
-      types: [PAGES_REQUEST, PAGES_RECEIVE, PAGES_ERROR]
-    }
-  }
+      headers: { Accept: 'application/json' },
+      types: [PAGES_REQUEST, PAGES_RECEIVE, PAGES_ERROR],
+    },
+  };
 }
 
 function shouldFetchPages(state) {
@@ -34,7 +34,7 @@ export function getPages() {
     if (shouldFetchPages(getState())) {
       return dispatch(fetchPages());
     }
-  }
+  };
 }
 
 export const POSTS_REQUEST = 'posts/REQUEST';
@@ -46,10 +46,10 @@ function fetchPosts() {
     [RSAA]: {
       endpoint: `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/posts?per_page=1`,
       method: 'GET',
-      headers: { 'Accept': 'application/json' },
-      types: [POSTS_REQUEST, POSTS_RECEIVE, POSTS_ERROR]
-    }
-  }
+      headers: { Accept: 'application/json' },
+      types: [POSTS_REQUEST, POSTS_RECEIVE, POSTS_ERROR],
+    },
+  };
 }
 
 function shouldFetchPosts(state) {
@@ -71,5 +71,5 @@ export function getPosts() {
     if (shouldFetchPosts(getState())) {
       return dispatch(fetchPosts());
     }
-  }
+  };
 }

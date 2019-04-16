@@ -8,28 +8,28 @@ const initialSightingsState = {
 };
 
 export const sightings = (state = initialSightingsState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case SIGHTINGS_REQUEST:
       return Object.assign({}, state, {
         pending: true,
         rejected: false,
-        fulfilled: false
+        fulfilled: false,
       });
     case SIGHTINGS_RECEIVE:
       return Object.assign({}, state, {
         pending: false,
         rejected: false,
         fulfilled: true,
-        value: action.payload
+        value: action.payload,
       });
     case SIGHTINGS_ERROR:
       return Object.assign({}, state, {
         pending: false,
         rejected: true,
         fulfilled: false,
-        value: action.payload
+        value: action.payload,
       });
-  default:
-    return state;
+    default:
+      return state;
   }
 };

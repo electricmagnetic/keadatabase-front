@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-export function formatNonSighting(values={}) {
+export function formatNonSighting(values = {}) {
   const sighting = {};
 
   // Add challenge (basic spam prevention)
@@ -20,13 +20,11 @@ export function formatNonSighting(values={}) {
   }
 
   // Copy other parameters if exist
-  [
-    'location_details',
-    'expectations',
-    'comments'
-  ].forEach(key => {
-    if (values[key]) { sighting[key] = values[key]; }
+  ['location_details', 'expectations', 'comments'].forEach(key => {
+    if (values[key]) {
+      sighting[key] = values[key];
+    }
   });
 
   return JSON.stringify(sighting);
-};
+}

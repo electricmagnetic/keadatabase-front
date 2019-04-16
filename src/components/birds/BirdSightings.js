@@ -12,7 +12,7 @@ class BirdSightings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedFeature: null
+      selectedFeature: null,
     };
 
     this.selectFeature = this.selectFeature.bind(this);
@@ -25,7 +25,7 @@ class BirdSightings extends Component {
 
   selectFeature(feature) {
     this.setState({
-      selectedFeature: feature
+      selectedFeature: feature,
     });
   }
 
@@ -34,39 +34,35 @@ class BirdSightings extends Component {
     const { selectedFeature } = this.state;
 
     if (birdSightings.pending) return <Loader />;
-    else if (birdSightings.rejected) return <Error reason={ birdSightings.value.message }/>;
+    else if (birdSightings.rejected) return <Error reason={birdSightings.value.message} />;
     else if (birdSightings.fulfilled) {
       const sightings = birdSightings.value.results;
 
       if (!sightings || sightings.length === 0) {
-        return <span className='no-sightings'></span>;
+        return <span className="no-sightings" />;
       }
 
       return (
-        <div className='BirdSightings container'>
+        <div className="BirdSightings container">
           <h2>Sightings</h2>
           <p>Showing up to 20 most recent sightings.</p>
 
           <BirdSightingsMap
-            sightings={ sightings }
-            selectedFeature={ selectedFeature }
-            selectFeature={ this.selectFeature }
+            sightings={sightings}
+            selectedFeature={selectedFeature}
+            selectFeature={this.selectFeature}
           />
 
-          <div className='row'>
+          <div className="row">
             {sightings.map(sighting => (
-              <div className='col-sm-6 col-lg-4 col-xl-3' key={ sighting.id }>
-                <BirdSightingCard
-                  sighting={ sighting }
-                  selectFeature={ this.selectFeature }
-                />
+              <div className="col-sm-6 col-lg-4 col-xl-3" key={sighting.id}>
+                <BirdSightingCard sighting={sighting} selectFeature={this.selectFeature} />
               </div>
             ))}
           </div>
         </div>
       );
-    }
-    else return null;
+    } else return null;
   }
 }
 
@@ -76,7 +72,7 @@ BirdSightings.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   birdSightings: state.birdSightings,
 });
 

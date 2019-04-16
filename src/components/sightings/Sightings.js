@@ -12,7 +12,7 @@ class Sightings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedFeature: null
+      selectedFeature: null,
     };
 
     this.selectFeature = this.selectFeature.bind(this);
@@ -25,7 +25,7 @@ class Sightings extends Component {
 
   selectFeature(feature) {
     this.setState({
-      selectedFeature: feature
+      selectedFeature: feature,
     });
   }
 
@@ -34,32 +34,28 @@ class Sightings extends Component {
     const { selectedFeature } = this.state;
 
     if (sightings.pending) return <Loader />;
-    else if (sightings.rejected) return <Error reason={ sightings.value.message }/>;
+    else if (sightings.rejected) return <Error reason={sightings.value.message} />;
     else if (sightings.fulfilled) {
       return (
         <React.Fragment>
           <SightingsMap
-            sightings={ sightings.value.results }
-            selectedFeature={ selectedFeature }
-            selectFeature={ this.selectFeature }
+            sightings={sightings.value.results}
+            selectedFeature={selectedFeature}
+            selectFeature={this.selectFeature}
           />
 
-          <div className='container'>
-            <div className='row'>
+          <div className="container">
+            <div className="row">
               {sightings.value.results.map(sighting => (
-                <div className='col-sm-6 col-lg-4 col-xl-3' key={ sighting.id }>
-                  <SightingCard
-                    sighting={ sighting }
-                    selectFeature={ this.selectFeature }
-                  />
+                <div className="col-sm-6 col-lg-4 col-xl-3" key={sighting.id}>
+                  <SightingCard sighting={sighting} selectFeature={this.selectFeature} />
                 </div>
               ))}
             </div>
           </div>
         </React.Fragment>
       );
-    }
-    else return null;
+    } else return null;
   }
 }
 

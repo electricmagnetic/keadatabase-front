@@ -19,37 +19,36 @@ class Page extends Component {
     const { pages, hideTitle, id } = this.props;
 
     // Add sr-only (screen-reader only) class
-    const className = (hideTitle) ? 'sr-only' : '';
+    const className = hideTitle ? 'sr-only' : '';
 
     if (pages.pending) return <Loader />;
-    else if (pages.rejected) return <Error reason={ pages.value.message }/>;
+    else if (pages.rejected) return <Error reason={pages.value.message} />;
     else if (pages.fulfilled) {
-      const page =  pages.value.page[id];
+      const page = pages.value.page[id];
 
       return (
         <div className="Page">
-          <div className="Page-content" key={ page.id }>
-            <h2 dangerouslySetInnerHTML={{__html: page.title.rendered }} className={ className }></h2>
-            <p dangerouslySetInnerHTML={{__html: page.content.rendered }}></p>
+          <div className="Page-content" key={page.id}>
+            <h2 dangerouslySetInnerHTML={{ __html: page.title.rendered }} className={className} />
+            <p dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
           </div>
         </div>
       );
-    }
-    else return null;
+    } else return null;
   }
-};
+}
 
 Page.propTypes = {
   id: PropTypes.number.isRequired,
-  hideTitle: PropTypes.bool.isRequired
-}
+  hideTitle: PropTypes.bool.isRequired,
+};
 
 Page.defaultProps = {
-  hideTitle: false
-}
+  hideTitle: false,
+};
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { pages: state.pages };
-}
+};
 
 export default connect(mapStateToProps)(Page);

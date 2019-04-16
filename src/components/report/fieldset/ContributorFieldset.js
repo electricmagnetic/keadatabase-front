@@ -4,9 +4,7 @@ import { Field } from 'formik';
 
 import { RenderField } from '../../helpers/RenderField';
 
-const ContributorFieldset = ({
-  options,
-}) => {
+const ContributorFieldset = ({ options }) => {
   return (
     <fieldset>
       <legend>3. About You</legend>
@@ -16,16 +14,16 @@ const ContributorFieldset = ({
       <div className="row">
         <div className="col-md-6">
           <Field
-            component={ RenderField }
-            options={ options.contributor.children.name }
+            component={RenderField}
+            options={options.contributor.children.name}
             name="contributor.name"
             type="text"
             placeholder="Name"
           />
 
           <Field
-            component={ RenderField }
-            options={ options.contributor.children.email }
+            component={RenderField}
+            options={options.contributor.children.email}
             name="contributor.email"
             type="text"
             placeholder="Email"
@@ -34,11 +32,11 @@ const ContributorFieldset = ({
 
         <div className="col-md-5 offset-md-1">
           <p className="text-muted">
-            Your name will be public (as part of your sighting), but any contact information you provide will not be.
+            Your name will be public (as part of your sighting), but any contact information you
+            provide will not be.
           </p>
         </div>
       </div>
-
     </fieldset>
   );
 };

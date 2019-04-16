@@ -16,10 +16,10 @@ const HomePage = props => {
     <div className="HomePage">
       <Helmet title="Kea Database" />
       <section className="mb-4">
-          <Banner backgroundImage={ banner }>
-            <Page id={34} hideTitle />
-          </Banner>
-          <BannerButtons />
+        <Banner backgroundImage={banner}>
+          <Page id={34} hideTitle />
+        </Banner>
+        <BannerButtons />
       </section>
       <section className="mb-4">
         <div className="container">

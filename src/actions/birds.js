@@ -9,23 +9,23 @@ function fetchBird(slug) {
     [RSAA]: {
       endpoint: `https://data.keadatabase.nz/birds/${slug}/`,
       method: 'GET',
-      headers: { 'Accept': 'application/json' },
+      headers: { Accept: 'application/json' },
       types: [
         {
           type: BIRD_REQUEST,
-          meta: { slug: slug }
+          meta: { slug: slug },
         },
         {
           type: BIRD_RECEIVE,
-          meta: { slug: slug }
+          meta: { slug: slug },
         },
         {
           type: BIRD_ERROR,
-          meta: { slug: slug }
-        }
-      ]
-    }
-  }
+          meta: { slug: slug },
+        },
+      ],
+    },
+  };
 }
 
 function shouldFetchBird(state, slug) {
@@ -43,7 +43,7 @@ export function getBird(slug) {
     if (shouldFetchBird(getState(), slug)) {
       return dispatch(fetchBird(slug));
     }
-  }
+  };
 }
 
 export const FEATUREDBIRDS_REQUEST = 'featuredBirds/REQUEST';
@@ -55,10 +55,10 @@ function fetchFeaturedBirds() {
     [RSAA]: {
       endpoint: `https://data.keadatabase.nz/birds/?is_featured=2&ordering=random&page_size=5`,
       method: 'GET',
-      headers: { 'Accept': 'application/json' },
-      types: [FEATUREDBIRDS_REQUEST, FEATUREDBIRDS_RECEIVE, FEATUREDBIRDS_ERROR]
-    }
-  }
+      headers: { Accept: 'application/json' },
+      types: [FEATUREDBIRDS_REQUEST, FEATUREDBIRDS_RECEIVE, FEATUREDBIRDS_ERROR],
+    },
+  };
 }
 
 function shouldFetchFeaturedBirds(state) {
@@ -80,5 +80,5 @@ export function getFeaturedBirds() {
     if (shouldFetchFeaturedBirds(getState())) {
       return dispatch(fetchFeaturedBirds());
     }
-  }
+  };
 }

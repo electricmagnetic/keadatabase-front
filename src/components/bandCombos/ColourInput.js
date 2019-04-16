@@ -21,8 +21,8 @@ class ColourInput extends Component {
     if (colour.value === 'white') style.border = '1px solid #ddd';
     return (
       <React.Fragment key={index}>
-        <span style={ style }>colour</span>
-        <span>{ colour.label }</span>
+        <span style={style}>colour</span>
+        <span>{colour.label}</span>
       </React.Fragment>
     );
   }
@@ -35,11 +35,7 @@ class ColourInput extends Component {
     };
     if (colour.value === 'white') style.border = '1px solid #ddd';
     return (
-      <Token
-        key={ index }
-        onRemove={ props.onRemove }
-        style={ style }
-      >
+      <Token key={index} onRemove={props.onRemove} style={style}>
         colour
       </Token>
     );
@@ -53,18 +49,18 @@ class ColourInput extends Component {
   render() {
     var colourOptions = colours
       ? Object.keys(colours).map(colour => ({
-        label: colours[colour].name,
-        value: colour,
-        hex: colours[colour].hex,
-      }))
+          label: colours[colour].name,
+          value: colour,
+          hex: colours[colour].hex,
+        }))
       : [];
 
     // create selected array based on props.selected strings
     const selected = this.props.selected
-    ? this.props.selected.split(',').map(value => {
-      return colourOptions.find(colour => colour.value === value);
-    })
-    : [];
+      ? this.props.selected.split(',').map(value => {
+          return colourOptions.find(colour => colour.value === value);
+        })
+      : [];
 
     var emptyLabel = '';
     if (selected.length >= 4) {
@@ -77,18 +73,18 @@ class ColourInput extends Component {
         <label htmlFor="colours">Colours</label>
         <Typeahead
           multiple
-          options={ colourOptions }
-          onChange={ this.handleChange }
-          emptyLabel={ emptyLabel }
-          selected={ selected }
-          renderMenuItemChildren={ this._renderMenuItemChildren }
-          renderToken={ this._renderToken }
+          options={colourOptions}
+          onChange={this.handleChange}
+          emptyLabel={emptyLabel}
+          selected={selected}
+          renderMenuItemChildren={this._renderMenuItemChildren}
+          renderToken={this._renderToken}
           clearButton
         />
       </React.Fragment>
     );
   }
-};
+}
 
 ColourInput.propTypes = {
   selected: PropTypes.string,

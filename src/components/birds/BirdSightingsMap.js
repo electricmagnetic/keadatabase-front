@@ -1,54 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Popup, Cluster, Marker } from "react-mapbox-gl";
+import { Popup, Cluster, Marker } from 'react-mapbox-gl';
 
 import BirdSightingCard from './BirdSightingCard';
 import Map from '../map/Map';
 import './BirdSightingsMap.css';
 
 const clusterMarker = (coordinates, pointCount) => (
-  <Marker coordinates={ coordinates } key={ coordinates.toString() }>
-    <div className='cluster-marker'>
-      <div className='number'>{ pointCount }</div>
+  <Marker coordinates={coordinates} key={coordinates.toString()}>
+    <div className="cluster-marker">
+      <div className="number">{pointCount}</div>
     </div>
   </Marker>
 );
 
 const BirdSightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
-  <div className='BirdSightingsMap mb-4  d-print-none'>
+  <div className="BirdSightingsMap mb-4  d-print-none">
     <Map
-      height='480px'
-      center={ sightings[0].sighting__point_location.coordinates }
-      zoom={ [11] }
-      onClick={ () => selectFeature() }
+      height="480px"
+      center={sightings[0].sighting__point_location.coordinates}
+      zoom={[11]}
+      onClick={() => selectFeature()}
     >
-      <Cluster
-        ClusterMarkerFactory={ clusterMarker }
-        zoomOnClick
-        maxZoom={ 14 }
-        radius={ 40 }
-      >
+      <Cluster ClusterMarkerFactory={clusterMarker} zoomOnClick maxZoom={14} radius={40}>
         {sightings.map(sighting => (
           <Marker
-            key={ sighting.id }
-            coordinates={ sighting.sighting__point_location.coordinates }
-            onClick={ () => selectFeature({ sighting_id: sighting.sighting, ...sighting }) }
+            key={sighting.id}
+            coordinates={sighting.sighting__point_location.coordinates}
+            onClick={() => selectFeature({ sighting_id: sighting.sighting, ...sighting })}
           >
-            <i className="fas fa-map-marker-alt"></i>
+            <i className="fas fa-map-marker-alt" />
           </Marker>
         ))}
       </Cluster>
 
-      {selectedFeature &&
-        <Popup
-          coordinates={ selectedFeature.sighting__point_location.coordinates }
-        >
-          <BirdSightingCard
-            sighting={ selectedFeature }
-            selectFeature={ selectFeature }
-          />
+      {selectedFeature && (
+        <Popup coordinates={selectedFeature.sighting__point_location.coordinates}>
+          <BirdSightingCard sighting={selectedFeature} selectFeature={selectFeature} />
         </Popup>
-      }
+      )}
     </Map>
   </div>
 );

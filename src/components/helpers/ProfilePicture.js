@@ -42,21 +42,18 @@ const ProfilePicture = ({ bird, size, classNames, asLink, isDead }) => {
   }
 
   // Create image object
-  const image = <img
-    src={ src }
-    alt={ alt }
-    className={ classNames.join(' ') }
-  />;
+  const image = <img src={src} alt={alt} className={classNames.join(' ')} />;
 
   return (
-    <div className={ containerClassNames.join(' ') }>
-      { asLink ? <Link to={ '/birds/' + bird.slug }>{ image }</Link> : image }
-      { isDead &&
-        <span className="deadIndicator"><i className="fas fa-times fa-3x"></i></span>
-      }
+    <div className={containerClassNames.join(' ')}>
+      {asLink ? <Link to={'/birds/' + bird.slug}>{image}</Link> : image}
+      {isDead && (
+        <span className="deadIndicator">
+          <i className="fas fa-times fa-3x" />
+        </span>
+      )}
     </div>
   );
-
 };
 
 ProfilePicture.propTypes = {
@@ -64,14 +61,14 @@ ProfilePicture.propTypes = {
   size: PropTypes.string.isRequired,
   classNames: PropTypes.array.isRequired,
   asLink: PropTypes.bool.isRequired,
-  isDead: PropTypes.bool.isRequired
-}
+  isDead: PropTypes.bool.isRequired,
+};
 
 ProfilePicture.defaultProps = {
   size: 'thumbnail',
   classNames: [''],
   asLink: false,
-  isDead: false
-}
+  isDead: false,
+};
 
 export default ProfilePicture;

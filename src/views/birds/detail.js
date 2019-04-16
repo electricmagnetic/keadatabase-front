@@ -8,9 +8,9 @@ const BirdDetailPage = ({ match }) => {
 
   return (
     <div className="BirdDetailPage">
-      <BirdProfile slug={ slug } />
+      <BirdProfile slug={slug} />
 
-      <BirdSightings slug={ slug } />
+      <BirdSightings slug={slug} />
     </div>
   );
 };

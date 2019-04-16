@@ -8,29 +8,29 @@ const initialState = {
 };
 
 const bandCombos = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case BANDCOMBOS_REQUEST:
       return Object.assign({}, state, {
         pending: true,
         rejected: false,
-        fulfilled: false
+        fulfilled: false,
       });
     case BANDCOMBOS_RECEIVE:
       return Object.assign({}, state, {
         pending: false,
         rejected: false,
         fulfilled: true,
-        value: action.payload
+        value: action.payload,
       });
     case BANDCOMBOS_ERROR:
       return Object.assign({}, state, {
         pending: false,
         rejected: true,
         fulfilled: false,
-        value: action.payload
+        value: action.payload,
       });
-  default:
-    return state;
+    default:
+      return state;
   }
 };
 

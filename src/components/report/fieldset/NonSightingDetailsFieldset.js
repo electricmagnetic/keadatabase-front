@@ -7,11 +7,7 @@ import moment from 'moment';
 import { RenderField } from '../../helpers/RenderField';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const SightingDetailsFieldset = ({
-  options,
-  values,
-  setFieldValue,
-}) => {
+const SightingDetailsFieldset = ({ options, values, setFieldValue }) => {
   return (
     <fieldset>
       <legend>1. Non-Sighting Details</legend>
@@ -21,15 +17,15 @@ const SightingDetailsFieldset = ({
           <div className="form-group">
             <label htmlFor="dateTimeSighted">Date and time</label>
             <DatePicker
-              selected={ values.dateTimeSighted }
-              onChange={ date => setFieldValue('dateTimeSighted', date) }
-              onChangeRaw={ e => {
+              selected={values.dateTimeSighted}
+              onChange={date => setFieldValue('dateTimeSighted', date)}
+              onChangeRaw={e => {
                 const date = moment(e.target.value, 'D MMM YYYY, HH:mm');
                 if (date.isValid()) setFieldValue('dateTimeSighted', date);
               }}
               showTimeSelect
               timeFormat="HH:mm"
-              timeIntervals={ 15 }
+              timeIntervals={15}
               dateFormat="D MMM YYYY, HH:mm"
               timeCaption="time"
               className="form-control"
@@ -40,20 +36,20 @@ const SightingDetailsFieldset = ({
 
         <div className="col-md-6">
           <p className="text-muted">
-            If you are reporting a non-sighting for a multi-day trip, just use the approximate start date/time.
+            If you are reporting a non-sighting for a multi-day trip, just use the approximate start
+            date/time.
           </p>
         </div>
       </div>
 
       <Field
-        component={ RenderField }
-        options={ options.location_details }
+        component={RenderField}
+        options={options.location_details}
         name="location_details"
         type="textarea"
         label="Location details"
         placeholder="e.g. Walked the Travers-Sabine Circuit"
       />
-
     </fieldset>
   );
 };

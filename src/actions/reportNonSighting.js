@@ -12,11 +12,15 @@ export function getReportNonSightingOptions() {
     [RSAA]: {
       endpoint: `https://data.keadatabase.nz/report/non_sighting/`,
       method: 'OPTIONS',
-      headers: { 'Accept': 'application/json' },
-      types: [REPORT_NONSIGHTING_OPTIONS_REQUEST, REPORT_NONSIGHTING_OPTIONS_RECEIVE, REPORT_NONSIGHTING_OPTIONS_ERROR]
-    }
+      headers: { Accept: 'application/json' },
+      types: [
+        REPORT_NONSIGHTING_OPTIONS_REQUEST,
+        REPORT_NONSIGHTING_OPTIONS_RECEIVE,
+        REPORT_NONSIGHTING_OPTIONS_ERROR,
+      ],
+    },
   };
-};
+}
 
 export const REPORT_NONSIGHTING_POST_REQUEST = 'reportNonSighting/post/REQUEST';
 export const REPORT_NONSIGHTING_POST_RECEIVE = 'reportNonSighting/post/RECEIVE';
@@ -24,18 +28,22 @@ export const REPORT_NONSIGHTING_POST_ERROR = 'reportNonSighting/post/ERROR';
 
 export function postReportNonSighting(values, formikBag) {
   // Returning thunk to dispatch multiple actions
-  return async(dispatch, getState) => {
+  return async (dispatch, getState) => {
     const response = await dispatch({
       [RSAA]: {
         endpoint: `https://data.keadatabase.nz/report/non_sighting/`,
         method: 'POST',
         body: formatNonSighting(values),
-        types: [REPORT_NONSIGHTING_POST_REQUEST, REPORT_NONSIGHTING_POST_RECEIVE, REPORT_NONSIGHTING_POST_ERROR],
+        types: [
+          REPORT_NONSIGHTING_POST_REQUEST,
+          REPORT_NONSIGHTING_POST_RECEIVE,
+          REPORT_NONSIGHTING_POST_ERROR,
+        ],
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      }
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      },
     });
     formikBag.setSubmitting(false);
 
@@ -48,4 +56,4 @@ export function postReportNonSighting(values, formikBag) {
     }
     return response;
   };
-};
+}

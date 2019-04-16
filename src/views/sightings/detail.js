@@ -18,9 +18,9 @@ const SightingDetailPage = ({ match }) => {
         </Banner>
       </section>
 
-      <SightingDetail id={id}/>
+      <SightingDetail id={id} />
 
-      <SightedBirds id={id}/>
+      <SightedBirds id={id} />
     </div>
   );
 };

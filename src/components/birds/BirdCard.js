@@ -24,20 +24,22 @@ const BirdCard = ({ bird }) => {
 
   return (
     <div className="BirdCard card card-dull mb-4">
-      <ProfilePicture bird={ bird } classNames={ ["card-img-top"] } isDead={ isDead } asLink />
+      <ProfilePicture bird={bird} classNames={['card-img-top']} isDead={isDead} asLink />
       <div className="card-body">
-        <h2 className="card-title h5 mb-1"><Link to={ '/birds/' + bird.slug }>{ bird.name }&nbsp;&raquo;</Link></h2>
+        <h2 className="card-title h5 mb-1">
+          <Link to={'/birds/' + bird.slug}>{bird.name}&nbsp;&raquo;</Link>
+        </h2>
         <p className="card-text mb-0">
-          <strong>{ details.join(' ') }</strong>
+          <strong>{details.join(' ')}</strong>
         </p>
-        <PrettyBandCombo bandCombo={ bird.band_combo } />
+        <PrettyBandCombo bandCombo={bird.band_combo} />
       </div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item">
-          <i className="far fa-fw fa-circle"></i> { bird.band_combo }
+          <i className="far fa-fw fa-circle" /> {bird.band_combo}
         </li>
         <li className="list-group-item">
-          <i className="fas fa-fw fa-map-marker-alt"></i> { bird.study_area }
+          <i className="fas fa-fw fa-map-marker-alt" /> {bird.study_area}
         </li>
       </ul>
     </div>

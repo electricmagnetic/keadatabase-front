@@ -15,53 +15,53 @@ const initialState = {
 };
 
 export const reportSightingOptions = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case REPORT_SIGHTING_OPTIONS_REQUEST:
       return Object.assign({}, state, {
         pending: true,
         rejected: false,
-        fulfilled: false
+        fulfilled: false,
       });
     case REPORT_SIGHTING_OPTIONS_RECEIVE:
       return Object.assign({}, state, {
         pending: false,
         rejected: false,
         fulfilled: true,
-        value: action.payload
+        value: action.payload,
       });
     case REPORT_SIGHTING_OPTIONS_ERROR:
       return Object.assign({}, state, {
         pending: false,
         rejected: true,
         fulfilled: false,
-        value: action.payload
+        value: action.payload,
       });
-  default:
-    return state;
+    default:
+      return state;
   }
 };
 
 export const reportSightingPost = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case REPORT_SIGHTING_POST_REQUEST:
       return Object.assign({}, state, {
         pending: true,
         rejected: false,
-        fulfilled: false
+        fulfilled: false,
       });
     case REPORT_SIGHTING_POST_RECEIVE:
       return Object.assign({}, state, {
         pending: false,
         rejected: false,
         fulfilled: true,
-        value: action.payload
+        value: action.payload,
       });
     case REPORT_SIGHTING_POST_ERROR:
       return Object.assign({}, state, {
         pending: false,
         rejected: true,
         fulfilled: false,
-        value: action.payload
+        value: action.payload,
       });
     default:
       return state;

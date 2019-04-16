@@ -12,30 +12,29 @@ class BandCombosList extends Component {
     const { bandCombos } = this.props;
 
     if (bandCombos.pending) return <Loader />;
-    else if (bandCombos.rejected) return <Error reason={ bandCombos.value.message }/>;
+    else if (bandCombos.rejected) return <Error reason={bandCombos.value.message} />;
     else if (bandCombos.fulfilled) {
       return (
         <div className="BandCombosList">
           <div className="row">
-            { bandCombos.value.results.length === 0 &&
+            {bandCombos.value.results.length === 0 && (
               <div className="col-12">
                 <h3>No birds found with that search criteria.</h3>
               </div>
-            }
-            { bandCombos.value.results.map((bandCombo) =>
-              <div className="col-6 col-sm-4 col-md-3" key={ bandCombo.bird.slug }>
-                <BirdCard bird={ bandCombo.bird }  />
-              </div>
             )}
+            {bandCombos.value.results.map(bandCombo => (
+              <div className="col-6 col-sm-4 col-md-3" key={bandCombo.bird.slug}>
+                <BirdCard bird={bandCombo.bird} />
+              </div>
+            ))}
           </div>
         </div>
       );
-    }
-    else return null;
+    } else return null;
   }
-};
+}
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { bandCombos: state.bandCombos };
 };
 

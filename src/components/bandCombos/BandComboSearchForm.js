@@ -24,7 +24,7 @@ class BandComboSearchForm extends Component {
       is_featured: 1,
       search: query.search || '',
       page_size: 250,
-      ordering: 'bird__bird_extended,bird__name'
+      ordering: 'bird__bird_extended,bird__name',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -38,12 +38,12 @@ class BandComboSearchForm extends Component {
 
   handleChange(e) {
     const { name, value } = e.target;
-    switch(name) {
+    switch (name) {
       case 'symbols':
         this.setState({ [name]: value.toUpperCase() });
         break;
-    default:
-      this.setState({ [name]: value });
+      default:
+        this.setState({ [name]: value });
     }
   }
 
@@ -64,17 +64,25 @@ class BandComboSearchForm extends Component {
 
   render() {
     return (
-      <form className="BandComboSearchForm mb-3" onSubmit={ this.handleSubmit }>
+      <form className="BandComboSearchForm mb-3" onSubmit={this.handleSubmit}>
         <div className="form-group">
-          <label htmlFor="search" className="sr-only">Search</label>
+          <label htmlFor="search" className="sr-only">
+            Search
+          </label>
           <div className="input-group">
             <input
-              type="text" className="form-control"  name="search" id="search"
-              onChange={ this.handleChange } value={ this.state.search }
+              type="text"
+              className="form-control"
+              name="search"
+              id="search"
+              onChange={this.handleChange}
+              value={this.state.search}
               placeholder="Search by name (e.g. Schist) or metal band (e.g. V-1696) or band combo (e.g. Black K on White)"
             />
             <div className="input-group-append">
-              <button type="submit" className="btn btn-primary">Search</button>
+              <button type="submit" className="btn btn-primary">
+                Search
+              </button>
             </div>
           </div>
         </div>
@@ -85,17 +93,30 @@ class BandComboSearchForm extends Component {
           <div className="form-row">
             <div className="col">
               <label htmlFor="symbols">Symbols</label>
-              <input type="text" className="form-control"  name="symbols" id="symbols" onChange={ this.handleChange } value={ this.state.symbols } />
+              <input
+                type="text"
+                className="form-control"
+                name="symbols"
+                id="symbols"
+                onChange={this.handleChange}
+                value={this.state.symbols}
+              />
             </div>
             <div className="col">
               <ColourInput
-                selected={ this.state.colours }
-                onChange={ selected => this.setState({ colours: selected }) }
+                selected={this.state.colours}
+                onChange={selected => this.setState({ colours: selected })}
               />
             </div>
             <div className="col">
               <label htmlFor="bird__status">Status</label>
-              <select className="form-control" name="bird__status" id="bird__status" onChange={ this.handleChange } value={ this.state.bird__status }>
+              <select
+                className="form-control"
+                name="bird__status"
+                id="bird__status"
+                onChange={this.handleChange}
+                value={this.state.bird__status}
+              >
                 <option value="">All</option>
                 <option value="alive">Alive</option>
                 <option value="dead">Dead</option>
@@ -104,7 +125,13 @@ class BandComboSearchForm extends Component {
             </div>
             <div className="col">
               <label htmlFor="style">Style</label>
-              <select className="form-control" name="style" id="style" onChange={ this.handleChange } value={ this.state.style }>
+              <select
+                className="form-control"
+                name="style"
+                id="style"
+                onChange={this.handleChange}
+                value={this.state.style}
+              >
                 <option value="">All</option>
                 <option value="new">New</option>
                 <option value="old">Old</option>
@@ -115,10 +142,13 @@ class BandComboSearchForm extends Component {
       </form>
     );
   }
-};
-
-const mapStateToProps = (state) => {
-  return { bandCombos: state.bandCombos };
 }
 
-export default compose(withRouter, connect(mapStateToProps))(BandComboSearchForm);
+const mapStateToProps = state => {
+  return { bandCombos: state.bandCombos };
+};
+
+export default compose(
+  withRouter,
+  connect(mapStateToProps)
+)(BandComboSearchForm);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Marker } from "react-mapbox-gl";
+import { Marker } from 'react-mapbox-gl';
 
 import { getSightingById } from '../../actions/sightingById';
 import Loader from '../helpers/Loader';
@@ -20,73 +20,80 @@ class SightingDetail extends Component {
     const { id, sightings, sighting } = this.props;
 
     if (sightings.pending) return <Loader />;
-    else if (sightings.rejected) return <Error reason={ sightings.value.message }/>;
+    else if (sightings.rejected) return <Error reason={sightings.value.message} />;
     else if (sightings.fulfilled) {
-      if (!sighting) return <Error reason={ `Sighting #${id} not found.` }/>;
+      if (!sighting) return <Error reason={`Sighting #${id} not found.`} />;
 
       const tableData = [
-        { key: 'When', value: <FormatDate>{ sighting.date_sighted } { sighting.time_sighted }</FormatDate> },
-        { key: 'Where', value: <span className="where">{ sighting.geocode }, { sighting.region }</span> },
+        {
+          key: 'When',
+          value: (
+            <FormatDate>
+              {sighting.date_sighted} {sighting.time_sighted}
+            </FormatDate>
+          ),
+        },
+        {
+          key: 'Where',
+          value: (
+            <span className="where">
+              {sighting.geocode}, {sighting.region}
+            </span>
+          ),
+        },
         { key: 'Who', value: sighting.contributor },
-        { key: 'What', value: `${ sighting.get_sighting_type_display } ${ sighting.number } bird(s)` },
+        { key: 'What', value: `${sighting.get_sighting_type_display} ${sighting.number} bird(s)` },
         { key: 'Status', value: sighting.get_status_display },
       ];
 
       return (
         <div className="SightingDetail container">
-          <div className='row'>
-            <div className='col-md-6'>
+          <div className="row">
+            <div className="col-md-6">
               <table className="table table-sm">
                 <tbody>
                   {tableData.map(row => (
-                    <tr key={ row.key }>
-                      <th>{ row.key }</th>
-                      <td>{ row.value }</td>
+                    <tr key={row.key}>
+                      <th>{row.key}</th>
+                      <td>{row.value}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
 
-              {sighting.comments &&
-                <section className='comments'>
+              {sighting.comments && (
+                <section className="comments">
                   <h3>Comments</h3>
-                  <p>{ sighting.comments }</p>
+                  <p>{sighting.comments}</p>
                 </section>
-              }
+              )}
 
-              {sighting.location_details &&
-                <section className='location_details'>
+              {sighting.location_details && (
+                <section className="location_details">
                   <h3>Location details</h3>
-                  <p>{ sighting.location_details }</p>
+                  <p>{sighting.location_details}</p>
                 </section>
-              }
+              )}
 
-              {sighting.behaviour &&
-                <section className='behaviour'>
+              {sighting.behaviour && (
+                <section className="behaviour">
                   <h3>Behaviour</h3>
-                  <p>{ sighting.behaviour }</p>
+                  <p>{sighting.behaviour}</p>
                 </section>
-              }
+              )}
             </div>
 
-            <div className='col-md-6 d-print-none'>
-              <Map
-                height='480px'
-                center={sighting.point_location.coordinates}
-                zoom={[12]}
-              >
-                <Marker
-                  coordinates={ sighting.point_location.coordinates }
-                >
-                  <i className="fas fa-map-marker-alt"></i>
+            <div className="col-md-6 d-print-none">
+              <Map height="480px" center={sighting.point_location.coordinates} zoom={[12]}>
+                <Marker coordinates={sighting.point_location.coordinates}>
+                  <i className="fas fa-map-marker-alt" />
                 </Marker>
               </Map>
             </div>
           </div>
         </div>
       );
-    }
-    else return null;
+    } else return null;
   }
 }
 

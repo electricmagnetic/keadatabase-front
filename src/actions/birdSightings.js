@@ -9,9 +9,9 @@ function fetchBirdSightings(query) {
     [RSAA]: {
       endpoint: `https://data.keadatabase.nz/sightings/birds/${query}`,
       method: 'GET',
-      headers: { 'Accept': 'application/json' },
-      types: [BIRDSIGHTINGS_REQUEST, BIRDSIGHTINGS_RECEIVE, BIRDSIGHTINGS_ERROR]
-    }
+      headers: { Accept: 'application/json' },
+      types: [BIRDSIGHTINGS_REQUEST, BIRDSIGHTINGS_RECEIVE, BIRDSIGHTINGS_ERROR],
+    },
   };
 }
 

@@ -12,11 +12,15 @@ export function getReportSightingOptions() {
     [RSAA]: {
       endpoint: `https://data.keadatabase.nz/report/sighting/`,
       method: 'OPTIONS',
-      headers: { 'Accept': 'application/json' },
-      types: [REPORT_SIGHTING_OPTIONS_REQUEST, REPORT_SIGHTING_OPTIONS_RECEIVE, REPORT_SIGHTING_OPTIONS_ERROR]
-    }
+      headers: { Accept: 'application/json' },
+      types: [
+        REPORT_SIGHTING_OPTIONS_REQUEST,
+        REPORT_SIGHTING_OPTIONS_RECEIVE,
+        REPORT_SIGHTING_OPTIONS_ERROR,
+      ],
+    },
   };
-};
+}
 
 export const REPORT_SIGHTING_POST_REQUEST = 'reportSighting/post/REQUEST';
 export const REPORT_SIGHTING_POST_RECEIVE = 'reportSighting/post/RECEIVE';
@@ -24,18 +28,22 @@ export const REPORT_SIGHTING_POST_ERROR = 'reportSighting/post/ERROR';
 
 export function postReportSighting(values, formikBag) {
   // Returning thunk to dispatch multiple actions
-  return async(dispatch, getState) => {
+  return async (dispatch, getState) => {
     const response = await dispatch({
       [RSAA]: {
         endpoint: `https://data.keadatabase.nz/report/sighting/`,
         method: 'POST',
         body: formatSighting(values),
-        types: [REPORT_SIGHTING_POST_REQUEST, REPORT_SIGHTING_POST_RECEIVE, REPORT_SIGHTING_POST_ERROR],
+        types: [
+          REPORT_SIGHTING_POST_REQUEST,
+          REPORT_SIGHTING_POST_RECEIVE,
+          REPORT_SIGHTING_POST_ERROR,
+        ],
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      }
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      },
     });
     formikBag.setSubmitting(false);
 
@@ -58,4 +66,4 @@ export function postReportSighting(values, formikBag) {
     }
     return response;
   };
-};
+}

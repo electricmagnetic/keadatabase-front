@@ -9,12 +9,7 @@ import history from '../history/history';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default function configureStore() {
-  const middleware = [ thunk, apiMiddleware, routerMiddleware(history) ];
+  const middleware = [thunk, apiMiddleware, routerMiddleware(history)];
 
-  return createStore(
-    reducers,
-    composeEnhancers(
-      applyMiddleware(...middleware)
-    )
-  );
+  return createStore(reducers, composeEnhancers(applyMiddleware(...middleware)));
 }

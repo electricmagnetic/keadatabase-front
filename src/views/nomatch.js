@@ -14,7 +14,10 @@ const NoMatchPage = props => {
       </section>
       <section className="mb-4">
         <div className="container">
-          <p>You seem to have encountered a page that doesn't exist. If you think it should exist, please contact us and we'll look into it.</p>
+          <p>
+            You seem to have encountered a page that doesn't exist. If you think it should exist,
+            please contact us and we'll look into it.
+          </p>
         </div>
       </section>
     </div>
