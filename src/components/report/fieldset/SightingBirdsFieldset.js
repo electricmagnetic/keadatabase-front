@@ -73,7 +73,8 @@ const RenderBirds = ({ arrayHelpers, options }) => {
                     className="btn btn-outline-dark"
                     onClick={() => arrayHelpers.remove(index)}
                   >
-                    <i className="fas fa-times" />&nbsp; Remove Bird
+                    <i className="fas fa-times" />
+                    &nbsp; Remove Bird
                   </button>
                 </div>
               </div>
