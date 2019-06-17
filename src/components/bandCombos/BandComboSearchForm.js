@@ -24,7 +24,7 @@ class BandComboSearchForm extends Component {
       is_featured: 1,
       search: query.search || '',
       page_size: 250,
-      ordering: 'bird__bird_extended,bird__name',
+      ordering: query.ordering || '-date_deployed',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -58,6 +58,7 @@ class BandComboSearchForm extends Component {
       colours: this.state.colours,
       symbols: this.state.symbols,
       search: this.state.search,
+      ordering: this.state.ordering,
     });
     dispatch(push(`/birds?${visibleQuery}`));
   }
@@ -86,12 +87,19 @@ class BandComboSearchForm extends Component {
             </div>
           </div>
         </div>
+        <p>Ordered by: {this.state.ordering}</p>
         <a data-toggle="collapse" href="#advanced" aria-expanded="false" aria-controls="advanced">
           Advanced Search +
         </a>
         <div id="advanced" className="collapse">
           <div className="form-row">
-            <div className="col">
+            <div className="col-3">
+              <ColourInput
+                selected={this.state.colours}
+                onChange={selected => this.setState({ colours: selected })}
+              />
+            </div>
+            <div className="col-1">
               <label htmlFor="symbols">Symbols</label>
               <input
                 type="text"
@@ -102,13 +110,7 @@ class BandComboSearchForm extends Component {
                 value={this.state.symbols}
               />
             </div>
-            <div className="col">
-              <ColourInput
-                selected={this.state.colours}
-                onChange={selected => this.setState({ colours: selected })}
-              />
-            </div>
-            <div className="col">
+            <div className="col-3">
               <label htmlFor="bird__status">Status</label>
               <select
                 className="form-control"
@@ -123,7 +125,7 @@ class BandComboSearchForm extends Component {
                 <option value="unknown">Unknown</option>
               </select>
             </div>
-            <div className="col">
+            <div className="col-2">
               <label htmlFor="style">Style</label>
               <select
                 className="form-control"
@@ -136,6 +138,21 @@ class BandComboSearchForm extends Component {
                 <option value="new">New</option>
                 <option value="old">Old</option>
               </select>
+            </div>
+            <div className="col-3">
+              <div className="form-group">
+                <label htmlFor="ordering">Ordering</label>
+                <select
+                  className="form-control"
+                  id="ordering"
+                  name="ordering"
+                  onChange={this.handleChange}
+                  value={this.state.ordering}
+                >
+                  <option value="-date_deployed">Recently Banded</option>
+                  <option value="bird__name">Name</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
