@@ -26,7 +26,7 @@ const BannerButtons = ({ additionalClasses }) => {
             </Link>
           </div>
           <div className="col-lg-4 col-md-4 banner-button">
-            <Link to="/report/non-sighting" className="btn btn-lg btn-transparent">
+            <Link to="/sightings" className="btn btn-lg btn-transparent">
               <i className="fas fa-map" /> View Sightings
             </Link>
           </div>
