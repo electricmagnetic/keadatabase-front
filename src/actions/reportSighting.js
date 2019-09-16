@@ -62,7 +62,7 @@ export function postReportSighting(values, formikBag) {
       formikBag.setErrors(errors);
     } else {
       const id = response.payload.id || '';
-      dispatch(push(`/report/sighting/success/${id}`));
+      dispatch(push(`/report/success/${id}`));
     }
     return response;
   };

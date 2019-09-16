@@ -7,7 +7,6 @@ import bandCombos from './bandCombos';
 import { pages, posts } from './wordpress';
 import { birds, featuredBirds } from './birds';
 import { reportSightingOptions, reportSightingPost } from './reportSighting';
-import { reportNonSightingOptions, reportNonSightingPost } from './reportNonSighting';
 
 export default combineReducers({
   birdSightings,
@@ -19,7 +18,5 @@ export default combineReducers({
   featuredBirds,
   reportSightingOptions,
   reportSightingPost,
-  reportNonSightingOptions,
-  reportNonSightingPost,
   router: routerReducer,
 });

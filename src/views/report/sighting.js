@@ -7,10 +7,10 @@ import ReportSighting from '../../components/report/ReportSighting';
 const ReportSightingPage = props => {
   return (
     <div className="ReportSightingPage">
-      <Helmet title="Report Sighting" />
+      <Helmet title="Report Observation" />
       <section className="mb-4">
         <Banner size="small">
-          <h1>Report Sighting</h1>
+          <h1>Report Observation</h1>
         </Banner>
       </section>
       <section className="mb-4">
