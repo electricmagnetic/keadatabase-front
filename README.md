@@ -39,10 +39,17 @@ To deploy to Amazon S3 (and hence make available at https://keadatabase.nz/):
 
 **This will automatically build the SCSS and source code**
 
+
+Bug reports
+-----------
+
+Should be filed on the Kea Database Trello board (not presently public)
+
+
 Licence
 -------
 Kea Database  
-Copyright (C) 2018 Greenstone Limited  
+Copyright (C) 2019 Greenstone Limited  
 hello@greenstone.org.nz
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
