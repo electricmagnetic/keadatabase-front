@@ -1,6 +1,6 @@
 # keadatabase-front
 
-[![Build Status](https://travis-ci.org/electricmagnetic/keadatabase-front.svg?branch=next)](https://travis-ci.org/electricmagnetic/keadatabase-front)
+[![Build Status](https://api.travis-ci.com/electricmagnetic/keadatabase-front.svg?branch=next)](https://travis-ci.com/electricmagnetic/keadatabase-front)
 
 The **next** React-based front-end for the Kea Database <https://keadatabase.nz> citizen science project.
 Sponsored by [Catalyst](https://catalyst.net.nz).
