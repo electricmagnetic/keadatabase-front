@@ -1,7 +1,7 @@
 import React from 'react';
 
 import colours from './colours';
-import './PrettyBandCombo.css';
+import './PrettyBandCombo.scss';
 
 const PrettyBandCombo = ({ bandCombo }) => {
   if (!bandCombo) return null;

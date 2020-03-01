@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import placeholder_large from '../../assets/img/placeholder_large.png';
 import placeholder_thumbnail from '../../assets/img/placeholder_thumbnail.png';
-import './ProfilePicture.css';
+import './ProfilePicture.scss';
 
 const ProfilePicture = ({ bird, size, classNames, asLink, isDead }) => {
   /* Helper function for displaying profile pictures in all cases */

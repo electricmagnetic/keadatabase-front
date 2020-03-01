@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Sponsors.css';
+import './Sponsors.scss';
 
 const Sponsors = props => {
   return (

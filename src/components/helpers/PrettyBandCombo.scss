@@ -1,4 +1,4 @@
-@import "variables";
+@import 'assets/css/_variables';
 
 .PrettyBandCombo {
   // Common
@@ -31,11 +31,10 @@
 
   // Old bands only
   &.old {
-    .leg  {
+    .leg {
       text-align: center;
       background-color: $gray-500;
       box-shadow: inset 0px 0px 0px 8px $body-bg;
-
 
       .band {
         width: 32px;

@@ -1,4 +1,4 @@
-@import "variables";
+@import 'assets/css/_variables';
 
 footer {
   background-color: $footer-outer;
@@ -22,7 +22,7 @@ footer {
     }
   }
   .catalyst {
-    color: #BA2025;
+    color: #ba2025;
   }
   .constrainer {
     background-color: $footer-inner;

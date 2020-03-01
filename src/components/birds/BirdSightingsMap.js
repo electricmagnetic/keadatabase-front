@@ -4,7 +4,7 @@ import { Popup, Cluster, Marker } from 'react-mapbox-gl';
 
 import BirdSightingCard from './BirdSightingCard';
 import Map from '../map/Map';
-import './BirdSightingsMap.css';
+import './BirdSightingsMap.scss';
 
 const clusterMarker = (coordinates, pointCount) => (
   <Marker coordinates={coordinates} key={coordinates.toString()}>

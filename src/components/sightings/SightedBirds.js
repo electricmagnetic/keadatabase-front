@@ -8,7 +8,7 @@ import { getBirdSightingsById } from '../../actions/birdSightings';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 import ProfilePicture from '../helpers/ProfilePicture';
-import './SightedBirds.css';
+import './SightedBirds.scss';
 
 const BirdCard = ({ birdSighting }) => {
   const matched = birdSighting.bird ? true : false;

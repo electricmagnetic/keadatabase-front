@@ -35,10 +35,7 @@
     "yup": "^0.25.1"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar --include-path ./node_modules --include-path ./src/assets/css src/ -o src/",
-    "watch-css": "node-sass-chokidar --include-path ./node_modules --include-path ./src/assets/css src/ -o src/ --watch --recursive",
-    "pretest": "npm run build-css",
-    "predeploy": "npm run build-css && npm run build",
+    "predeploy": "npm run build",
     "deploy": "s3-deploy './build/**' --cwd './build/' --region ap-southeast-2 --delete-removed --distId E32E6W6ZJ80KGJ --invalidate '/index.html' --bucket keadatabase.nz",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -63,7 +60,6 @@
   },
   "devDependencies": {
     "husky": "^2.7.0",
-    "node-sass-chokidar": "^1.4.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^1.11.1",
     "s3-deploy": "^1.4.0"

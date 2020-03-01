@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './BannerButtons.css';
+import './BannerButtons.scss';
 
 const BannerButtons = ({ additionalClasses }) => {
   // Add classes

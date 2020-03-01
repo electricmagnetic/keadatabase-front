@@ -6,7 +6,7 @@ import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 import { getPages } from '../../actions/wordpress';
 
-import './Page.css';
+import './Page.scss';
 
 class Page extends Component {
   componentDidMount() {

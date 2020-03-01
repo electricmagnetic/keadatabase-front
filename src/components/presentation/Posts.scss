@@ -1,8 +1,9 @@
-@import "variables";
+@import 'assets/css/_variables';
 
 .Posts {
   .Post {
-    h3, h4 {
+    h3,
+    h4 {
       font-family: $font-family-base;
     }
 

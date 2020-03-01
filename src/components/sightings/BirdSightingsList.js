@@ -9,7 +9,7 @@ import FormatDate from '../helpers/FormatDate';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 
-import './BirdSightingsList.css';
+import './BirdSightingsList.scss';
 
 class BirdSightingsList extends Component {
   componentDidMount() {

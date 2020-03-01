@@ -8,7 +8,7 @@ import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 import FormatDate from '../helpers/FormatDate';
 import Map from '../map/Map';
-import './SightingDetail.css';
+import './SightingDetail.scss';
 
 class SightingDetail extends Component {
   componentDidMount() {

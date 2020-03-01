@@ -11,7 +11,7 @@ import Banner from '../presentation/Banner';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 
-import './BirdProfile.css';
+import './BirdProfile.scss';
 
 class BirdProfile extends Component {
   componentDidMount() {

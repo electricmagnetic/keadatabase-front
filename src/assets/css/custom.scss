@@ -1,7 +1,7 @@
-@import 'variables';
-@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'assets/css/_variables';
+@import 'bootstrap/scss/bootstrap';
 
-$constrainer-width: map-get($container-max-widths, 'xl')+160px;
+$constrainer-width: map-get($container-max-widths, 'xl') + 160px;
 
 #root {
   background-color: #fff;
@@ -9,13 +9,14 @@ $constrainer-width: map-get($container-max-widths, 'xl')+160px;
 
 .constrainer {
   @media (min-width: $constrainer-width+1px) {
-    border: 1px solid rgba($black, .125);
+    border: 1px solid rgba($black, 0.125);
     border-top: 0;
     border-bottom: 0;
     margin: auto;
     width: $constrainer-width;
-    &::before, &::after {
-      content: "";
+    &::before,
+    &::after {
+      content: '';
       display: table;
       clear: both;
     }
@@ -23,11 +24,11 @@ $constrainer-width: map-get($container-max-widths, 'xl')+160px;
 }
 
 .btn-transparent {
-  @include button-variant(rgba(255,255,255,0.25), rgba(255,255,255,0.1));
-  color: rgba(255,255,255,1);
+  @include button-variant(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+  color: rgba(255, 255, 255, 1);
 
   @include hover {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
   }
 }
 
@@ -36,7 +37,7 @@ fieldset {
 }
 
 legend {
-  border-bottom: 1px solid rgba($black, .125);
+  border-bottom: 1px solid rgba($black, 0.125);
   margin-bottom: 1.5rem;
 }
 
@@ -57,7 +58,8 @@ label {
 }
 
 .card-dull {
-  &.card, .list-group-item {
+  &.card,
+  .list-group-item {
     background-color: lighten($brown-faded, 10%);
     border-color: darken($brown-faded, 5%);
     i {

@@ -12,7 +12,7 @@ import 'moment/locale/en-nz';
 import 'jquery/dist/jquery.slim';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
-import './assets/css/custom.css';
+import './assets/css/custom.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 Moment.globalLocale = 'en-nz';

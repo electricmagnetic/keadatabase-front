@@ -1,4 +1,4 @@
-@import 'variables';
+@import 'assets/css/_variables';
 
 .Sponsors {
   background-color: lighten($brown-faded, 10%);
@@ -14,11 +14,11 @@
       }
     }
   }
-  
+
   h3 {
-   font-size: $font-size-base;
-   font-weight: 600;
-   font-family: $font-family-base;
-   text-transform: uppercase;
+    font-size: $font-size-base;
+    font-weight: 600;
+    font-family: $font-family-base;
+    text-transform: uppercase;
   }
 }

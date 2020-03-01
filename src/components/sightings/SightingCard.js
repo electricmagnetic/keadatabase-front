@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import FormatDate from '../helpers/FormatDate';
-import './SightingCard.css';
+import './SightingCard.scss';
 
 const SightingCard = ({ sighting, selectFeature }) => {
   const feature = { sighting_id: sighting.id, ...sighting };

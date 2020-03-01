@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PrettyBandCombo from '../helpers/PrettyBandCombo';
 import ProfilePicture from '../helpers/ProfilePicture';
 
-import './BirdCard.css';
+import './BirdCard.scss';
 
 const BirdCard = ({ bird }) => {
   var details = [];

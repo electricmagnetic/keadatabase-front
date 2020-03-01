@@ -1,4 +1,4 @@
-@import 'variables';
+@import 'assets/css/_variables';
 
 .BirdsFeatured {
   color: #fff;
@@ -28,7 +28,7 @@
   }
 
   .title {
-    text-align: right
+    text-align: right;
   }
 
   .image {
@@ -40,7 +40,8 @@
   }
 
   @include media-breakpoint-down(sm) {
-    .title, .text {
+    .title,
+    .text {
       text-align: center;
     }
   }

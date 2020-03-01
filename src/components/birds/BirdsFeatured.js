@@ -9,7 +9,7 @@ import ProfilePicture from '../helpers/ProfilePicture';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 
-import './BirdsFeatured.css';
+import './BirdsFeatured.scss';
 
 class BirdsFeatured extends Component {
   componentDidMount() {

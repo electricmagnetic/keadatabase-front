@@ -1,16 +1,16 @@
-@import 'node_modules/bootstrap/scss/functions';
-@import 'node_modules/bootstrap/scss/mixins';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/mixins';
 
 // Custom
 
 $orange-dark: #df5206;
-$green-dark:  #6a7029;
-$brown-dull:  #dfd4ba;
+$green-dark: #6a7029;
+$brown-dull: #dfd4ba;
 $brown-faded: #e6dfcc;
 
-$font-family-serif: "Playfair Display", Georgia, "Times New Roman", Times, serif;
+$font-family-serif: 'Playfair Display', Georgia, 'Times New Roman', Times, serif;
 
-$font-size-md: .925rem;
+$font-size-md: 0.925rem;
 
 $footer-inner: lighten($brown-faded, 5%);
 $footer-outer: $brown-faded;
@@ -20,12 +20,12 @@ $footer-border: darken($brown-faded, 5%);
 
 $body-bg: #f5f5f5;
 
-$primary:   $orange-dark;
+$primary: $orange-dark;
 $secondary: $green-dark;
-$dark:      #231f20;
-$light:     #e9ecef;
+$dark: #231f20;
+$light: #e9ecef;
 
-$font-family-sans-serif: "Open Sans", Roboto, Arial, sans-serif;
+$font-family-sans-serif: 'Open Sans', Roboto, Arial, sans-serif;
 $headings-font-family: $font-family-serif;
 
 $spacer: 1rem !default;
@@ -36,12 +36,12 @@ $container-max-widths: (
   sm: 540px,
   md: 720px,
   lg: 960px,
-  xl: 1080px
+  xl: 1080px,
 );
 
 $list-group-item-padding-x: 1rem;
-$list-group-item-padding-y: .5rem;
+$list-group-item-padding-y: 0.5rem;
 
 $card-border-radius: 0;
 
-@import 'node_modules/bootstrap/scss/variables';
+@import 'bootstrap/scss/variables';

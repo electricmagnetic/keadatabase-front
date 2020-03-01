@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './InformationBox.css';
+import './InformationBox.scss';
 
 const TopBox = ({ children }) => {
   return <div className="TopBox">{children}</div>;

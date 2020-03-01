@@ -6,7 +6,7 @@ import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 import { getPosts } from '../../actions/wordpress';
 
-import './Posts.css';
+import './Posts.scss';
 
 const Post = ({ post }) => {
   return (
