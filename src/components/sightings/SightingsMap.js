@@ -27,7 +27,7 @@ const SightingsMap = ({ sightings, selectedFeature, selectFeature }) => (
         </div>
       </TopBox>
 
-      <Cluster ClusterMarkerFactory={clusterMarker} zoomOnClick>
+      <Cluster ClusterMarkerFactory={clusterMarker} zoomOnClick radius={40}>
         {sightings.map(sighting => (
           <Marker
             key={sighting.id}
