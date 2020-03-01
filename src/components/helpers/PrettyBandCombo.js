@@ -1,6 +1,6 @@
 import React from 'react';
 
-import colours from '../helpers/colours';
+import colours from './colours';
 import './PrettyBandCombo.css';
 
 const PrettyBandCombo = ({ bandCombo }) => {
