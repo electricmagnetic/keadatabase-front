@@ -5,7 +5,7 @@ import { SIGHTINGS_REQUEST, SIGHTINGS_RECEIVE, SIGHTINGS_ERROR } from './sightin
 function fetchSightingById(id) {
   return {
     [RSAA]: {
-      endpoint: `https://data.keadatabase.nz/sightings/sightings/${id}/`,
+      endpoint: `${process.env.REACT_APP_API_BASE}/sightings/sightings/${id}/`,
       method: 'GET',
       headers: { Accept: 'application/json' },
       types: [

@@ -7,7 +7,7 @@ export const BIRD_ERROR = 'bird/ERROR';
 function fetchBird(slug) {
   return {
     [RSAA]: {
-      endpoint: `https://data.keadatabase.nz/birds/${slug}/`,
+      endpoint: `${process.env.REACT_APP_API_BASE}/birds/${slug}/`,
       method: 'GET',
       headers: { Accept: 'application/json' },
       types: [
@@ -53,7 +53,7 @@ export const FEATUREDBIRDS_ERROR = 'featuredBirds/ERROR';
 function fetchFeaturedBirds() {
   return {
     [RSAA]: {
-      endpoint: `https://data.keadatabase.nz/birds/?is_featured=2&ordering=random&page_size=5`,
+      endpoint: `${process.env.REACT_APP_API_BASE}/birds/?is_featured=2&ordering=random&page_size=5`,
       method: 'GET',
       headers: { Accept: 'application/json' },
       types: [FEATUREDBIRDS_REQUEST, FEATUREDBIRDS_RECEIVE, FEATUREDBIRDS_ERROR],
