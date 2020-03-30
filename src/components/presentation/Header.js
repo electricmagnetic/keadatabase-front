@@ -27,22 +27,28 @@ const Header = props => {
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
               <NavLink exact to="/" className="nav-link">
+                <i className="fa-fw fas fa-home mr-2" />
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/birds" className="nav-link">
-                Browse birds
+                <i className="fa-fw fas fa-search mr-2" />
+                <span className="d-md-none d-lg-inline">Search </span>Birds
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/sightings" className="nav-link">
-                View sightings
+                <i className="fa-fw fas fa-list-alt mr-2" />
+                <span className="d-md-none d-lg-inline">View </span>
+                Observations
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/report" className="nav-link">
+                <i className="fa-fw fas fa-eye mr-2" />
                 Report
+                <span className="d-md-none d-lg-inline"> Observation</span>
               </NavLink>
             </li>
           </ul>
