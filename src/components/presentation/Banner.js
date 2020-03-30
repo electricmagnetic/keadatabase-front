@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 import './Banner.scss';
 
-const Banner = ({ backgroundImage, size, additionalClasses, children }) => {
+/**
+  Provides a consistent banner styling across components.
+  */
+const Banner = ({ backgroundImage, size, className, children }) => {
   var style = {};
 
   // Add background image
@@ -20,7 +23,7 @@ const Banner = ({ backgroundImage, size, additionalClasses, children }) => {
   classNames.push('size-' + size);
 
   // Add additional classes
-  classNames.push(additionalClasses);
+  classNames.push(className);
 
   return (
     <div className={classNames.join(' ')} style={style}>
@@ -36,7 +39,7 @@ Banner.defaultProps = {
 Banner.propTypes = {
   size: PropTypes.string.isRequired,
   backgroundImage: PropTypes.string,
-  additionalClasses: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Banner;

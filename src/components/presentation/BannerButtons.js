@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 import './BannerButtons.scss';
 
-const BannerButtons = ({ additionalClasses }) => {
+const BannerButtons = ({ className }) => {
   // Add classes
   var classNames = ['BannerButtons'];
 
   // Add additional classes
-  classNames.push(additionalClasses);
+  classNames.push(className);
 
   return (
     <div className={classNames.join(' ')}>
