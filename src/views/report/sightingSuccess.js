@@ -11,7 +11,7 @@ class ReportSightingSuccessPage extends Component {
     return (
       <div className="SuccessPage">
         <Helmet title="Thanks!" />
-        <Banner size="small" additionalClasses="mb-3">
+        <Banner size="small" className="mb-3">
           <h1>Thanks!</h1>
         </Banner>
         <div className="container">

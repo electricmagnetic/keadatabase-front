@@ -10,7 +10,6 @@
     .banner-button {
       .btn {
         width: 100%;
-        text-transform: uppercase;
       }
 
       @include media-breakpoint-down(sm) {

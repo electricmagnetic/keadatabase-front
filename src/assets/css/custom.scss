@@ -58,6 +58,10 @@ label {
 }
 
 .card-dull {
+  h2 {
+    font-size: $h5-font-size;
+  }
+
   &.card,
   .list-group-item {
     background-color: lighten($brown-faded, 10%);
@@ -66,4 +70,8 @@ label {
       color: darken($brown-faded, 50%);
     }
   }
+}
+
+img.isDead {
+  filter: grayscale(100%);
 }

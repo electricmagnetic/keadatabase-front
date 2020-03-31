@@ -3,31 +3,35 @@ import { Link } from 'react-router-dom';
 
 import './BannerButtons.scss';
 
-const BannerButtons = ({ additionalClasses }) => {
+const BannerButtons = ({ className }) => {
   // Add classes
   var classNames = ['BannerButtons'];
 
   // Add additional classes
-  classNames.push(additionalClasses);
+  classNames.push(className);
 
   return (
     <div className={classNames.join(' ')}>
       <div className="container">
         <div className="row">
-          <div className="col-lg-4 col-md-5 banner-button">
+          <div className="col-md-4 banner-button">
             <Link to="/report" className="btn btn-lg btn-transparent">
-              <i className="fas fa-feather-alt" /> Report Observation
+              <i className="fa-fw fas fa-eye mr-2" />
+              Report
+              <span className="d-md-none d-lg-inline"> Observation</span>
             </Link>
           </div>
-          <div className="col-lg-4 col-md-3 banner-button">
+          <div className="col-md-4 banner-button">
             <Link to="/birds" className="btn btn-lg btn-transparent">
-              <i className="fas fa-search" /> <span className="d-md-none d-lg-inline">Browse </span>
-              Birds
+              <i className="fa-fw fas fa-search mr-2" />
+              <span className="d-md-none d-lg-inline">Search </span>Birds
             </Link>
           </div>
-          <div className="col-lg-4 col-md-4 banner-button">
+          <div className="col-md-4 banner-button">
             <Link to="/sightings" className="btn btn-lg btn-transparent">
-              <i className="fas fa-map" /> View Sightings
+              <i className="fa-fw fas fa-list-alt mr-2" />
+              <span className="d-md-none d-lg-inline">View </span>
+              Observations
             </Link>
           </div>
         </div>
