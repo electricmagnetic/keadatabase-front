@@ -9,8 +9,8 @@ const BirdsPage = props => {
   return (
     <div className="BirdsPage">
       <Helmet title="Birds" />
-      <Banner size="small" additionalClasses="mb-3">
-        <h1 className="mb-3">Browse Birds</h1>
+      <Banner size="small" className="mb-3">
+        <h1 className="mb-3">Search Birds</h1>
         <BandComboSearchForm />
       </Banner>
       <div className="container">

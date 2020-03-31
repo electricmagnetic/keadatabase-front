@@ -1,71 +1,43 @@
 import React, { Component } from 'react';
+import { connect } from 'react-refetch';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import { getSightings } from '../../actions/sightings';
+import Sighting from './Sighting';
+import SightingsMap from './Sighting/SightingsMap';
+
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
-import SightingsMap from './SightingsMap';
-import SightingCard from './SightingCard';
 
+const API_URL = `${process.env.REACT_APP_API_BASE}/sightings/sightings/`;
+
+/**
+  Sightings fetches a series of sightings using a given (optional) queryString and renders it using Sighting.
+  */
 class Sightings extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedFeature: null,
-    };
-
-    this.selectFeature = this.selectFeature.bind(this);
-  }
-
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getSightings());
-  }
-
-  selectFeature(feature) {
-    this.setState({
-      selectedFeature: feature,
-    });
-  }
-
   render() {
-    const { sightings } = this.props;
-    const { selectedFeature } = this.state;
+    const { sightingsFetch, ...others } = this.props;
 
-    if (sightings.pending) return <Loader />;
-    else if (sightings.rejected) return <Error reason={sightings.value.message} />;
-    else if (sightings.fulfilled) {
-      return (
-        <React.Fragment>
-          <SightingsMap
-            sightings={sightings.value.results}
-            selectedFeature={selectedFeature}
-            selectFeature={this.selectFeature}
-          />
+    if (sightingsFetch.pending) {
+      return <Loader />;
+    } else if (sightingsFetch.rejected) {
+      return <Error message="Error fetching sightings" />;
+    } else if (sightingsFetch.fulfilled) {
+      const sightings = sightingsFetch.value.results;
 
-          <div className="container">
-            <div className="row">
-              {sightings.value.results.map(sighting => (
-                <div className="col-sm-6 col-lg-4 col-xl-3" key={sighting.id}>
-                  <SightingCard sighting={sighting} selectFeature={this.selectFeature} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </React.Fragment>
-      );
+      // Intercept type 'map', as this needs rendering as a group on a single map
+      if (this.props.type === 'map') return <SightingsMap sightings={sightings} {...others} />;
+      else
+        return sightings.map(sighting => (
+          <Sighting sighting={sighting} key={sighting.id} {...others} />
+        ));
     } else return null;
   }
 }
 
 Sightings.propTypes = {
-  sightings: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  queryString: PropTypes.string,
 };
 
-const mapStateToProps = state => ({
-  sightings: state.sightings,
-});
-
-export default connect(mapStateToProps)(Sightings);
+export default connect(props => ({
+  sightingsFetch: `${API_URL}${props.queryString ? props.queryString : ''}`,
+}))(Sightings);

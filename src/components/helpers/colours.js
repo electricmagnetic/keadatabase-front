@@ -21,8 +21,8 @@ const colours = {
     name: 'Grey',
     hex: '#808080',
   },
-  lime: {
-    name: 'Lime',
+  limegreen: {
+    name: 'Lime Green',
     hex: '#00FF00',
   },
   metal: {

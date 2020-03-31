@@ -1,16 +1,13 @@
 import React from 'react';
 
-import BirdProfile from '../../components/birds/BirdProfile';
-import BirdSightings from '../../components/birds/BirdSightings';
+import Bird from '../../components/birds/Bird';
 
 const BirdDetailPage = ({ match }) => {
   const slug = match.params.slug;
 
   return (
     <div className="BirdDetailPage">
-      <BirdProfile slug={slug} />
-
-      <BirdSightings slug={slug} />
+      <Bird id={slug} type="page" />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
-import BirdCard from '../birds/BirdCard';
+import Bird from '../birds/Bird';
 
 // TODO: Fix key (band combos don't always have bird?)
 
@@ -23,8 +23,8 @@ class BandCombosList extends Component {
               </div>
             )}
             {bandCombos.value.results.map(bandCombo => (
-              <div className="col-6 col-sm-4 col-md-3" key={bandCombo.bird.slug}>
-                <BirdCard bird={bandCombo.bird} />
+              <div className="col-6 col-sm-4 col-lg-3 mb-3" key={bandCombo.bird.slug}>
+                <Bird bird={bandCombo.bird} type="card" />
               </div>
             ))}
           </div>

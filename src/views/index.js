@@ -5,8 +5,8 @@ import Page from '../components/presentation/Page';
 import Posts from '../components/presentation/Posts';
 import Banner from '../components/presentation/Banner';
 import BannerButtons from '../components/presentation/BannerButtons';
-import BirdSightingsList from '../components/sightings/BirdSightingsList';
-import BirdsFeatured from '../components/birds/BirdsFeatured';
+import BirdSightings from '../components/sightings/BirdSightings';
+import Birds from '../components/birds/Birds';
 import Sponsors from '../components/presentation/Sponsors';
 
 import banner from '../assets/img/banners/home.jpg';
@@ -34,14 +34,29 @@ const HomePage = props => {
         </div>
       </section>
       <section className="mb-4">
-        <BirdsFeatured />
+        <Banner size="small" className="bg-primary text-white">
+          <h2 className="h4 text-center mt-0 mb-3">Featured birds</h2>
+          <div className="row">
+            <Birds
+              type="feature"
+              queryString="?is_featured=true&ordering=random&page_size=4"
+              className="col-6 col-lg-3 mb-3"
+            />
+          </div>
+        </Banner>
       </section>
       <section className="mb-4">
         <div className="container">
           <div className="row">
             <div className="col-md-6">
-              <h2 className="mb-3">Recently Sighted</h2>
-              <BirdSightingsList />
+              <h2 className="mb-3">Recently observed</h2>
+              <div className="row">
+                <BirdSightings
+                  type="feature"
+                  queryString="?has_bird=true&page_size=4"
+                  className="col-6 col-sm-3 col-md-6 col-lg-3 mb-3"
+                />
+              </div>
             </div>
             <div className="col-md-6">
               <h2 className="mb-3">Blog</h2>

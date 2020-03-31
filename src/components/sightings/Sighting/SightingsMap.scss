@@ -1,0 +1,23 @@
+@import 'assets/css/_variables';
+
+.SightingsMap {
+  height: 640px;
+
+  .SightingPopup {
+    font-family: $font-family-sans-serif;
+    font-size: $font-size-sm;
+
+    .leaflet-popup-content-wrapper {
+      border-radius: 0;
+
+      .leaflet-popup-content {
+        border-radius: 0;
+        margin: 0;
+
+        .card {
+          border: 0;
+        }
+      }
+    }
+  }
+}
