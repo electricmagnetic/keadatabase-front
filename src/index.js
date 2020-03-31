@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import Moment from 'react-moment';
 
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import * as serviceWorker from './serviceWorker';
 
 import 'moment/locale/en-nz';
 
@@ -18,4 +18,6 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 Moment.globalLocale = 'en-nz';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
