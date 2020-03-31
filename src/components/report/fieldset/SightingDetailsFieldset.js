@@ -2,22 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'formik';
 import DatePicker from 'react-datepicker';
-import { Marker } from 'react-mapbox-gl';
 import moment from 'moment';
 
-import Map from '../../map/Map';
+import MapSelector from '../../helpers/MapSelector';
 import { RenderField } from '../../helpers/RenderField';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const SightingDetailsFieldset = ({ options, values, setFieldValue }) => {
-  const { longitude, latitude } = values;
-  const isValidCoordinates =
-    longitude &&
-    latitude &&
-    -180 <= longitude &&
-    longitude <= 180 &&
-    -90 <= latitude &&
-    latitude <= 90;
   return (
     <fieldset>
       <legend>1. Sighting Details</legend>
@@ -48,19 +39,7 @@ const SightingDetailsFieldset = ({ options, values, setFieldValue }) => {
           <p>Click/tap on the map to set a point, or alternatively enter the coordinates below.</p>
 
           <div className="map-container mb-3">
-            <Map
-              onClick={(map, e) => {
-                setFieldValue('longitude', e.lngLat.lng);
-                setFieldValue('latitude', e.lngLat.lat);
-              }}
-              height="480px"
-            >
-              {isValidCoordinates && (
-                <Marker coordinates={[longitude, latitude]}>
-                  <i className="fas fa-map-marker-alt" />
-                </Marker>
-              )}
-            </Map>
+            <MapSelector options={options} values={values} setFieldValue={setFieldValue} />
           </div>
 
           <p>
@@ -75,7 +54,6 @@ const SightingDetailsFieldset = ({ options, values, setFieldValue }) => {
                 options={options.precision}
                 name="precision"
                 type="choice"
-                addBlank
               />
             </div>
 

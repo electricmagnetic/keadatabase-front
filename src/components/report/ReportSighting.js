@@ -15,7 +15,7 @@ import { getReportSightingOptions, postReportSighting } from '../../actions/repo
 
 const initialValues = {
   dateTimeSighted: moment(),
-  precision: '',
+  precision: '200',
   longitude: '',
   latitude: '',
   location_details: '',
