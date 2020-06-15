@@ -34,14 +34,14 @@ const Footer = props => {
             </li>
           </ul>
           <p className="footer-attribution">
-            Kea Database sponsored by{' '}
+            Kea Database data hosted in New Zealand on{' '}
             <a
-              href="http://catalyst.net.nz"
+              href="https://www.catalyst.net.nz/products/gis-core"
               target="_blank"
               rel="noopener noreferrer"
               className="catalyst"
             >
-              Catalyst
+              Catalyst GIS Core
             </a>
             .
           </p>
