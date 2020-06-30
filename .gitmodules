@@ -1,0 +1,3 @@
+[submodule "src/nzbbtef"]
+	path = src/nzbbtef
+	url = git@github.com:electricmagnetic/nzbbtef.git
