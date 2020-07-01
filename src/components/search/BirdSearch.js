@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-refetch';
 import PropTypes from 'prop-types';
-import { Typeahead, Token } from 'react-bootstrap-typeahead';
+import { Typeahead } from 'react-bootstrap-typeahead';
 
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 import { processBirds, getCriteria, filterBirds } from './engine/helpers';
 import {
   generateTypeaheadOptions,
-  ColourBlock,
   generateTypeaheadToken,
   generateTypeaheadMenuItemChildren,
 } from './engine/typeahead';
@@ -30,7 +29,6 @@ const Birds = ({ birds }) => (
           <Bird
             key={bird.slug}
             bird={bird}
-            type="card"
             type="card"
             className="col-sm-6 col-md-4 col-lg-3 mb-3"
           />
