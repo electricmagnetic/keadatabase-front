@@ -1,0 +1,30 @@
+.BirdSearch {
+  .rbt-token {
+    border: 1px solid #222;
+  }
+  .token-colour {
+    background: #eee;
+    color: #222;
+  }
+  .token-symbol {
+    background: #eee;
+    color: #222;
+    font-weight: bolder;
+  }
+  .token-name {
+    background: #fff;
+    color: #222;
+  }
+  .token-primaryBand {
+    background: linear-gradient(to right, #808080, #ddd, #808080);
+    color: #000;
+    border-color: transparent;
+    font-weight: bolder;
+  }
+  .token-studyArea {
+    background: #eee;
+    color: #000;
+    border-color: transparent;
+    font-style: italic;
+  }
+}
