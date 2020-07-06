@@ -2,15 +2,19 @@
 
 .Sponsors {
   background-color: lighten($brown-faded, 10%);
-  text-align: center;
 
   ul {
     padding-left: 0;
     list-style: none;
-    li a {
-      color: $body-color;
-      &:hover {
+
+    li {
+      padding-bottom: map-get($spacers, 1);
+      a {
         color: $body-color;
+
+        &:hover {
+          color: $body-color;
+        }
       }
     }
   }

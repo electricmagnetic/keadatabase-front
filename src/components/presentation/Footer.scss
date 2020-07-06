@@ -2,7 +2,6 @@
 
 footer {
   background-color: $footer-outer;
-  text-align: center;
 
   p {
     margin: 0;
@@ -13,7 +12,6 @@ footer {
     list-style: none;
     margin-bottom: 0;
     margin-left: -15px;
-    text-transform: uppercase;
 
     li {
       margin-left: $grid-gutter-width/2;
