@@ -1,7 +1,7 @@
 @import 'assets/css/_variables';
 
 footer {
-  background-color: $footer-outer;
+  background-color: $footer-inner;
 
   p {
     margin: 0;
@@ -19,14 +19,29 @@ footer {
       display: inline-block;
     }
   }
-  .footer-attribution {
+  .footer-sponsor {
     font-size: $font-size-sm;
+  }
+  .footer-attribution {
+    font-size: $font-size-sm * 0.9;
+
+    @include media-breakpoint-up(md) {
+      text-align: right;
+    }
+
+    .logo {
+      height: 24px;
+    }
+
+    .version {
+      color: #807e77;
+    }
   }
   .catalyst {
     color: #ba2025;
   }
   .constrainer {
-    background-color: $footer-inner;
+    background-color: $footer-outer;
     border-color: $footer-border;
   }
 }

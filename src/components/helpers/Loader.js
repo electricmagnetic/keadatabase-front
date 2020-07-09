@@ -1,10 +1,13 @@
 import React from 'react';
 
-const Loader = () => (
-  <div className="d-flex justify-content-center m-3 text-primary">
-    <div className="spinner-border" role="status">
-      <span className="sr-only">Loading...</span>
+const Loader = ({ message = '' }) => (
+  <div className="text-center m-5">
+    <div className="text-primary m-1">
+      <div className="spinner-border" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
     </div>
+    {message && <div className="message">{message}</div>}
   </div>
 );
 

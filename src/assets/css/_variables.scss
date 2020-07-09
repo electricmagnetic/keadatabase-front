@@ -12,8 +12,8 @@ $font-family-serif: 'Playfair Display', Georgia, 'Times New Roman', Times, serif
 
 $font-size-md: 0.925rem;
 
-$footer-inner: lighten($brown-faded, 5%);
-$footer-outer: $brown-faded;
+$footer-outer: lighten($brown-faded, 5%);
+$footer-inner: $brown-faded;
 $footer-border: darken($brown-faded, 5%);
 
 // Bootstrap Variables
