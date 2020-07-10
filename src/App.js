@@ -43,6 +43,7 @@ class App extends Component {
         value={{
           fetcher: (...args) => fetch(...args).then(result => result.json()),
           dedupingInterval: CACHE_TIME,
+          revalidateOnFocus: false,
         }}
       >
         <Provider store={store}>

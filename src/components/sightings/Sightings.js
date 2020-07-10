@@ -15,12 +15,12 @@ const API_URL = `${process.env.REACT_APP_API_BASE}/sightings/sightings/`;
   */
 const Sightings = props => {
   const { queryString, ...others } = props;
-  const { data, error, isValidating } = useSWR(`${API_URL}${queryString}`);
+  const { data, error, isValidating } = useSWR(`${API_URL}${queryString}`, { dedupingInterval: 0 });
 
   if (isValidating) {
     return <Loader />;
   } else if (error) {
-    return <Error message="Error fetching sightings" />;
+    return <Error />;
   } else if (data) {
     const sightings = data.results;
 
