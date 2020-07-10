@@ -1,6 +1,6 @@
 {
   "name": "keadatabase-front",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "homepage": "https://keadatabase.nz",
   "dependencies": {
@@ -34,6 +34,7 @@
     "redux": "^4.0.5",
     "redux-api-middleware": "^2.3.0",
     "redux-thunk": "^2.3.0",
+    "swr": "^0.2.3",
     "yup": "^0.25.1"
   },
   "scripts": {

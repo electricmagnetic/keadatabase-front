@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import useSWR from 'swr';
 import Moment from 'react-moment';
 
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
-import { getPosts } from '../../actions/wordpress';
 
 import './Posts.scss';
+
+const API_URL = `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/posts?per_page=1`;
+const fetcher = url => fetch(url).then(r => r.json());
 
 const Post = ({ post }) => {
   return (
@@ -22,34 +24,22 @@ const Post = ({ post }) => {
   );
 };
 
-class Posts extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
+const Posts = props => {
+  const { data, error, isValidating } = useSWR(`${API_URL}`, fetcher, { dedupingInterval: 60000 });
 
-    dispatch(getPosts());
-  }
-
-  render() {
-    const { posts } = this.props;
-
-    if (posts.pending) return <Loader />;
-    else if (posts.rejected) return <Error reason={posts.value.message} />;
-    else if (posts.fulfilled) {
-      return (
-        <div className="Posts">
-          <ul className="list-unstyled">
-            {posts.value.map(post => (
-              <Post post={post} key={post.id} />
-            ))}
-          </ul>
-        </div>
-      );
-    } else return null;
-  }
-}
-
-const mapStateToProps = state => {
-  return { posts: state.posts };
+  if (isValidating) return <Loader />;
+  else if (error) return <Error />;
+  else if (data) {
+    return (
+      <div className="Posts">
+        <ul className="list-unstyled">
+          {data.map(post => (
+            <Post post={post} key={post.id} />
+          ))}
+        </ul>
+      </div>
+    );
+  } else return null;
 };
 
-export default connect(mapStateToProps)(Posts);
+export default Posts;

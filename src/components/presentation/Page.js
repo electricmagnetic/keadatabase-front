@@ -1,42 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import useSWR from 'swr';
 
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
-import { getPages } from '../../actions/wordpress';
 
 import './Page.scss';
 
-class Page extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
+const API_URL = `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/pages?per_page=100`;
+const fetcher = url => fetch(url).then(r => r.json());
 
-    dispatch(getPages());
-  }
+const Page = props => {
+  const { data, error, isValidating } = useSWR(`${API_URL}`, fetcher, { dedupingInterval: 60000 });
 
-  render() {
-    const { pages, hideTitle, id } = this.props;
+  const { hideTitle, id } = props;
 
-    // Add sr-only (screen-reader only) class
-    const className = hideTitle ? 'sr-only' : '';
+  // Add sr-only (screen-reader only) class
+  const className = hideTitle ? 'sr-only' : '';
 
-    if (pages.pending) return <Loader />;
-    else if (pages.rejected) return <Error reason={pages.value.message} />;
-    else if (pages.fulfilled) {
-      const page = pages.value.page[id];
+  if (isValidating) return <Loader />;
+  else if (error) return <Error />;
+  else if (data) {
+    const page = data.find(page => page.id === id);
 
-      return (
-        <div className="Page">
-          <div className="Page-content" key={page.id}>
-            <h2 dangerouslySetInnerHTML={{ __html: page.title.rendered }} className={className} />
-            <p dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
-          </div>
+    return (
+      <div className="Page">
+        <div className="Page-content" key={page.id}>
+          <h2 dangerouslySetInnerHTML={{ __html: page.title.rendered }} className={className} />
+          <p dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
         </div>
-      );
-    } else return null;
-  }
-}
+      </div>
+    );
+  } else return null;
+};
 
 Page.propTypes = {
   id: PropTypes.number.isRequired,
@@ -47,8 +43,4 @@ Page.defaultProps = {
   hideTitle: false,
 };
 
-const mapStateToProps = state => {
-  return { pages: state.pages };
-};
-
-export default connect(mapStateToProps)(Page);
+export default Page;
