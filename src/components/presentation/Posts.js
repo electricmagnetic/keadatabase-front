@@ -8,7 +8,6 @@ import Error from '../helpers/Error';
 import './Posts.scss';
 
 const API_URL = `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/posts?per_page=1`;
-const fetcher = url => fetch(url).then(r => r.json());
 
 const Post = ({ post }) => {
   return (
@@ -25,7 +24,7 @@ const Post = ({ post }) => {
 };
 
 const Posts = props => {
-  const { data, error, isValidating } = useSWR(`${API_URL}`, fetcher, { dedupingInterval: 60000 });
+  const { data, error, isValidating } = useSWR(`${API_URL}`);
 
   if (isValidating) return <Loader />;
   else if (error) return <Error />;

@@ -8,10 +8,9 @@ import Error from '../helpers/Error';
 import './Page.scss';
 
 const API_URL = `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/pages?per_page=100`;
-const fetcher = url => fetch(url).then(r => r.json());
 
 const Page = props => {
-  const { data, error, isValidating } = useSWR(`${API_URL}`, fetcher, { dedupingInterval: 60000 });
+  const { data, error, isValidating } = useSWR(`${API_URL}`);
 
   const { hideTitle, id } = props;
 

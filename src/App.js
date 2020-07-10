@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
+import { SWRConfig } from 'swr';
 
 import configureStore from './store/store';
 import history from './history/history';
@@ -30,6 +31,7 @@ import ReportSightingSuccessPage from './views/report/sightingSuccess';
 
 import NoMatchPage from './views/nomatch';
 
+const CACHE_TIME = 24 * 60 * 60 * 1000;
 const store = configureStore();
 
 initGa(history);
@@ -37,42 +39,49 @@ initGa(history);
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <ScrollToTop>
-            <div className="Router">
-              <Header />
+      <SWRConfig
+        value={{
+          fetcher: (...args) => fetch(...args).then(result => result.json()),
+          dedupingInterval: CACHE_TIME,
+        }}
+      >
+        <Provider store={store}>
+          <ConnectedRouter history={history}>
+            <ScrollToTop>
+              <div className="Router">
+                <Header />
 
-              <main className="constrainer">
-                <Switch>
-                  <Route exact path="/" component={HomePage} />
+                <main className="constrainer">
+                  <Switch>
+                    <Route exact path="/" component={HomePage} />
 
-                  <Route exact path="/about" component={AboutPage} />
-                  <Route exact path="/terms" component={TermsPage} />
-                  <Route exact path="/licence" component={LicencePage} />
-                  <Route exact path="/sponsor" component={SponsorPage} />
-                  <Route exact path="/help" component={HelpPage} />
+                    <Route exact path="/about" component={AboutPage} />
+                    <Route exact path="/terms" component={TermsPage} />
+                    <Route exact path="/licence" component={LicencePage} />
+                    <Route exact path="/sponsor" component={SponsorPage} />
+                    <Route exact path="/help" component={HelpPage} />
 
-                  <Route exact path="/birds" component={BirdsPage} />
-                  <Route exact path="/birds/:slug" component={BirdDetailPage} />
+                    <Route exact path="/birds" component={BirdsPage} />
+                    <Route exact path="/birds/:slug" component={BirdDetailPage} />
 
-                  <Route exact path="/sightings" component={SightingsPage} />
-                  <Route exact path="/sightings/:id" component={SightingsDetailPage} />
+                    <Route exact path="/sightings" component={SightingsPage} />
+                    <Route exact path="/sightings/:id" component={SightingsDetailPage} />
 
-                  <Route exact path="/report" component={ReportSightingPage} />
-                  <Redirect exact from="/report/sighting" to="/report" />
-                  <Route exact path="/report/success" component={ReportSightingSuccessPage} />
-                  <Route exact path="/report/success/:id" component={ReportSightingSuccessPage} />
+                    <Route exact path="/report" component={ReportSightingPage} />
+                    <Redirect exact from="/report/sighting" to="/report" />
+                    <Route exact path="/report/success" component={ReportSightingSuccessPage} />
+                    <Route exact path="/report/success/:id" component={ReportSightingSuccessPage} />
 
-                  <Route component={NoMatchPage} />
-                </Switch>
-              </main>
+                    <Route component={NoMatchPage} />
+                  </Switch>
+                </main>
 
-              <Footer />
-            </div>
-          </ScrollToTop>
-        </ConnectedRouter>
-      </Provider>
+                <Footer />
+              </div>
+            </ScrollToTop>
+          </ConnectedRouter>
+        </Provider>
+      </SWRConfig>
     );
   }
 }
