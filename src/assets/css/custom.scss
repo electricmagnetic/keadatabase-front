@@ -67,3 +67,8 @@ label {
 img.isDead {
   filter: grayscale(100%);
 }
+
+.card,
+.card > * {
+  min-height: 0.01px; // IE11 flex fix
+}

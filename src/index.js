@@ -1,5 +1,9 @@
 import 'react-app-polyfill/ie11';
-import 'babel-polyfill';
+import 'react-app-polyfill/stable';
+
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Moment from 'react-moment';

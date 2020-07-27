@@ -11,7 +11,7 @@ footer {
     padding-left: 0;
     list-style: none;
     margin-bottom: 0;
-    margin-left: -15px;
+    margin-left: -($grid-gutter-width/2);
 
     li {
       margin-left: $grid-gutter-width/2;
@@ -19,6 +19,7 @@ footer {
       display: inline-block;
     }
   }
+
   .footer-sponsor {
     font-size: $font-size-sm;
   }
