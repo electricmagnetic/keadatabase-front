@@ -13,4 +13,4 @@ export const DEFAULT_ZOOM = 6;
 /**
   Zoom level once point specified.
  */
-export const POINT_ZOOM = 13;
+export const POINT_ZOOM = 14.5;

@@ -32,7 +32,7 @@ TODO: Setup tests for Travis CI
 Ensure you have the following:
 
 - The `awscli` Python package installed and configured with id and secret key.
-- `REACT_APP_MAPBOX_API_KEY`, `REACT_APP_LINZ_API_KEY`, `REACT_APP_GA_ID` defined in `.env.local`
+- `REACT_APP_MAPBOX_API_KEY`, `REACT_APP_LINZ_DATA_API_KEY`, `REACT_APP_LINZ_BASEMAPS_API_KEY`, `REACT_APP_GA_ID` defined in `.env.local`
 
 To deploy to Amazon S3 (and hence make available at https://keadatabase.nz/):  
 `npm run deploy`
