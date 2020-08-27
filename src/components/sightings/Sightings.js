@@ -8,7 +8,7 @@ import SightingsMap from './Sighting/SightingsMap';
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
 
-const API_URL = `${process.env.REACT_APP_API_BASE}/sightings/sightings/`;
+const API_URL = `${process.env.REACT_APP_API_BASE}/observations/`;
 
 /**
   Sightings fetches a series of sightings using a given (optional) queryString and renders it using Sighting.

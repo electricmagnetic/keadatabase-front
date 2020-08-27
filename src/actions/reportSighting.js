@@ -10,7 +10,7 @@ export const REPORT_SIGHTING_OPTIONS_ERROR = 'reportSighting/options/ERROR';
 export function getReportSightingOptions() {
   return {
     [RSAA]: {
-      endpoint: `${process.env.REACT_APP_API_BASE}/report/sighting/`,
+      endpoint: `${process.env.REACT_APP_API_BASE}/report/observation/`,
       method: 'OPTIONS',
       headers: { Accept: 'application/json' },
       types: [
@@ -31,7 +31,7 @@ export function postReportSighting(values, formikBag) {
   return async (dispatch, getState) => {
     const response = await dispatch({
       [RSAA]: {
-        endpoint: `${process.env.REACT_APP_API_BASE}/report/sighting/`,
+        endpoint: `${process.env.REACT_APP_API_BASE}/report/observation/`,
         method: 'POST',
         body: formatSighting(values),
         types: [

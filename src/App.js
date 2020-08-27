@@ -65,8 +65,11 @@ class App extends Component {
                     <Route exact path="/birds" component={BirdsPage} />
                     <Route exact path="/birds/:slug" component={BirdDetailPage} />
 
-                    <Route exact path="/sightings" component={SightingsPage} />
-                    <Route exact path="/sightings/:id" component={SightingsDetailPage} />
+                    <Route exact path="/observations" component={SightingsPage} />
+                    <Route exact path="/observations/:id" component={SightingsDetailPage} />
+
+                    <Redirect exact from="/sightings" to="/observations" />
+                    <Redirect exact from="/sightings/:id" to="/observations/:id" />
 
                     <Route exact path="/report" component={ReportSightingPage} />
                     <Redirect exact from="/report/sighting" to="/report" />
