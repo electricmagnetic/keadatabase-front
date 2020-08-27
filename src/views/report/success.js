@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Page from '../../components/presentation/Page';
 import Banner from '../../components/presentation/Banner';
 
-class ReportSightingSuccessPage extends Component {
+class ReportObservationSuccessPage extends Component {
   render() {
     const id = this.props.match.params.id;
     return (
@@ -22,11 +22,11 @@ class ReportSightingSuccessPage extends Component {
               </Link>
               {id && (
                 <Link
-                  to={'/sightings/' + this.props.match.params.id}
+                  to={'/observations/' + this.props.match.params.id}
                   className="btn btn-outline-primary"
                   role="button"
                 >
-                  View Sighting
+                  View Observation
                 </Link>
               )}
             </div>
@@ -40,4 +40,4 @@ class ReportSightingSuccessPage extends Component {
   }
 }
 
-export default ReportSightingSuccessPage;
+export default ReportObservationSuccessPage;

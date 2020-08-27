@@ -23,11 +23,11 @@ import HelpPage from './views/help';
 import BirdsPage from './views/birds/index';
 import BirdDetailPage from './views/birds/detail';
 
-import SightingsPage from './views/sightings/index';
-import SightingsDetailPage from './views/sightings/detail';
+import ObservationsPage from './views/observations/index';
+import ObservationDetailPage from './views/observations/detail';
 
-import ReportSightingPage from './views/report/sighting';
-import ReportSightingSuccessPage from './views/report/sightingSuccess';
+import ReportObservationPage from './views/report/index';
+import ReportObservationSuccessPage from './views/report/success';
 
 import NoMatchPage from './views/nomatch';
 
@@ -65,16 +65,21 @@ class App extends Component {
                     <Route exact path="/birds" component={BirdsPage} />
                     <Route exact path="/birds/:slug" component={BirdDetailPage} />
 
-                    <Route exact path="/observations" component={SightingsPage} />
-                    <Route exact path="/observations/:id" component={SightingsDetailPage} />
+                    <Route exact path="/observations" component={ObservationsPage} />
+                    <Route exact path="/observations/:id" component={ObservationDetailPage} />
 
+                    <Route exact path="/report" component={ReportObservationPage} />
+                    <Route exact path="/report/success" component={ReportObservationSuccessPage} />
+                    <Route
+                      exact
+                      path="/report/success/:id"
+                      component={ReportObservationSuccessPage}
+                    />
+
+                    {/* Deprecated but retained to prevent broken URLs */}
                     <Redirect exact from="/sightings" to="/observations" />
                     <Redirect exact from="/sightings/:id" to="/observations/:id" />
-
-                    <Route exact path="/report" component={ReportSightingPage} />
                     <Redirect exact from="/report/sighting" to="/report" />
-                    <Route exact path="/report/success" component={ReportSightingSuccessPage} />
-                    <Route exact path="/report/success/:id" component={ReportSightingSuccessPage} />
 
                     <Route component={NoMatchPage} />
                   </Switch>

@@ -5,7 +5,7 @@ import Page from '../components/presentation/Page';
 import Posts from '../components/presentation/Posts';
 import Banner from '../components/presentation/Banner';
 import BannerButtons from '../components/presentation/BannerButtons';
-import BirdSightings from '../components/sightings/BirdSightings';
+import BirdObservations from '../components/sightings/BirdSightings';
 import Birds from '../components/birds/Birds';
 import Sponsors from '../components/presentation/Sponsors';
 
@@ -51,7 +51,7 @@ const HomePage = props => {
             <div className="col-md-6">
               <h2 className="mb-3">Recently observed</h2>
               <div className="row">
-                <BirdSightings
+                <BirdObservations
                   type="feature"
                   queryString="?has_bird=true&page_size=4"
                   className="col-6 col-sm-3 col-md-6 col-lg-3 mb-3"

@@ -1,12 +1,12 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import Sightings from '../../components/sightings/Sightings';
+import Observations from '../../components/sightings/Sightings';
 import Banner from '../../components/presentation/Banner';
 
-const SightingsPage = props => {
+const ObservationsPage = props => {
   return (
-    <div className="SightingsPage">
+    <div className="ObservationsPage">
       <Helmet title="View Observations" />
       <section>
         <Banner size="small">
@@ -15,12 +15,12 @@ const SightingsPage = props => {
         </Banner>
       </section>
       <section className="mb-5 py-3 px-3 py-lg-0 px-lg-0">
-        <Sightings type="map" />
+        <Observations type="map" />
       </section>
       <section className="mb-5">
         <div className="container">
           <div className="row">
-            <Sightings type="card" className="col-sm-6 col-md-4 col-lg-3 mb-3" />
+            <Observations type="card" className="col-sm-6 col-md-4 col-lg-3 mb-3" />
           </div>
         </div>
       </section>
@@ -28,4 +28,4 @@ const SightingsPage = props => {
   );
 };
 
-export default SightingsPage;
+export default ObservationsPage;
