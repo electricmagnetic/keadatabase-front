@@ -1,11 +1,11 @@
 {
   "name": "keadatabase-front",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "private": true,
   "homepage": "https://keadatabase.nz",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.13.1",
-    "bootstrap": "^4.5.0",
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "bootstrap": "^4.5.2",
     "core-js": "^3.6.5",
     "formik": "^1.5.8",
     "handlebars": "^4.7.6",
@@ -29,7 +29,7 @@
     "react-refetch": "^3.0.1",
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^5.0.0-alpha.9",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^3.4.3",
     "react-truncate": "^2.4.0",
     "redux": "^4.0.5",
     "redux-api-middleware": "^2.3.0",
