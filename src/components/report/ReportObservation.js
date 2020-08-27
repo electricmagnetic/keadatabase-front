@@ -6,12 +6,15 @@ import * as yup from 'yup';
 
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
-import SightingDetailsFieldset from './fieldset/SightingDetailsFieldset';
-import SightingBirdsFieldset from './fieldset/SightingBirdsFieldset';
+import ObservationDetailsFieldset from './fieldset/ObservationDetailsFieldset';
+import ObservationBirdsFieldset from './fieldset/ObservationBirdsFieldset';
 import ContributorFieldset from './fieldset/ContributorFieldset';
 import FurtherInformationFieldset from './fieldset/FurtherInformationFieldset';
 import SubmitFieldset from './fieldset/SubmitFieldset';
-import { getReportSightingOptions, postReportSighting } from '../../actions/reportSighting';
+import {
+  getReportObservationOptions,
+  postReportObservation,
+} from '../../actions/reportObservation';
 
 const initialValues = {
   dateTimeSighted: moment(),
@@ -67,7 +70,7 @@ const validationSchema = yup.object().shape({
   }),
 });
 
-class ReportSighting extends Component {
+class ReportObservation extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -75,22 +78,22 @@ class ReportSighting extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(getReportSightingOptions());
+    dispatch(getReportObservationOptions());
   }
 
   handleSubmit(values, formikBag) {
     const { dispatch } = this.props;
-    dispatch(postReportSighting(values, formikBag));
+    dispatch(postReportObservation(values, formikBag));
   }
 
   render() {
-    const { reportSightingOptions, reportSightingPost } = this.props;
+    const { reportObservationOptions, reportObservationPost } = this.props;
 
-    if (reportSightingOptions.pending) return <Loader />;
-    else if (reportSightingOptions.rejected)
-      return <Error reason={reportSightingOptions.value.message} />;
-    else if (reportSightingOptions.fulfilled) {
-      const options = reportSightingOptions.value.actions.POST;
+    if (reportObservationOptions.pending) return <Loader />;
+    else if (reportObservationOptions.rejected)
+      return <Error reason={reportObservationOptions.value.message} />;
+    else if (reportObservationOptions.fulfilled) {
+      const options = reportObservationOptions.value.actions.POST;
       return (
         <div>
           <p>All fields are required, except where indicated.</p>
@@ -100,11 +103,11 @@ class ReportSighting extends Component {
             onSubmit={this.handleSubmit}
             render={props => (
               <Form>
-                <SightingDetailsFieldset {...props} options={options} />
-                <SightingBirdsFieldset {...props} options={options} />
+                <ObservationDetailsFieldset {...props} options={options} />
+                <ObservationBirdsFieldset {...props} options={options} />
                 <ContributorFieldset {...props} options={options} />
                 <FurtherInformationFieldset {...props} options={options} />
-                <SubmitFieldset {...props} response={reportSightingPost} />
+                <SubmitFieldset {...props} response={reportObservationPost} />
               </Form>
             )}
           />
@@ -115,8 +118,8 @@ class ReportSighting extends Component {
 }
 
 const mapStateToProps = state => ({
-  reportSightingOptions: state.reportSightingOptions,
-  reportSightingPost: state.reportSightingPost,
+  reportObservationOptions: state.reportObservationOptions,
+  reportObservationPost: state.reportObservationPost,
 });
 
-export default connect(mapStateToProps)(ReportSighting);
+export default connect(mapStateToProps)(ReportObservation);

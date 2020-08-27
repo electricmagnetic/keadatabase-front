@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import Banner from '../../presentation/Banner';
 import generateSummary from './helpers/generateSummary';
 import getPicture from './helpers/getPicture';
-import BirdSightings from '../../sightings/BirdSightings';
+import BirdObservations from '../../observations/BirdObservations';
 import PrettyBandCombo from './helpers/PrettyBandCombo';
 
 import './BirdPage.scss';
@@ -95,14 +95,14 @@ const BirdPage = ({ bird }) => {
         <section>
           <h2>Recent observations</h2>
           <section className="mb-3">
-            <BirdSightings queryString={`?bird=${bird.slug}&page_size=24`} type="map" />
+            <BirdObservations queryString={`?bird=${bird.slug}&page_size=24`} type="map" />
           </section>
           <section className="mb-5">
             <div className="row">
-              <BirdSightings
+              <BirdObservations
                 queryString={`?bird=${bird.slug}&page_size=24`}
                 className="col-6 col-sm-4 col-lg-3 mb-3"
-                type="sightingCard"
+                type="observationCard"
               />
             </div>
           </section>

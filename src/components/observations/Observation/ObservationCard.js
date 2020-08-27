@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import FormatDateTime from '../../helpers/FormatDateTime';
 import generateSummary from './helpers/generateSummary';
 
-import './SightingCard.scss';
+import './ObservationCard.scss';
 
 const ListItem = ({ icon, children, className }) => (
   <li className={`list-group-item ${className}`}>
@@ -19,33 +19,33 @@ const ListItem = ({ icon, children, className }) => (
 );
 
 /**
-  Presents a nicely formatted card for a given sighting.
+  Presents a nicely formatted card for a given observation.
  */
-const SightingCard = ({ sighting, ...others }) => {
+const ObservationCard = ({ observation, ...others }) => {
   const { className } = others;
-  const classNames = ['SightingCard'];
+  const classNames = ['ObservationCard'];
   if (className) classNames.push(className);
 
   return (
     <div className={classNames.join(' ')}>
       <div className="card card-dull">
-        <h2 className="sr-only">Sighting {sighting.id}</h2>
+        <h2 className="sr-only">Observation {observation.id}</h2>
         <ul className="list-group list-group-flush">
           <ListItem icon="fa-map-marker-alt">
-            {sighting.geocode}
+            {observation.geocode}
             <br />
-            <small>{sighting.region}</small>
+            <small>{observation.region}</small>
           </ListItem>
           <ListItem icon="fa-calendar">
             <FormatDateTime calendar>
-              {sighting.date_sighted} {sighting.time_sighted}
+              {observation.date_sighted} {observation.time_sighted}
             </FormatDateTime>
           </ListItem>
-          <ListItem icon="fa-feather-alt">{generateSummary(sighting)}</ListItem>
-          <ListItem icon="fa-user">{sighting.contributor}</ListItem>
+          <ListItem icon="fa-feather-alt">{generateSummary(observation)}</ListItem>
+          <ListItem icon="fa-user">{observation.contributor}</ListItem>
           <ListItem icon="fa-info-circle" className="bg-white">
-            <Link to={`/sightings/${sighting.id}`}>
-              View Observation <small>({`#${sighting.id}`})</small>
+            <Link to={`/observations/${observation.id}`}>
+              View Observation <small>({`#${observation.id}`})</small>
             </Link>
           </ListItem>
         </ul>
@@ -54,8 +54,8 @@ const SightingCard = ({ sighting, ...others }) => {
   );
 };
 
-SightingCard.propTypes = {
-  sighting: PropTypes.object.isRequired,
+ObservationCard.propTypes = {
+  observation: PropTypes.object.isRequired,
 };
 
-export default SightingCard;
+export default ObservationCard;

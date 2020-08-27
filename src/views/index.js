@@ -5,7 +5,7 @@ import Page from '../components/presentation/Page';
 import Posts from '../components/presentation/Posts';
 import Banner from '../components/presentation/Banner';
 import BannerButtons from '../components/presentation/BannerButtons';
-import BirdObservations from '../components/sightings/BirdSightings';
+import BirdObservations from '../components/observations/BirdObservations';
 import Birds from '../components/birds/Birds';
 import Sponsors from '../components/presentation/Sponsors';
 

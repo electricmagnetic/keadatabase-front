@@ -5,16 +5,16 @@ import PropTypes from 'prop-types';
 
 import BaseMap from '../../map/BaseMap';
 import { DEFAULT_BOUNDS } from '../../map/defaults';
-import Sighting from '../Sighting';
+import Observation from '../Observation';
 
-import './SightingsMap.scss';
+import './ObservationsMap.scss';
 
 /**
-  Presents a nicely formatted map of given sightings:
+  Presents a nicely formatted map of given observations:
   - If `single` true, disables interactivity, popups and uses real precision for circle.
   - If `single` false, provides an interactive map with popups and a consistent circle size.
   */
-class SightingsMap extends Component {
+class ObservationsMap extends Component {
   /**
     Uses a default set of bounds to initialise map.
     */
@@ -36,35 +36,35 @@ class SightingsMap extends Component {
   }
 
   /**
-    Generate CircleMarker and associated Tooltip for a given sighting.
+    Generate CircleMarker and associated Tooltip for a given observation.
     */
-  createCircleMarker = sighting => (
+  createCircleMarker = observation => (
     <CircleMarker
-      center={LeafletGeoJSON.coordsToLatLng(sighting.point_location.coordinates)}
+      center={LeafletGeoJSON.coordsToLatLng(observation.point_location.coordinates)}
       color="orange"
-      key={sighting.id}
+      key={observation.id}
       radius={10}
     >
-      <Popup className="SightingPopup" closeButton={false}>
-        <Sighting sighting={sighting} type="card" />
+      <Popup className="ObservationPopup" closeButton={false}>
+        <Observation observation={observation} type="card" />
       </Popup>
     </CircleMarker>
   );
 
   /**
-    Generate single Circle without Tooltip, better used for single sightings
+    Generate single Circle without Tooltip, better used for single observations
     */
-  createCircle = sighting => (
+  createCircle = observation => (
     <Circle
-      center={LeafletGeoJSON.coordsToLatLng(sighting.point_location.coordinates)}
+      center={LeafletGeoJSON.coordsToLatLng(observation.point_location.coordinates)}
       color="red"
-      key={sighting.id}
-      radius={sighting.precision}
+      key={observation.id}
+      radius={observation.precision}
     />
   );
 
   render() {
-    const { sightings, single } = this.props;
+    const { observations, single } = this.props;
 
     const disableInteractivityProperties = {
       zoomControl: false,
@@ -80,7 +80,7 @@ class SightingsMap extends Component {
     };
 
     return (
-      <div className="SightingsMap">
+      <div className="ObservationsMap">
         <BaseMap
           boundsOptions={boundsOptions}
           bounds={this.state.featureBounds}
@@ -88,8 +88,8 @@ class SightingsMap extends Component {
         >
           <FeatureGroup onAdd={event => this.updateFeatureBounds(event)}>
             {single
-              ? sightings.map(sighting => this.createCircle(sighting))
-              : sightings.map(sighting => this.createCircleMarker(sighting))}
+              ? observations.map(observation => this.createCircle(observation))
+              : observations.map(observation => this.createCircleMarker(observation))}
           </FeatureGroup>
           <ScaleControl />
         </BaseMap>
@@ -98,13 +98,13 @@ class SightingsMap extends Component {
   }
 }
 
-SightingsMap.propTypes = {
-  sightings: PropTypes.array.isRequired,
+ObservationsMap.propTypes = {
+  observations: PropTypes.array.isRequired,
   single: PropTypes.bool.isRequired,
 };
 
-SightingsMap.defaultProps = {
+ObservationsMap.defaultProps = {
   single: false,
 };
 
-export default SightingsMap;
+export default ObservationsMap;

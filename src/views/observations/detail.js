@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Observation from '../../components/sightings/Sighting';
+import Observation from '../../components/observations/Observation';
 
 const ObservationDetailPage = ({ match }) => {
   const id = match.params.id;

@@ -5,21 +5,21 @@ import Helmet from 'react-helmet';
 import FormatDateTime from '../../helpers/FormatDateTime';
 import Banner from '../../presentation/Banner';
 import generateSummary from './helpers/generateSummary';
-import BirdSightings from '../BirdSightings';
-import SightingsMap from './SightingsMap';
+import BirdObservations from '../BirdObservations';
+import ObservationsMap from './ObservationsMap';
 
-import './SightingPage.scss';
+import './ObservationPage.scss';
 
 /**
-  Presents a nicely formatted page for a given sighting.
+  Presents a nicely formatted page for a given observation.
  */
-const SightingPage = ({ sighting }) => {
+const ObservationPage = ({ observation }) => {
   return (
-    <div className="SightingPage">
-      <Helmet title={`#${sighting.id} (Observation)`} />
+    <div className="ObservationPage">
+      <Helmet title={`#${observation.id} (Observation)`} />
       <section className="mb-5">
         <Banner size="small">
-          <h1>{`Observation #${sighting.id}`}</h1>
+          <h1>{`Observation #${observation.id}`}</h1>
         </Banner>
       </section>
       <div className="container">
@@ -29,47 +29,47 @@ const SightingPage = ({ sighting }) => {
               <dt>When</dt>
               <dd>
                 <FormatDateTime format="longDateTime">
-                  {sighting.date_sighted} {sighting.time_sighted}
+                  {observation.date_sighted} {observation.time_sighted}
                 </FormatDateTime>
               </dd>
               <dt>Where</dt>
               <dd>
-                {sighting.geocode}, {sighting.region}
+                {observation.geocode}, {observation.region}
               </dd>
               <dt>Who</dt>
-              <dd>{sighting.contributor}</dd>
+              <dd>{observation.contributor}</dd>
               <dt>What</dt>
-              <dd>{generateSummary(sighting)}</dd>
+              <dd>{generateSummary(observation)}</dd>
               <dt>Status</dt>
-              <dd>{sighting.get_status_display}</dd>
+              <dd>{observation.get_status_display}</dd>
             </dl>
-            {sighting.comments && (
+            {observation.comments && (
               <section>
                 <h2>Comments</h2>
-                <p className="comments">{sighting.comments}</p>
+                <p className="comments">{observation.comments}</p>
               </section>
             )}
-            {sighting.location_details && (
+            {observation.location_details && (
               <section>
                 <h2>Location Details</h2>
-                <p className="location">{sighting.location_details}</p>
+                <p className="location">{observation.location_details}</p>
               </section>
             )}
-            {sighting.behaviour && (
+            {observation.behaviour && (
               <section>
                 <h2>Behaviour</h2>
-                <p className="behaviour">{sighting.behaviour}</p>
+                <p className="behaviour">{observation.behaviour}</p>
               </section>
             )}
           </div>
           <div className="col-md-6 mb-5">
-            <SightingsMap sightings={[sighting]} single />
+            <ObservationsMap observations={[observation]} single />
           </div>
         </div>
         <section className="mb-5">
           <div className="row">
-            <BirdSightings
-              queryString={`?sighting=${sighting.id}`}
+            <BirdObservations
+              queryString={`?sighting=${observation.id}`}
               className="col-6 col-sm-4 col-lg-3 mb-3"
             />
           </div>
@@ -79,8 +79,8 @@ const SightingPage = ({ sighting }) => {
   );
 };
 
-SightingPage.propTypes = {
-  sighting: PropTypes.object.isRequired,
+ObservationPage.propTypes = {
+  observation: PropTypes.object.isRequired,
 };
 
-export default SightingPage;
+export default ObservationPage;

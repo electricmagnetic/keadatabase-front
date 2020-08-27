@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import Observations from '../../components/sightings/Sightings';
+import Observations from '../../components/observations/Observations';
 import Banner from '../../components/presentation/Banner';
 
 const ObservationsPage = props => {

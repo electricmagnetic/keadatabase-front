@@ -85,7 +85,7 @@ const RenderBirds = ({ arrayHelpers, options }) => {
   );
 };
 
-const SightingBirdsFieldset = ({ options, values }) => {
+const ObservationBirdsFieldset = ({ options, values }) => {
   return (
     <fieldset>
       <legend>2. Birds</legend>
@@ -147,7 +147,7 @@ const SightingBirdsFieldset = ({ options, values }) => {
   );
 };
 
-SightingBirdsFieldset.propTypes = {
+ObservationBirdsFieldset.propTypes = {
   options: PropTypes.shape({
     sighting_type: PropTypes.shape({
       choices: PropTypes.arrayOf(
@@ -161,4 +161,4 @@ SightingBirdsFieldset.propTypes = {
   values: PropTypes.object.isRequired,
 };
 
-export default SightingBirdsFieldset;
+export default ObservationBirdsFieldset;

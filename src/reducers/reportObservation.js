@@ -5,7 +5,7 @@ import {
   REPORT_SIGHTING_POST_REQUEST,
   REPORT_SIGHTING_POST_RECEIVE,
   REPORT_SIGHTING_POST_ERROR,
-} from '../actions/reportSighting';
+} from '../actions/reportObservation';
 
 const initialState = {
   pending: false,
@@ -14,7 +14,7 @@ const initialState = {
   value: {},
 };
 
-export const reportSightingOptions = (state = initialState, action) => {
+export const reportObservationOptions = (state = initialState, action) => {
   switch (action.type) {
     case REPORT_SIGHTING_OPTIONS_REQUEST:
       return Object.assign({}, state, {
@@ -41,7 +41,7 @@ export const reportSightingOptions = (state = initialState, action) => {
   }
 };
 
-export const reportSightingPost = (state = initialState, action) => {
+export const reportObservationPost = (state = initialState, action) => {
   switch (action.type) {
     case REPORT_SIGHTING_POST_REQUEST:
       return Object.assign({}, state, {

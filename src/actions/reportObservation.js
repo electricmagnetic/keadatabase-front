@@ -1,13 +1,13 @@
 import { RSAA } from 'redux-api-middleware';
 import { push } from 'react-router-redux';
 
-import { formatSighting } from './helpers/formatSighting';
+import { formatObservation } from './helpers/formatObservation';
 
-export const REPORT_SIGHTING_OPTIONS_REQUEST = 'reportSighting/options/REQUEST';
-export const REPORT_SIGHTING_OPTIONS_RECEIVE = 'reportSighting/options/RECEIVE';
-export const REPORT_SIGHTING_OPTIONS_ERROR = 'reportSighting/options/ERROR';
+export const REPORT_SIGHTING_OPTIONS_REQUEST = 'reportObservation/options/REQUEST';
+export const REPORT_SIGHTING_OPTIONS_RECEIVE = 'reportObservation/options/RECEIVE';
+export const REPORT_SIGHTING_OPTIONS_ERROR = 'reportObservation/options/ERROR';
 
-export function getReportSightingOptions() {
+export function getReportObservationOptions() {
   return {
     [RSAA]: {
       endpoint: `${process.env.REACT_APP_API_BASE}/report/observation/`,
@@ -22,18 +22,18 @@ export function getReportSightingOptions() {
   };
 }
 
-export const REPORT_SIGHTING_POST_REQUEST = 'reportSighting/post/REQUEST';
-export const REPORT_SIGHTING_POST_RECEIVE = 'reportSighting/post/RECEIVE';
-export const REPORT_SIGHTING_POST_ERROR = 'reportSighting/post/ERROR';
+export const REPORT_SIGHTING_POST_REQUEST = 'reportObservation/post/REQUEST';
+export const REPORT_SIGHTING_POST_RECEIVE = 'reportObservation/post/RECEIVE';
+export const REPORT_SIGHTING_POST_ERROR = 'reportObservation/post/ERROR';
 
-export function postReportSighting(values, formikBag) {
+export function postReportObservation(values, formikBag) {
   // Returning thunk to dispatch multiple actions
   return async (dispatch, getState) => {
     const response = await dispatch({
       [RSAA]: {
         endpoint: `${process.env.REACT_APP_API_BASE}/report/observation/`,
         method: 'POST',
-        body: formatSighting(values),
+        body: formatObservation(values),
         types: [
           REPORT_SIGHTING_POST_REQUEST,
           REPORT_SIGHTING_POST_RECEIVE,

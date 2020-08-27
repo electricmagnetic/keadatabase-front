@@ -28,7 +28,7 @@ const BannerButtons = ({ className }) => {
             </Link>
           </div>
           <div className="col-md-4 banner-button">
-            <Link to="/sightings" className="btn btn-lg btn-transparent">
+            <Link to="/observations" className="btn btn-lg btn-transparent">
               <i className="fa-fw fas fa-list-alt mr-2" />
               <span className="d-md-none d-lg-inline">View </span>
               Observations

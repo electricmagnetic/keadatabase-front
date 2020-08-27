@@ -9,7 +9,7 @@ const ContributorFieldset = ({ options }) => {
     <fieldset>
       <legend>3. About You</legend>
 
-      <p>We need to know who is reporting the sighting.</p>
+      <p>We need to know who is reporting the observation.</p>
 
       <div className="row">
         <div className="col-md-6">
@@ -32,7 +32,7 @@ const ContributorFieldset = ({ options }) => {
 
         <div className="col-md-5 offset-md-1">
           <p className="text-muted">
-            Your name will be public (as part of your sighting), but any contact information you
+            Your name will be public (as part of your observation), but any contact information you
             provide will not be.
           </p>
         </div>

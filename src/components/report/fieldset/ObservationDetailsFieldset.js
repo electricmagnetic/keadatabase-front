@@ -8,10 +8,10 @@ import MapSelector from '../../helpers/MapSelector';
 import { RenderField } from '../../helpers/RenderField';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const SightingDetailsFieldset = ({ options, values, setFieldValue }) => {
+const ObservationDetailsFieldset = ({ options, values, setFieldValue }) => {
   return (
     <fieldset>
-      <legend>1. Sighting Details</legend>
+      <legend>1. Observation Details</legend>
 
       <div className="form-group">
         <label htmlFor="dateTimeSighted">Date and time sighted</label>
@@ -92,7 +92,7 @@ const SightingDetailsFieldset = ({ options, values, setFieldValue }) => {
   );
 };
 
-SightingDetailsFieldset.propTypes = {
+ObservationDetailsFieldset.propTypes = {
   options: PropTypes.shape({
     precision: PropTypes.shape({
       choices: PropTypes.arrayOf(
@@ -107,4 +107,4 @@ SightingDetailsFieldset.propTypes = {
   setFieldValue: PropTypes.func.isRequired,
 };
 
-export default SightingDetailsFieldset;
+export default ObservationDetailsFieldset;

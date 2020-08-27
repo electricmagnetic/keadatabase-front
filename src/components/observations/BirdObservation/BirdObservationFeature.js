@@ -10,12 +10,12 @@ import birdLink from '../../birds/Bird/helpers/birdLink';
   Presents a 'feature' (rounded image with details) containing information about a recently sighted
   Bird and the relevant sighting.
   */
-const BirdSightingFeature = ({ birdSighting, ...others }) => {
+const BirdObservationFeature = ({ birdObservation, ...others }) => {
   const { className } = others;
-  const classNames = ['BirdSightingFeature'];
+  const classNames = ['BirdObservationFeature'];
   if (className) classNames.push(className);
 
-  const { bird, sighting } = birdSighting;
+  const { bird, sighting } = birdObservation;
 
   return (
     <div className={classNames.join(' ')}>
@@ -40,8 +40,8 @@ const BirdSightingFeature = ({ birdSighting, ...others }) => {
   );
 };
 
-BirdSightingFeature.propTypes = {
-  birdSighting: PropTypes.object.isRequired,
+BirdObservationFeature.propTypes = {
+  birdObservation: PropTypes.object.isRequired,
 };
 
-export default BirdSightingFeature;
+export default BirdObservationFeature;

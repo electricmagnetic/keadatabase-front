@@ -38,7 +38,7 @@ const Header = props => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/sightings" className="nav-link">
+              <NavLink to="/observations" className="nav-link">
                 <i className="fa-fw fas fa-list-alt mr-2" />
                 <span className="d-md-none d-lg-inline">View </span>
                 Observations
