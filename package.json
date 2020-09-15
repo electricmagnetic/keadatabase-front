@@ -1,6 +1,6 @@
 {
   "name": "keadatabase-front",
-  "version": "2.4.4",
+  "version": "2.4.5",
   "private": true,
   "homepage": "https://keadatabase.nz",
   "dependencies": {
@@ -10,8 +10,8 @@
     "formik": "^1.5.8",
     "handlebars": "^4.7.6",
     "jquery": "^3.5.1",
-    "leaflet": "^1.6.0",
-    "moment": "^2.27.0",
+    "leaflet": "^1.7.1",
+    "moment": "^2.28.0",
     "node-sass": "^4.14.1",
     "normalizr": "^3.6.0",
     "prop-types": "^15.7.2",
