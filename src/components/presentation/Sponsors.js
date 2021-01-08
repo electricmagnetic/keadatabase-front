@@ -23,8 +23,8 @@ const Sponsors = props => {
                     </a>
                   </li>
                   <li>
-                    <a href="http://thebealeyhotel.co.nz" rel="noopener noreferrer" target="_blank">
-                      The Bealey
+                    <a href="https://thebealeyhotel.com" rel="noopener noreferrer" target="_blank">
+                      The Bealey Hotel
                     </a>
                   </li>
                   <li>
