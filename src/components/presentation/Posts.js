@@ -7,7 +7,7 @@ import Error from '../helpers/Error';
 
 import './Posts.scss';
 
-const API_URL = `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/posts?per_page=1`;
+const API_URL = `${process.env.REACT_APP_WORDPRESS_API}/posts/?per_page=1`;
 
 const Post = ({ post }) => {
   return (

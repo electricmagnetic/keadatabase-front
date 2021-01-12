@@ -7,7 +7,7 @@ import Error from '../helpers/Error';
 
 import './Page.scss';
 
-const API_URL = `https://public-api.wordpress.com/wp/v2/sites/blog.keadatabase.nz/pages?per_page=100`;
+const API_URL = `${process.env.REACT_APP_WORDPRESS_API}/pages/?per_page=100`;
 
 const Page = props => {
   const { data, error, isValidating } = useSWR(`${API_URL}`);
