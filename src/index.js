@@ -25,6 +25,7 @@ Moment.globalLocale = 'en-nz';
 
 Sentry.init({
   dsn: `${process.env.REACT_APP_SENTRY_DSN}`,
+  release: `${process.env.REACT_APP_NAME}@${process.env.REACT_APP_VERSION}`,
   autoSessionTracking: true,
   integrations: [new Integrations.BrowserTracing()],
   tracesSampleRate: 1.0,

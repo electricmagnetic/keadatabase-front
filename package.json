@@ -1,6 +1,6 @@
 {
   "name": "keadatabase-front",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "private": true,
   "homepage": "https://keadatabase.nz",
   "dependencies": {
