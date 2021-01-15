@@ -1,10 +1,10 @@
 {
   "name": "keadatabase-front",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "private": true,
   "homepage": "https://keadatabase.nz",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.1",
+    "@fortawesome/fontawesome-free": "^5.15.2",
     "@sentry/react": "^5.30.0",
     "@sentry/tracing": "^5.30.0",
     "bootstrap": "^4.5.3",
@@ -14,10 +14,9 @@
     "jquery": "^3.5.1",
     "leaflet": "^1.7.1",
     "moment": "^2.29.1",
-    "node-sass": "^4.14.1",
     "normalizr": "^3.6.1",
     "prop-types": "^15.7.2",
-    "qs": "^6.9.4",
+    "qs": "^6.9.6",
     "react": "^16.14.0",
     "react-app-polyfill": "^1.0.6",
     "react-bootstrap-typeahead": "^3.4.7",
@@ -68,7 +67,8 @@
     "husky": "^2.7.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^1.11.1",
-    "s3-deploy": "^1.4.0"
+    "s3-deploy": "^1.4.0",
+    "sass": "^1.32.4"
   },
   "husky": {
     "hooks": {
