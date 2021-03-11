@@ -23,7 +23,7 @@ class BandComboSearchForm extends Component {
       is_extended: 1,
       is_featured: 1,
       search: query.search || '',
-      page_size: 250,
+      page_size: 408,
       ordering: 'bird__bird_extended,bird__name',
     };
 
@@ -105,7 +105,7 @@ class BandComboSearchForm extends Component {
             <div className="col">
               <ColourInput
                 selected={this.state.colours}
-                onChange={selected => this.setState({ colours: selected })}
+                onChange={(selected) => this.setState({ colours: selected })}
               />
             </div>
             <div className="col">
@@ -144,11 +144,8 @@ class BandComboSearchForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { bandCombos: state.bandCombos };
 };
 
-export default compose(
-  withRouter,
-  connect(mapStateToProps)
-)(BandComboSearchForm);
+export default compose(withRouter, connect(mapStateToProps))(BandComboSearchForm);
