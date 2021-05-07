@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Formik, Form } from 'formik';
 import moment from 'moment';
 import * as yup from 'yup';
+import { withRouter } from 'react-router-dom';
 
 import Loader from '../helpers/Loader';
 import Error from '../helpers/Error';
@@ -69,8 +71,8 @@ class ReportObservation extends Component {
   }
 
   handleSubmit(values, formikBag) {
-    const { dispatch } = this.props;
-    dispatch(postReportObservation(values, formikBag));
+    const { dispatch, history } = this.props;
+    dispatch(postReportObservation(values, Object.assign({}, formikBag, { history: history })));
   }
 
   render() {
@@ -109,4 +111,4 @@ const mapStateToProps = state => ({
   reportObservationPost: state.reportObservationPost,
 });
 
-export default connect(mapStateToProps)(ReportObservation);
+export default compose(withRouter, connect(mapStateToProps))(ReportObservation);

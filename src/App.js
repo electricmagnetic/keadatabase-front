@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
 import { SWRConfig } from 'swr';
 
 import configureStore from './store/store';
-import history from './history/history';
 import initGa from './analytics';
+import history from './history';
 
 import ScrollToTop from './components/helpers/ScrollToTop';
 import Header from './components/presentation/Header';
@@ -60,7 +59,7 @@ class App extends Component {
         }}
       >
         <Provider store={store}>
-          <ConnectedRouter history={history}>
+          <Router history={history}>
             <ScrollToTop>
               <div className="Router">
                 <Header />
@@ -101,7 +100,7 @@ class App extends Component {
                 <Footer />
               </div>
             </ScrollToTop>
-          </ConnectedRouter>
+          </Router>
         </Provider>
       </SWRConfig>
     );

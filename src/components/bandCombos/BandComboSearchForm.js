@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import qs from 'qs';
-import { withRouter } from 'react-router';
-import { push } from 'react-router-redux';
+import { withRouter } from 'react-router-dom';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import 'react-bootstrap-typeahead/css/Typeahead-bs4.css';
 
@@ -59,7 +58,7 @@ class BandComboSearchForm extends Component {
       symbols: this.state.symbols,
       search: this.state.search,
     });
-    dispatch(push(`/birds?${visibleQuery}`));
+    this.props.history.push(`/birds?${visibleQuery}`);
   }
 
   render() {

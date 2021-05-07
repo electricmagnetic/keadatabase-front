@@ -1,5 +1,4 @@
 import { RSAA } from 'redux-api-middleware';
-import { push } from 'react-router-redux';
 
 import { formatObservation } from './helpers/formatObservation';
 
@@ -62,7 +61,7 @@ export function postReportObservation(values, formikBag) {
       formikBag.setErrors(errors);
     } else {
       const id = response.payload.id || '';
-      dispatch(push(`/report/success/${id}`));
+      formikBag.history.push(`/report/success/${id}`);
     }
     return response;
   };
