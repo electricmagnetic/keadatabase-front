@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Typeahead, Token } from 'react-bootstrap-typeahead';
+
 import 'react-bootstrap-typeahead/css/Typeahead.css';
-import 'react-bootstrap-typeahead/css/Typeahead-bs4.css';
 
 import colours from '../helpers/colours';
 
@@ -35,7 +35,7 @@ class ColourInput extends Component {
     };
     if (colour.value === 'white') style.border = '1px solid #ddd';
     return (
-      <Token key={index} onRemove={props.onRemove} style={style}>
+      <Token option={colour} key={index} onRemove={props.onRemove} style={style}>
         colour
       </Token>
     );
@@ -72,6 +72,7 @@ class ColourInput extends Component {
       <React.Fragment>
         <label htmlFor="colours">Colours</label>
         <Typeahead
+          id="colours"
           multiple
           options={colourOptions}
           onChange={this.handleChange}

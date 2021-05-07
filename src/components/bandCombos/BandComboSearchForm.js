@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import qs from 'qs';
 import { withRouter } from 'react-router-dom';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
-import 'react-bootstrap-typeahead/css/Typeahead-bs4.css';
 
 import getBandCombos from '../../actions/bandCombos';
 import ColourInput from './ColourInput';

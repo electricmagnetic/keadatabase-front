@@ -1,6 +1,6 @@
 {
   "name": "keadatabase-front",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "private": true,
   "homepage": "https://keadatabase.nz",
   "dependencies": {
@@ -20,7 +20,7 @@
     "qs": "^6.9.6",
     "react": "^17.0.2",
     "react-app-polyfill": "^1.0.6",
-    "react-bootstrap-typeahead": "^3.4.7",
+    "react-bootstrap-typeahead": "^5.1.4",
     "react-datepicker": "^1.8.0",
     "react-dom": "^17.0.2",
     "react-ga": "^3.3.0",
