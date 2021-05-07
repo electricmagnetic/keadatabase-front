@@ -83,6 +83,6 @@
     "arrowParens": "avoid"
   },
   "lint-staged": {
-    "*.{js,css,md}": "prettier --write"
+    "*.{yml,js,css,md}": "prettier --write"
   }
 }
