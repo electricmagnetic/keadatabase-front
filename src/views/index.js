@@ -1,5 +1,5 @@
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 import Page from '../components/presentation/Page';
 import Posts from '../components/presentation/Posts';

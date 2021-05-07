@@ -1,5 +1,5 @@
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 import BandCombosList from '../../components/bandCombos/BandCombosList';
 import BandComboSearchForm from '../../components/bandCombos/BandComboSearchForm';
