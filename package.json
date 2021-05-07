@@ -45,7 +45,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,7 +55,6 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not ie <= 10",
       "not op_mini all"
     ],
     "development": [
@@ -64,15 +64,21 @@
     ]
   },
   "devDependencies": {
-    "husky": "^4.3.8",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
-    "pretty-quick": "^3.1.0",
     "s3-deploy": "^1.4.0",
     "sass": "^1.32.8"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+  "prettier": {
+    "endOfLine": "lf",
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 100
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }
