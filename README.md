@@ -1,5 +1,7 @@
 # keadatabase-front
 
+![Tests](https://github.com/electricmagnetic/keadatabase-front/actions/workflows/tests.yml/badge.svg)
+
 The React-based front-end for the Kea Database <https://keadatabase.nz> citizen science project.
 Sponsored by [Catalyst](https://catalyst.net.nz).
 
