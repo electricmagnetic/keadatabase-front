@@ -5,7 +5,7 @@ Sponsored by [Catalyst](https://catalyst.net.nz).
 
 ## Setup
 
-You will need to have Node >= 14 installed with npm. Then run:  
+You will need to have Node >= 16 installed with npm. Then run:  
 `npm install`
 
 ## Running
