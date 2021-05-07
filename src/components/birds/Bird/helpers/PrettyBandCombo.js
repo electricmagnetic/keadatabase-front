@@ -29,7 +29,7 @@ const PrettyBandCombo = ({ bandCombo }) => {
   // [Common] Convert names into colours
   legs = legs.map(leg =>
     leg.map(band =>
-      band.map(function(part) {
+      band.map(function (part) {
         const partLowerCase = part.toLowerCase();
         return partLowerCase in colours ? colours[partLowerCase].hex : part;
       })

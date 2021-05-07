@@ -42,18 +42,8 @@ const notNumber = 'This field must be a number.';
 const validationSchema = yup.object().shape({
   dateTimeSighted: yup.object().required(requiredMessage),
   precision: yup.string().required(requiredMessage),
-  longitude: yup
-    .number()
-    .min(-180)
-    .max(180)
-    .required(requiredMessage)
-    .typeError(notNumber),
-  latitude: yup
-    .number()
-    .min(-90)
-    .max(90)
-    .required(requiredMessage)
-    .typeError(notNumber),
+  longitude: yup.number().min(-180).max(180).required(requiredMessage).typeError(notNumber),
+  latitude: yup.number().min(-90).max(90).required(requiredMessage).typeError(notNumber),
   sighting_type: yup.string().required(requiredMessage),
   birds: yup.array().of(
     yup.object().shape({
@@ -63,10 +53,7 @@ const validationSchema = yup.object().shape({
   number: yup.number().required(requiredMessage),
   contributor: yup.object().shape({
     name: yup.string().required(requiredMessage),
-    email: yup
-      .string()
-      .email('Invalid email address.')
-      .required(requiredMessage),
+    email: yup.string().email('Invalid email address.').required(requiredMessage),
   }),
 });
 
