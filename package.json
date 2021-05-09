@@ -1,6 +1,6 @@
 {
   "name": "keadatabase-front",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "private": true,
   "homepage": "https://keadatabase.nz",
   "dependencies": {
@@ -12,7 +12,7 @@
     "@testing-library/user-event": "^13.1.8",
     "bootstrap": "^4.5.3",
     "core-js": "^3.8.2",
-    "formik": "^1.5.8",
+    "formik": "^2.2.6",
     "jquery": "^3.5.1",
     "leaflet": "^1.7.1",
     "moment": "^2.29.1",

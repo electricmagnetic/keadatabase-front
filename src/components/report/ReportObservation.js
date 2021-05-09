@@ -90,7 +90,8 @@ class ReportObservation extends Component {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={this.handleSubmit}
-            render={props => (
+          >
+            {props => (
               <Form>
                 <ObservationDetailsFieldset {...props} options={options} />
                 <ObservationBirdsFieldset {...props} options={options} />
@@ -99,7 +100,7 @@ class ReportObservation extends Component {
                 <SubmitFieldset {...props} response={reportObservationPost} />
               </Form>
             )}
-          />
+          </Formik>
         </div>
       );
     } else return null;
