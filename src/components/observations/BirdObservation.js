@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-refetch';
+import React from 'react';
+import useSWR from 'swr';
 import PropTypes from 'prop-types';
 
 import Observation from './Observation';
@@ -11,52 +11,41 @@ import Error from '../helpers/Error';
 
 const API_URL = `${process.env.REACT_APP_API_BASE}/bird_observations/`;
 
+const RenderBirdObservation = ({ birdObservation, type, ...others }) => {
+  if (!birdObservation) return <Error message="Invalid bird observation" />;
+
+  switch (type) {
+    case 'observationCard':
+      return <Observation observation={birdObservation.sighting} type="card" {...others} />;
+    case 'feature':
+      return <BirdObservationFeature birdObservation={birdObservation} {...others} />;
+    default:
+      return <BirdObservationBirdCard birdObservation={birdObservation} {...others} />;
+  }
+};
+
 /**
   BirdObservation either:
   - Renders a given bird observation as a specified type (e.g. card)
   - Fetches a bird observation using the given id and renders as a specified type
   */
-class BirdObservation extends Component {
-  constructor(props) {
-    super(props);
-    this.renderBirdObservation = this.renderBirdObservation.bind(this);
-  }
+const BirdObservation = ({ id, birdObservation, ...others }) => {
+  const { data, error, isValidating } = useSWR(id ? `${API_URL}${id}/` : null, {
+    dedupingInterval: 0,
+  });
 
-  renderBirdObservation(birdObservation) {
-    const { type, ...others } = this.props;
-    switch (type) {
-      case 'observationCard':
-        return <Observation observation={birdObservation.sighting} type="card" {...others} />;
-      case 'feature':
-        return <BirdObservationFeature birdObservation={birdObservation} {...others} />;
-      default:
-        return <BirdObservationBirdCard birdObservation={birdObservation} {...others} />;
-    }
-  }
-
-  componentDidMount() {
-    if (this.props.id) this.props.lazyFetchBirdObservation(this.props.id);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.id !== prevProps.id) this.props.lazyFetchBirdObservation(this.props.id);
-  }
-
-  render() {
-    if (this.props.birdObservationFetch) {
-      const { birdObservationFetch } = this.props;
-      if (birdObservationFetch.pending) {
-        return <Loader />;
-      } else if (birdObservationFetch.rejected) {
-        return <Error message="Bird observation invalid" />;
-      } else if (birdObservationFetch.fulfilled) {
-        return this.renderBirdObservation(birdObservationFetch.value);
-      }
-    } else if (this.props.birdObservation) {
-      return this.renderBirdObservation(this.props.birdObservation);
+  if (id) {
+    if (isValidating) {
+      return <Loader />;
+    } else if (error) {
+      return <Error message="Error fetching birdObservation" />;
+    } else if (data) {
+      return <RenderBirdObservation birdObservation={data} {...others} />;
     } else return null;
-  }
-}
+  } else if (birdObservation) {
+    return <RenderBirdObservation birdObservation={birdObservation} {...others} />;
+  } else return null;
+};
 
 BirdObservation.propTypes = {
   id: PropTypes.string,
@@ -68,8 +57,4 @@ BirdObservation.defaultProps = {
   type: 'birdCard',
 };
 
-export default connect(props => ({
-  lazyFetchBirdObservation: id => ({
-    birdObservationFetch: `${API_URL}${props.id}/`,
-  }),
-}))(BirdObservation);
+export default BirdObservation;

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-refetch';
+import React from 'react';
+import useSWR from 'swr';
 import PropTypes from 'prop-types';
 
 import BirdPage from './Bird/BirdPage';
@@ -12,51 +12,43 @@ import Error from '../helpers/Error';
 const API_URL = `${process.env.REACT_APP_API_BASE}/birds/`;
 
 /**
+  Selects component to render with, based on type
+*/
+const RenderBird = ({ bird, type, ...others }) => {
+  if (!bird) return <Error message="Invalid grid tile" />;
+
+  switch (type) {
+    case 'feature':
+      return <BirdFeature bird={bird} {...others} />;
+    case 'card':
+      return <BirdCard bird={bird} {...others} />;
+    default:
+      return <BirdPage bird={bird} {...others} />;
+  }
+};
+
+/**
   Bird either:
   - Renders a given bird as a specified type (e.g. card, page)
   - Fetches a bird using the given id and renders as a specified type
   */
-class Bird extends Component {
-  constructor(props) {
-    super(props);
-    this.renderBird = this.renderBird.bind(this);
-  }
+const Bird = ({ id, bird, ...others }) => {
+  const { data, error, isValidating } = useSWR(id ? `${API_URL}${id}/` : null, {
+    dedupingInterval: 0,
+  });
 
-  renderBird(bird) {
-    const { type, ...others } = this.props;
-    switch (type) {
-      case 'feature':
-        return <BirdFeature bird={bird} {...others} />;
-      case 'card':
-        return <BirdCard bird={bird} {...others} />;
-      default:
-        return <BirdPage bird={bird} {...others} />;
-    }
-  }
-
-  componentDidMount() {
-    if (this.props.id) this.props.lazyFetchBird(this.props.id);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.id !== prevProps.id) this.props.lazyFetchBird(this.props.id);
-  }
-
-  render() {
-    if (this.props.birdFetch) {
-      const { birdFetch } = this.props;
-      if (birdFetch.pending) {
-        return <Loader />;
-      } else if (birdFetch.rejected) {
-        return <Error message="Bird invalid" />;
-      } else if (birdFetch.fulfilled) {
-        return this.renderBird(birdFetch.value);
-      }
-    } else if (this.props.bird) {
-      return this.renderBird(this.props.bird);
+  if (id) {
+    if (isValidating) {
+      return <Loader />;
+    } else if (error) {
+      return <Error message="Error fetching bird" />;
+    } else if (data) {
+      return <RenderBird bird={data} {...others} />;
     } else return null;
-  }
-}
+  } else if (bird) {
+    return <RenderBird bird={bird} {...others} />;
+  } else return null;
+};
 
 Bird.propTypes = {
   id: PropTypes.string,
@@ -68,8 +60,4 @@ Bird.defaultProps = {
   type: 'page',
 };
 
-export default connect(props => ({
-  lazyFetchBird: id => ({
-    birdFetch: `${API_URL}${props.id}/`,
-  }),
-}))(Bird);
+export default Bird;

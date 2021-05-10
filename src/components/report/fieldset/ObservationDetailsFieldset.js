@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'formik';
-import DatePicker from 'react-datepicker';
-import moment from 'moment';
 
 import MapSelector from '../../helpers/MapSelector';
 import { RenderField } from '../../helpers/RenderField';
-import 'react-datepicker/dist/react-datepicker.css';
 
 const ObservationDetailsFieldset = ({ options, values, setFieldValue }) => {
   return (
@@ -14,22 +11,26 @@ const ObservationDetailsFieldset = ({ options, values, setFieldValue }) => {
       <legend>1. Observation Details</legend>
 
       <div className="form-group">
-        <label htmlFor="dateTimeSighted">Date and time sighted</label>
-        <DatePicker
-          selected={values.dateTimeSighted}
-          onChange={date => setFieldValue('dateTimeSighted', date)}
-          onChangeRaw={e => {
-            const date = moment(e.target.value, 'D MMM YYYY, HH:mm');
-            if (date.isValid()) setFieldValue('dateTimeSighted', date);
-          }}
-          showTimeSelect
-          timeFormat="HH:mm"
-          timeIntervals={15}
-          dateFormat="D MMM YYYY, HH:mm"
-          timeCaption="time"
-          className="form-control"
-          id="dateTimeSighted"
-        />
+        <div className="row">
+          <div className="col-md-4">
+            <Field
+              component={RenderField}
+              options={options.date_sighted}
+              name="date_sighted"
+              type="date"
+              label="Date"
+            />
+          </div>
+          <div className="col-md-4">
+            <Field
+              component={RenderField}
+              options={options.time_sighted}
+              name="time_sighted"
+              type="time"
+              label="Time"
+            />
+          </div>
+        </div>
       </div>
 
       <div className="card">

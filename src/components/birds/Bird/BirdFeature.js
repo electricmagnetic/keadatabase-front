@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Truncate from 'react-truncate';
+import TruncateMarkup from 'react-truncate-markup';
 
 import getPicture from './helpers/getPicture';
 import birdLink from './helpers/birdLink';
@@ -26,9 +26,9 @@ const BirdFeature = ({ bird, ...others }) => {
               className="img-fluid rounded-circle my-3"
             />
           </Link>
-          <p>
-            <Truncate lines={4}>{bird.bird_extended.description}</Truncate>
-          </p>
+          <TruncateMarkup lines={4}>
+            <p>{bird.bird_extended.description}</p>
+          </TruncateMarkup>
           <Link to={birdLink(bird)} role="button" className="btn btn-outline-light">
             View Profile
           </Link>

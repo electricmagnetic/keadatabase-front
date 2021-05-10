@@ -19,7 +19,8 @@ import {
 } from '../../actions/reportObservation';
 
 const initialValues = {
-  dateTimeSighted: moment(),
+  date_sighted: moment().format('YYYY-MM-DD'),
+  time_sighted: moment().format('HH:mm'),
   precision: '200',
   longitude: '',
   latitude: '',
@@ -42,7 +43,8 @@ const initialValues = {
 const requiredMessage = 'This field is required.';
 const notNumber = 'This field must be a number.';
 const validationSchema = yup.object().shape({
-  dateTimeSighted: yup.object().required(requiredMessage),
+  date_sighted: yup.string().required(requiredMessage),
+  time_sighted: yup.string().required(requiredMessage),
   precision: yup.string().required(requiredMessage),
   longitude: yup.number().min(-180).max(180).required(requiredMessage).typeError(notNumber),
   latitude: yup.number().min(-90).max(90).required(requiredMessage).typeError(notNumber),

@@ -1,16 +1,8 @@
-import moment from 'moment';
-
 export function formatObservation(values = {}) {
   const observation = {};
 
   // Add challenge (basic spam prevention)
   observation.challenge = 'kea';
-
-  // Format date and time sighted
-  if (values.dateTimeSighted) {
-    observation.date_sighted = moment(values.dateTimeSighted).format('YYYY-MM-DD');
-    observation.time_sighted = moment(values.dateTimeSighted).format('HH:mm');
-  }
 
   // Format coordinates into numbers with 'Point' type
   if (values.longitude && values.latitude) {
@@ -52,7 +44,15 @@ export function formatObservation(values = {}) {
   }
 
   // Copy other parameters if exist
-  ['precision', 'location_details', 'sighting_type', 'behaviour', 'comments'].forEach(key => {
+  [
+    'date_sighted',
+    'time_sighted',
+    'precision',
+    'location_details',
+    'sighting_type',
+    'behaviour',
+    'comments',
+  ].forEach(key => {
     if (values[key]) {
       observation[key] = values[key];
     }
